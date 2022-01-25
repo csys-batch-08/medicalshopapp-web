@@ -15,15 +15,18 @@ import com.medHub.model.Product;
 import com.medHub.util.ConnectionUtil;
 
 public class ProductDaoImpl implements ProductDAO {
+	
 
-//									Show All Products
+										//Show All Products
 	public List<Product> viewProduts() {
-		String viewQuery = "select * from products where status='available'";
+		String viewQuery = "select product_id,product_category,product_name,description,price,available_quantity,"
+						 + " product_img,points_per_unit,status,offer from products where status= ? ";
 		Connection con = ConnectionUtil.getDBconnect();
 		List<Product> productList = new ArrayList<Product>();
 		try {
-			Statement smt = con.createStatement();
-			ResultSet rs = smt.executeQuery(viewQuery);
+			PreparedStatement pst = con.prepareStatement(viewQuery);
+			pst.setString(1, "available");
+			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
 				Product product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
@@ -32,13 +35,14 @@ public class ProductDaoImpl implements ProductDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return productList;
 	}
+	
 
-	// Insert Product By Admin
+									// Insert Product By Admin
 	public Boolean insertProduct(Product productModel) throws SQLException {
 		boolean flag = false;
 		try {
@@ -69,7 +73,8 @@ public class ProductDaoImpl implements ProductDAO {
 		return false;
 	}
 
-//								Update Products By ADmin
+										
+												//Update Products By ADmin
 	public int updateProducts(Product product) throws SQLException {
 		String updateQwery = "update products set product_category=?,product_name=?,price=?,available_Quantity=?,product_img=?,points_per_unit=?,offer=?,description=? where product_id=?";
 		Connection con = ConnectionUtil.getDBconnect();
@@ -99,12 +104,13 @@ public class ProductDaoImpl implements ProductDAO {
 		return result;
 	}
 
-//									Delete Product by admin
+												//Delete Product by admin
 	public int deleteProduct(int productId) throws SQLException {
-		String qwery = "update products set status='unavailable' where product_id=?";
+		String qwery = "update products set status= ? where product_id=?";
 		Connection con = ConnectionUtil.getDBconnect();
 		PreparedStatement pst = con.prepareStatement(qwery);
-		pst.setInt(1, productId);
+		pst.setString(1, "unavailable");
+		pst.setInt(2, productId);
 		int res = pst.executeUpdate();
 		res = pst.executeUpdate("commit");
 		if (res > 0) {
@@ -118,10 +124,11 @@ public class ProductDaoImpl implements ProductDAO {
 
 	}
 
-	// find Product By Name
+													//find Product By Name
 	public Product findProductByName(String productName) {
 		int productId = 0;
-		String query = "select * from products where product_name= ? ";
+		String query = "select product_id,product_category,product_name,description,price,available_quantity,"
+					 + "product_img,points_per_unit from products where product_name= ? ";
 		Connection con = ConnectionUtil.getDBconnect();
 		Product product = null;
 		try {
@@ -143,7 +150,8 @@ public class ProductDaoImpl implements ProductDAO {
 
 	public Product findProductByProductId(int id) {
 		int productId = 0;
-		String query = "select * from products where product_id= ?";
+		String query = "select product_id,product_category,product_name,description,price,available_quantity,"
+					 + "product_img,points_per_unit,status,offer from products where product_id= ?";
 		Connection con = ConnectionUtil.getDBconnect();
 		Product product = null;
 		try {
@@ -178,13 +186,16 @@ public class ProductDaoImpl implements ProductDAO {
 	}
 
 	public List<Product> searchProduct(String Productname) {
-		String query = "select * from products where product_name like '" + Productname
-				+ "%'  OR product_category like '" + Productname + "%' ";
+		String query = "select product_id,product_category,product_name,description,price,available_quantity,product_img,"
+				+ "points_per_unit,status,offer from products where product_name like '"+Productname+"%' OR product_category like '"+Productname+"%'  ";
 		List<Product> findedProducts = new ArrayList<Product>();
 		try {
 			Connection con = ConnectionUtil.getDBconnect();
-			Statement smt = con.createStatement();
-			ResultSet rs = smt.executeQuery(query);
+			PreparedStatement pst = con.prepareStatement(query);
+			/*
+			 * pst.setString(1, Productname); pst.setString(2, Productname);
+			 */
+			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				Product product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
 						rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10));

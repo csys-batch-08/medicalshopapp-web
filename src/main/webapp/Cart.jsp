@@ -260,9 +260,7 @@ color: red;
 <body>
 
 
-	<%User currentUser = (User)session.getAttribute("user");
-	
-	%>
+	<%User currentUser = (User)session.getAttribute("user");%>
 	<div id="container">
 
 		<div class="nav">

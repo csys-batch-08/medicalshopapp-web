@@ -21,6 +21,7 @@ import com.medHub.model.*;
 
 @WebServlet("/LoginController")
 public class LoginServlet extends HttpServlet {
+	
 	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
 		HttpSession session = req.getSession(); 
@@ -42,6 +43,7 @@ public class LoginServlet extends HttpServlet {
 			if(currentuser!=null)
 			{
 				session.setAttribute("user", currentuser);
+				req.setAttribute("currentUser", currentuser);
 				res.sendRedirect("UserHome.jsp");
 			}
 			else

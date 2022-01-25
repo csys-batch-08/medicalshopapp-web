@@ -72,7 +72,7 @@ public class UserDaoImpl implements UserDAO {
 	public List<User> ViewAllUser() {
 		List<User> userList = new ArrayList<User>();
 		try {
-			String viewUsers = "select * from users";
+			String viewUsers = "select  user_id,full_name,delivery_address,user_password,user_wallet,user_email,user_mobile,account_status,points from users";
 			Connection conn = ConnectionUtil.getDBconnect();
 			Statement stm = conn.createStatement();
 			ResultSet rs = stm.executeQuery(viewUsers);

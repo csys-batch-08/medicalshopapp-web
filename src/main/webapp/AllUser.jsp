@@ -111,7 +111,7 @@ table {
 						<th>ADDRESS</th>
 						<th>EMAIL</th>
 						<th>MOBILE</th>
-						<th>STATUS</th>
+						
 					</tr>
 				</thead>
 
@@ -123,7 +123,6 @@ table {
 						<td><%=user.getAddress() %></td>
 						<td><%=user.getUserMail() %></td>
 						<td><%=user.getUserMobile()%></td>
-						<td><%=user.getAccountStatus()%></td>
 					</tr>
 					<%} %>
 				</tbody>

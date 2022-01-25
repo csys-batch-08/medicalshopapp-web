@@ -85,7 +85,7 @@ public class OrderDaoImpl implements OrderDAO{
 	public boolean checkStatus(int orderId)
 	{	
 		try {
-			String status;
+		String status;
 		String qwery="select order_status from orders where order_id= ?";
 		Connection con = ConnectionUtil.getDBconnect();
 		PreparedStatement pst=con.prepareStatement(qwery);

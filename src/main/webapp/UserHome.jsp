@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.medHub.model.*"%>
 <%@page import="com.medHub.dao.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -268,11 +269,13 @@ box-shadow: 0 0 10px black;
 
 <body>
 
-<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
-	<%User currentUser = (User)session.getAttribute("user");
-	session.setAttribute("userNotFound", null);
-	%>
+<%-- <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+ --%>
+ 
+	<%-- <%User currentUser = (User)session.getAttribute("user"); --%>
+	<%-- <% session.setAttribute("userNotFound", null);%> --%>
+		
+	
 	
 	
 	<div class="container-fluid p-0" >
@@ -295,9 +298,11 @@ box-shadow: 0 0 10px black;
 				</div>
 			</nav>
 		</div>
-		<h2 id="userName">welcome <%=currentUser.getName()%></h2>
+		 <%-- <%=currentUser.getName()%> --%>
+		<h2 id="userName">welcome <c:out value="${sessionScope.user.getName()}"/> </h2>
 		</div>
 		<br><br>
+		<a href="allProducts"></a>
 		
 	
 		
@@ -310,47 +315,47 @@ box-shadow: 0 0 10px black;
 		
 			
 		
-		<% 
+		<%-- <% 
 		ProductDaoImpl product= new ProductDaoImpl();
 		List<Product> allproduct = product.viewProduts();
 		 Product searchProducts = new Product(); 	
-	%>
-		<% for(Product products : allproduct)
+		%> --%>
 		
-	{
-	%>
+		<c:set var="Products"   value="${allProducts}"/> 
+		
+		<c:forEach items="${allProducts}" var="products" >
 		
 			<div id="product">
 				<div id="img">
-					<img src="Assets/<%=products.getProductImg() %>" alt="horlicks">
-					<h3><%=products.getProductName()%></h3>
+					<img src="Assets/${products.getProductImg()}" alt="horlicks">
+					<h3> ${products.getProductName()} </h3>
+				<h3><c:out value="${products.getProductName()}" /></h3>
 				</div>
 				<div id="details">
 					<h3>
 						Description :
-						<%=products.getDescription()%></h3>
+						${products.getDescription()}</h3>
 					<h3>
-						Price :<%=products.getUnitPrice()+ "rs"%></h3>
+						Price :${products.getUnitPrice()}+"rs"></h3>
 					<h3>
 						Offer :
-						<%=products.getOffer() %>%
+						${products.getOffer()}%
 					</h3>
 					<h3>
 						Points :
-						<%=products.getPoints() %></h3>
+						${products.getPoints()}</h3>
 				</div>
 				<div id="btn">
 					<a><button>
-						<a id="buynow" href="BuyProduct.jsp?pid=<%=products.getProductId()%>">Buy Now</a>
+						<a id="buynow" href="BuyProduct.jsp?pid=${products.getProductId()} ">Buy Now</a>
 					</button></a>
-					
 					
 				</div>
 			</div>
 		
 		<br>
 		<br>
-		<%} %>
+		</c:forEach>
 		
 
 	</div>

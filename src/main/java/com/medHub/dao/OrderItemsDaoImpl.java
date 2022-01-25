@@ -108,7 +108,9 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 				LocalDate startDate = LocalDate.parse(fromDate);
 				LocalDate endDate = LocalDate.parse(toDate);
 				
-				String query = "select trunc(o.order_date),p.product_name,sum(oi.quantity) as quantity,oi.unit_price as price, (sum(oi.quantity)*oi.unit_price) as totalPrice from order_items oi join orders o on o.order_id = oi.order_id join products p on p.product_id = oi.product_id where trunc(o.order_date) between ? and ? group by(trunc(o.order_date),p.product_name,oi.unit_price,o.order_status) having o.order_status='order placed'";
+				String query = "select trunc(o.order_date),p.product_name,sum(oi.quantity) as quantity,oi.unit_price as price, (sum(oi.quantity)*oi.unit_price) as totalPrice from order_items oi "
+								+ "join orders o on o.order_id = oi.order_id join products p on p.product_id = oi.product_id where trunc(o.order_date) between ? and ? group by(trunc(o.order_date),"
+								+ "p.product_name,oi.unit_price,o.order_status) having o.order_status=?";
 				Connection con = ConnectionUtil.getDBconnect();
 				boolean flag = false;
 				PreparedStatement ps;
@@ -117,6 +119,7 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 					 ps = con.prepareStatement(query);
 					 ps.setDate(1, java.sql.Date.valueOf(startDate));
 					 ps.setDate(2, java.sql.Date.valueOf(endDate));
+					 ps.setString(3, "order placed");
 					 rs = ps.executeQuery();
 					
 					while(rs.next())
