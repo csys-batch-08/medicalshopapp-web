@@ -121,12 +121,12 @@ public class ProductDaoImpl implements ProductDAO {
 	// find Product By Name
 	public Product findProductByName(String productName) {
 		int productId = 0;
-		String query = "select * from products where product_name='" + productName + "'";
+		String query = "select * from products where product_name= ? ";
 		Connection con = ConnectionUtil.getDBconnect();
 		Product product = null;
 		try {
 			PreparedStatement pst = con.prepareStatement(query);
-//				pst.setString(1,productName);
+			pst.setString(1,productName);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
@@ -143,11 +143,12 @@ public class ProductDaoImpl implements ProductDAO {
 
 	public Product findProductByProductId(int id) {
 		int productId = 0;
-		String query = "select * from products where product_id='" + id + "'";
+		String query = "select * from products where product_id= ?";
 		Connection con = ConnectionUtil.getDBconnect();
 		Product product = null;
 		try {
 			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
@@ -163,12 +164,13 @@ public class ProductDaoImpl implements ProductDAO {
 	}
 
 	public void updateProductQuantity(Product currentProduct, int qty) throws SQLException {
-		String updateQtyQuery = "update products set available_quantity =" + qty + " where product_id = "
-				+ currentProduct.getProductId() + "";
+		String updateQtyQuery = "update products set available_quantity = ? where product_id = ?";
 
 		Connection con = ConnectionUtil.getDBconnect();
 
 		PreparedStatement pst = con.prepareStatement(updateQtyQuery);
+		pst.setInt(1, qty);
+		pst.setInt(2, currentProduct.getProductId());
 		int res = pst.executeUpdate();
 		pst = con.prepareStatement("commit");
 		int res2 = pst.executeUpdate();

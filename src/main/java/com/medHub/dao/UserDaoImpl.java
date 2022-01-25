@@ -44,12 +44,13 @@ public class UserDaoImpl implements UserDAO {
 		User loginUser = null;
 		try {
 
-			String check = "select * from users where user_email='" + user.getUserMail() + "' and user_password='"
-					+ user.getUserPassword() + "'";
+			String check = "select user_id,full_name,delivery_address,user_password,user_wallet,user_email,user_mobile,account_status,points from users where user_email= ? and user_password= ? ";
 			Connection con = ConnectionUtil.getDBconnect();
-			Statement stm = con.createStatement();
-			int i = stm.executeUpdate(check);
-			ResultSet rs = stm.executeQuery(check);
+			PreparedStatement pst = con.prepareStatement(check);
+			pst.setString(1, user.getUserMail());
+			pst.setString(2, user.getUserPassword());
+			int i = pst.executeUpdate();
+			ResultSet rs = pst.executeQuery();
 
 
 			if (rs.next()) {

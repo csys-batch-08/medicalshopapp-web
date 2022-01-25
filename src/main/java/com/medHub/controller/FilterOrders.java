@@ -27,8 +27,6 @@ public class FilterOrders extends HttpServlet {
 		  String toDate =  req.getParameter("endDate");
 		  int from= Integer.parseInt(fromDate.substring(8,10));
 		  int to= Integer.parseInt(toDate.substring(8,10));
-		  System.out.println("date calculation");
-		  System.out.println(from-to);
 		  OrderItemsDaoImpl orderItem = new OrderItemsDaoImpl();
 		  ResultSet rs=  orderItem.salesReport(fromDate,toDate);
 		  session.setAttribute("orders",rs);

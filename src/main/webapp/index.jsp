@@ -219,6 +219,7 @@ body {
 	bottom: 0;
 }
 
+
 #regbtn:hover {
 	/* color: white; */
 	font-weight: 800;

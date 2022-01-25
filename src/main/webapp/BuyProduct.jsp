@@ -226,6 +226,7 @@ left:-150px;
 
 #ErrorMsg{
 visibility: hidden;
+color:red;
 }
 
 #cartQuantity{

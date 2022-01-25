@@ -118,7 +118,7 @@ outline: none;
 border-radius: 2px;
 background-color: yellowgreen;
 box-shadow: 0 0 2px black;
-width: 100px;
+width: 110px;
 }
 
 #walletMoneyUpdateForm button:hover{
@@ -356,7 +356,7 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 		<div id="walletMoneyUpdateForm">
 	<form action="walletUpdate">
 		<label> Wallet : </label>
-		<input type="number" name="UpdateWallet" "UpdateWallet" min="500" max="5000" title="" value="<%=currentUser.getWallet()%>" >
+		<input type="number" name="UpdateWallet" "UpdateWallet" min="200" max="5000" title="" value="<%=currentUser.getWallet()%>" >
 		<button>Add Money</button>
 	</form>
 	</div>

@@ -63,10 +63,11 @@ public class OrderDaoImpl implements OrderDAO{
 	public boolean deleteProduct(int orderId) throws SQLException
 	{
 		boolean flag=false;
-		String qwery="update orders set order_status='cancelled' where order_id =?";
+		String qwery="update orders set order_status= ? where order_id =?";
 		Connection con = ConnectionUtil.getDBconnect();
 		PreparedStatement pst=con.prepareStatement(qwery);
-		pst.setInt(1, orderId);
+		pst.setString(1, "cancelled");
+		pst.setInt(2, orderId);
 		int res=pst.executeUpdate();
 		pst.executeUpdate("commit");
 
@@ -85,10 +86,11 @@ public class OrderDaoImpl implements OrderDAO{
 	{	
 		try {
 			String status;
-		String qwery="select order_status from orders where order_id='"+orderId+"'";
+		String qwery="select order_status from orders where order_id= ?";
 		Connection con = ConnectionUtil.getDBconnect();
-		Statement stmt = con.createStatement();
-		ResultSet rs = stmt.executeQuery(qwery);
+		PreparedStatement pst=con.prepareStatement(qwery);
+		pst.setInt(1, orderId);
+		ResultSet rs = pst.executeQuery();
 		if(rs.next())
 		{
 			
@@ -108,10 +110,4 @@ public class OrderDaoImpl implements OrderDAO{
 	}
 
 	
-
-
-	
-	
-
-
 }

@@ -64,16 +64,6 @@ public class RegisterServlet extends HttpServlet {
 				
 		}
 		
-		
-	
-		
-		
-		
-		//userDao.insert(user);
-		
-		
-		
-	
 		}catch(UserExistsException e) {
 			session.setAttribute("error", e.getMessage());
 			

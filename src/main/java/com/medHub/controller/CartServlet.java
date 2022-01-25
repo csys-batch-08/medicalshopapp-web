@@ -33,6 +33,7 @@ public class CartServlet extends HttpServlet{
 		Product currentproduct = (Product) session.getAttribute("currentproduct");
 		CartDaoImpl cartDao = new CartDaoImpl();
 		Cart cart = new Cart();
+		
 		cart.setUser(currentUser);
 		cart.setProduct(currentproduct);
 		cart.setQty(quantity);

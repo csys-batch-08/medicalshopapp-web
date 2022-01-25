@@ -21,26 +21,23 @@ public class AdminDaoImpl implements AdminDAO{
 
 	public Admin login(Admin admin) throws SQLException
 	{
+		/* admin_name,age,admin_password,admin_email,admin_mobile */ 
 		Admin adminmodule=null;
-		String check="select admin_name,age,admin_password,admin_email,admin_mobile from admin where admin_email=? and admin_password=?";
+		String check="select admin_name,age,admin_password,admin_email,admin_mobile from admin a where admin_email=? and admin_password=?";
 		ConnectionUtil conn= new ConnectionUtil();
 		Connection con=conn.getDBconnect();	
 		PreparedStatement ps = con.prepareStatement(check);
 		ps.setString(1, admin.getAdminMail());
 		ps.setString(2, admin.getAdminPassword());
 		ResultSet rs = ps.executeQuery();
+		
 	
 		if(rs.next()) {
-			adminmodule=new Admin(rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getLong(6));
+			adminmodule=new Admin(rs.getString(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getLong(5));
 			return adminmodule;
 		}
 		return adminmodule;
 		
 		}
 
-
-
-
-	
-	
-}
+	}
