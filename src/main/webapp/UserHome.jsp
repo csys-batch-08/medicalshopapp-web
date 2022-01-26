@@ -299,12 +299,10 @@ box-shadow: 0 0 10px black;
 			</nav>
 		</div>
 		 <%-- <%=currentUser.getName()%> --%>
-		<h2 id="userName">welcome <c:out value="${sessionScope.user.getName()}"/> </h2>
+		<h2 id="userName">welcome <c:out value="${currentUser.getName()}"/> </h2>
 		</div>
 		<br><br>
-		<a href="allProducts"></a>
 		
-	
 		
 <!-- 					Search Products		
 -->		
@@ -321,22 +319,21 @@ box-shadow: 0 0 10px black;
 		 Product searchProducts = new Product(); 	
 		%> --%>
 		
-		<c:set var="Products"   value="${allProducts}"/> 
-		
+				
 		<c:forEach items="${allProducts}" var="products" >
 		
 			<div id="product">
 				<div id="img">
 					<img src="Assets/${products.getProductImg()}" alt="horlicks">
 					<h3> ${products.getProductName()} </h3>
-				<h3><c:out value="${products.getProductName()}" /></h3>
+				
 				</div>
 				<div id="details">
 					<h3>
 						Description :
 						${products.getDescription()}</h3>
 					<h3>
-						Price :${products.getUnitPrice()}+"rs"></h3>
+						Price :${products.getUnitPrice()} rs</h3>
 					<h3>
 						Offer :
 						${products.getOffer()}%

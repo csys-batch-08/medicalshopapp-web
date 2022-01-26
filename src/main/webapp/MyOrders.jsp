@@ -244,8 +244,6 @@ visibility: hidden;
 	UserDaoImpl userDao = new UserDaoImpl();
 /* 	LocalDate date =  orderItem.getCurrentDate().toLocaleString();
 	Date localDepartureDate = java.sql.Date.valueOf(date); */
-	
-	
 	%>
 	<div id="container">
 
@@ -319,7 +317,7 @@ visibility: hidden;
 		<% boolean flag;
 		for(OrderItems myAllOrders : myOrderList)
 			 {
-			flag =orderDao.checkStatus(myAllOrders.getOrderModel().getOrderId());
+			flag = orderDao.checkStatus(myAllOrders.getOrderModel().getOrderId());
 			System.out.println(myAllOrders.getOrderdate());
 			boolean cancel = orderItem.cancelDate(myAllOrders.getOrderdate(),myAllOrders.getOrderModel().getOrderId());
 			 %>

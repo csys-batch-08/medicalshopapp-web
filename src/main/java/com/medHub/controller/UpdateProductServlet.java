@@ -37,7 +37,7 @@ public class UpdateProductServlet extends HttpServlet{
 			if(result>0)
 			{
 				product= new Product(category,productname,price,updateQty,imageurl,points,offer,description,prodId);
-				res.sendRedirect("AdminAllProducts.jsp?deleteProductid=0");
+				res.sendRedirect("adminAllProducts");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

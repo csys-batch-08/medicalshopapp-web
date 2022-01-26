@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class User {
 	private int userId;
-	private String Username;
+	private String userName;
 	private String address;
 	private String userMail;
 	private long userMobile;
@@ -13,11 +13,11 @@ public class User {
 	private double wallet;
 	private String accountStatus;
 	
-	public String getUsername() {
-		return Username;
+	public String getUserName() {
+		return userName;
 	}
 	public void setUsername(String username) {
-		Username = username;
+		userName = username;
 	}
 	public String getAccountStatus() {
 		return accountStatus;
@@ -45,13 +45,6 @@ public class User {
 		this.userId = userId;
 	}
 	
-	public String getName() {
-		return Username;
-	}
-	public void setName(String name) {
-		this.Username = name;
-	}
-	
 	public String getAddress() {
 		return address;
 	}
@@ -74,7 +67,7 @@ public class User {
 	public User( String username, String address ,String userPassword,double wallet,String userMail,int points,long userMobile) {
 		super();
 		
-		this.Username = username;
+		this.userName = username;
 		this.address = address;
 		this.userMail = userMail;
 		this.userMobile = userMobile;
@@ -84,7 +77,7 @@ public class User {
 	}
 	public User(String username,long userMobile, String userMail, String userPassword) {
 		super();
-		Username = username;
+		userName = username;
 		this.userMail = userMail;
 		this.userMobile = userMobile;
 		this.userPassword = userPassword;
@@ -95,7 +88,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 		super();
 		this.userId=userId;
-		this.Username=fullname;
+		this.userName=fullname;
 		this.address=address;
 		this.userPassword=password;
 		this.wallet=wallet;
@@ -113,7 +106,7 @@ public class User {
 	}
 	public User(String name, String password, Long mobileNo, String address) {
 		// TODO Auto-generated constructor stub
-		this.Username= name;
+		this.userName= name;
 		this.userPassword=password;
 		this.userMobile=mobileNo;
 		this.address=address;
@@ -132,7 +125,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "userId " + userId + "    name " + Username + "    address " + address
+		return "userId " + userId + "    name " + userName + "    address " + address
 				+ "    userMail " + userMail + "    userPassword " + userPassword + "    wallet " + wallet ;
 	}
 	

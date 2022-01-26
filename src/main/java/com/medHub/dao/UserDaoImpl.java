@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDAO {
 			String commit = "commit";
 			Connection con = ConnectionUtil.getDBconnect();
 			PreparedStatement pst = con.prepareStatement(ins);
-			pst.setString(1, user.getName());
+			pst.setString(1, user.getUserName());
 			pst.setLong(2, user.getUserMobile());
 			pst.setString(3, user.getUserPassword());
 			pst.setString(4, user.getUserMail());
@@ -102,7 +102,7 @@ public class UserDaoImpl implements UserDAO {
 					+ currentUser.getUserMail() + "'";
 			Connection con = ConnectionUtil.getDBconnect();
 			PreparedStatement pst = con.prepareStatement(update);
-			pst.setString(1, currentUser.getName());
+			pst.setString(1, currentUser.getUserName());
 			pst.setString(2, currentUser.getUserPassword());
 			pst.setLong(3, currentUser.getUserMobile());
 			pst.setString(4, currentUser.getAddress());

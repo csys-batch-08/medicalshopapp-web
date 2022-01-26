@@ -340,48 +340,6 @@ font-weight: 600;
 			</form>
 		</div>
 
-	<%-- 									<!-- sign/register form -->
-										
-		<div id="registerScreen">
-			<div id="registerScreenContent">
-				<form action="RegisterController" class="registerform" method="post">
-					<label for="fullName" class="reglab"">FullName*</label><br>
-					<br> <input type="text" name="regfullName" id="fullname"
-						placeholder="Enter fullname" required ><br>
-						
-					<br> <label for="mail" class="reglab">Mail Id</label><br>
-					<br> <input type="email" onkeyup="checkMail()" name="regMail"
-						id="regMail" placeholder="Enter Mail Id" required ><br>
-						<label id="existsMsg"></label>
-					<BR> <label for="phone" class="reglab">Mobile Number*</label><br>
-					<br> <input type="text" name="regMobile" required
-						placeholder="Enter Mobile Number" pattern="[6-9][0-9]{9}"
-						title="MObile Number Must Have 10 Digits" required min="3" max="10"><br>
-					<br> <label for="password" class="reglab">Password*</label><br>
-					<br> <input type="password" input="password"
-						placeholder="Password" name="regPassword" value="" required
-						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
-						title="Minimum eight and Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character"><br>
-				<br>
-					<br>
-					<!-- <label for="address" class="reglab">Address</label></br><br> -->
-					<!-- <textarea name="address" id="address" cols="30" rows="5"
-                        style="max-width: 300px;max-height: 100px;border-radius: 3px;outline: none;"></textarea><br><br> -->
-					<button id="regbtn" type="submit">Register</button><br>
-					<% String notallow=(String)session.getAttribute("notallow");
-            if(notallow!=null) {%>
-            <h4><%=session.getAttribute("notallow") %></h4>
-           
-            <%} session.removeAttribute("notallow"); %>
-            
-            <% String emailError=(String)session.getAttribute("error");
-            if(emailError!=null) {%>
-            <h4><%=session.getAttribute("error") %></h4>
-           
-            <%} session.removeAttribute("error"); %>
-			</div>
-			</form>toDate
-		</div> --%>
 
 		<div class="footer"></div>
 

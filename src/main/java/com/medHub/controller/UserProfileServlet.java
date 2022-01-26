@@ -25,7 +25,7 @@ public class UserProfileServlet extends HttpServlet{
 		
 		User user = new User(name,password,mobileNo,address);
 		
-		currentUser.setName(name);
+		currentUser.setUsername(name);
 		currentUser.setUserPassword(password);
 		currentUser.setUserMobile(mobileNo);
 		currentUser.setAddress(address);
@@ -35,7 +35,7 @@ public class UserProfileServlet extends HttpServlet{
 		try {			
 			res.sendRedirect("UserProfile.jsp");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 

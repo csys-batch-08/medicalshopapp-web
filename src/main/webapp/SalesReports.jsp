@@ -113,8 +113,8 @@ color:white;
 	<div id="container" >
 		<div id="navigation">
 			<ul>
-				<li><a href="AllUser.jsp">All Users</a></li>
-				<li><a href="AdminAllProducts.jsp?deleteProductid=0">All Products</a></li>
+				<li><a href="allUsers">All Users</a></li>
+				<li><a href="adminAllProducts">All Products</a></li>
 				<li><a href="AddProduct.jsp">Add Products</a></li>
 				<li><a href="SalesReports.jsp">Sales Reports</a></li>
 				<li id="logout"><a href="Index.jsp">Logout</a></li>

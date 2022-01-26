@@ -1,6 +1,7 @@
 <%@page import="com.medHub.model.*"%>
 <%@page import="com.medHub.dao.*"%>
 <%@page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -90,7 +91,7 @@ table {
 		<div id="navigation">
 			<ul>
 				<li><a href="AllUser.jsp">All Users</a></li>
-				<li><a href="AdminAllProducts.jsp?deleteProductid=0">All Products</a></li>
+				<li><a href="adminAllProducts">All Products</a></li>
 				<li><a href="AddProduct.jsp">Add Products</a></li>
 				<li><a href="SalesReports.jsp">Sales Reports</a></li>
 				<li id="logout"><a href="Index.jsp">Logout</a></li>
@@ -98,10 +99,8 @@ table {
 		</ul>
 	</div>
 	<div>
-		<% UserDaoImpl userdao = new UserDaoImpl();
-			List<User> userList = new ArrayList<User>();
-			userList=userdao.ViewAllUser();
-		%>
+		
+		
 		<div id="allusers">
 			<table class="table table-striped">
 				<thead class="table table-dark">
@@ -116,15 +115,15 @@ table {
 				</thead>
 
 				<tbody>
-					<%for(User user:userList){ %>
+					<c:forEach items="${userList}" var="user" >
 					<tr>
-						<td><%=user.getUserId() %></td>
-						<td><%=user.getName()%></td>
-						<td><%=user.getAddress() %></td>
-						<td><%=user.getUserMail() %></td>
-						<td><%=user.getUserMobile()%></td>
+						<td>${user.userId}</td>
+						<td>${user.getUserName()}</td>
+						<td>${user.address}</td>
+						<td>${user.userMail }</td>
+						<td>${user.userMobile}</td>
 					</tr>
-					<%} %>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

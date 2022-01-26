@@ -2,9 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medHub.model.Product"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.medHub.dao.ProductDaoImpl"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -135,8 +136,8 @@ bottom: 63px;
 
 	<div id="navigation" class="container-fluid">
 		<ul>
-			<li><a href="AllUser.jsp">All Users</a></li>
-			<li><a href="AdminAllProducts.jsp?deleteProductid=0">All Products</a></li>
+			<li><a href="allUsers">All Users</a></li>
+			<li><a href="adminAllProducts">All Products</a></li>
 			<li><a href="AddProduct.jsp">Add Products</a></li>
 			<li><a href="SalesReports.jsp">Sales Reports</a></li>
 			<li id="logout"><a href="Index.jsp">Logout</a></li>
@@ -144,59 +145,47 @@ bottom: 63px;
 	</div>
 	</ul>
 	</div>
-	<%
+
 	
-	int deletePId= Integer.parseInt(request.getParameter("deleteProductid"));
-	ProductDaoImpl product= new ProductDaoImpl();
-	List<Product> allproduct = product.viewProduts();
-	int result=product.deleteProduct(deletePId);
-	if(result>0){
-	response.sendRedirect("AdminAllProducts.jsp");
-	}
-	
-	%>
-	
-	<% for(Product products : allproduct)
-		{
-	%>
-	<form action="cart">
+	<c:forEach items="${allProducts}" var="products" >
+	<form action="cart" method="get">
 		<div id="product">
 			<div id="img">
-				<img src="Assets/<%=products.getProductImg()%>" alt="<%=products.getProductName()%>">
-				<h5><%=products.getProductName()%></h5>
+				<img src="Assets/${ products.getProductImg()}" alt="${products.getProductName()}">
+				<h5>${products.getProductName()}</h5>
 			</div>
 			<div id="details">
 				<h5>
 					Product Id :
-					<%=products.getProductId() %></h5>
+					${products.getProductId() }</h5>
 				<h5>
 					Description :
-					<%=products.getDescription() %></h5>
+					${products.getDescription() }</h5>
 				<h5>
-					price :<%=products.getUnitPrice()+ "rs"%></h5>
+					price :${products.getUnitPrice()}rs</h5>
 				<h5>
 					Offer :
-					<%=products.getOffer() %>%
+					${products.getOffer()}%
 				</h5>
 				<h5>
 					Points :
-					<%=products.getPoints() %></h5>
+					${products.getPoints() }</h5>
 				<h5>
 					Available Quantity :
-					<%=products.getQuantity() %></h5>
+					${products.getQuantity() }</h5>
 			</div>
 			<div id="btn">
-				<a href="UpdateProduct.jsp?productId=<%=products.getProductId() %>"
-					name="updateProduct" class="btn btn-warning" >Update</a><br>
+				<a href="UpdateProduct.jsp?productId=${products.getProductId() }"
+					 class="btn btn-warning" >Update</a><br>
 				<br> <a
-					href="AdminAllProducts.jsp?deleteProductid=<%=products.getProductId() %>"
-					name="deleteProduct" class="btn btn-danger" id="deleteBtn" >Delete</a>
+					href="deleteProduct?deleteProductId=${products.getProductId() }"
+					class="btn btn-danger" id="deleteBtn" >Delete</a>
 			</div>
 		</div>
 	</form>
 	<br>
 	<br>
-	<%} %>
+	</c:forEach>
 
 </body>
 </html>

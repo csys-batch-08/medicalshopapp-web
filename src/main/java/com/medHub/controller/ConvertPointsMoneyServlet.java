@@ -19,7 +19,7 @@ import com.medHub.model.Product;
 import com.medHub.model.User;
 
 @WebServlet("/ConvertMoney")
-public class ConvertPointsMoney extends HttpServlet{
+public class ConvertPointsMoneyServlet extends HttpServlet{
 	
 	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException {
 		
@@ -31,7 +31,6 @@ public class ConvertPointsMoney extends HttpServlet{
 		double Converted = Math.round((points * 10)/100);
 		double wallet=currentUser.getWallet()+Converted;
 		UserDaoImpl userDao = new UserDaoImpl();
-		User user = new User();
 		int result=userDao.addMoneyInWallet(wallet, currentUser);
 		userDao.updateUserPoints(null);
 		boolean flag=userDao.updatePointsConverted(currentUser);

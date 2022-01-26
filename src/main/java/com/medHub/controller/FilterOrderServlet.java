@@ -17,7 +17,7 @@ import com.medHub.dao.OrderDaoImpl;
 import com.medHub.dao.OrderItemsDaoImpl;
 
 @WebServlet("/filter")
-public class FilterOrders extends HttpServlet {
+public class FilterOrderServlet extends HttpServlet {
 
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {

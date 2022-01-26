@@ -3,7 +3,9 @@ package com.medHub.controller;
 import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.exceptions.UserNotFoundException;
 import com.medHub.dao.AdminDaoImpl;
+import com.medHub.dao.ProductDaoImpl;
 import com.medHub.dao.UserDaoImpl;
 import com.medHub.model.*;
 
@@ -44,7 +47,13 @@ public class LoginServlet extends HttpServlet {
 			{
 				session.setAttribute("user", currentuser);
 				req.setAttribute("currentUser", currentuser);
-				res.sendRedirect("UserHome.jsp");
+				
+				ProductDaoImpl product= new ProductDaoImpl();
+				List<Product> allproduct = product.viewProduts();
+				Product searchProducts = new Product(); 
+				req.setAttribute("allProducts", allproduct);
+				RequestDispatcher rd = req.getRequestDispatcher("UserHome.jsp");
+				rd.forward(req, res);
 			}
 			else
 			{

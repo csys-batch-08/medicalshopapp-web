@@ -112,12 +112,13 @@ public class ProductDaoImpl implements ProductDAO {
 		pst.setString(1, "unavailable");
 		pst.setInt(2, productId);
 		int res = pst.executeUpdate();
-		res = pst.executeUpdate("commit");
+		 pst.executeUpdate("commit");
 		if (res > 0) {
 			return res;
 
 		} else {
 		}
+	
 		con.close();
 		pst.close();
 		return res;
