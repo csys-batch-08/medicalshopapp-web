@@ -22,7 +22,7 @@
 }
 
 body {
-	background-image: url("Images/homepage_img.jpg");
+	background-image: url("Assets/homepage_img.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 100vh;
@@ -114,6 +114,13 @@ left:150px;
 position: relative;
 left:20px;
 }
+
+#addProductForm:hover{
+background: rgb(240, 231, 231);
+border: none;
+box-shadow: 0 0 5px black;
+transition-duration: 0.2s;
+}
 </style>
 </head>
 <body>
@@ -123,23 +130,19 @@ left:20px;
 		<div id="navigation">
 			<ul>
 				<li><a href="allUsers">All Users</a></li>
-				<li><a href="AdminAllProducts.jsp?deleteProductid=0">All Products</a></li>
+				<li><a href="adminAllProducts">All Products</a></li>
 				<li><a href="AddProduct.jsp">Add Products</a></li>
 				<li><a href="SalesReports.jsp">Sales Reports</a></li>
 				<li id="home"><a class="navbar-brand" href="AdminHome.jsp">Logout</a></li>
-				
+			</ul>
 		</div>
-		</ul>
+		
 			
-	<%
-	int productId = Integer.parseInt(request.getParameter("productId"));
-	ProductDaoImpl productDao = new ProductDaoImpl();
-	Product currentProduct = productDao.findProductByProductId(productId);
-	%>
+		
 	<div id="addProductForm">
 		<form action="UpdateProductController">
 			<label for="category">Category</label> 
-			<input class="inputBox" list="category" name="category" id="browser" placeholder="Category" value="<%=currentProduct.getProductCategory()%>">
+			<input class="inputBox" list="category" name="category" id="browser" placeholder="Category" value="${currentProduct.getProductCategory()}">
 			<datalist id="category">
 				<option value="medicine">
 				<option value="sanitizer">
@@ -150,24 +153,24 @@ left:20px;
 			
 			<br>
 			<br> <label for="name">Product Name</label>
-			<input 	class="inputBox" type="text" required name="productName" placeholder="Product Name" value="<%=currentProduct.getProductName()%>"><br>
+			<input 	class="inputBox" type="text" required name="productName" placeholder="Product Name" value="${currentProduct.getProductName()}"><br>
 			<br> <label for="price">Price</label> <br>
-			<input class="inputBox" type="text" name="price" placeholder="Price" value="<%=currentProduct.getUnitPrice()%>"><br>
+			<input class="inputBox" type="text" name="price" placeholder="Price" value="${currentProduct.getUnitPrice()}"><br>
 			<br> <label for="Quantity">Quantity</label> <br>
-			<input class="inputBox" type="text" required name="quantity" placeholder="Quantity" value="<%=currentProduct.getQuantity()%>"><br>
+			<input class="inputBox" type="text" required name="quantity" placeholder="Quantity" value="${currentProduct.getQuantity()}"><br>
 			<br> <label for="image">Image Url</label> <br>
-			<input class="inputBox" type="file" required name="imageUrl" placeholder="Image Url" value="<%=currentProduct.getProductImg()%>"><br>
+			<input class="inputBox" type="file" required name="imageUrl" placeholder="Image Url" value="${currentProduct.getProductImg()}"><br>
 			<br> <label for="Points">Points</label> <br>
-			 <input class="inputBox" type="text" required name="points" placeholder="Points" value="<%=currentProduct.getPoints()%>"><br>
+			 <input class="inputBox" type="text" required name="points" placeholder="Points" value="${currentProduct.getPoints()}"><br>
 			<br> <label for="Offer">Offer</label> <br>
-			<input class="inputBox" type="text" required name="offer" placeholder="Offer%" value="<%=currentProduct.getOffer()%>"><br>
+			<input class="inputBox" type="text" required name="offer" placeholder="Offer%" value="${currentProduct.getOffer()}"><br>
 			<br>
 			<br> <label for="">Description</label><br>
 			<br>
 			<input class="inputBox" style="max-height: 100px; min-height: 20px; width: 400px; max-width: 200px; min-width: 300px;"
-				required name="description" placeholder="Product Description" value="<%=currentProduct.getDescription()%>"></input>
+				required name="description" placeholder="Product Description" value="${currentProduct.getDescription()}"></input>
 			<br>
-			<button name="currentProdId" value="<%=currentProduct.getProductId()%>">Update</button>
+			<button name="currentProdId" value="${currentProduct.getProductId()}">Update</button>
 <%-- 			<a id="updateBtn"href = "UpdateProductController?<%currentProduct.getProductId();%>">Update</a>
  --%>		</form>
 	</div>
