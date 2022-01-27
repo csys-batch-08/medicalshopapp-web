@@ -17,6 +17,11 @@ import com.medHub.model.Product;
 @WebServlet("/AddProductController")
 public class AddProductServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
 		HttpSession session = req.getSession();

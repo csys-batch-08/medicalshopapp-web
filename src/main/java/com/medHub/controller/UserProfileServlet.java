@@ -16,6 +16,11 @@ import com.medHub.model.User;
 @WebServlet("/ProfileUpdate")
 public class UserProfileServlet extends HttpServlet{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
 		
 		HttpSession session = req.getSession();

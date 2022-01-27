@@ -26,6 +26,11 @@ import com.medHub.model.User;
 @WebServlet("/cartserv")
 public class CartServlet extends HttpServlet{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
 	
 		HttpSession session = req.getSession();

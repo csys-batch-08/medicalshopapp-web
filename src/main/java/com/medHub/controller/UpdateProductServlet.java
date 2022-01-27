@@ -15,6 +15,11 @@ import com.medHub.model.Product;
 
 public class UpdateProductServlet extends HttpServlet{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException {
 		
 		ProductDaoImpl productdao = new ProductDaoImpl();

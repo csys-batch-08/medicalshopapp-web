@@ -25,11 +25,15 @@ import com.medHub.model.User;
 @WebServlet("/prod1")
 public class BuyProductServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		HttpSession session = req.getSession();
 		UserDaoImpl user = new UserDaoImpl();
 		ProductDaoImpl productDao = new ProductDaoImpl();
-		Product product = new Product();
 		OrderItems orderItems = new OrderItems();
 		User currentUser = (User) session.getAttribute("user");
 		Product currentproduct = (Product) session.getAttribute("currentproduct");
@@ -75,8 +79,6 @@ public class BuyProductServlet extends HttpServlet {
 						orderItems.setUnitPrice(currentproduct.getUnitPrice());
 						orderItems.setTotalPrice(price);
 						orderItemsDaoImpl.insertOrders(orderItems);
-						//res.getWriter().println("order placed!!");
-								//alert box when ordered placed sucessfully
 						
 						PrintWriter out = res.getWriter();
 						out.println("<script type=\"text/javascript\">");
@@ -99,9 +101,9 @@ public class BuyProductServlet extends HttpServlet {
 						try {
 							throw new InsuffientMoneyException();
 							}
-						catch(InsuffientMoneyException IM) 
+						catch(InsuffientMoneyException iM) 
 							{
-								session.setAttribute("InsuffientMoney", IM.getMessage());
+								session.setAttribute("InsuffientMoney", iM.getMessage());
 								res.sendRedirect("UserProfile.jsp");
 							}
 				

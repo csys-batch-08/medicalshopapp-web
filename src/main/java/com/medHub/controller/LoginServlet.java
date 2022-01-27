@@ -25,6 +25,11 @@ import com.medHub.model.*;
 @WebServlet("/LoginController")
 public class LoginServlet extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
 		HttpSession session = req.getSession(); 

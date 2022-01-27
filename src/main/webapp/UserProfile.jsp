@@ -101,7 +101,7 @@ margin-top: 50px;
 
 #userProfile input{
 height: 30px;
-width: 200px;
+width: 250px;
 }
 
 #walletMoneyUpdateForm{
@@ -323,7 +323,7 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 	<!-- User Profile -->
 	<div id="userProfile">
 	<form action="ProfileUpdate" method="get">
-			<table >
+			<table>
 			 <tr>
 				<td><label>Name :</label>
 				<td><input id="updatedName" name="updatedName" pattern="[A-Za-z ]{3,}" title="name should be minimum 3 letters and maximum 30 letters" required min="3" max="10" value="${currentUser.getUserName()}"><br></td>

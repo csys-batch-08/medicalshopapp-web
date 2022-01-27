@@ -30,6 +30,11 @@ import com.medHub.model.User;
 
 public class CartOrderServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		
 		HttpSession session = req.getSession();
@@ -68,7 +73,6 @@ public class CartOrderServlet extends HttpServlet {
 				try {
 					productDao.updateProductQuantity(currentProduct, updateQty);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				order.setPrice(totalPrice);
@@ -88,9 +92,7 @@ public class CartOrderServlet extends HttpServlet {
 				int result=	orderItemsDaoImpl.insertOrders(orderItems);
 				if(result>0)
 				{
-					/*
-					 * res.sendRedirect("Cart.jsp");
-					 */	PrintWriter out = res.getWriter();
+					PrintWriter out = res.getWriter();
 					out.println("<script type=\"text/javascript\">");
 					out.println("alert('Order Placed Successfully');");
 					out.println("location='showCartServlet'");
@@ -99,7 +101,6 @@ public class CartOrderServlet extends HttpServlet {
 				try {
 					removeStatus=cartdao.removecartItems(cart);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
