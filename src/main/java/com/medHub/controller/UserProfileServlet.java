@@ -2,6 +2,8 @@ package com.medHub.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,7 @@ import com.medHub.model.User;
 @WebServlet("/ProfileUpdate")
 public class UserProfileServlet extends HttpServlet{
 
-	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException {
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
 		
 		HttpSession session = req.getSession();
 		User currentUser = (User) session.getAttribute("user");
@@ -32,8 +34,11 @@ public class UserProfileServlet extends HttpServlet{
 		UserDaoImpl userDao = new UserDaoImpl();
 		int updateStatus = userDao.update(currentUser);
 		
+		
 		try {			
-			res.sendRedirect("UserProfile.jsp");
+			req.setAttribute("currentUser", currentUser);
+			RequestDispatcher rd = req.getRequestDispatcher("UserProfile.jsp");
+			rd.forward(req, res);
 		} catch (IOException e) {
 			
 			e.printStackTrace();

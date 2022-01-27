@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="com.medHub.model.*"%>
+<%@page import="com.medHub.model.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -254,23 +255,23 @@ font-weight: 600;
 </head>
 <body>
 
+
 <%
 String InsuffiendMoney = (String)session.getAttribute("InsuffientMoney");
-User currentUser = (User)session.getAttribute("user");
 String AddressNotFound = (String)session.getAttribute("AddressNotFound");
 String cartOrderMOney = (String)session.getAttribute("notEnoughAmt");
 String NegativePoints = (String)session.getAttribute("negativePoints"); 
 String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFromCart");
-
 %>
+
 <div class="nav">
 
 		<nav class="list" class="container-fluid p-0">
 			<ul>
 					<li><a href="Index.jsp">SignOut</a></li>
-					<li><a href="Cart.jsp">Cart</a></li>
-					<li><a href="UserProfile.jsp">MyProfile</a></li>
-					<li><a href="MyOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
+					<li><a href="showCartServlet">Cart</a></li>
+					<li><a href="showUserProfile">MyProfile</a></li>
+					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
 					<li><a href="AboutUs.jsp">About-Us</a></li>
 					<li><a href="userHomeServlet">Home</a></li>
 			</ul>
@@ -316,13 +317,16 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 			<h3 class="addressNull"><%=AddressNotFoundFromCart%></h3>
 			<%} session.removeAttribute("AddressNotFoundFromCart");%>			
 	
+	
+
+	
 	<!-- User Profile -->
 	<div id="userProfile">
 	<form action="ProfileUpdate" method="get">
 			<table >
 			 <tr>
 				<td><label>Name :</label>
-				<td><input id="updatedName" name="updatedName" pattern="[A-Za-z ]{3,}" title="name should be minimum 3 letters and maximum 30 letters" required min="3" max="10" value="<%=currentUser.getUserName()%>"><br></td>
+				<td><input id="updatedName" name="updatedName" pattern="[A-Za-z ]{3,}" title="name should be minimum 3 letters and maximum 30 letters" required min="3" max="10" value="${currentUser.getUserName()}"><br></td>
 				<td rowspan="2" colspan="2" width="700px">
 				</td>
 		    </tr>
@@ -330,19 +334,19 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 			<tr>
 				<td><label>Password :</label></td>
 				<td><input id="updatedPassword" name="updatedPassword"  required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
-				title="Minimum eight and Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character" value="<%=currentUser.getUserPassword()%>"><br></td>
+				title="Minimum eight and Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character" value="${currentUser.getUserPassword()}"><br></td>
 			</tr>
 	
 	
 			<tr>
 				<td><label>Mobile No :</label></td>
-				<td><input id="UpdatedMobNum" name="UpdatedMobNum"  pattern="[6-9][0-9]{9}" title="MObile Number Must Have 10 Digits" required  value="<%=currentUser.getUserMobile()%>"></td>
+				<td><input id="UpdatedMobNum" name="UpdatedMobNum"  pattern="[6-9][0-9]{9}" title="MObile Number Must Have 10 Digits" required  value="${currentUser.getUserMobile()}"></td>
 	    		<td rowspan="2" colspan="2" width="700px"></td>
 			</tr>	
 	
 			<tr>
 				<td><label>Delivery Address :</label></td>
-				<td><textarea   id="UpdateDeliveryAddress"   name="UpdateDeliveryAddress" required rows="5" cols="33" style="max-width: 300px;max-height: 100px;"><%=currentUser.getAddress()%></textarea><br></td>
+				<td><textarea   id="UpdateDeliveryAddress"   name="UpdateDeliveryAddress" required rows="5" cols="33" style="max-width: 300px;max-height: 100px;">${currentUser.getAddress()}</textarea><br></td>
 			</tr>	
 			<tr>
 				<td colspan="2"> 
@@ -356,7 +360,7 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 		<div id="walletMoneyUpdateForm">
 	<form action="walletUpdate">
 		<label> Wallet : </label>
-		<input type="number" name="UpdateWallet" "UpdateWallet" min="200" max="5000" title="" value="<%=currentUser.getWallet()%>" >
+		<input type="number" name="UpdateWallet" "UpdateWallet" min="200" max="5000" title="" value="${currentUser.getWallet()}" >
 		<button>Add Money</button>
 	</form>
 	</div>
@@ -364,7 +368,7 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 	<div id="pointMoney">
 	<form action="ConvertMoney">
 	<label> points : </label>
-	<input type="number" name="pointsMoney" "UpdateWallet" min="500" max="5000" value="<%=currentUser.getPoints()%>" title="You need to reach 500 points to convert" readonly>
+	<input type="number" name="pointsMoney" "UpdateWallet" min="500" max="5000" value="${currentUser.getPoints()}" title="You need to reach 500 points to convert" readonly>
 		<button>Convert To Cash</button>
 	</form>
 	</div>

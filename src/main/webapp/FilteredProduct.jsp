@@ -266,6 +266,11 @@ transition-duration:0.2s;
 box-shadow: 0 0 10px black;
 }
 
+#noProd{
+position: relative;
+text-align: center;
+top:200px;
+}
 
 
 </style>
@@ -287,21 +292,20 @@ box-shadow: 0 0 10px black;
 				<ul>
 					<li><a href="Cart.jsp">Cart</a></li>
 					<li><a href="Index.jsp">SignOut</a></li>
-					<li><a href="UserProfile.jsp">MyProfile</a></li>
+					<li><a href="showUserProfile">MyProfile</a></li>
 					<li><a href="MyOrders.jsp?orderId=0">MyOrders</a></li>
-					<li><a href="MyOrders.jsp?orderId=0">About-Us</a></li>
+					<li><a href="AboutUs.jsp">About-Us</a></li>
 					<li><a href="userHomeServlet">Home</a></li>
 				</ul>
-				<div>
-					<div class="logo">
-						<img
+				
+				<div class="logo">
+					<img
 						src="Assets/medhublogo.png"
 						alt="logo">
-					</div>
 				</div>
 			</nav>
-	
-				
+		</div>
+		</div>		
 
 		<form action="" class="prodSearch" >
 		<input id="searchBar" type="text" name="ProductName" required placeholder="Search By Products & categories">
@@ -339,7 +343,7 @@ box-shadow: 0 0 10px black;
 					<%--  <button>
 						<a id="btn1" href="AddToCart.jsp?cartpId=${products.getProductId()%>">Add To Cart</a>
 					</button> --%>
-				
+					
 				</div>
 			</div>
 			<br>
@@ -348,13 +352,13 @@ box-shadow: 0 0 10px black;
 		</c:if>
 		
 		<c:if test="${empty allProducts}">
-			<h1 id="noProd">NO Products Matches</h1>
+		
+			<h1 id="noProd">NO Products Matches !</h1>
 		</c:if>
 		
 	</div>
 
-	</div>
-	</div>
+	
 	<div id="footer">
 	
 	</div>

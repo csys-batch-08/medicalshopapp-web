@@ -4,6 +4,8 @@
 <%@page import="com.medHub.dao.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -260,7 +262,7 @@ color: red;
 <body>
 
 
-	<%User currentUser = (User)session.getAttribute("user");%>
+	
 	<div id="container">
 
 		<div class="nav">
@@ -268,9 +270,9 @@ color: red;
 			<nav class="list">
 				<ul>
 					<li><a href="Index.jsp">SignOut</a></li>
-					<li><a href="Cart.jsp">Cart</a></li>
-					<li><a href="UserProfile.jsp">MyProfile</a></li>
-					<li><a href="MyOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
+					<li><a href="showCartServlet">Cart</a></li>
+					<li><a href="showUserProfile">MyProfile</a></li>
+					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
 					<li><a href="Aboutus.jsp">About-Us</a></li>
 					<li><a href="userHomeServlet">Home</a></li>
 					
@@ -279,63 +281,58 @@ color: red;
 					<img
 						src="https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/healthcare.png"
 						alt="logo">
+				</div>		
 			</nav>
-		</div>
+		
 		<!-- slideshow -->
 
 	<%-- 	<h2 id="userName">welcome <%=currentUser.getName()%></h2> --%>
 		</div>
-		<% OrderItemsDaoImpl myOrder= new OrderItemsDaoImpl();
-		CartDaoImpl cartDao = new CartDaoImpl();
-		List<Cart> cartItems = cartDao.viewCart(currentUser);
-		/* orderDao.deleteProduct(myAllOrders.getOrderModel().getOrderId()); */	
-    %>
+	
 		
 		
-		<% for(Cart cartList : cartItems)
-			 {
-			 %>
+			<c:forEach items="${cartList}" var="cartList" >
 		
 			<div id="product">
 				<div id="img">
-					<img src="Assets/<%=cartList.getProduct().getProductImg()%>" alt="horlicks">
-					<h3><%=cartList.getProduct().getProductName() %></h3>
+					<img src="Assets/${cartList.getProduct().getProductImg()}" alt="horlicks">
+					<h3>${cartList.getProduct().getProductName()}</h3>
 				</div>
 				<div id="details">
 					<h3>
 						Description :
-						<%=cartList.getProduct().getDescription() %></h3>
+						${cartList.getProduct().getDescription()}</h3>
 					<h3 name="unitPrice">
-						price :<%=cartList.getUnitPrice()+ "rs"%></h3>
+						price :${cartList.getUnitPrice()}Rs</h3>
 					<h3>
 						Offer Applied:
-						<%=cartList.getProduct().getOffer()+"%" %>
+						${cartList.getProduct().getOffer()}%
 					</h3>
 					<h3 name="cartpoints">
 						Points :
-						<%=cartList.getProduct().getPoints() %></h3>
+						${cartList.getProduct().getPoints()}</h3>
 						<h3 name="cartQuantity">
 						Total Quantity:
-						<%=cartList.getQty() %></h3>
+						${cartList.getQty()}</h3>
 					<h3 name="totalPrice">
 						Total Amt :
-						<%=cartList.getTotalPrice() %></h3>
+						${cartList.getTotalPrice()}Rs</h3>
 						
 						
 				</div>
 				<div id="btn">
 					<button>
-						<a id="BuyNow" href="cartOrder?CartproductId=<%=cartList.getProduct().getProductId()%>&unitPrice=<%=cartList.getUnitPrice()%>&cartpoints=<%=cartList.getProduct().getPoints() %>&cartQuantity=<%=cartList.getQty()%>&totalPrice=<%=cartList.getTotalPrice() %>">Buy Now</a>
+						<a id="BuyNow" href="cartOrder?CartproductId=${cartList.getProduct().getProductId()}&unitPrice=${cartList.getUnitPrice()}&cartpoints=${cartList.getProduct().getPoints()}&cartQuantity=${cartList.getQty()}&totalPrice=${cartList.getTotalPrice()}">Buy Now</a>
 					</button>
 					<br>
 					<button>
-						<a id="Remove" href="removeCartItem?CartproductId=<%=cartList.getProduct().getProductId()%>">Remove</a>
+						<a id="Remove" href="removeCartItem?CartproductId=${cartList.getProduct().getProductId()}">Remove</a>
 					</button>
 				</div>	
 			</div>
 		<br>
 		<br>
-		<%}%>
+		</c:forEach>
 		
 <%    String errorMessage= (String)session.getAttribute("outOfStock"); 
 	  String lessStockMsg= (String)session.getAttribute("lessStock"); 

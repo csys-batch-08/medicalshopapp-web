@@ -2,6 +2,10 @@ package com.medHub.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +24,7 @@ import com.medHub.model.User;
 
 @WebServlet("/removeCartItem")
 public class RemoveCartItemServlet extends HttpServlet{
-	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException {
+	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
 		HttpSession session = req.getSession();
 		
 		UserDaoImpl user = new UserDaoImpl();
@@ -38,10 +42,12 @@ public class RemoveCartItemServlet extends HttpServlet{
 			 removeStatus=cartdao.removecartItems(cart);
 			if(removeStatus>0)
 			{
-				res.sendRedirect("Cart.jsp");
+				List<Cart> cartItems = cartdao.viewCart(currentUser);
+				req.setAttribute("cartList", cartItems);
+				RequestDispatcher rd = req.getRequestDispatcher("Cart.jsp");
+				rd.forward(req, res);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

@@ -2,7 +2,7 @@ package com.exceptions;
 
 public class InsuffientMoneyException extends Exception{
 	
-	String message="Not enough Money In Wallet";
+	static final String message="Not enough Money In Wallet";
 	
 	@Override
 	public String getMessage()

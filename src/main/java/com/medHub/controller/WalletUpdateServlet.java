@@ -2,6 +2,8 @@ package com.medHub.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,7 @@ import com.medHub.model.User;
 @WebServlet("/walletUpdate")
 public class WalletUpdateServlet extends HttpServlet{
 
-	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("InsuffientMoney",null);
@@ -25,7 +27,9 @@ public class WalletUpdateServlet extends HttpServlet{
 		int result=userDao.addMoneyInWallet(wallet, currentUser);
 		if(result>0)
 		{
-			res.sendRedirect("UserProfile.jsp");
+			req.setAttribute("currentUser", currentUser);
+			RequestDispatcher rd = req.getRequestDispatcher("UserProfile.jsp");
+			rd.forward(req, res);
 		}
 		
 	}

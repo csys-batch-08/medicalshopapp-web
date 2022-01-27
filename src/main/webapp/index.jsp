@@ -281,7 +281,7 @@ font-weight: 600;
 
 <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 	<div id="container">
-        </div> -->
+        </div> 
 
 		<!-- Navigation Bar -->
 		<div class="nav">
@@ -329,8 +329,7 @@ font-weight: 600;
 				<br>
 				<br> <a href="Registration.jsp" id="register">Not
 					Registered Yet ?</a>
-				<!--  <a id="forgetpassword"
-                    href="ForgetPassword.html">Forget Password</a><br> -->
+				
 				<% String error=(String)session.getAttribute("error");
             if(error!=null) {%>
 				<p><%=session.getAttribute("error") %></p>
@@ -344,7 +343,7 @@ font-weight: 600;
 
 	</div>
 
-	<script>
+<script>
 function getLoginForm()
 {
     document.getElementById("loginform").style.visibility="visible";
@@ -398,8 +397,7 @@ function checkMail() {
     	 document.getElementById("existsMsg").style.color = "red";
     	document.getElementById("existsMsg").style.visibility = "visible";
     	//console.log(response);
-
-    	}  
+		}  
     	
     	}
 </script>

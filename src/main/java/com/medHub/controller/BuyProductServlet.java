@@ -77,11 +77,11 @@ public class BuyProductServlet extends HttpServlet {
 						orderItemsDaoImpl.insertOrders(orderItems);
 						//res.getWriter().println("order placed!!");
 								//alert box when ordered placed sucessfully
-						PrintWriter out = res.getWriter();
 						
+						PrintWriter out = res.getWriter();
 						out.println("<script type=\"text/javascript\">");
 						out.println("alert('Ordered Placed Sucessfully');");
-						out.println("location= 'MyOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0';");
+						out.println("location= 'myOrdersServlet'");
 						out.println("</script>");
 						
 					}else {

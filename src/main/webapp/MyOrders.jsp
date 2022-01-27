@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	
 <!DOCTYPE html>
 <html lang="en">
@@ -239,11 +240,11 @@ visibility: hidden;
 	<%
 	/* OrderItemsDaoImpl myOrder= new OrderItemsDaoImpl(); */
 	/* 	List<OrderItems> myOrderList = myOrder.ViewMyOrders(currentUser);*/
-	User currentUser = (User)session.getAttribute("user");
+	/* User currentUser = (User)session.getAttribute("user");
 	OrderDaoImpl currentCancelOrder = new OrderDaoImpl();
 	OrderItemsDaoImpl orderItem = new OrderItemsDaoImpl();
 	ProductDaoImpl productDao = new ProductDaoImpl();
-	UserDaoImpl userDao = new UserDaoImpl();
+	UserDaoImpl userDao = new UserDaoImpl(); */
 /* 	LocalDate date =  orderItem.getCurrentDate().toLocaleString();
 	Date localDepartureDate = java.sql.Date.valueOf(date); */
 	%>
@@ -254,9 +255,9 @@ visibility: hidden;
 			<nav class="list">
 				<ul>
 					<li><a href="Index.jsp">SignOut</a></li>
-					<li><a href="Cart.jsp">Cart</a></li>
-					<li><a href="UserProfile.jsp">MyProfile</a></li>
-					<li><a href="MyOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
+					<li><a href="showCartServlet">Cart</a></li>
+					<li><a href="showUserProfile">MyProfile</a></li>
+					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
 					<li><a href="AboutUs.jsp">About-Us</a></li>
 					<li><a href="userHomeServlet">Home</a></li>
 					
@@ -272,7 +273,7 @@ visibility: hidden;
 <%-- 		<h2 id="userName">welcome <%=currentUser.getName()%></h2>
  --%>		</div>
 
-		<% 
+		<%-- <% 
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		int orderId=Integer.parseInt(request.getParameter("orderId"));
 		OrderDaoImpl orderDao=new OrderDaoImpl();	
@@ -297,10 +298,10 @@ visibility: hidden;
 			cancelledProduct.setQuantity(updatedQty);
 			productDao.updateProductQuantity(cancelledProduct, updatedQty);
 		}
+		%>
 		
 		
-		
-		
+		<%
 		if(deleteStatus)
 		{%>
 			<script>
@@ -308,7 +309,7 @@ visibility: hidden;
 			</script>
 			response.sendRedirect("MyOrders.jsp");
 			
-		<% }%>
+		<% }%> --%>
 		
 
 		
@@ -316,9 +317,11 @@ visibility: hidden;
 				
 		
 	
-		
-		 
+		<jsp:useBean id="orderItem" class="com.medHub.dao.OrderItemsDaoImpl"/>
+		 <jsp:useBean id="orderDao" class="com.medHub.dao.OrderDaoImpl"/>
 			<c:forEach items="${myOrders}" var="myAllOrders" >
+			
+		
 			<%-- <% boolean flag;
 		flag = orderDao.checkStatus(myAllOrders.getOrderModel().getOrderId());
 		boolean cancel = orderItem.cancelDate(myAllOrders.getOrderdate(),myAllOrders.getOrderModel().getOrderId());
@@ -330,9 +333,14 @@ visibility: hidden;
 					<h3>${myAllOrders.getProduct().getProductName() }</h3>
 				</div>
 				<div id="details">
-					 <%-- <h3>
+				
+				<fmt:parseDate value="${myAllOrders.getOrderdate()}" pattern="yyyy-MM-dd" var="orderDate" type="date"/>	
+				
+					   <h3>
 						Order Date :
-						${myAllOrders.getOrderdate().format(format)}</h3> --%>
+						<fmt:formatDate pattern="dd/MM/yyyy" value="${orderDate}"/></h3> 
+						
+					
 						
 					<h3> 
 					Description :
@@ -349,7 +357,7 @@ visibility: hidden;
 						Points :
 						${myAllOrders.getProduct().getPoints() }</h3>
 						
-						<h3 name="quantity">
+						<h3 name="quantity" >
 						Total Quantity:
 						${myAllOrders.getQuantity() }</h3>
 					<h3 name="totalPrice">
@@ -366,18 +374,17 @@ visibility: hidden;
 		
 						
 				</div>
-				<%-- <% if(flag && cancel)
-				{%> --%>
+				<c:if test="${orderItem.cancelDate(myAllOrders.getOrderdate(),myAllOrders.getOrderModel().getOrderId())and orderDao.checkStatus(myAllOrders.getOrderModel().getOrderId())}">
 					<!-- <h3>Ordered Cancelled</h3> -->
 				<div id="btn">
 					<button>
-						<a id="cancel" onclick="check()"  href="MyOrders.jsp?orderId=${myAllOrders.getOrderModel().getOrderId() } &quantity=${myAllOrders.getQuantity() }
-							&totalPrice=${myAllOrders.getTotalPrice() } &points=${myAllOrders.getProduct().getPoints() }&productId=${myAllOrders.getProduct().getProductId() }">Cancel Order</a>
+						<a id="cancel" onclick="check()"  href="cancelOrderServlet?orderId=${myAllOrders.getOrderModel().getOrderId()}&quantity=${myAllOrders.getQuantity()}
+							&totalPrice=${myAllOrders.getTotalPrice()} &points=${myAllOrders.getProduct().getPoints()}&productId=${myAllOrders.getProduct().getProductId()}">Cancel Order</a>
 					</button>
 					<br>
-					</button>
 				</div>
-				<%-- <% }%> --%>
+				 </c:if> 
+				
 			</div>
 		
 		<br>

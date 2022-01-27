@@ -284,8 +284,8 @@ box-shadow: 0 0 10px black;
 			<nav class="list">
 				<ul>
 					<li><a href="Index.jsp">SignOut</a></li>
-					<li><a href="Cart.jsp">Cart</a></li>
-					<li><a href="UserProfile.jsp">MyProfile</a></li>
+					<li><a href="showCartServlet">Cart</a></li>
+					<li><a href="showUserProfile">MyProfile</a></li>
 					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
 					<li><a href="AboutUs.jsp">About-Us</a></li>
 					<li><a href="userHomeServlet">Home</a></li>					

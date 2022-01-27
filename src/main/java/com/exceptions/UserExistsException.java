@@ -2,7 +2,7 @@ package com.exceptions;
 
 public class UserExistsException extends Exception{
 	
-String message="This User Already Registered";
+	static final String message="This User Already Registered";
 	
 	@Override
 	public String getMessage()

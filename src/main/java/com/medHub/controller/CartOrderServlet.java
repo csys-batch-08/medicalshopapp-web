@@ -90,10 +90,10 @@ public class CartOrderServlet extends HttpServlet {
 				{
 					/*
 					 * res.sendRedirect("Cart.jsp");
-					 */					PrintWriter out = res.getWriter();
+					 */	PrintWriter out = res.getWriter();
 					out.println("<script type=\"text/javascript\">");
 					out.println("alert('Order Placed Successfully');");
-					out.println("location='Cart.jsp'");
+					out.println("location='showCartServlet'");
 					out.println("</script>");
 				}
 				try {
@@ -118,7 +118,7 @@ public class CartOrderServlet extends HttpServlet {
 				}catch(CartNotEnoughQtyException e)
 				{
 					session.setAttribute("lessStock",e.getMessage());
-					res.sendRedirect("Cart.jsp");
+					res.sendRedirect("showCartServlet");
 				}
 
 		} 
@@ -129,7 +129,7 @@ public class CartOrderServlet extends HttpServlet {
 			}catch(OutOfStockException e)
 			{
 				session.setAttribute("outOfStock",e.getMessage());
-				res.sendRedirect("Cart.jsp");
+				res.sendRedirect("showCartServlet");
 			}
 
 		}

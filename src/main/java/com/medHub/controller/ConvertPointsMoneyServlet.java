@@ -1,6 +1,8 @@
 package com.medHub.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +23,7 @@ import com.medHub.model.User;
 @WebServlet("/ConvertMoney")
 public class ConvertPointsMoneyServlet extends HttpServlet{
 	
-	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException {
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException {
 		
 		HttpSession session = req.getSession();
 		User currentUser = (User) session.getAttribute("user");
@@ -31,12 +33,14 @@ public class ConvertPointsMoneyServlet extends HttpServlet{
 		double Converted = Math.round((points * 10)/100);
 		double wallet=currentUser.getWallet()+Converted;
 		UserDaoImpl userDao = new UserDaoImpl();
-		int result=userDao.addMoneyInWallet(wallet, currentUser);
+		userDao.addMoneyInWallet(wallet, currentUser);
 		userDao.updateUserPoints(null);
 		boolean flag=userDao.updatePointsConverted(currentUser);
 		if(flag)
 		{
-			res.sendRedirect("UserProfile.jsp");
+			req.setAttribute("currentUser", currentUser);
+			RequestDispatcher rd = req.getRequestDispatcher("UserProfile.jsp");
+			rd.forward(req, res);
 		}
 		}else
 		{
@@ -45,7 +49,9 @@ public class ConvertPointsMoneyServlet extends HttpServlet{
 				}catch(NegativePointsException e)
 				{
 					session.setAttribute("negativePoints",e.getMessage());
-					res.sendRedirect("UserProfile.jsp");
+					req.setAttribute("currentUser", currentUser);
+					RequestDispatcher rd = req.getRequestDispatcher("UserProfile.jsp");
+					rd.forward(req, res);
 				}
 			
 		}
