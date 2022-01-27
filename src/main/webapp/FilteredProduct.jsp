@@ -4,6 +4,9 @@
 <%@page import="com.medHub.dao.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
+	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -261,6 +264,9 @@ transition-duration:0.2s;
 
 #searchBar:Hover{
 box-shadow: 0 0 10px black;
+}
+
+
 
 </style>
 </head>
@@ -270,7 +276,7 @@ box-shadow: 0 0 10px black;
 
 	<%User currentUser = (User)session.getAttribute("user");
 	session.setAttribute("userNotFound", null);
-	String Pname = request.getParameter("ProductName").toLowerCase();
+	
 	%>
 	
 	<div id="container">
@@ -284,75 +290,70 @@ box-shadow: 0 0 10px black;
 					<li><a href="UserProfile.jsp">MyProfile</a></li>
 					<li><a href="MyOrders.jsp?orderId=0">MyOrders</a></li>
 					<li><a href="MyOrders.jsp?orderId=0">About-Us</a></li>
-					<li><a href="UserHome.jsp">Home</a></li>
+					<li><a href="userHomeServlet">Home</a></li>
 				</ul>
 				<div>
-				<div class="logo">
-					<img
+					<div class="logo">
+						<img
 						src="Assets/medhublogo.png"
 						alt="logo">
+					</div>
+				</div>
 			</nav>
-		</div>
-		</div>		
+	
+				
 
 		<form action="" class="prodSearch" >
 		<input id="searchBar" type="text" name="ProductName" required placeholder="Search By Products & categories">
 		<button id="searchBtn" >&#128269;</button>
 		</form>
-		<% 
-		ProductDaoImpl product= new ProductDaoImpl();
-		 Product searchProducts = new Product(); 
-		List<Product> allproduct = product.searchProduct(Pname);
 		
-		if(allproduct!=null)
-		{
- 	
-	%>
-		<% for(Product products : allproduct)
 		
-	{
-	%>
 		
+		<c:if test="${not empty allProducts}">
+
+			<c:forEach items="${allProducts}" var="products" >		
 			<div id="product">
 				<div id="img">
-					<img src="Assets/<%=products.getProductImg() %>" alt="horlicks">
-					<h3><%=products.getProductName() %></h3>
+					<img src="Assets/${products.getProductImg()}" alt="${ products.getProductName()}">
+					<h3>${products.getProductName()}</h3>
 				</div>
 				<div id="details">
 					<h3>
 						Description :
-						<%=products.getDescription() %></h3>
+						${products.getDescription()}</h3>
 					<h3>
-						price :<%=products.getUnitPrice()+ "rs"%></h3>
+						price :${products.getUnitPrice()}rs</h3>
 					<h3>
 						Offer :
-						<%=products.getOffer() %>%
+						${products.getOffer() }%
 					</h3>
 					<h3>
 						Points :
-						<%=products.getPoints() %></h3>
+						${products.getPoints() }</h3>
 				</div>
 				<div id="btn">
 					<button>
-						<a id="buynow" href="BuyProduct.jsp?pid=<%=products.getProductId()%>">Buy Now</a>
+						<a id="buynow" href="BuyProduct.jsp?pid=${products.getProductId() }">Buy Now</a>
 					</button>
 					<%--  <button>
-						<a id="btn1" href="AddToCart.jsp?cartpId<%=products.getProductId()%>">Add To Cart</a>
+						<a id="btn1" href="AddToCart.jsp?cartpId=${products.getProductId()%>">Add To Cart</a>
 					</button> --%>
-					</button>
+				
 				</div>
 			</div>
+			<br>
+		<br>
+		</c:forEach>
+		</c:if>
 		
-		<br>
-		<br>
-		<%} 
-		}
-		else{
-		%>
-			<h1>NO Products Matches</h1>
-		<%} %>
+		<c:if test="${empty allProducts}">
+			<h1 id="noProd">NO Products Matches</h1>
+		</c:if>
+		
 	</div>
 
+	</div>
 	</div>
 	<div id="footer">
 	

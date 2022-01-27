@@ -272,7 +272,7 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 					<li><a href="UserProfile.jsp">MyProfile</a></li>
 					<li><a href="MyOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
 					<li><a href="AboutUs.jsp">About-Us</a></li>
-					<li><a href="UserHome.jsp">Home</a></li>
+					<li><a href="userHomeServlet">Home</a></li>
 			</ul>
 			<div class="logo">
 				<img
@@ -322,7 +322,7 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 			<table >
 			 <tr>
 				<td><label>Name :</label>
-				<td><input id="updatedName" name="updatedName" pattern="[A-Za-z ]{3,}" title="name should be minimum 3 letters and maximum 30 letters" required min="3" max="10" value="<%=currentUser.getUsername()%>"><br></td>
+				<td><input id="updatedName" name="updatedName" pattern="[A-Za-z ]{3,}" title="name should be minimum 3 letters and maximum 30 letters" required min="3" max="10" value="<%=currentUser.getUserName()%>"><br></td>
 				<td rowspan="2" colspan="2" width="700px">
 				</td>
 		    </tr>

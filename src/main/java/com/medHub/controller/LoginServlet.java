@@ -47,7 +47,6 @@ public class LoginServlet extends HttpServlet {
 			{
 				session.setAttribute("user", currentuser);
 				req.setAttribute("currentUser", currentuser);
-				
 				ProductDaoImpl product= new ProductDaoImpl();
 				List<Product> allproduct = product.viewProduts();
 				Product searchProducts = new Product(); 

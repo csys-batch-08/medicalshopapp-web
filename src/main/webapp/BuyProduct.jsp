@@ -334,7 +334,7 @@ session.setAttribute("currentproduct", currentProduct);
 					<li><a href="UserProfile.jsp">MyProfile</a></li>
 					<li><a href="MyOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
 					<li><a href="MyOrders.jsp?orderId=0">About-Us</a></li>
-					<li><a href="UserHome.jsp">Home</a></li>
+					<li><a href="userHomeServlet">Home</a></li>
 					
 			</ul>
 			<div class="logo">

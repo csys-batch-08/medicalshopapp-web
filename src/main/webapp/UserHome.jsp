@@ -286,9 +286,9 @@ box-shadow: 0 0 10px black;
 					<li><a href="Index.jsp">SignOut</a></li>
 					<li><a href="Cart.jsp">Cart</a></li>
 					<li><a href="UserProfile.jsp">MyProfile</a></li>
-					<li><a href="MyOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
+					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
 					<li><a href="AboutUs.jsp">About-Us</a></li>
-					<li><a href="UserHome.jsp">Home</a></li>					
+					<li><a href="userHomeServlet">Home</a></li>					
 				</ul>
 				
 				<div class="logo">
@@ -299,14 +299,14 @@ box-shadow: 0 0 10px black;
 			</nav>
 		</div>
 		 <%-- <%=currentUser.getName()%> --%>
-		<h2 id="userName">welcome <c:out value="${currentUser.getName()}"/> </h2>
+		<h2 id="userName">welcome <c:out value="${sessionScope.user.userName}"/> </h2>
 		</div>
 		<br><br>
 		
 		
 <!-- 					Search Products		
 -->		
-		<form action="FilteredProduct.jsp" class="prodSearch" >
+		<form action="filterProductservlet" class="prodSearch" method="get">
 		<input id="searchBar" type="text" name="ProductName" required="required" placeholder="Search By Products & categories">
 		<button type="submit" id="searchBtn">&#128269;</button>
 		</form>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,19 +142,19 @@ outline:none;
 				<li><a href="AddProduct.jsp">Add Products</a></li>
 				<li><a href="SalesReports.jsp">Sales Reports</a></li>
 				<li id="logout"><a class="navbar-brand" href="Index.jsp">Logout</a></li>
-				
+			</ul>	
 		</div>
-		</ul>
+		
 	</div>
 	<div id="addProductForm">
+	
 		<% if(session.getAttribute("productExists") != null)
            {%>
 		<p id="errorMsg"><%=session.getAttribute("productExists") %></p>
 
 		<%} session.removeAttribute("productExists"); %>
 		<form action="AddProductController">
-			<!--             <label for="category">Category</label>
- -->
+		
 			<input class="inputBox" list="category" name="category" id="browser"
 				placeholder="Category">
 			<datalist id="category">
@@ -164,39 +166,34 @@ outline:none;
 			</datalist>
 			<br>
 			<br>
-			<!--             <label for="name">Product Name</label>
- -->
+		
 			<input class="inputBox" type="text" required name="productName"
 				placeholder="Product Name" ><br>
 			<br>
-			<!--             <label for="price">Price</label>
- -->
+			
+ 
 			<input class="inputBox" type="number"  required min="1" name="price" placeholder="Price"><br>
 			<br>
-			<!--             <label for="Quantity" >Quantity</label>
- -->
+			
+ 
 			<input class="inputBox" type="number" required min="1" name="quantity"
 				placeholder="Quantity"><br>
 			<br>
-			<!--             <label for="image">Image Url</label>
- -->
+ 
 			<label>Add Image</label>
 			<input class="inputBox" type="file" required name="imageFile"
 				placeholder="Image Url"><br>
 			<br>
-			<!--             <label for="Points">Points</label>
- -->
+ 
 			<input class="inputBox" type="number" required min="1"  name="points"
 				placeholder="Points"><br>
 			<br>
-			<!--             <label for="Offer">Offer</label>
- -->
+ 
 			<input class="inputBox" type="number" required min="1" name="offer"
 				placeholder="Offer%"><br>
 			<br>
 			<br>
-			<!--             <label for="">Description</label><br><br>
- -->
+
 			<textarea class="inputBox"
 				style="max-height: 70px; min-height: 20px; width: 400px; max-width: 200px; min-width: 300px;"
 				required name="description" placeholder="Product Description"></textarea>
@@ -204,7 +201,7 @@ outline:none;
 			<button type="submit">Add</button>
 		</form>
 	</div>
-	</div>
+	
 </body>
 <script>
 	

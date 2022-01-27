@@ -175,7 +175,7 @@ bottom: 63px;
 					${products.getQuantity() }</h5>
 			</div>
 			<div id="btn">
-				<a href="ProdToBeUpdate?productId=${products.getProductId() }"
+				<a href="ProdToBeUpdate?productId=${products.getProductId()}"
 					 class="btn btn-warning" >Update</a><br>
 				<br> <a
 					href="deleteProduct?deleteProductId=${products.getProductId() }"

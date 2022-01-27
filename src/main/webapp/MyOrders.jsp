@@ -6,6 +6,8 @@
 <%@page import="com.medHub.dao.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -235,9 +237,9 @@ visibility: hidden;
 
 
 	<%
-	OrderItemsDaoImpl myOrder= new OrderItemsDaoImpl();
+	/* OrderItemsDaoImpl myOrder= new OrderItemsDaoImpl(); */
+	/* 	List<OrderItems> myOrderList = myOrder.ViewMyOrders(currentUser);*/
 	User currentUser = (User)session.getAttribute("user");
-	List<OrderItems> myOrderList = myOrder.ViewMyOrders(currentUser);
 	OrderDaoImpl currentCancelOrder = new OrderDaoImpl();
 	OrderItemsDaoImpl orderItem = new OrderItemsDaoImpl();
 	ProductDaoImpl productDao = new ProductDaoImpl();
@@ -256,7 +258,7 @@ visibility: hidden;
 					<li><a href="UserProfile.jsp">MyProfile</a></li>
 					<li><a href="MyOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
 					<li><a href="AboutUs.jsp">About-Us</a></li>
-					<li><a href="UserHome.jsp">Home</a></li>
+					<li><a href="userHomeServlet">Home</a></li>
 					
 				</ul>
 				<div class="logo">
@@ -314,72 +316,73 @@ visibility: hidden;
 				
 		
 	
-		<% boolean flag;
-		for(OrderItems myAllOrders : myOrderList)
-			 {
-			flag = orderDao.checkStatus(myAllOrders.getOrderModel().getOrderId());
-			System.out.println(myAllOrders.getOrderdate());
-			boolean cancel = orderItem.cancelDate(myAllOrders.getOrderdate(),myAllOrders.getOrderModel().getOrderId());
-			 %>
+		
+		 
+			<c:forEach items="${myOrders}" var="myAllOrders" >
+			<%-- <% boolean flag;
+		flag = orderDao.checkStatus(myAllOrders.getOrderModel().getOrderId());
+		boolean cancel = orderItem.cancelDate(myAllOrders.getOrderdate(),myAllOrders.getOrderModel().getOrderId());
+		 %> --%>
 			
 			<div id="product">
 				<div id="img">
-					<img src="Assets/<%=myAllOrders.getProduct().getProductImg()%>" alt="horlicks">
-					<h3><%=myAllOrders.getProduct().getProductName() %></h3>
+					<img src="Assets/${myAllOrders.getProduct().getProductImg()}" alt="horlicks">
+					<h3>${myAllOrders.getProduct().getProductName() }</h3>
 				</div>
 				<div id="details">
-					<h3>
+					 <%-- <h3>
 						Order Date :
-						<%=myAllOrders.getOrderdate().format(format)%></h3>
-					<h3>
+						${myAllOrders.getOrderdate().format(format)}</h3> --%>
+						
+					<h3> 
 					Description :
-					<%=myAllOrders.getProduct().getDescription()%>
+					${myAllOrders.getProduct().getDescription()}
 					</h3>
 					<h3>
-						price :<%=myAllOrders.getUnitPrice()+ "rs"%></h3>
+						price : ${myAllOrders.getUnitPrice()}rs</h3>
 					<h3>
 						Offer Applied:
-						<%=myAllOrders.getProduct().getOffer() %>%
+						${myAllOrders.getProduct().getOffer() }%
 					</h3>
 					
 					<h3 name="points">
 						Points :
-						<%=myAllOrders.getProduct().getPoints() %></h3>
+						${myAllOrders.getProduct().getPoints() }</h3>
 						
 						<h3 name="quantity">
 						Total Quantity:
-						<%=myAllOrders.getQuantity() %></h3>
+						${myAllOrders.getQuantity() }</h3>
 					<h3 name="totalPrice">
 						Total Amt :
-						<%=myAllOrders.getTotalPrice() + "rs"%></h3>
+						${myAllOrders.getTotalPrice() }rs</h3>
 					<h3>
 						Order Status :
-						<%=myAllOrders.getOrderModel().getOrderStatus()%></h3>	
+						${myAllOrders.getOrderModel().getOrderStatus() }</h3>	
 						
 						<h3 name="productId" id="productId">
 						Order Date :
-						<%=myAllOrders.getProduct().getProductId()%></h3>
-					<h3>
+						${myAllOrders.getProduct().getProductId() }</h3>
+					
 		
 						
 				</div>
-				<% if(flag && cancel)
-				{%>
+				<%-- <% if(flag && cancel)
+				{%> --%>
 					<!-- <h3>Ordered Cancelled</h3> -->
 				<div id="btn">
 					<button>
-						<a id="cancel" onclick="check()"  href="MyOrders.jsp?orderId=<%=myAllOrders.getOrderModel().getOrderId()%>&quantity=<%=myAllOrders.getQuantity()%>
-							&totalPrice=<%=myAllOrders.getTotalPrice()%>&points=<%=myAllOrders.getProduct().getPoints()%>&productId=<%=myAllOrders.getProduct().getProductId()%>">Cancel Order</a>
+						<a id="cancel" onclick="check()"  href="MyOrders.jsp?orderId=${myAllOrders.getOrderModel().getOrderId() } &quantity=${myAllOrders.getQuantity() }
+							&totalPrice=${myAllOrders.getTotalPrice() } &points=${myAllOrders.getProduct().getPoints() }&productId=${myAllOrders.getProduct().getProductId() }">Cancel Order</a>
 					</button>
 					<br>
 					</button>
 				</div>
-				<% }%>
+				<%-- <% }%> --%>
 			</div>
 		
 		<br>
 		<br>
-		<%}%>
+		</c:forEach>
 		
 	
 <!-- 		<h2 id="copyrights">© 2021 MedHub.com. All rights reserved.</h2>
@@ -394,7 +397,7 @@ visibility: hidden;
 
 <script>
 function check(){
-    var result = confirm("if you want to cancel 10% cancelation charge will be detected on your total price");
+    var result = confirm("if you want to cancel 10% cancellation charge will be detected on your total price");
 
     if(result==false){
         event.preventDefault();

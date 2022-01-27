@@ -281,7 +281,6 @@ font-weight: 600;
 
 <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 	<div id="container">
-		<!-- <div class="header">
         </div> -->
 
 		<!-- Navigation Bar -->
@@ -289,7 +288,7 @@ font-weight: 600;
 
 			<nav class="list">
 				<ul>
-					<!-- <li> <a>SignOut</a></li> -->
+					
 					<li><a href="Registration.jsp"  id="register">SignUp</a></li>
 					<li><a href="Index.jsp"  id="login">Login</a></li>
 				</ul>
@@ -320,7 +319,7 @@ font-weight: 600;
 					name="loginMail" required placeholder="Enter Email"  pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"  onmouseleave="hideMsg()"><br>
 				<br>
 				<br> <label class="label" for="password">Password *</label><br> 
-				<input type="password" name="loginPassword" placeholder="Password" 
+				<input type="password" name="loginPassword" placeholder="Password"
 					value="" required 
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
 					title="Minimum eight and Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character" onmouseover="hideMsg()"><br>
