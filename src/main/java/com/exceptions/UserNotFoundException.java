@@ -1,7 +1,11 @@
 package com.exceptions;
 
-public class UserNotFoundException extends Exception{
+ 	final class UserNotFoundException extends Exception{
 	
+	/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 	static final String message="Invalid User Name or Password";
 	
 	@Override
