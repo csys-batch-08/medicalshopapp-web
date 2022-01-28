@@ -71,7 +71,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		}catch(UserExistsException e) {
 			session.setAttribute("error", e.getMessage());
-			
+			 
 			res.sendRedirect("Registration.jsp");
 		}
 	}

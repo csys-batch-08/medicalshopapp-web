@@ -116,7 +116,7 @@ table
 
 .dateExp{
 position: relative;
-left:425px;
+left:350px;
 top:70px;
 color:red;
 }

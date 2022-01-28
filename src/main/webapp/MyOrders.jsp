@@ -340,7 +340,8 @@ visibility: hidden;
 				
 					   <h3>
 						Order Date :
-						<fmt:formatDate pattern="dd/MM/yyyy" value="${orderDate}"/></h3> 
+						<fmt:formatDate pattern="dd/MM/yyyy" value="${orderDate}"/>
+						</h3> 
 						
 					
 						

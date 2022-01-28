@@ -304,14 +304,16 @@ font-weight: 600;
 			</div>
 		</div>
 
+		
 							<!-- login Form default hidden -->
 		<div class="loginscreen" id="loginform">
-			 <%  String errorMessage= (String)session.getAttribute("userNotFound"); 
-      	
-      if(errorMessage!=null)
-      { %>
-			<h3 id="errorMsg" ><%=errorMessage%></h3>
-			<%} session.removeAttribute("userNotFound");%>
+			 <c:if test="${InvalidUser!=null}">	
+			<h3 id="errorMsg" >${InvalidUser}</h3>
+			</c:if>
+		<c:remove var="InvalidUser" scope="session" />
+
+
+			
 			<form action="LoginController?" class="formcontent" method="post">
 				<h1 class="loginHere">Login Here</h1>
 				<label class="label" for="fullName">Email*</label><br> 
@@ -356,11 +358,11 @@ function getRegisterForm()
     document.getElementById("loginform").style.visibility="hidden";
     // document.getElementById("loginform").style.visibility="hidden";
 }
-function hideMsg()
+ function hideMsg()
 {
 	document.getElementById("errorMsg").style.visibility="hidden";
 	
-	}
+	} 
 
 </script>
 <script>

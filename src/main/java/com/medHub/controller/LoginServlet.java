@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.exceptions.DateMismatchException;
 import com.exceptions.UserNotFoundException;
 import com.medHub.dao.AdminDaoImpl;
 import com.medHub.dao.ProductDaoImpl;
@@ -61,10 +62,17 @@ public class LoginServlet extends HttpServlet {
 			}
 			else
 			{
-//				session1.setAttribute("error", "invalid username or password");
-//				req.getRequestDispatcher("Index.jsp").forward(req, res);
+
+				try {
 				throw new UserNotFoundException();
-				
+				}catch(UserNotFoundException e)
+				 {
+					
+					 session.setAttribute("InvalidUser",e.getMessage());
+					 RequestDispatcher rd = req.getRequestDispatcher("Index.jsp");
+					 rd.forward(req, res);
+					
+				 }
 				
 			}
 		}else
