@@ -69,7 +69,6 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 			}
 			return myOrderList;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return myOrderList;
@@ -77,7 +76,6 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 	}
 
 	public boolean cancelDate(LocalDate date, int orderid) {
-		// TODO Auto-generated method stub
 		String query = "select * from orders where order_id=? and ?+1 >= sysdate";
 		Connection con = ConnectionUtil.getDBconnect();
 		boolean flag = false;
@@ -94,14 +92,13 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return flag;
 
 	}
 
-	public ResultSet salesReport(String fromDate, String toDate) {
+	public List<OrderItems> salesReport(String fromDate, String toDate) {
 				
 				List<OrderItems> salesReport = new ArrayList<OrderItems>();
 				OrderItems orderItem;
@@ -125,15 +122,15 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 					while(rs.next())
 
 					{
-						return rs;
+					 orderItem = new OrderItems(rs.getDate(1).toLocalDate(),rs.getString(2),rs.getInt(3),rs.getDouble(4),rs.getDouble(5));
+					 salesReport.add(orderItem);
 					}
 						
 					} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					}
 					
-						return rs;
+						return salesReport;
 				
 					}
 

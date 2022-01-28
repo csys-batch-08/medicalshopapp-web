@@ -279,6 +279,7 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 				<img
 					src="https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/healthcare.png"
 					alt="logo">
+			</div>		
 		</nav>
 	</div>
 	

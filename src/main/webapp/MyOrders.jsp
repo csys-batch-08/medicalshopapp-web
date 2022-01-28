@@ -105,6 +105,13 @@ body {
 .products {
 	margin-top: 330px;
 	border-spacing: 0 200px;
+	
+}
+
+
+#product:hover{
+box-shadow: 5px 5px 20px black;
+transition-duration:0.3s;
 }
 
 .slide img {
@@ -116,7 +123,8 @@ body {
 }
 
 img {
-	box-shadow: 0 0 10px black;
+	box-shadow: -5px -5px 10px black;
+	border-radius: 3px;
 }
 
 .logo img {
@@ -309,13 +317,7 @@ visibility: hidden;
 			</script>
 			response.sendRedirect("MyOrders.jsp");
 			
-		<% }%> --%>
-		
-
-		
-		/* orderDao.deleteProduct(myAllOrders.getOrderModel().getOrderId()); */
-				
-		
+		<% }%> --%>					
 	
 		<jsp:useBean id="orderItem" class="com.medHub.dao.OrderItemsDaoImpl"/>
 		 <jsp:useBean id="orderDao" class="com.medHub.dao.OrderDaoImpl"/>

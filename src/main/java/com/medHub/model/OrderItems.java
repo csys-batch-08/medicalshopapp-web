@@ -47,7 +47,6 @@ public class OrderItems extends Order {
 
 	public OrderItems() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public void setItemId(int itemId) {
@@ -79,6 +78,14 @@ public class OrderItems extends Order {
 		this.orderdate=orderDate;
 		this.orderModel.setOrderStatus(orderStatus);
 	}
+
+	public OrderItems(LocalDate orderDate, String productName, int qty, double unitPrice, double totalPrice) {
+		this.orderdate=orderDate;
+		this.product.setProductName(productName);
+		this.quantity=qty;
+		this.unitPrice=unitPrice;
+		this.totalPrice=totalPrice;
+		}
 
 	public User getUser() {
 		return user;

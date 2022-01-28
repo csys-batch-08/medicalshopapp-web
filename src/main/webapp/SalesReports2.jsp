@@ -4,20 +4,20 @@
 <%@page import="java.util.*"%>
 <%@page import="java.util.*"%>
 <%@page import="com.exceptions.*"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
  <link rel = "icon" type = "" href = "Assets/medhublogo.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" ></script>
 <title>Sales Report</title>
-<!-- <script>
-    history.forward();
-</script> -->
+
 
 <style>
 * {
@@ -120,6 +120,10 @@ top:70px;
 color:red;
 }
 
+#totalPrice{
+text-align: center;
+}
+
 </style>
 </head>
 <body>
@@ -132,13 +136,13 @@ color:red;
 				<li><a href="adminAllProducts">All Products</a></li>
 				<li><a href="AddProduct.jsp">Add Products</a></li>
 				<li><a href="SalesReports.jsp">Sales Reports</a></li>
-				<li id="home" ><a class="navbar-brand" href="AdminHome.jsp">Logout</a></li>
-				
+				<li id="home" ><a class="navbar-brand" href="Index.jsp">Logout</a></li>
+			</ul>	
 		</div>
-		</ul>
+		
 	</div>
 		<div class="searchDate" >
-		<form action="SalesReports2.jsp">
+		<form action="filterOrder">
 			<label>From</label>
 			<input type="date" id="startDate" name="startDate" required>
 			<label class="max">To</label>		
@@ -146,26 +150,24 @@ color:red;
 			<button type="submit" class="btn btn-success"> View Sales</button>
 			</form>
 		</div>	
- 		<% 
+ 	<%-- 	<% 
  		 double totalAmt=0;
  		  String fromDate = request.getParameter("startDate"); 
 		  String toDate =  request.getParameter("endDate");
 		  OrderItemsDaoImpl orderItem = new OrderItemsDaoImpl();
-		 System.out.println("from"+fromDate);
-		 System.out.println("to"+toDate);
+		 
 		  int from= Integer.parseInt(fromDate.substring(8,10));
 		  int to= Integer.parseInt(toDate.substring(8,10));
-/* 		  ResultSet rs=  orderItem.salesReport(fromDate,toDate); 
- */
-		  if(to-from>0){ 
-		    ResultSet rs=  orderItem.salesReport(fromDate,toDate);  
-		%>
+		  if(to-from >= 0){ 
+		  List<OrderItems> salesReport=  orderItem.salesReport(fromDate,toDate);  
+		%> --%>
 		
 	 <div>
-		<% 
-		%>
+		<c:set var="totalAmt" value="0"/> 
 		 <div id="allusers">
-			<table class="table table-striped"  >
+		   <c:if test="${empty sessionScope.invalidDate}"> 
+		 
+			<table class="table table-striped" >
 				<thead class="table table-dark">
 					<tr>
 						<th>Order Date</th>
@@ -178,29 +180,33 @@ color:red;
 				</thead>
 
 				<tbody>
-					<%while(rs.next()){ %>
+					<c:forEach items="${salesReport}" var="salesReport" >
 					<tr>
-						<td><%=rs.getDate(1) %></td>
-						<td><%=rs.getString(2)%></td>
-						<td><%=rs.getInt(3) %></td>
-						<td><%=rs.getDouble(4) %></td>
-						<td><%=rs.getDouble(5)%></td>
+						<td>${salesReport.getOrderdate()}</td>
+						<td>${salesReport.getProduct().getProductName()}</td>
+						<td>${salesReport.getQuantity() }</td>
+						<td>${salesReport.getUnitPrice()}</td>
+						<td>${salesReport.getTotalPrice()}</td>
 						
 					</tr>
-					<%
-					totalAmt+=rs.getDouble(5);
-					} %>
+					<c:set var="totalAmt" value="${totalAmt+salesReport.getTotalPrice()}"/> 
+					</c:forEach>
+				
 					<tr>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th>Total Price</th>
-					<th><%=totalAmt %></th>
+					<th colspan="4" id="totalPrice">Total Price</th>
+					<th>${ totalAmt}</th>
 					</tr>
 				</tbody>
 			</table>
+			  </c:if>  
 		</div>  
-		<%
+		
+		<c:if test="${not empty sessionScope.invalidDate}">	
+		
+		<h1 class="dateExp">${sessionScope.invalidDate}</h1>
+		</c:if>	 
+		
+		<%-- <%
 			 }else{
 				 try{
 					 throw new DateMismatchException();
@@ -218,22 +224,22 @@ color:red;
 		<% if(invalidDate!=null)
      {%>
 			<h4 class="dateExp"><%=invalidDate%></h4>
-			<%} session.removeAttribute("invalidDate");%>	
+			<%} session.removeAttribute("invalidDate");%> --%>	
  
 	</div>
 </body>
 <script>
 today();
-function today(){
+	function today(){
   
-var currentTime = new Date() 
-var maxDate = new Date(currentTime.getFullYear(), currentTime.getMonth(), + currentTime.getDate()+1); //max date current date
-console.log(maxDate);
-let date = JSON.stringify(maxDate)
-date = date.slice(1,11)
-console.log(date)
-document.getElementById("maxDate").setAttribute("max",date);
-document.getElementById("startDate").setAttribute("max",date);
+		var currentTime = new Date() 
+		var maxDate = new Date(currentTime.getFullYear(), currentTime.getMonth(), + currentTime.getDate()+1); //max date current date
+		console.log(maxDate);
+		let date = JSON.stringify(maxDate)
+		date = date.slice(1,11)
+		console.log(date)
+		document.getElementById("maxDate").setAttribute("max",date);
+		document.getElementById("startDate").setAttribute("max",date);
 
 
 }

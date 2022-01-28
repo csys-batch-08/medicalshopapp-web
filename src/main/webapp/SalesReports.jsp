@@ -118,11 +118,12 @@ color:white;
 				<li><a href="AddProduct.jsp">Add Products</a></li>
 				<li><a href="SalesReports.jsp">Sales Reports</a></li>
 				<li id="logout"><a href="Index.jsp">Logout</a></li>
+			</ul>	
 		</div>
-		</ul>
+		
 	</div>
 		<div class="searchDate" >
-		<form action="SalesReports2.jsp">
+		<form action="filterOrder">
 			<label>From</label>
 			<input type="date" id="startDate" name="startDate">
 			
@@ -132,40 +133,12 @@ color:white;
 			<button type="submit" class="btn btn-success"> View Sales</button>
 			</form>
 		</div>	
- 		<% 
+ 		<%-- <% 
 		ResultSet rs = (ResultSet)session.getAttribute("orders");
-		%>
+		%> --%>
 		
 	 <div>
-		<% 
-		%>
-		<%-- <div id="allusers">
-			<table class="table table-striped">
-				<thead class="table table-dark">
-					<tr>
-						<th >Order Date</th>
-						<th>Product Name</th>
-						<th>Quantity</th>
-						<th>Unit Price</th>
-						<th>Total Price</th>
-						
-					</tr>
-				</thead>
-
-				<tbody>
-					<%while(rs.next()){ %>
-					<tr>
-						<td><%=rs.getDate(1) %></td>
-						<td><%=rs.getString(2)%></td>
-						<td><%=rs.getInt(3) %></td>
-						<td><%=rs.getDouble(4) %></td>
-						<td><%=rs.getDouble(5)%></td>
-						
-					</tr>
-					<%} %>
-				</tbody>
-			</table>
-		</div>  --%>
+		
  
 	</div>
 </body>
