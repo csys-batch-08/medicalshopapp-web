@@ -30,6 +30,7 @@
 body {
 	background-image: url(Assets/homepage_img.jpg);
 	background-size: cover;
+	
 }
 #navigation{
    background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
@@ -182,7 +183,8 @@ text-align: center;
 				<tbody>
 					<c:forEach items="${salesReport}" var="salesReport" >
 					<tr>
-						<td>${salesReport.getOrderdate()}</td>
+					<fmt:parseDate value="${salesReport.getOrderdate()}" pattern="yyyy-MM-dd" var="orderDate" type="date"/>
+						<td><fmt:formatDate pattern="dd/MM/yyyy" value="${orderDate}"/></td> 
 						<td>${salesReport.getProduct().getProductName()}</td>
 						<td>${salesReport.getQuantity() }</td>
 						<td>${salesReport.getUnitPrice()}</td>

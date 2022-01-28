@@ -259,7 +259,7 @@ body {
 }
 #errorMsg{
 position: relative;
-left: 60px;
+left: 80px;
 color:red;
 top:20px;
 }
