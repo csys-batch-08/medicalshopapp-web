@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.medHub.dao.UserDaoImpl;
-import com.medHub.model.User;
+import com.medhub.dao.UserDaoImpl;
+import com.medhub.model.User;
 
 @WebServlet("/ProfileUpdate")
 public class UserProfileServlet extends HttpServlet{
@@ -42,7 +42,7 @@ public class UserProfileServlet extends HttpServlet{
 		
 		try {			
 			req.setAttribute("currentUser", currentUser);
-			RequestDispatcher rd = req.getRequestDispatcher("UserProfile.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("userProfile.jsp");
 			rd.forward(req, res);
 		} catch (IOException e) {
 			

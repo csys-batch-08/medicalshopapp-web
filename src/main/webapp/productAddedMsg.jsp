@@ -1,5 +1,3 @@
-<%@page import="com.medHub.model.*"%>
-<%@page import="com.medHub.dao.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -79,10 +77,11 @@ text-align: center;
 						Products</a></li>
 				<li><a class="navbar-brand" href="AddProduct.jsp">Add Products</a></li>
 				<li id="logout"><a class="navbar-brand" href="Index.jsp">Logout</a></li>
+			</ul>	
 		</div>
-		</ul>
 		
-		<h2>Product Added Sucessfully</h2>
+		
+		<h2>Product Added Successfully</h2>
 	</div>
 	
 </body>

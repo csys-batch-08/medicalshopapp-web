@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.medHub.dao.*;
-import com.medHub.model.*;
+import com.medhub.dao.*;
+import com.medhub.model.*;
 
 @WebServlet("/cancelOrderServlet")
 public class CancelOrderServlet extends HttpServlet{
@@ -33,8 +33,9 @@ public class CancelOrderServlet extends HttpServlet{
 		ProductDaoImpl productDao = new ProductDaoImpl();
 		UserDaoImpl userDao = new UserDaoImpl();
 		
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		int orderId=Integer.parseInt(req.getParameter("orderId"));
+		/*
+		 * DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		 */		int orderId=Integer.parseInt(req.getParameter("orderId"));
 		OrderDaoImpl orderDao=new OrderDaoImpl();	
 		boolean deleteStatus = false;
 		try {

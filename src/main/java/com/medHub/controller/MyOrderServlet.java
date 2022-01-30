@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.medHub.dao.*;
-import com.medHub.model.*;
+import com.medhub.dao.*;
+import com.medhub.model.*;
 
 @WebServlet("/myOrdersServlet")
 public class MyOrderServlet extends HttpServlet{
@@ -35,7 +35,7 @@ public class MyOrderServlet extends HttpServlet{
 		
 		
 		req.setAttribute("myOrders", myOrderList);
-		RequestDispatcher rd = req.getRequestDispatcher("MyOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0");
+		RequestDispatcher rd = req.getRequestDispatcher("myOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0");
 		rd.forward(req, resp);
 	}
 

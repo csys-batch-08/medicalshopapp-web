@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.medHub.dao.*;
-import com.medHub.model.*;
+import com.medhub.dao.*;
+import com.medhub.model.*;
 
 @WebServlet("/ProdToBeUpdate")
 public class ProductToBeUpdateServlet extends HttpServlet{
@@ -29,7 +29,7 @@ public class ProductToBeUpdateServlet extends HttpServlet{
 		ProductDaoImpl productDao = new ProductDaoImpl();
 		Product currentProduct = productDao.findProductByProductId(productId);
 		req.setAttribute("currentProduct", currentProduct);
-		RequestDispatcher rd = req.getRequestDispatcher("UpdateProduct.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("updateProduct.jsp");
 		 rd.forward(req, resp);
 		
 	}

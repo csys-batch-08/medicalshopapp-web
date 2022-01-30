@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import javax.servlet.http.HttpServlet;
 import java.io.IOException;
@@ -15,10 +15,10 @@ import javax.servlet.http.HttpSession;
 
 import com.exceptions.DateMismatchException;
 import com.exceptions.UserNotFoundException;
-import com.medHub.dao.AdminDaoImpl;
-import com.medHub.dao.ProductDaoImpl;
-import com.medHub.dao.UserDaoImpl;
-import com.medHub.model.*;
+import com.medhub.dao.AdminDaoImpl;
+import com.medhub.dao.ProductDaoImpl;
+import com.medhub.dao.UserDaoImpl;
+import com.medhub.model.*;
 
 
 
@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 				List<Product> allproduct = product.viewProduts();
 				Product searchProducts = new Product(); 
 				req.setAttribute("allProducts", allproduct);
-				RequestDispatcher rd = req.getRequestDispatcher("UserHome.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("userHome.jsp");
 				rd.forward(req, res);
 			}
 			else
@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 				 {
 					
 					 session.setAttribute("InvalidUser",e.getMessage());
-					 RequestDispatcher rd = req.getRequestDispatcher("Index.jsp");
+					 RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 					 rd.forward(req, res);
 					
 				 }
@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 				Admin adminModule= admindao.login(admin);
 				if(adminModule!=null)
 				{
-					res.sendRedirect("AdminHome.jsp");
+					res.sendRedirect("adminHome.jsp");
 
 				}
 				else
@@ -90,7 +90,6 @@ public class LoginServlet extends HttpServlet {
 					throw new UserNotFoundException();
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -99,10 +98,8 @@ public class LoginServlet extends HttpServlet {
 		
 		
 			} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			} catch (UserNotFoundException e) {
-				// TODO Auto-generated catch block
 				session.setAttribute("userNotFound", e.getMessage());
 				res.sendRedirect("Index.jsp");
 			}

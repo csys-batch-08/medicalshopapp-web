@@ -1,4 +1,4 @@
-package com.medHub.dao;
+package com.medhub.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,11 +11,11 @@ import java.time.LocalDate;
 import java.util.*;
 
 import com.interfaces.OrderItemDAO;
-import com.medHub.model.OrderItems;
-import com.medHub.model.Order;
-import com.medHub.model.Product;
-import com.medHub.model.User;
-import com.medHub.util.ConnectionUtil;
+import com.medhub.model.OrderItems;
+import com.medhub.model.Order;
+import com.medhub.model.Product;
+import com.medhub.model.User;
+import com.medhub.util.ConnectionUtil;
 
 public class OrderItemsDaoImpl implements OrderItemDAO {
 //	currentUser,buyProducts,buyProductQuantity, totalPrice

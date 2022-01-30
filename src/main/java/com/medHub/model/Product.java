@@ -1,8 +1,9 @@
-package com.medHub.model;
+package com.medhub.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Product
+public class Product implements Serializable
 {
 	
 	private Order order;

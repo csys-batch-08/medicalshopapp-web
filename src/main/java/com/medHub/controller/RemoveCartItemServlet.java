@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.medHub.dao.CartDaoImpl;
-import com.medHub.dao.OrderDaoImpl;
-import com.medHub.dao.OrderItemsDaoImpl;
-import com.medHub.dao.ProductDaoImpl;
-import com.medHub.dao.UserDaoImpl;
-import com.medHub.model.Cart;
-import com.medHub.model.Order;
-import com.medHub.model.OrderItems;
-import com.medHub.model.Product;
-import com.medHub.model.User;
+import com.medhub.dao.CartDaoImpl;
+import com.medhub.dao.OrderDaoImpl;
+import com.medhub.dao.OrderItemsDaoImpl;
+import com.medhub.dao.ProductDaoImpl;
+import com.medhub.dao.UserDaoImpl;
+import com.medhub.model.Cart;
+import com.medhub.model.Order;
+import com.medhub.model.OrderItems;
+import com.medhub.model.Product;
+import com.medhub.model.User;
 
 @WebServlet("/removeCartItem")
 public class RemoveCartItemServlet extends HttpServlet{
@@ -49,7 +49,7 @@ public class RemoveCartItemServlet extends HttpServlet{
 			{
 				List<Cart> cartItems = cartdao.viewCart(currentUser);
 				req.setAttribute("cartList", cartItems);
-				RequestDispatcher rd = req.getRequestDispatcher("Cart.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("cart.jsp");
 				rd.forward(req, res);
 			}
 		} catch (SQLException e) {

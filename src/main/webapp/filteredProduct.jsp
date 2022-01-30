@@ -1,10 +1,10 @@
 <%@page import="javax.swing.plaf.metal.MetalBorders.Flush3DBorder"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medHub.model.*"%>
-<%@page import="com.medHub.dao.*"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
+	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,24 +13,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel = "icon" type = "" href = "Assets/medhublogo.png">
-<meta name="theme-color" content="#ba8f88" >
+
 
 <title>Userhome</title>
-
-<script>
-    history.forward();
-</script>
-
 <style>
-*{
-  
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
-     text-decoration: none;
-     font-family: Arial, sans-serif;
-     
- }
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
 
 .list ul li {
 	list-style: none;
@@ -41,7 +33,6 @@
    background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
    position: fixed;
    width: 100%;
-   box-shadow:0 0 10px black;
    z-index: 1;
 }
 
@@ -52,13 +43,11 @@
 }
 
 .list ul {
-	/* background-color: #10847E;*/
 	position: absolute;
 	margin-right: 0%;
 	position: absolute;
 	top: 0;
 	box-shadow: 0 5 black;
-	/* margin-top: 0%; */
 	right: 0px;
 	width: 1372px;
 }
@@ -73,29 +62,23 @@
 	font-family: monospace;
 	font-size: 25px;
 	font-weight: 500;
-	/* margin-right: 20px; */
 }
 
-.list li:hover, .list a:hover {
-	color: orange;
-	border-radius: 5px;
-	cursor: pointer;
-}
+
 
 .list li:hover{
 	transition-duration: 0.2s;
 	transform: translateY(-10px);
-}
+	color: orange;
+	}
 
 body {
 	/* background: linear-gradient(rgba(26,176,156,0.7),rgba(239,78,28,0.5)) ,url(Images/homepage_img.jpg); */
+	background-image: url(Assets/homepage_img.jpg);
 	background-repeat: no-repeat;
-	overflow-x: hidden;
 	background-size: cover;
-}
-body{
-background-image: url(Assets/homepage_img.jpg);
-background-repeat: repeat-y;
+	overflow-x: hidden;
+	height: 300%;
 }
 
 .logo img {
@@ -110,8 +93,22 @@ background-repeat: repeat-y;
 	top: 120px;
 }
 
+/* progress */
+.products {
+	margin-top: 330px;
+	border-spacing: 0 200px;
+}
+
+.slide img {
+	box-shadow: 0 0 10px black;
+}
+
 .products tr td {
 	padding-left: 220px;
+}
+
+img {
+	box-shadow: 0 0 10px black;
 }
 
 .logo img {
@@ -120,7 +117,8 @@ background-repeat: repeat-y;
 
 #copyrights {
 	text-align: center;
-	color: yellow;	
+	color: yellow;
+	margin-bottom: 0;
 }
 
 #allproducts a {
@@ -137,21 +135,19 @@ background-repeat: repeat-y;
 	text-align: center;
 }
 
-
 #product {
 	position: relative;
 	top: 30px;
 	left: 50px;
+}
+
+#product {
+	position: relative;
 	background-color: rgba(158, 202, 207, 0.5);
 	height: 190px;
 	border-radius: 5px;
 	width: 1200px;
 	top:150px;
-}
-
-#product:hover{
-box-shadow: 0 0 10px black;
-transition-duration:0.3s;
 }
 
 #product img {
@@ -169,7 +165,7 @@ transition-duration:0.3s;
 
 #product #details {
 	position: relative;
-	left: 250px;
+	left: 220px;
 	top: -90px;
 }
 
@@ -177,6 +173,11 @@ transition-duration:0.3s;
 	position: relative;
 	top: -250px;
 	left: 900px;
+}
+
+#product:hover{
+box-shadow: 0 0 10px black;
+transition-duration:0.3s;
 }
 
 #product #btn button {
@@ -211,10 +212,9 @@ transition-duration:0.3s;
 	top:20px;
 }
 
-/* #btn #buynow {
+#btn #buynow {
 	position: relative;
-
-} */
+}
 
 a {
 	text-decoration: none;
@@ -237,8 +237,8 @@ top:18px;
 #searchBar{
 height: 30px;
 width:250px;
-outline: none;
 border: none;
+outline:none;
 border-top-left-radius: 2px;
 border-bottom-left-radius: 2px;
 }
@@ -250,11 +250,12 @@ width: 40px;
 border: none;
 border-top-right-radius: 2px;
 border-bottom-right-radius: 2px;
+outline: none;
 }
 
 #searchBtn:hover{
 cursor: pointer;
-background-color: rgb(173, 238, 120);
+background-color:yellowgreen;
 box-shadow: 0 0 5px black;
 transition-duration:0.2s;
 }
@@ -263,32 +264,33 @@ transition-duration:0.2s;
 box-shadow: 0 0 10px black;
 }
 
+#noProd{
+position: relative;
+text-align: center;
+top:200px;
+}
+
 
 </style>
 </head>
 
 <body>
 
-<%-- <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
- --%>
- 
-	<%-- <%User currentUser = (User)session.getAttribute("user"); --%>
-	<%-- <% session.setAttribute("userNotFound", null);%> --%>
-		
+
+	<%session.setAttribute("userNotFound", null);%>
 	
-	
-	
+	<div id="container">
 	<div class="container-fluid p-0" >
 		<div class="nav">
 
 			<nav class="list">
 				<ul>
-					<li><a href="Index.jsp">SignOut</a></li>
-					<li><a href="showCartServlet">Cart</a></li>
+					<li><a href="cart.jsp">Cart</a></li>
+					<li><a href="index.jsp">SignOut</a></li>
 					<li><a href="showUserProfile">MyProfile</a></li>
-					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
-					<li><a href="AboutUs.jsp">About-Us</a></li>
-					<li><a href="userHomeServlet">Home</a></li>					
+					<li><a href="myOrders.jsp?orderId=0">MyOrders</a></li>
+					<li><a href="aboutUs.jsp">About-Us</a></li>
+					<li><a href="userHomeServlet">Home</a></li>
 				</ul>
 				
 				<div class="logo">
@@ -298,69 +300,62 @@ box-shadow: 0 0 10px black;
 				</div>
 			</nav>
 		</div>
-		 <%-- <%=currentUser.getName()%> --%>
-		<h2 id="userName">welcome <c:out value="${sessionScope.user.userName}"/> </h2>
-		</div>
-		<br><br>
-		
-		
-<!-- 					Search Products		
--->		
-		<form action="filterProductservlet" class="prodSearch" method="get">
-		<input id="searchBar" type="text" name="ProductName" required="required" placeholder="Search By Products & categories">
-		<button type="submit" id="searchBtn">&#128269;</button>
+		</div>		
+
+		<form action="" class="prodSearch" >
+		<input id="searchBar" type="text" name="ProductName" required placeholder="Search By Products & categories">
+		<button id="searchBtn" >&#128269;</button>
 		</form>
 		
-			
 		
-		<%-- <% 
-		ProductDaoImpl product= new ProductDaoImpl();
-		List<Product> allproduct = product.viewProduts();
-		 Product searchProducts = new Product(); 	
-		%> --%>
 		
-				
-		<c:forEach items="${allProducts}" var="products" >
-		
+		<c:if test="${not empty allProducts}">
+
+			<c:forEach items="${allProducts}" var="products" >		
 			<div id="product">
 				<div id="img">
-					<img src="Assets/${products.getProductImg()}" alt="horlicks">
-					<h3> ${products.getProductName()} </h3>
-				
+					<img src="Assets/${products.getProductImg()}" alt="${ products.getProductName()}">
+					<h3>${products.getProductName()}</h3>
 				</div>
 				<div id="details">
 					<h3>
 						Description :
 						${products.getDescription()}</h3>
 					<h3>
-						Price :${products.getUnitPrice()} rs</h3>
+						price :${products.getUnitPrice()}rs</h3>
 					<h3>
 						Offer :
-						${products.getOffer()}%
+						${products.getOffer() }%
 					</h3>
 					<h3>
 						Points :
-						${products.getPoints()}</h3>
+						${products.getPoints() }</h3>
 				</div>
 				<div id="btn">
-					<a><button>
-						<a id="buynow" href="BuyProduct.jsp?pid=${products.getProductId()} ">Buy Now</a>
-					</button></a>
+					<button>
+						<a id="buynow" href="BuyProduct.jsp?pid=${products.getProductId() }">Buy Now</a>
+					</button>
+					<%--  <button>
+						<a id="btn1" href="AddToCart.jsp?cartpId=${products.getProductId()%>">Add To Cart</a>
+					</button> --%>
 					
 				</div>
 			</div>
-		
-		<br>
+			<br>
 		<br>
 		</c:forEach>
+		</c:if>
 		
-
+		<c:if test="${empty allProducts}">
+		
+			<h1 id="noProd">NO Products Matches !</h1>
+		</c:if>
+		
 	</div>
 
-	</div>
 	
 	<div id="footer">
-			
+	
 	</div>
 
 

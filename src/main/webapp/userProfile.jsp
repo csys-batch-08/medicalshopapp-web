@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="com.medHub.model.*"%>
+<%@page import="com.medhub.model.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
@@ -268,11 +268,11 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 
 		<nav class="list" class="container-fluid p-0">
 			<ul>
-					<li><a href="Index.jsp">SignOut</a></li>
+					<li><a href="index.jsp">SignOut</a></li>
 					<li><a href="showCartServlet">Cart</a></li>
 					<li><a href="showUserProfile">MyProfile</a></li>
 					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
-					<li><a href="AboutUs.jsp">About-Us</a></li>
+					<li><a href="aboutUs.jsp">About-Us</a></li>
 					<li><a href="userHomeServlet">Home</a></li>
 			</ul>
 			<div class="logo">

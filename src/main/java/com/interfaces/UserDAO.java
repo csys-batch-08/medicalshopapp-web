@@ -3,8 +3,8 @@ package com.interfaces;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.medHub.model.Order;
-import com.medHub.model.User;
+import com.medhub.model.Order;
+import com.medhub.model.User;
 
 public interface UserDAO {
 

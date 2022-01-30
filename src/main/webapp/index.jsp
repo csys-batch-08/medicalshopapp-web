@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link rel = "icon" type = "" href = "Assets/medhublogo.png">
@@ -289,8 +291,8 @@ font-weight: 600;
 			<nav class="list">
 				<ul>
 					
-					<li><a href="Registration.jsp"  id="register">SignUp</a></li>
-					<li><a href="Index.jsp"  id="login">Login</a></li>
+					<li><a href="registration.jsp"  id="register">SignUp</a></li>
+					<li><a href="index.jsp"  id="login">Login</a></li>
 				</ul>
 			</nav>
 			<div class="logo">
@@ -314,7 +316,7 @@ font-weight: 600;
 
 
 			
-			<form action="LoginController?" class="formcontent" method="post">
+			<form action="LoginController" class="formcontent" method="post">
 				<h1 class="loginHere">Login Here</h1>
 				<label class="label" for="fullName">Email*</label><br> 
 				<input type="email"
@@ -329,8 +331,7 @@ font-weight: 600;
 				<button id="loginbtn">Login</button>
 				<br>
 				<br>
-				<br> <a href="Registration.jsp" id="register">Not
-					Registered Yet ?</a>
+				<br> <a href="registration.jsp" id="register">Not Registered Yet ?</a>
 				
 				<% String error=(String)session.getAttribute("error");
             if(error!=null) {%>

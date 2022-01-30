@@ -1,7 +1,5 @@
 <%@page import="javax.swing.plaf.metal.MetalBorders.Flush3DBorder"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medHub.model.*"%>
-<%@page import="com.medHub.dao.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -155,7 +153,7 @@ text-align: center;
 
 				<nav class="list">
 					<ul>
-						<li><a href="Index.jsp">SignOut</a></li>
+						<li><a href="index.jsp">SignOut</a></li>
 						<li><a href="showCartServlet">Cart</a></li>
 						<li><a href="showUserProfile">MyProfile</a></li>
 						<li><a

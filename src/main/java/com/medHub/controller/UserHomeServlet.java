@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.medHub.dao.ProductDaoImpl;
-import com.medHub.model.Product;
+import com.medhub.dao.ProductDaoImpl;
+import com.medhub.model.Product;
 
 @WebServlet("/userHomeServlet")
 public class UserHomeServlet extends HttpServlet{
@@ -28,7 +28,7 @@ public class UserHomeServlet extends HttpServlet{
 		List<Product> allproduct = product.viewProduts();
 		Product searchProducts = new Product(); 
 		req.setAttribute("allProducts", allproduct);
-		RequestDispatcher rd = req.getRequestDispatcher("UserHome.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("userHome.jsp");
 		rd.forward(req, resp);
 	}
 

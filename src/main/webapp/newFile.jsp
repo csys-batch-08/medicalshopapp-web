@@ -14,7 +14,7 @@ text-align: center;
 <body>
 
 <h1>
-Product Deleted Sucessfully
+Product Deleted Successfully
 </h1>
 </body>
 </html>

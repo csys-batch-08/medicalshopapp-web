@@ -3,7 +3,7 @@ package com.interfaces;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.medHub.model.Product;
+import com.medhub.model.Product;
 
 public interface ProductDAO {
 	

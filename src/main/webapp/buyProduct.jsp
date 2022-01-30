@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@page import="com.medHub.model.Product"%>
-<%@page import="com.medHub.dao.ProductDaoImpl"%>
 <%@page import="javax.servlet.http.HttpSession"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -319,21 +318,21 @@ right:275px;
 </head>
 <body>
 
-<%
+<%-- <%
 int pId=Integer.parseInt(request.getParameter("pid"));
 ProductDaoImpl productDao = new ProductDaoImpl();
 Product currentProduct = productDao.findProductByProductId(pId);
 session.setAttribute("currentproduct", currentProduct);
-%>
+%> --%>
 	<div class="nav">
 
 		<nav class="list" >
 			<ul>
 					<li><a href="showCartServlet">Cart</a></li>
-					<li><a href="Index.jsp">SignOut</a></li>
+					<li><a href="index.jsp">SignOut</a></li>
 					<li><a href="showUserProfile">MyProfile</a></li>
 					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
-					<li><a href="AboutUs.jsp">About-Us</a></li>
+					<li><a href="aboutUs.jsp">About-Us</a></li>
 					<li><a href="userHomeServlet">Home</a></li>
 					
 			</ul>
@@ -341,54 +340,57 @@ session.setAttribute("currentproduct", currentProduct);
 				<img
 					src="https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/healthcare.png"
 					alt="logo">
+			</div>		
 		</nav>
 	</div>
+	
+	
 	<table class="buyProduct">
 		<tbody>
 
 			<tr>
-
-					
+			
 				<td> 
 				<div id="pDesc">
-				<p>
-						<b>Product category:</b>
+					<p>
+						<strong>Product category:</strong>
 					</p>
 					<p>
-						<b>Product Name:</b>
+						<strong>Product Name:</strong>
 					</p>
 					<p>
-						<b>Description:</b>
+						<strong>Description:</strong>
 					</p>
 					<p>
-						<b>Price:</b>
+						<strong>Price:</strong>
 					</p>
 					<p>
-						<b>Available Quantity:</b>
+						<strong>Available Quantity:</strong>
 					</p>
 					<p>
-						<b>Points:</b>
+						<strong>Points:</strong>
 					</p>
 					<p>
-						<b>Offer:</b>
+						<strong>Offer:</strong>
 					</p>
 					</td>
+			
 				<td id="detail">
-					<p name="pCategory"><%=currentProduct.getProductCategory() %></p>
-					<p name="pName"><%=currentProduct.getProductName() %></p>
-					<p name="pDescription"><%=currentProduct.getDescription() %></p>
-					<input name="pUnitPrice" id="price" value="<%=currentProduct.getUnitPrice()%>" disabled>
+					<p name="pCategory">${currentProduct.getProductCategory()}</p>
+					<p name="pName">${currentProduct.getProductName()}</p>
+					<p name="pDescription">${currentProduct.getDescription()}</p>
+					<input name="pUnitPrice" id="price" value="${currentProduct.getUnitPrice()}" disabled>
 					<label id="rs">Rs</label>
-					<p name="pQuantity"><%=currentProduct.getQuantity() %></p>
-					<p name="pgetPoints"><%=currentProduct.getPoints() %></p>
-					<input name="pOffer" id="offer" value="<%=currentProduct.getOffer()%>" disabled>
+					<p name="pQuantity">${currentProduct.getQuantity()}</p>
+					<p name="pgetPoints">${currentProduct.getPoints()}</p>
+					<input name="pOffer" id="offer" value="${currentProduct.getOffer()}" disabled>
 					<span id="percentage">%</span></td>
 				<td>
 					<div id="qty">
 						<div id="qtyBox">	
 						<form action="prod1" onsubmit="return chechQuantity()">
 							<label for="">Quantity</label> 
-							<input type="number" id="quantity" name="quantity" min="1"  max="<%=currentProduct.getQuantity()%>" onclick="calculateamt()">
+							<input type="number" id="quantity" name="quantity" min="1"  max="${currentProduct.getQuantity()}" onkeyup="calculateamt()" onclick="calculateamt()">
 						</div>
 						<h3 id="TotalPriceLabel">Total price : Rs </h3>
 						<div id="totalPriceDiv">

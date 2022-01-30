@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.medHub.dao.ProductDaoImpl;
-import com.medHub.model.Product;
+import com.medhub.dao.ProductDaoImpl;
+import com.medhub.model.Product;
 
 @WebServlet("/UpdateProductController")
 

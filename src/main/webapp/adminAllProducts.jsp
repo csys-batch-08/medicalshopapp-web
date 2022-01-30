@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medHub.model.Product"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="com.medHub.dao.ProductDaoImpl"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,9 +136,9 @@ bottom: 63px;
 		<ul>
 			<li><a href="allUsers">All Users</a></li>
 			<li><a href="adminAllProducts">All Products</a></li>
-			<li><a href="AddProduct.jsp">Add Products</a></li>
-			<li><a href="SalesReports.jsp">Sales Reports</a></li>
-			<li id="logout"><a href="Index.jsp">Logout</a></li>
+			<li><a href="addProduct.jsp">Add Products</a></li>
+			<li><a href="salesReports.jsp">Sales Reports</a></li>
+			<li id="logout"><a href="index.jsp">Logout</a></li>
 			
 	</div>
 	</ul>

@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,16 +15,16 @@ import com.exceptions.AddressNotFoundException;
 import com.exceptions.CartNotEnoughQtyException;
 import com.exceptions.InsuffientMoneyException;
 import com.exceptions.OutOfStockException;
-import com.medHub.dao.CartDaoImpl;
-import com.medHub.dao.OrderDaoImpl;
-import com.medHub.dao.OrderItemsDaoImpl;
-import com.medHub.dao.ProductDaoImpl;
-import com.medHub.dao.UserDaoImpl;
-import com.medHub.model.Cart;
-import com.medHub.model.Order;
-import com.medHub.model.OrderItems;
-import com.medHub.model.Product;
-import com.medHub.model.User;
+import com.medhub.dao.CartDaoImpl;
+import com.medhub.dao.OrderDaoImpl;
+import com.medhub.dao.OrderItemsDaoImpl;
+import com.medhub.dao.ProductDaoImpl;
+import com.medhub.dao.UserDaoImpl;
+import com.medhub.model.Cart;
+import com.medhub.model.Order;
+import com.medhub.model.OrderItems;
+import com.medhub.model.Product;
+import com.medhub.model.User;
 
 @WebServlet("/cartOrder")
 
@@ -110,7 +110,7 @@ public class CartOrderServlet extends HttpServlet {
 				}catch(InsuffientMoneyException iF)
 				{
 					session.setAttribute("notEnoughAmt",iF.getMessage());
-					res.sendRedirect("UserProfile.jsp");
+					res.sendRedirect("userProfile.jsp");
 				}
 			}
 		}else {
@@ -141,7 +141,7 @@ public class CartOrderServlet extends HttpServlet {
 				catch(AddressNotFoundException ad)
 				{
 					session.setAttribute("AddressNotFoundFromCart", ad.getMessage());
-					res.sendRedirect("UserProfile.jsp");
+					res.sendRedirect("userProfile.jsp");
 				}
 			
 		}

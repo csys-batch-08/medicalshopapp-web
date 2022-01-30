@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.medHub.dao.UserDaoImpl;
-import com.medHub.model.User;
+import com.medhub.dao.UserDaoImpl;
+import com.medhub.model.User;
 
 @WebServlet("/allUsers")
 public class AllUserServlet extends HttpServlet{
@@ -29,7 +29,7 @@ public class AllUserServlet extends HttpServlet{
 		 List<User> userList = new ArrayList<User>();
 		 userList=userdao.ViewAllUser();
 		 req.setAttribute("userList",userList);
-		 RequestDispatcher rd = req.getRequestDispatcher("AllUser.jsp");
+		 RequestDispatcher rd = req.getRequestDispatcher("allUser.jsp");
 		 rd.forward(req, resp);
 	
 	}

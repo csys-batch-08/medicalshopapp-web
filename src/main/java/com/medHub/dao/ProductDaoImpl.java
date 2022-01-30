@@ -1,4 +1,4 @@
-package com.medHub.dao;
+package com.medhub.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,9 +10,9 @@ import java.util.List;
 
 import com.exceptions.ProductExistsException;
 import com.interfaces.ProductDAO;
-import com.medHub.model.Order;
-import com.medHub.model.Product;
-import com.medHub.util.ConnectionUtil;
+import com.medhub.model.Order;
+import com.medhub.model.Product;
+import com.medhub.util.ConnectionUtil;
 
 public class ProductDaoImpl implements ProductDAO {
 	

@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.medHub.model.*"%>
-<%@page import="com.medHub.dao.*"%>
 <%@page import="java.util.*"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
  <link rel = "icon" type = "" href = "Assets/medhublogo.png">
@@ -131,9 +129,9 @@ transition-duration: 0.2s;
 			<ul>
 				<li><a href="allUsers">All Users</a></li>
 				<li><a href="adminAllProducts">All Products</a></li>
-				<li><a href="AddProduct.jsp">Add Products</a></li>
-				<li><a href="SalesReports.jsp">Sales Reports</a></li>
-				<li id="home"><a class="navbar-brand" href="AdminHome.jsp">Logout</a></li>
+				<li><a href="addProduct.jsp">Add Products</a></li>
+				<li><a href="salesReports.jsp">Sales Reports</a></li>
+				<li id="home"><a class="navbar-brand" href="adminHome.jsp">Logout</a></li>
 			</ul>
 		</div>
 		
@@ -171,8 +169,7 @@ transition-duration: 0.2s;
 				required name="description" placeholder="Product Description" value="${currentProduct.getDescription()}"></input>
 			<br>
 			<button name="currentProdId" value="${currentProduct.getProductId()}">Update</button>
-<%-- 			<a id="updateBtn"href = "UpdateProductController?<%currentProduct.getProductId();%>">Update</a>
- --%>		</form>
+		</form>
 	</div>
 	</div>
 	</div>

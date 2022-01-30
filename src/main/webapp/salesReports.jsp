@@ -1,11 +1,9 @@
 <%@page import="java.sql.ResultSet"%>
-<%@page import="com.medHub.model.*"%>
-<%@page import="com.medHub.dao.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
  <link rel = "icon" type = "" href = "Assets/medhublogo.png">
@@ -115,9 +113,9 @@ color:white;
 			<ul>
 				<li><a href="allUsers">All Users</a></li>
 				<li><a href="adminAllProducts">All Products</a></li>
-				<li><a href="AddProduct.jsp">Add Products</a></li>
-				<li><a href="SalesReports.jsp">Sales Reports</a></li>
-				<li id="logout"><a href="Index.jsp">Logout</a></li>
+				<li><a href="addProduct.jsp">Add Products</a></li>
+				<li><a href="salesReports.jsp">Sales Reports</a></li>
+				<li id="logout"><a href="index.jsp">Logout</a></li>
 			</ul>	
 		</div>
 		
@@ -133,9 +131,6 @@ color:white;
 			<button type="submit" class="btn btn-success"> View Sales</button>
 			</form>
 		</div>	
- 		<%-- <% 
-		ResultSet rs = (ResultSet)session.getAttribute("orders");
-		%> --%>
 		
 	 <div>
 		

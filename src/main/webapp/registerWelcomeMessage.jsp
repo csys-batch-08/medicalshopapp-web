@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link rel = "icon" type = "" href = "Assets/medhublogo.png">
 
-<title>Registeration</title>
+<title>Registration Successfully</title>
 <style>
 * {
 	margin: 0;
@@ -294,17 +294,14 @@ text-decoration: underline;
 
 <body id="body">
 	<div id="container">
-		<!-- <div class="header">
-        </div> -->
 
 		<!-- Navigation Bar -->
 		<div class="nav">
 
 			<nav class="list">
 				<ul>
-					<!-- <li> <a>SignOut</a></li> -->
-					<li><a href="Registration.jsp"  id="register">SignUp</a></li>
-					<li><a href="Index.jsp"  id="login">Login</a></li>
+					<li><a href="registration.jsp"  id="register">SignUp</a></li>
+					<li><a href="index.jsp"  id="login">Login</a></li>
 				</ul>
 			</nav>
 			
@@ -319,8 +316,8 @@ text-decoration: underline;
 			</div>
 		</div>
 		
-		<h1 id="regMsg" >Registered Sucessfully</h1>
-		<h3><a href="Index.jsp">Click Here To Login</a></h3>
+		<h1 id="regMsg" >Registered Successfully</h1>
+		<h3><a href="index.jsp">Click Here To Login</a></h3>
 
 										<!-- sign/register form -->
 										
@@ -329,6 +326,6 @@ text-decoration: underline;
 
 		<div class="footer"></div>
 
-	</div>
+	
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,16 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.eclipse.jdt.internal.compiler.ast.ThrowStatement;
+
 import com.exceptions.AddressNotFoundException;
 import com.exceptions.InsuffientMoneyException;
-import com.medHub.dao.OrderDaoImpl;
-import com.medHub.dao.OrderItemsDaoImpl;
-import com.medHub.dao.ProductDaoImpl;
-import com.medHub.dao.UserDaoImpl;
-import com.medHub.model.Order;
-import com.medHub.model.OrderItems;
-import com.medHub.model.Product;
-import com.medHub.model.User;
+import com.medhub.dao.OrderDaoImpl;
+import com.medhub.dao.OrderItemsDaoImpl;
+import com.medhub.dao.ProductDaoImpl;
+import com.medhub.dao.UserDaoImpl;
+import com.medhub.model.Order;
+import com.medhub.model.OrderItems;
+import com.medhub.model.Product;
+import com.medhub.model.User;
 
 @WebServlet("/prod1")
 public class BuyProductServlet extends HttpServlet {
@@ -37,9 +39,6 @@ public class BuyProductServlet extends HttpServlet {
 		OrderItems orderItems = new OrderItems();
 		User currentUser = (User) session.getAttribute("user");
 		Product currentproduct = (Product) session.getAttribute("currentproduct");
-//		Product product = new Product(currentproduct.getProductId(),currentproduct.getProductCategory(),currentproduct.getProductName(),
-//				currentproduct.getDescription(),currentproduct.getUnitPrice(),currentproduct.getQuantity(),currentproduct.getProductImg(),currentproduct.getPoints(),currentproduct.getStatus(),currentproduct.getOffer());
-
 		int qty = Integer.parseInt(req.getParameter("quantity"));
 		double price = Double.parseDouble(req.getParameter("totalPrice"));
 		int offer = 0;
@@ -93,18 +92,17 @@ public class BuyProductServlet extends HttpServlet {
 						catch(AddressNotFoundException e)
 						{
 							session.setAttribute("AddressNotFound", e.getMessage());
-							res.sendRedirect("UserProfile.jsp");
+							res.sendRedirect("userProfile.jsp");
 						}
 					}
-			} else 
-				{
+			} else {
 						try {
 							throw new InsuffientMoneyException();
 							}
 						catch(InsuffientMoneyException iM) 
 							{
 								session.setAttribute("InsuffientMoney", iM.getMessage());
-								res.sendRedirect("UserProfile.jsp");
+								res.sendRedirect("userProfile.jsp");
 							}
 				
 				

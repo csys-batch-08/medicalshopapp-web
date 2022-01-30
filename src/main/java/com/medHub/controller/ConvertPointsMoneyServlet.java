@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 
@@ -11,14 +11,14 @@ import javax.servlet.http.HttpSession;
 
 import com.exceptions.CartNotEnoughQtyException;
 import com.exceptions.NegativePointsException;
-import com.medHub.dao.OrderDaoImpl;
-import com.medHub.dao.OrderItemsDaoImpl;
-import com.medHub.dao.ProductDaoImpl;
-import com.medHub.dao.UserDaoImpl;
-import com.medHub.model.Order;
-import com.medHub.model.OrderItems;
-import com.medHub.model.Product;
-import com.medHub.model.User;
+import com.medhub.dao.OrderDaoImpl;
+import com.medhub.dao.OrderItemsDaoImpl;
+import com.medhub.dao.ProductDaoImpl;
+import com.medhub.dao.UserDaoImpl;
+import com.medhub.model.Order;
+import com.medhub.model.OrderItems;
+import com.medhub.model.Product;
+import com.medhub.model.User;
 
 @WebServlet("/ConvertMoney")
 public class ConvertPointsMoneyServlet extends HttpServlet{
@@ -44,7 +44,7 @@ public class ConvertPointsMoneyServlet extends HttpServlet{
 		if(flag)
 		{
 			req.setAttribute("currentUser", currentUser);
-			RequestDispatcher rd = req.getRequestDispatcher("UserProfile.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("userProfile.jsp");
 			rd.forward(req, res);
 		}
 		}else
@@ -55,7 +55,7 @@ public class ConvertPointsMoneyServlet extends HttpServlet{
 				{
 					session.setAttribute("negativePoints",e.getMessage());
 					req.setAttribute("currentUser", currentUser);
-					RequestDispatcher rd = req.getRequestDispatcher("UserProfile.jsp");
+					RequestDispatcher rd = req.getRequestDispatcher("userProfile.jsp");
 					rd.forward(req, res);
 				}
 			

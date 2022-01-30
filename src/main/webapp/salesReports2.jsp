@@ -1,6 +1,4 @@
 <%@page import="java.sql.ResultSet"%>
-<%@page import="com.medHub.model.*"%>
-<%@page import="com.medHub.dao.*"%>
 <%@page import="java.util.*"%>
 <%@page import="java.util.*"%>
 <%@page import="com.exceptions.*"%>
@@ -34,7 +32,6 @@ body {
 }
 #navigation{
    background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
-
 }
 
 #navigation ul li {
@@ -44,10 +41,6 @@ body {
 	margin-left: 60px;
 }
 
-#navigation {
-	background-color: rgb(83, 137, 168);
-	align-items: center;
-}
 
 #navigation ul li a {
 	text-decoration: none;
@@ -135,9 +128,9 @@ text-align: center;
 			<ul>
 				<li><a href="allUsers">All Users</a></li>
 				<li><a href="adminAllProducts">All Products</a></li>
-				<li><a href="AddProduct.jsp">Add Products</a></li>
-				<li><a href="SalesReports.jsp">Sales Reports</a></li>
-				<li id="home" ><a class="navbar-brand" href="Index.jsp">Logout</a></li>
+				<li><a href="addProduct.jsp">Add Products</a></li>
+				<li><a href="salesReports.jsp">Sales Reports</a></li>
+				<li id="home" ><a class="navbar-brand" href="index.jsp">Logout</a></li>
 			</ul>	
 		</div>
 		
@@ -151,17 +144,6 @@ text-align: center;
 			<button type="submit" class="btn btn-success"> View Sales</button>
 			</form>
 		</div>	
- 	<%-- 	<% 
- 		 double totalAmt=0;
- 		  String fromDate = request.getParameter("startDate"); 
-		  String toDate =  request.getParameter("endDate");
-		  OrderItemsDaoImpl orderItem = new OrderItemsDaoImpl();
-		 
-		  int from= Integer.parseInt(fromDate.substring(8,10));
-		  int to= Integer.parseInt(toDate.substring(8,10));
-		  if(to-from >= 0){ 
-		  List<OrderItems> salesReport=  orderItem.salesReport(fromDate,toDate);  
-		%> --%>
 		
 	 <div>
 		<c:set var="totalAmt" value="0"/> 
@@ -207,31 +189,12 @@ text-align: center;
 		
 		<h1 class="dateExp">${sessionScope.invalidDate}</h1>
 		</c:if>	 
-		
-		<%-- <%
-			 }else{
-				 try{
-					 throw new DateMismatchException();
-					 
-				 }catch(DateMismatchException e)
-				 {
-					 session.setAttribute("invalidDate",e.getMessage());
-					
-				 }
-			 }
-			 
-		%>
-		<% String invalidDate = (String)session.getAttribute("invalidDate");%>
-		
-		<% if(invalidDate!=null)
-     {%>
-			<h4 class="dateExp"><%=invalidDate%></h4>
-			<%} session.removeAttribute("invalidDate");%> --%>	
+			
  
 	</div>
 </body>
 <script>
-today();
+	today();
 	function today(){
   
 		var currentTime = new Date() 
@@ -242,8 +205,6 @@ today();
 		console.log(date)
 		document.getElementById("maxDate").setAttribute("max",date);
 		document.getElementById("startDate").setAttribute("max",date);
-
-
 }
 
 </script>

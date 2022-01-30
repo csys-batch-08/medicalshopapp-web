@@ -1,9 +1,4 @@
-<%@page import="java.time.format.DateTimeFormatter"%>
-<%@page import="java.time.LocalDate"%>
 <%@page import="javax.swing.plaf.metal.MetalBorders.Flush3DBorder"%>
-<%@page import="java.util.List"%>
-<%@page import="com.medHub.model.*"%>
-<%@page import="com.medHub.dao.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -244,29 +239,17 @@ visibility: hidden;
 
 <body>
 
-
-	<%
-	/* OrderItemsDaoImpl myOrder= new OrderItemsDaoImpl(); */
-	/* 	List<OrderItems> myOrderList = myOrder.ViewMyOrders(currentUser);*/
-	/* User currentUser = (User)session.getAttribute("user");
-	OrderDaoImpl currentCancelOrder = new OrderDaoImpl();
-	OrderItemsDaoImpl orderItem = new OrderItemsDaoImpl();
-	ProductDaoImpl productDao = new ProductDaoImpl();
-	UserDaoImpl userDao = new UserDaoImpl(); */
-/* 	LocalDate date =  orderItem.getCurrentDate().toLocaleString();
-	Date localDepartureDate = java.sql.Date.valueOf(date); */
-	%>
 	<div id="container">
 
 		<div class="nav" class="container-fluid p-0">
 
 			<nav class="list">
 				<ul>
-					<li><a href="Index.jsp">SignOut</a></li>
+					<li><a href="index.jsp">SignOut</a></li>
 					<li><a href="showCartServlet">Cart</a></li>
 					<li><a href="showUserProfile">MyProfile</a></li>
 					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
-					<li><a href="AboutUs.jsp">About-Us</a></li>
+					<li><a href="aboutUs.jsp">About-Us</a></li>
 					<li><a href="userHomeServlet">Home</a></li>
 					
 				</ul>
@@ -274,53 +257,13 @@ visibility: hidden;
 					<img
 						src="https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/healthcare.png"
 						alt="logo">
+				</div>		
 			</nav>
 		</div>
-		<!-- slideshow -->
-
-<%-- 		<h2 id="userName">welcome <%=currentUser.getName()%></h2>
- --%>		</div>
-
-		<%-- <% 
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		int orderId=Integer.parseInt(request.getParameter("orderId"));
-		OrderDaoImpl orderDao=new OrderDaoImpl();	
-		boolean deleteStatus=currentCancelOrder.deleteProduct(orderId);
-		
-		double totalAmt= Double.parseDouble(request.getParameter("totalPrice"));
-		double returnAmt = Math.round(totalAmt-(totalAmt*10/100));
-		double availableWallet= currentUser.getWallet()+returnAmt;
-		int quanity = Integer.parseInt(request.getParameter("quantity"));
-		int points = Integer.parseInt(request.getParameter("points"));
-		int productId = Integer.parseInt(request.getParameter("productId"));
-		userDao.updateWalletMoney(availableWallet, currentUser);
-		currentUser.setWallet(availableWallet);
-		int availablePoints = currentUser.getPoints()-points;
-		userDao.updateUserPoints(availablePoints, currentUser);
-		currentUser.setPoints(availablePoints);
-		Product cancelledProduct;
-		if(productId>0)
-		{
-			 cancelledProduct = productDao.findProductByProductId(productId);
-			 int updatedQty = cancelledProduct.getQuantity()+quanity;
-			cancelledProduct.setQuantity(updatedQty);
-			productDao.updateProductQuantity(cancelledProduct, updatedQty);
-		}
-		%>
-		
-		
-		<%
-		if(deleteStatus)
-		{%>
-			<script>
-			alert("Ordered Cancelled Sucessfully");
-			</script>
-			response.sendRedirect("MyOrders.jsp");
-			
-		<% }%> --%>					
+						
 	
-		<jsp:useBean id="orderItem" class="com.medHub.dao.OrderItemsDaoImpl"/>
-		 <jsp:useBean id="orderDao" class="com.medHub.dao.OrderDaoImpl"/>
+		<jsp:useBean id="orderItem" class="com.medhub.dao.OrderItemsDaoImpl"/>
+		 <jsp:useBean id="orderDao" class="com.medhub.dao.OrderDaoImpl"/>
 			<c:forEach items="${myOrders}" var="myAllOrders" >
 			
 		
@@ -342,10 +285,7 @@ visibility: hidden;
 						Order Date :
 						<fmt:formatDate pattern="dd/MM/yyyy" value="${orderDate}"/>
 						</h3> 
-						
-					
-						
-					<h3> 
+				<h3> 
 					Description :
 					${myAllOrders.getProduct().getDescription()}
 					</h3>
@@ -378,7 +318,6 @@ visibility: hidden;
 						
 				</div>
 				<c:if test="${orderItem.cancelDate(myAllOrders.getOrderdate(),myAllOrders.getOrderModel().getOrderId())and orderDao.checkStatus(myAllOrders.getOrderModel().getOrderId())}">
-					<!-- <h3>Ordered Cancelled</h3> -->
 				<div id="btn">
 					<button>
 						<a id="cancel" onclick="check()"  href="cancelOrderServlet?orderId=${myAllOrders.getOrderModel().getOrderId()}&quantity=${myAllOrders.getQuantity()}

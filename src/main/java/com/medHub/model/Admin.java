@@ -1,8 +1,9 @@
-package com.medHub.model;
+package com.medhub.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Admin {
+public class Admin implements Serializable{
 	
 	private int adminId;
 	private String adminName;

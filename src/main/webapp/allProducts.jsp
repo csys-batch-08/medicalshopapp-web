@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
-<%@page import="com.medHub.model.Product"%>
-<%@page import="com.medHub.dao.ProductDaoImpl"%>
+<%@page import="com.medhub.model.Product"%>
+<%@page import="com.medhub.dao.ProductDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>

@@ -1,10 +1,11 @@
-package com.medHub.model;
+package com.medhub.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
-public class OrderItems extends Order {
+public class OrderItems extends Order implements Serializable{
 
 	private int itemId;
 	private User user;

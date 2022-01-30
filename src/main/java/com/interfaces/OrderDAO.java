@@ -2,8 +2,8 @@ package com.interfaces;
 
 import java.sql.SQLException;
 
-import com.medHub.model.Order;
-import com.medHub.model.User;
+import com.medhub.model.Order;
+import com.medhub.model.User;
 
 public interface OrderDAO {
 

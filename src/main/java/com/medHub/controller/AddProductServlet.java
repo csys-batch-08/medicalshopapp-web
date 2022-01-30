@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.exceptions.ProductExistsException;
-import com.medHub.dao.ProductDaoImpl;
-import com.medHub.model.Product;
+import com.medhub.dao.ProductDaoImpl;
+import com.medhub.model.Product;
 
 @WebServlet("/AddProductController")
 public class AddProductServlet extends HttpServlet {
@@ -21,7 +21,8 @@ public class AddProductServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
 		HttpSession session = req.getSession();
@@ -46,7 +47,7 @@ public class AddProductServlet extends HttpServlet {
 				PrintWriter out = res.getWriter();
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('New Product Added SucessFully');");
-				out.println("location='AddProduct.jsp';");
+				out.println("location='addProduct.jsp';");
 				out.println("</script>");
 			} else {
 				throw new ProductExistsException();
@@ -58,7 +59,7 @@ public class AddProductServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.getMessage();
 			session.setAttribute("productExists", e.getMessage());
-			res.sendRedirect("AddProduct.jsp");
+			res.sendRedirect("addProduct.jsp");
 
 		}
 	}

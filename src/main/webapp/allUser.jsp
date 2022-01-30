@@ -1,5 +1,3 @@
-<%@page import="com.medHub.model.*"%>
-<%@page import="com.medHub.dao.*"%>
 <%@page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -90,11 +88,11 @@ table {
 	<div id="container" >
 		<div id="navigation">
 			<ul>
-				<li><a href="AllUser.jsp">All Users</a></li>
+				<li><a href="allUser.jsp">All Users</a></li>
 				<li><a href="adminAllProducts">All Products</a></li>
-				<li><a href="AddProduct.jsp">Add Products</a></li>
-				<li><a href="SalesReports.jsp">Sales Reports</a></li>
-				<li id="logout"><a href="Index.jsp">Logout</a></li>
+				<li><a href="addProduct.jsp">Add Products</a></li>
+				<li><a href="salesReports.jsp">Sales Reports</a></li>
+				<li id="logout"><a href="index.jsp">Logout</a></li>
 		</div>
 		</ul>
 	</div>

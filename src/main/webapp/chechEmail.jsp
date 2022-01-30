@@ -37,8 +37,6 @@ catch(Exception e)
 	System.out.println("chechking"+e);
 
 }
- 
-
 %>
 
 

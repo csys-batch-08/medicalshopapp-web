@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 
@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.exceptions.DateMismatchException;
-import com.medHub.dao.OrderDaoImpl;
-import com.medHub.dao.OrderItemsDaoImpl;
-import com.medHub.model.*;
+import com.medhub.dao.OrderDaoImpl;
+import com.medhub.dao.OrderItemsDaoImpl;
+import com.medhub.model.*;
 
 @WebServlet("/filterOrder")
 public class FilterOrderServlet extends HttpServlet {
@@ -46,13 +46,12 @@ public class FilterOrderServlet extends HttpServlet {
 			  OrderItemsDaoImpl orderItem = new OrderItemsDaoImpl();
 			  int from= Integer.parseInt(fromDate.substring(8,10));
 			  int to= Integer.parseInt(toDate.substring(8,10));
-			  System.out.println(to-from);
 			  if(to-from >= 0){ 
 			  List<OrderItems> salesReport =  orderItem.salesReport(fromDate,toDate);
 			  req.setAttribute("salesReport", salesReport);
 			  req.setAttribute("totalAmt", totalAmt);
 			  session.setAttribute("invalidDate",null);
-			  RequestDispatcher rd = req.getRequestDispatcher("SalesReports2.jsp");
+			  RequestDispatcher rd = req.getRequestDispatcher("salesReports2.jsp");
 			  rd.forward(req, res);
 			  }else{
 					 try{
@@ -61,7 +60,7 @@ public class FilterOrderServlet extends HttpServlet {
 					 }catch(DateMismatchException e)
 					 {
 						 session.setAttribute("invalidDate",e.getMessage());
-						 RequestDispatcher rd = req.getRequestDispatcher("SalesReports2.jsp");
+						 RequestDispatcher rd = req.getRequestDispatcher("salesReports2.jsp");
 						 rd.forward(req, res);
 						
 					 }

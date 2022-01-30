@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link rel = "icon" type = "" href = "Assets/medhublogo.png">
 <script>
     history.forward();
 </script>
-<title>Registeration</title>
+<title>Registration</title>
 <style>
 * {
 	margin: 0;
@@ -283,17 +283,15 @@ color: red;
 <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 
 	<div id="container">
-		<!-- <div class="header">
-        </div> -->
+	
 
 		<!-- Navigation Bar -->
 		<div class="nav">
 
 			<nav class="list">
 				<ul>
-					<!-- <li> <a>SignOut</a></li> -->
-					<li><a href="Registration.jsp"  id="register">SignUp</a></li>
-					<li><a href="Index.jsp"  id="login">Login</a></li>
+					<li><a href="registration.jsp"  id="register">SignUp</a></li>
+					<li><a href="index.jsp"  id="login">Login</a></li>
 				</ul>
 			</nav>
 			
@@ -313,7 +311,7 @@ color: red;
 		<div id="registerScreen">
 			<div id="registerScreenContent">
 				<form action="RegisterController" class="registerform" method="post">
-					<label for="fullName" class="reglab"">FullName*</label><br>
+					<label for="fullName" class="reglab">FullName*</label><br>
 					<br> <input type="text" onkeypress="hideMsg()" name="regfullName" id="fullname"
 						placeholder="Enter fullname" required ><br>
 						
@@ -327,15 +325,12 @@ color: red;
 						title="MObile Number Must Have 10 Digits" required min="3" max="10"><br>
 						<label id="numberExists"></label>
 					<br> <label for="password" class="reglab">Password*</label><br>
-					<br> <input type="password" input="password"
+					<br> <input type="password" 
 						placeholder="Password" name="regPassword" value="" required
 						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
 						title="Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character"><br>
 				<br>
 					<br>
-					<!-- <label for="address" class="reglab">Address</label></br><br> -->
-					<!-- <textarea name="address" id="address" cols="30" rows="5"
-                        style="max-width: 300px;max-height: 100px;border-radius: 3px;outline: none;"></textarea><br><br> -->
 					<button id="regbtn" type="submit">Register</button><br>
 					<% String notallow=(String)session.getAttribute("notallow");
             if(notallow!=null) {%>
@@ -348,8 +343,9 @@ color: red;
             <h4 id="userExists"><%=session.getAttribute("error") %></h4>
            
             <%} session.removeAttribute("error"); %>
+            </form>
 			</div>
-			</form>
+			
 		</div>
 
 		<div class="footer"></div>

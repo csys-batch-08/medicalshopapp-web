@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,15 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.medHub.dao.*;
-import com.medHub.model.*;
+import com.medhub.dao.*;
+import com.medhub.model.*;
 
 @WebServlet("/showCartServlet")
 public class ShowCartServlet extends HttpServlet{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -30,7 +27,7 @@ public class ShowCartServlet extends HttpServlet{
 		CartDaoImpl cartDao = new CartDaoImpl();
 		List<Cart> cartItems = cartDao.viewCart(currentUser);
 		req.setAttribute("cartList", cartItems);
-		RequestDispatcher rd = req.getRequestDispatcher("Cart.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("cart.jsp");
 		rd.forward(req, resp);
 	}
 

@@ -1,8 +1,9 @@
-package com.medHub.model;
+package com.medhub.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Cart{
+public class Cart implements Serializable{
 	private Product product;
 	private User user;
 	private double unitPrice;

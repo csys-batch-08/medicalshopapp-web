@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="com.medHub.model.Product"%>
-<%@page import="com.medHub.dao.ProductDaoImpl"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -159,14 +157,13 @@ background-color: green;
 				<img
 					src="https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/healthcare.png"
 					alt="logo">
+			</div>		
 		</nav>
-				<p>Payment Sucessfully Completed </p>
+	</div>	
+				<p>Payment Successfully Completed </p>
 				<a href="UserHome.jsp">BAck To Home</a>
 				
 
 </body>
-<script>
-let tot = localStorage.getItem("totbuy");
-console.log(tot + "vbnm,");
-</script>
+
 </html>

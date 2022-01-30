@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import com.exceptions.UserExistsException;
 import com.exceptions.UserNotFoundException;
-import com.medHub.dao.UserDaoImpl;
-import com.medHub.model.*;
+import com.medhub.dao.UserDaoImpl;
+import com.medhub.model.*;
 
 
 
@@ -59,7 +59,7 @@ public class RegisterServlet extends HttpServlet {
 			user = new User(fullName,mobile,mail,password);
 			UserDaoImpl userDao = new UserDaoImpl();
 			userDao.insert(user);
-			res.sendRedirect("RegisterWelcomeMessage.jsp");
+			res.sendRedirect("registerWelcomeMessage.jsp");
 			}
 		}
 	
@@ -72,7 +72,7 @@ public class RegisterServlet extends HttpServlet {
 		}catch(UserExistsException e) {
 			session.setAttribute("error", e.getMessage());
 			 
-			res.sendRedirect("Registration.jsp");
+			res.sendRedirect("registration.jsp");
 		}
 	}
 

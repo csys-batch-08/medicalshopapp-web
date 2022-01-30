@@ -139,8 +139,8 @@ outline:none;
 			<ul>
 				<li><a href="allUsers">All Users</a></li>
 				<li><a href="adminAllProducts">AllProducts</a></li>
-				<li><a href="AddProduct.jsp">Add Products</a></li>
-				<li><a href="SalesReports.jsp">Sales Reports</a></li>
+				<li><a href="addProduct.jsp">Add Products</a></li>
+				<li><a href="salesReports.jsp">Sales Reports</a></li>
 				<li id="logout"><a class="navbar-brand" href="Index.jsp">Logout</a></li>
 			</ul>	
 		</div>

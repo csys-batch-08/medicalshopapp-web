@@ -2,7 +2,7 @@ package com.interfaces;
 
 import java.sql.SQLException;
 
-import com.medHub.model.Admin;
+import com.medhub.model.Admin;
 
 public interface AdminDAO {
 	

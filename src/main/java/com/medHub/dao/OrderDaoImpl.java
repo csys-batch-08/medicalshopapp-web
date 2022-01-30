@@ -1,4 +1,4 @@
-package com.medHub.dao;
+package com.medhub.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.interfaces.OrderDAO;
-import com.medHub.model.Order;
-import com.medHub.model.Product;
-import com.medHub.model.User;
-import com.medHub.util.ConnectionUtil;
+import com.medhub.model.Order;
+import com.medhub.model.Product;
+import com.medhub.model.User;
+import com.medhub.util.ConnectionUtil;
 
 public class OrderDaoImpl implements OrderDAO{
 	

@@ -1,4 +1,4 @@
-package com.medHub.controller;
+package com.medhub.controller;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.medHub.model.*;
+import com.medhub.model.*;
 
 @WebServlet("/showUserProfile")
 public class ShowUserProfileServlet extends HttpServlet{
@@ -25,7 +25,7 @@ public class ShowUserProfileServlet extends HttpServlet{
 		HttpSession session = req.getSession();
 		User currentUser = (User)session.getAttribute("user");
 		req.setAttribute("currentUser", currentUser);
-		RequestDispatcher rd = req.getRequestDispatcher("UserProfile.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("userProfile.jsp");
 		rd.forward(req, resp);
 		
 	}

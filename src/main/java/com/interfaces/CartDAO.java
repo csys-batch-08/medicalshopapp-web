@@ -2,8 +2,8 @@ package com.interfaces;
 
 import java.util.List;
 
-import com.medHub.model.Cart;
-import com.medHub.model.User;
+import com.medhub.model.Cart;
+import com.medhub.model.User;
 
 public interface CartDAO {
 
