@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,56 +13,54 @@ import com.medhub.model.User;
 import com.medhub.util.ConnectionUtil;
 
 public class CartDaoImpl {
-
-	public void insertProduct(Cart cart) {
+	
+	
+						//insert product to cart
+	public void insertProduct(Cart cart) throws SQLException {
 		
-		Connection con = ConnectionUtil.getDBconnect();
+		Connection con = null;
+		PreparedStatement pst=null;
 		try {
 			String insertProduct = "insert into cart (product_id,user_id,unit_price,qty,total_price) values (?,?,?,?,?)";
-			PreparedStatement pst;
-			try {
+				con=ConnectionUtil.getDBconnect();
 				pst = con.prepareStatement(insertProduct);
 				pst.setInt(1, cart.getProduct().getProductId());
 				pst.setInt(2, cart.getUser().getUserId());
 				pst.setDouble(3, cart.getProduct().getUnitPrice());
 				pst.setInt(4, cart.getQty());
 				pst.setDouble(5, cart.getTotalPrice());
-				int result = pst.executeUpdate();
-				} catch (SQLException e1) {
-				
-				e1.printStackTrace();
-				}
+				pst.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
+			}finally {
+				if(pst!=null) {
+					pst.close();     	
+				}
+				if(con !=null) {
+					con.close();
+				}
+					
 				}	
 		
 		}
 
 	
-	
-	public List<Cart> viewCart(User currentUser) {
+						//list of cart items
+	public List<Cart> viewCart(User currentUser) throws SQLException {
 
-		Connection con = ConnectionUtil.getDBconnect();
-		String query = "select qty,unit_price,total_price,product_id  from cart where user_id= ? ";
-		PreparedStatement statement =null;
+		Connection con =null;
+		PreparedStatement pst =null;
+		ResultSet rs = null;
+		List<Cart> allCartItems = new ArrayList<Cart>();
+		ProductDaoImpl proDao = new ProductDaoImpl();
 		try 
 		{
-		statement = con.prepareStatement(query);
-		statement.setInt(1, currentUser.getUserId()); 
-		}
+		String query = "select qty,unit_price,total_price,product_id  from cart where user_id= ? ";
+		con=ConnectionUtil.getDBconnect();
+		pst = con.prepareStatement(query);
+		pst.setInt(1, currentUser.getUserId()); 
+		rs = pst.executeQuery();
 		
-		catch (SQLException e1) 
-		{
-		e1.printStackTrace();
-		}
-		
-		List<Cart> allCartItems = new ArrayList<Cart>();
-		
-		ResultSet rs = null;
-		try
-		{
-		rs = statement.executeQuery();
-		ProductDaoImpl proDao = new ProductDaoImpl();
 		
 		while (rs.next()) 
 		{
@@ -71,68 +68,150 @@ public class CartDaoImpl {
 			Cart cart = new Cart(product, currentUser, rs.getInt(1), rs.getDouble(2), rs.getDouble(3));
 			allCartItems.add(cart);
 		}
-		
-		} catch (SQLException e) {
-			
-			e.getMessage();
+		return allCartItems;
 		}
-
+		catch (SQLException e1) 
+		{
+		e1.printStackTrace();
+		}finally {
+		if(pst!=null) {
+			pst.close();     	
+		}
+		if(con !=null) {
+			con.close();
+		}
+			
+		}
+		
 		return allCartItems;
 	}
 	
 	
 
+							//get product quantity
 	public int productexist(Cart cart) throws SQLException {
-		Connection con = ConnectionUtil.getDBconnect();
+		Connection con = null;
+		PreparedStatement pst = null;
+		
+		try {
 		String query = "select qty from cart where product_id in ? and user_id in ?";
-		PreparedStatement statement = con.prepareStatement(query);
-		statement.setInt(1, cart.getProduct().getProductId());
-		statement.setInt(2, cart.getUser().getUserId());
-		ResultSet rs = statement.executeQuery();
+		con=ConnectionUtil.getDBconnect();
+		pst = con.prepareStatement(query);
+		pst.setInt(1, cart.getProduct().getProductId());
+		pst.setInt(2, cart.getUser().getUserId());
+		ResultSet rs = pst.executeQuery();
 		if (rs.next()) {
 			return rs.getInt(1);
+		}
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}finally {
+			if(pst!=null) {
+				pst.close();     	
+				}
+			if(con !=null) {
+				con.close();
+				}
+				
 		}
 		return -1;
 	}
 
 	
+						//get product price
 	public int productexist1(Cart cart) throws SQLException {
-		Connection con = ConnectionUtil.getDBconnect();
+		
+		
+		Connection con = null;
+		PreparedStatement pst =null;
+		try {
 		String query = "select total_price from cart where product_id in ? and user_id in ?";
-		PreparedStatement statement = con.prepareStatement(query);
-		statement.setInt(1, cart.getProduct().getProductId());
-		statement.setInt(2, cart.getUser().getUserId());
-		ResultSet rs = statement.executeQuery();
+		con=ConnectionUtil.getDBconnect();
+		pst = con.prepareStatement(query);
+		pst.setInt(1, cart.getProduct().getProductId());
+		pst.setInt(2, cart.getUser().getUserId());
+		ResultSet rs = pst.executeQuery();
 		if (rs.next()) {
 			return rs.getInt(1);
 		}
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}finally {
+			if(pst!=null) {
+				pst.close();     	
+				}
+			if(con !=null) {
+				con.close();
+				}
+		}
+		
 		return -1;
 	}
 
-	// update quantity:
-
+	
+							// update quantity:
 	public int updatequantity(Cart cart) throws SQLException {
-		Connection con = ConnectionUtil.getDBconnect();
-		String query = "update cart set qty = ?,total_price = ? where product_id in ? and user_id in ?";
-		PreparedStatement statement = con.prepareStatement(query);
-		statement.setInt(1, cart.getQty());
-		statement.setDouble(2, cart.getTotalPrice());
-		statement.setInt(3, cart.getProduct().getProductId());
-		statement.setInt(4, cart.getUser().getUserId());
-		int res = statement.executeUpdate();
-		statement.executeUpdate("commit");
+		Connection con =null; 
+		PreparedStatement pst=null;
+		int res = 0;
+		try {
+		String query = "update cart set qty = ?,total_price = ? where product_id = ? and user_id = ?";
+		con=ConnectionUtil.getDBconnect();
+		pst = con.prepareStatement(query);
+		pst.setInt(1, cart.getQty());
+		pst.setDouble(2, cart.getTotalPrice());
+		pst.setInt(3, cart.getProduct().getProductId());
+		pst.setInt(4, cart.getUser().getUserId());
+		res = pst.executeUpdate();
+		pst.executeUpdate("commit");
+		return res;
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}finally {
+			if(pst!=null) {
+				pst.close();     	
+				}
+			if(con !=null) {
+				con.close();
+				}
+				
+		}
+		
 		return res;
 	}
 
+	
+						//Delete items from cart
 	public int removecartItems(Cart cart) throws SQLException {
-		Connection con = ConnectionUtil.getDBconnect();
-		String query = "delete from cart where user_id=? and product_id=?";
-		PreparedStatement statement = con.prepareStatement(query);
-		statement.setInt(1, cart.getUser().getUserId());
-		statement.setInt(2, cart.getProduct().getProductId());
-		int res = statement.executeUpdate();
-		statement.executeUpdate("commit");
-		return res;
-	}
+		Connection con = null;
+		PreparedStatement pst=null;
+		int res=0;
+		try {
+				String query = "delete from cart where user_id=? and product_id=?";
+				con=ConnectionUtil.getDBconnect();
+				pst = con.prepareStatement(query);
+				pst.setInt(1, cart.getUser().getUserId());
+				pst.setInt(2, cart.getProduct().getProductId());
+				res = pst.executeUpdate();
+				pst.executeUpdate("commit");
+				return res;
+				}catch(SQLException e)
+				{
+					e.printStackTrace();
+				}finally 
+				{
+					if(pst!=null) {
+						pst.close();     	
+					}
+					if(con !=null) {
+						con.close();
+					}
+				}
+				
+				return res;
+			}
 	
 }

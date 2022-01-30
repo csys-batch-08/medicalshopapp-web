@@ -33,7 +33,6 @@ public class CartServlet extends HttpServlet{
 		Product currentproduct = (Product) session.getAttribute("currentproduct");
 		CartDaoImpl cartDao = new CartDaoImpl();
 		Cart cart = new Cart();
-		
 		cart.setUser(currentUser);
 		cart.setProduct(currentproduct);
 		cart.setQty(quantity);
@@ -53,7 +52,12 @@ public class CartServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		List<Cart> cartItems = cartDao.viewCart(currentUser);
+		List<Cart> cartItems = null;
+		try {
+			cartItems = cartDao.viewCart(currentUser);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		req.setAttribute("cartList", cartItems);
 		RequestDispatcher rd = req.getRequestDispatcher("cart.jsp");
 		rd.forward(req, res);

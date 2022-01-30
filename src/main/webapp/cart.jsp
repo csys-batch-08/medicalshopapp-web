@@ -271,7 +271,7 @@ color: red;
 					<li><a href="showCartServlet">Cart</a></li>
 					<li><a href="showUserProfile">MyProfile</a></li>
 					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
-					<li><a href="aboutus.jsp">About-Us</a></li>
+					<li><a href="aboutUs.jsp">About-Us</a></li>
 					<li><a href="userHomeServlet">Home</a></li>
 					
 				</ul>

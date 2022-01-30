@@ -27,7 +27,8 @@
 
 body {
 	background-image: url(Assets/homepage_img.jpg);
-	background-size: cover;
+	background-size:cover;
+	background-repeat: no-repeat;
 	
 }
 #navigation{
@@ -192,6 +193,7 @@ text-align: center;
 			
  
 	</div>
+	
 </body>
 <script>
 	today();

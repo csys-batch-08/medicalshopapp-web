@@ -14,13 +14,15 @@ import com.medhub.util.ConnectionUtil;
 
 public class OrderDaoImpl implements OrderDAO{
 	
-
-	public  boolean  orders(Order order,User currentUser) {
+						//make an order
+	public  boolean  orders(Order order,User currentUser) throws SQLException {
 		
-		String orderQuery="insert into orders (user_id,price) values(?,?)";
-		Connection con = ConnectionUtil.getDBconnect();
+		Connection con = null;
+		PreparedStatement pst=null;
 		try {
-			PreparedStatement pst = con.prepareStatement(orderQuery);
+			String orderQuery="insert into orders (user_id,price) values(?,?)";
+			con=ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(orderQuery);
 			pst.setInt(1,currentUser.getUserId() );
 			pst.setDouble(2, order.getPrice());
 			pst.executeUpdate();
@@ -30,21 +32,33 @@ public class OrderDaoImpl implements OrderDAO{
 			{
 				return true;
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.getMessage();
+			} catch (SQLException e) {
+			  e.getMessage();
+			}finally {
+				if(pst!=null) {
+					pst.close();     	
+					}
+				if(con !=null) {
+					con.close();
+					}
+					
 			}
-		return false;
+			return false;
 	}
 	
-	public int  getByOrderId()
+	
+					//to get product object by productId
+	public int  getByOrderId() throws SQLException 
 	{
-		String qwery="select max(order_id) from orders";
-		Connection con = ConnectionUtil.getDBconnect();
+		
+		Connection con = null;
 		Order order= null;
 		int orderId=0;
+		Statement stmt =null;
 		try {
-			Statement stmt = con.createStatement();
+			String qwery="select max(order_id) from orders";
+			con=ConnectionUtil.getDBconnect();
+			 stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(qwery);
 			
 			if(rs.next())
@@ -53,19 +67,32 @@ public class OrderDaoImpl implements OrderDAO{
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.getMessage();
+		}finally {
+			if(stmt!=null) {
+				stmt.close();     	
+				}
+			if(con !=null) {
+				con.close();
+				}
+				
 		}
 		return orderId;
 		
 	}
 
+	
+							//cancel an order
 	public boolean deleteProduct(int orderId) throws SQLException
 	{
+		
 		boolean flag=false;
+		Connection con = null;
+		PreparedStatement pst=null;
+		try {
 		String qwery="update orders set order_status= ? where order_id =?";
-		Connection con = ConnectionUtil.getDBconnect();
-		PreparedStatement pst=con.prepareStatement(qwery);
+		con = ConnectionUtil.getDBconnect();
+		pst=con.prepareStatement(qwery);
 		pst.setString(1, "cancelled");
 		pst.setInt(2, orderId);
 		int res=pst.executeUpdate();
@@ -76,35 +103,53 @@ public class OrderDaoImpl implements OrderDAO{
 			flag=true;
 			return flag;
 		}
-		con.close();
-		pst.close();
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}finally {
+			if(pst!=null) {
+				pst.close();     	
+				}
+			if(con !=null) {
+				con.close();
+				}
+				
+		}
 		return flag;
 		
 	}
 
-	public boolean checkStatus(int orderId)
+						//to check order is cancelled
+	public boolean checkStatus(int orderId) throws SQLException
 	{	
-		try {
 		String status;
+		Connection con =null;
+		PreparedStatement pst=null;
+		try {
 		String qwery="select order_status from orders where order_id= ?";
-		Connection con = ConnectionUtil.getDBconnect();
-		PreparedStatement pst=con.prepareStatement(qwery);
+		con = ConnectionUtil.getDBconnect();
+		pst=con.prepareStatement(qwery);
 		pst.setInt(1, orderId);
 		ResultSet rs = pst.executeQuery();
 		if(rs.next())
 		{
-			
-		status=rs.getString(1).toLowerCase();
-		if(!status.equals("cancelled"))
-		{
-			return true;
-
-		}
-
+			status=rs.getString(1).toLowerCase();
+			if(!status.equals("cancelled"))
+			{
+				return true;
+			}
 		}
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
+		}finally {
+			if(pst!=null) {
+				pst.close();     	
+				}
+			if(con !=null) {
+				con.close();
+				}
 		}
 		return false;
 	}

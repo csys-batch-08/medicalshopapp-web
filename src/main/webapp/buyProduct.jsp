@@ -128,13 +128,13 @@ border-radius: 5px;
 }
 
 #qty input {
-	width: 40px;
+	width: 60px;
 	position: relative;
 }
 
 #qty #qtyBox {
 	position: relative;
-	left:30px;
+	left:13px;
 }
 
 .buyProduct td p{
@@ -390,7 +390,7 @@ session.setAttribute("currentproduct", currentProduct);
 						<div id="qtyBox">	
 						<form action="prod1" onsubmit="return chechQuantity()">
 							<label for="">Quantity</label> 
-							<input type="number" id="quantity" name="quantity" min="1"  max="${currentProduct.getQuantity()}" onkeyup="calculateamt()" onclick="calculateamt()">
+							<input type="number" id="quantity" title="Please Check The Available Quantity" name="quantity" min="1"  max="${currentProduct.getQuantity()}" onkeyup="calculateamt()" onclick="calculateamt()" >
 						</div>
 						<h3 id="TotalPriceLabel">Total price : Rs </h3>
 						<div id="totalPriceDiv">

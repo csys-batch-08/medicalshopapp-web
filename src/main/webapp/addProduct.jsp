@@ -15,6 +15,7 @@
 
 <title>Add Product</title>
 <style>
+
 * {
 	margin: 0;
 	padding: 0;

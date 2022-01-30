@@ -67,8 +67,17 @@ public class BuyProductServlet extends HttpServlet {
 						order.getUser().setWallet(order.getUser().getWallet() - price);
 						user.updateUserPoints(order);
 						user.updateWalletMoney(order);
-						orderDao.orders(order, currentUser);
-						int orderId = orderDao.getByOrderId();
+						try {
+							orderDao.orders(order, currentUser);
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+						int orderId=0;
+						try {
+							orderId = orderDao.getByOrderId();
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
 						order.setOrderId(orderId);
 						orderItems.setOrderModel(order);
 						orderItems.setProduct(currentproduct);

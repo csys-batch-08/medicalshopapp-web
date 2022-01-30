@@ -18,15 +18,17 @@ import com.medhub.model.User;
 import com.medhub.util.ConnectionUtil;
 
 public class OrderItemsDaoImpl implements OrderItemDAO {
-//	currentUser,buyProducts,buyProductQuantity, totalPrice
-	public int insertOrders(OrderItems oi) {
-		// TODO Auto-generated method stub
-		String orderQuery = "insert into order_items(user_id,order_id,product_id,quantity,unit_price,total_price) values(?,?,?,?,?,?)";
-		Connection con = ConnectionUtil.getDBconnect();
-
+	
+	
+								//	currentUser,buyProducts,buyProductQuantity, totalPrice
+	public int insertOrders(OrderItems oi){
+		Connection con = null;
+		PreparedStatement pst=null;
 		int res = 0;
 		try {
-			PreparedStatement pst = con.prepareStatement(orderQuery);
+			String orderQuery = "insert into order_items(user_id,order_id,product_id,quantity,unit_price,total_price) values(?,?,?,?,?,?)";
+			con=ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(orderQuery);
 			pst.setInt(1, oi.getUser().getUserId());
 			pst.setInt(2, oi.getOrderId());
 			pst.setInt(3, oi.getProduct().getProductId());
@@ -36,28 +38,44 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 			res = pst.executeUpdate();
 			pst.executeUpdate("commit");
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(pst!=null) {
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}     	
+				}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				}
+				
 		}
 		return res;
 
 	}
 
 	public List<OrderItems> ViewMyOrders(User currentUser) {
-		// TODO Auto-generated method stub
+		
 		List<OrderItems> myOrderList = new ArrayList<OrderItems>();
-		Order order = new Order();
-		Product product = new Product();
+		Connection con = null;
+		PreparedStatement pst = null;
 		OrderItems orderItems;
-		String qwery = "select p.product_name,p.points_per_unit,oi.quantity,oi.unit_price,oi.total_price,oi.order_id,p.product_img,p.description,p.offer,p.product_id,o.order_date,o.order_status\r\n"
-				+ "from order_items oi \r\n" + "inner join orders o on oi.order_id=o.order_id\r\n"
-				+ "inner join products p on oi.product_id=p.product_id where oi.user_id = ? order by oi.order_id desc";
-		Connection con = ConnectionUtil.getDBconnect();
 		try {
-			PreparedStatement ps = con.prepareStatement(qwery);
-			ps.setInt(1, currentUser.getUserId());
-			ResultSet rs = ps.executeQuery();
+			
+			String qwery = "select p.product_name,p.points_per_unit,oi.quantity,oi.unit_price,oi.total_price,oi.order_id,p.product_img,p.description,p.offer,p.product_id,o.order_date,o.order_status\r\n"
+					+ "from order_items oi \r\n" + "inner join orders o on oi.order_id=o.order_id\r\n"
+					+ "inner join products p on oi.product_id=p.product_id where oi.user_id = ? order by oi.order_id desc";
+			con=ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(qwery);
+			pst.setInt(1, currentUser.getUserId());
+			ResultSet rs = pst.executeQuery();
 
 			while (rs.next())
 
@@ -68,22 +86,41 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 				myOrderList.add(orderItems);
 			}
 			return myOrderList;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return myOrderList;
-
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				if(pst!=null) {
+					try {
+						pst.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}     	
+					}
+				if(con !=null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					}
+					
+			}
+			return myOrderList;
+	
 	}
 
 	public boolean cancelDate(LocalDate date, int orderid) {
-		String query = "select * from orders where order_id=? and ?+1 >= sysdate";
-		Connection con = ConnectionUtil.getDBconnect();
+		Connection con = null;
+		PreparedStatement pst=null;
 		boolean flag = false;
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, orderid);
-			ps.setDate(2, java.sql.Date.valueOf(date));
-			ResultSet rs = ps.executeQuery();
+			
+			String query = "select * from orders where order_id=? and ?+1 >= sysdate";
+			con=ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(query);
+			pst.setInt(1, orderid);
+			pst.setDate(2, java.sql.Date.valueOf(date));
+			ResultSet rs = pst.executeQuery();
 
 			if (rs.next())
 
@@ -93,6 +130,21 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return flag;
 
@@ -104,20 +156,20 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 				OrderItems orderItem;
 				LocalDate startDate = LocalDate.parse(fromDate);
 				LocalDate endDate = LocalDate.parse(toDate);
-				
-				String query = "select trunc(o.order_date),p.product_name,sum(oi.quantity) as quantity,oi.unit_price as price, (sum(oi.quantity)*oi.unit_price) as totalPrice from order_items oi "
-								+ "join orders o on o.order_id = oi.order_id join products p on p.product_id = oi.product_id where trunc(o.order_date) between ? and ? group by(trunc(o.order_date),"
-								+ "p.product_name,oi.unit_price,o.order_status) having o.order_status=?";
-				Connection con = ConnectionUtil.getDBconnect();
+				Connection con = null;
 				boolean flag = false;
-				PreparedStatement ps;
+				PreparedStatement pst=null;
 				ResultSet rs = null;
 				try {
-					 ps = con.prepareStatement(query);
-					 ps.setDate(1, java.sql.Date.valueOf(startDate));
-					 ps.setDate(2, java.sql.Date.valueOf(endDate));
-					 ps.setString(3, "order placed");
-					 rs = ps.executeQuery();
+					String query = "select trunc(o.order_date),p.product_name,sum(oi.quantity) as quantity,oi.unit_price as price, (sum(oi.quantity)*oi.unit_price) as totalPrice from order_items oi "
+							+ "join orders o on o.order_id = oi.order_id join products p on p.product_id = oi.product_id where trunc(o.order_date) between ? and ? group by(trunc(o.order_date),"
+							+ "p.product_name,oi.unit_price,o.order_status) having o.order_status=?";
+					 con=ConnectionUtil.getDBconnect();
+					 pst = con.prepareStatement(query);
+					 pst.setDate(1, java.sql.Date.valueOf(startDate));
+					 pst.setDate(2, java.sql.Date.valueOf(endDate));
+					 pst.setString(3, "order placed");
+					 rs = pst.executeQuery();
 					
 					while(rs.next())
 
@@ -125,13 +177,30 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 					 orderItem = new OrderItems(rs.getDate(1).toLocalDate(),rs.getString(2),rs.getInt(3),rs.getDouble(4),rs.getDouble(5));
 					 salesReport.add(orderItem);
 					}
-						
+					return salesReport;
 					} catch (SQLException e) {
 					e.printStackTrace();
+					}finally {
+						if(pst!=null){
+							try {
+								pst.close();
+							} catch (SQLException e) {
+								e.printStackTrace();
+							}     	
+						}
+						if(con !=null) {
+							try {
+								con.close();
+							} catch (SQLException e) {
+								e.printStackTrace();
+							}
+						}
 					}
+				return salesReport;
 					
-						return salesReport;
-				
-					}
+						
+	}
+	
+	
 
 }

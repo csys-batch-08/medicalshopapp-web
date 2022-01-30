@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,13 +32,13 @@ import com.medhub.model.User;
 public class CartOrderServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 3052953784774654312L;
-
-	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		
 		HttpSession session = req.getSession();
 		UserDaoImpl user = new UserDaoImpl();
 		ProductDaoImpl productDao = new ProductDaoImpl();
-		Product product = new Product();
 		OrderItems orderItems = new OrderItems();
 		Cart cart = new Cart();
 		CartDaoImpl cartdao = new CartDaoImpl();
@@ -47,15 +48,12 @@ public class CartOrderServlet extends HttpServlet {
 
 		User currentUser = (User) session.getAttribute("user");
 
-		int CartproductId = Integer.parseInt(req.getParameter("CartproductId"));
+		int CartProductId = Integer.parseInt(req.getParameter("CartproductId"));
 		int cartQuantity = Integer.parseInt(req.getParameter("cartQuantity"));
 		double unitPrice = Double.parseDouble(req.getParameter("unitPrice"));
 		double totalPrice = Double.parseDouble(req.getParameter("totalPrice"));
-		int cartpoints = Integer.parseInt(req.getParameter("cartpoints"));
-		int CartprodId = Integer.parseInt(req.getParameter("CartproductId"));
-		int removeStatus;
 
-		Product currentProduct = productDao.findProductByProductId(CartproductId);
+		Product currentProduct = productDao.findProductByProductId(CartProductId);
 		cart.setProduct(currentProduct);
 		cart.setUser(currentUser);
 		
@@ -76,10 +74,19 @@ public class CartOrderServlet extends HttpServlet {
 				order.setUser(currentUser);
 				order.getUser().setPoints(currentProduct.getPoints() + currentUser.getPoints());
 				order.getUser().setWallet(currentUser.getWallet() - totalPrice);
-				orderDao.orders(order, currentUser);
+				try {
+					orderDao.orders(order, currentUser);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 				user.updateUserPoints(order);
 				user.updateWalletMoney(order);
-				int orderId=orderDao.getByOrderId();
+				int orderId = 0;
+				try {
+					orderId = orderDao.getByOrderId();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 				orderItems.setProduct(currentProduct);
 				orderItems.setUser(currentUser);
 				orderItems.setOrderId(orderId);
@@ -96,7 +103,7 @@ public class CartOrderServlet extends HttpServlet {
 					out.println("</script>");
 				}
 				try {
-					removeStatus=cartdao.removecartItems(cart);
+					cartdao.removecartItems(cart);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -107,7 +114,15 @@ public class CartOrderServlet extends HttpServlet {
 				}catch(InsuffientMoneyException iF)
 				{
 					session.setAttribute("notEnoughAmt",iF.getMessage());
-					res.sendRedirect("userProfile.jsp");
+					req.setAttribute("currentUser", currentUser);
+					RequestDispatcher rd = req.getRequestDispatcher("showUserProfile");
+					try {
+						rd.forward(req, res);
+					} catch (ServletException e) {
+						e.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		}else {

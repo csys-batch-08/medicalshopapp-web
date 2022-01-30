@@ -7,8 +7,8 @@ import com.medhub.model.User;
 
 public interface OrderDAO {
 
-	public int  getByOrderId();
-	public  boolean  orders(Order order,User currentUser);
+	public int  getByOrderId() throws SQLException;
+	public  boolean  orders(Order order,User currentUser) throws SQLException;
 	public boolean deleteProduct(int orderId) throws SQLException;
-	public boolean checkStatus(int orderId);
+	public boolean checkStatus(int orderId) throws SQLException;
 }
