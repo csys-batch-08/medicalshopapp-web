@@ -3,16 +3,12 @@ package com.medhub.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.eclipse.jdt.internal.compiler.ast.ThrowStatement;
-
 import com.exceptions.AddressNotFoundException;
 import com.exceptions.InsuffientMoneyException;
 import com.medhub.dao.OrderDaoImpl;
@@ -27,21 +23,25 @@ import com.medhub.model.User;
 @WebServlet("/prod1")
 public class BuyProductServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+	private static final long serialVersionUID = -8995920063945379654L;
+	
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException,NumberFormatException {
 		HttpSession session = req.getSession();
 		UserDaoImpl user = new UserDaoImpl();
 		ProductDaoImpl productDao = new ProductDaoImpl();
 		OrderItems orderItems = new OrderItems();
 		User currentUser = (User) session.getAttribute("user");
 		Product currentproduct = (Product) session.getAttribute("currentproduct");
-		int qty = Integer.parseInt(req.getParameter("quantity"));
-		double price = Double.parseDouble(req.getParameter("totalPrice"));
-		int offer = 0;
+		double price = 0;
+		int qty = 0;
+		try {
+		 qty = Integer.parseInt(req.getParameter("quantity"));
+		 price = Double.parseDouble(req.getParameter("totalPrice"));
+		}catch(NumberFormatException n)
+		{
+			n.printStackTrace();
+		}
 		Order order = new Order();
 		OrderDaoImpl orderDao = new OrderDaoImpl();
 		OrderItemsDaoImpl orderItemsDaoImpl = new OrderItemsDaoImpl();
@@ -67,7 +67,7 @@ public class BuyProductServlet extends HttpServlet {
 						order.getUser().setWallet(order.getUser().getWallet() - price);
 						user.updateUserPoints(order);
 						user.updateWalletMoney(order);
-						boolean result=orderDao.orders(order, currentUser);
+						orderDao.orders(order, currentUser);
 						int orderId = orderDao.getByOrderId();
 						order.setOrderId(orderId);
 						orderItems.setOrderModel(order);

@@ -16,10 +16,7 @@ import com.medhub.model.*;
 @WebServlet("/adminAllProducts")
 public class AllProductServlet extends HttpServlet{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8892239316322971294L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +26,14 @@ public class AllProductServlet extends HttpServlet{
 		List<Product> allproduct = product.viewProduts();
 		req.setAttribute("allProducts", allproduct);
 		RequestDispatcher rd = req.getRequestDispatcher("adminAllProducts.jsp?deleteProductId=0");
-		rd.forward(req, resp);
+		 try {
+			 rd.forward(req, resp);
+			 }catch(ServletException se)
+			 {
+				se.printStackTrace(); 
+			 }catch (IOException e) {
+				e.printStackTrace();
+			 }
 		
 	}
 

@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.medhub.dao.ProductDaoImpl;
 import com.medhub.model.Product;
@@ -20,11 +22,12 @@ public class ShowBuyproductServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
+		HttpSession session = req.getSession();
 		int pId=Integer.parseInt(req.getParameter("pid"));
 		ProductDaoImpl productDao = new ProductDaoImpl();
 		Product currentProduct = productDao.findProductByProductId(pId);
-		req.setAttribute("currentproduct", currentProduct);
+		req.setAttribute("currentProduct", currentProduct);
+		session.setAttribute("currentproduct", currentProduct);
 		System.out.println(currentProduct.getProductCategory());
 		System.out.println(currentProduct.getProductName());
 		System.out.println(currentProduct.getDescription());

@@ -14,10 +14,7 @@ import com.medhub.dao.*;
 @WebServlet("/deleteProduct")
 public class DeleteProductServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5037205572770946551L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

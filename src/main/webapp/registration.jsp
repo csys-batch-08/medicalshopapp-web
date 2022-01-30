@@ -10,6 +10,8 @@
 </script>
 <title>Registration</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Asap+Condensed&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -28,6 +30,9 @@
 
 .list li a{
 	padding: -10px;
+	font-family: 'Asap Condensed', sans-serif;
+	font-weight: 800;
+	letter-spacing: 2px;
 }
 
 

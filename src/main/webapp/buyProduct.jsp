@@ -435,7 +435,7 @@ var price=document.getElementById("price");
 
  
  if(discount!=0){
- 	 totalAmt=Math.round(amount * quanty)-(amount * quanty)*dis/100;
+ 	 totalAmt=Math.round((amount * quanty)-(amount * quanty)*dis/100);
  	 console.log(totalAmt);
  	
 	document.getElementById("totalprice").value=totalAmt;

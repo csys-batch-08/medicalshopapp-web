@@ -30,10 +30,7 @@ import com.medhub.model.User;
 
 public class CartOrderServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3052953784774654312L;
 
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		

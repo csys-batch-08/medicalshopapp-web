@@ -7,7 +7,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel = "icon" type = "" href = "Assets/medhublogo.png">
-
 <title>Home</title>
 
 <script>
@@ -15,6 +14,7 @@
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Asap+Condensed&display=swap');
 * {
 	margin: 0;
 	padding: 0;
@@ -29,10 +29,14 @@
 	float: right;
 	padding: 15px;
 	transition: transform 0.4s;
+	
 }
 
 .list li a{
 	padding: -10px;
+	font-family: 'Asap Condensed', sans-serif;
+	font-weight: 800;
+	letter-spacing: 2px;
 }
 
 

@@ -24,7 +24,7 @@ import com.medhub.model.*;
 @WebServlet("/filterOrder")
 public class FilterOrderServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5477560504590184918L;
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {

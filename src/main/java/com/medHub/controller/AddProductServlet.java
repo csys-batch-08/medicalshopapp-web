@@ -17,11 +17,8 @@ import com.medhub.model.Product;
 @WebServlet("/AddProductController")
 public class AddProductServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 2120470933156349026L;
+
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
@@ -40,10 +37,7 @@ public class AddProductServlet extends HttpServlet {
 
 		try {
 			boolean flag = products.insertProduct(product);
-			if (flag) {
-				/*
-				 * res.sendRedirect("AddProduct.jsp");
-				 */				
+			if (flag) {			
 				PrintWriter out = res.getWriter();
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('New Product Added SucessFully');");
@@ -53,10 +47,8 @@ public class AddProductServlet extends HttpServlet {
 				throw new ProductExistsException();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ProductExistsException e) {
-			// TODO Auto-generated catch block
 			e.getMessage();
 			session.setAttribute("productExists", e.getMessage());
 			res.sendRedirect("addProduct.jsp");

@@ -22,13 +22,10 @@ import com.medhub.model.User;
 
 @WebServlet("/ConvertMoney")
 public class ConvertPointsMoneyServlet extends HttpServlet{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException {
+	private static final long serialVersionUID = -508535237820559918L;
+
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException,NumberFormatException{
 		
 		HttpSession session = req.getSession();
 		User currentUser = (User) session.getAttribute("user");
