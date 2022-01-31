@@ -17,41 +17,63 @@ import com.medhub.util.ConnectionUtil;
 
 public class UserDaoImpl implements UserDAO {
 
+	
+	 String commitQuery= "commit";
+	
 							//register new user
 	public void insert(User user) {
+		
+		Connection con = null;
+		PreparedStatement pst =null;
 		try {
-			String ins = "insert into users (full_name,user_mobile,user_password,user_email) values(?,?,?,?)";
-			String commit = "commit";
-			Connection con = ConnectionUtil.getDBconnect();
-			PreparedStatement pst = con.prepareStatement(ins);
+			String insert = "insert into users (full_name,user_mobile,user_password,user_email) values(?,?,?,?)";
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(insert);
 			pst.setString(1, user.getUserName());
 			pst.setLong(2, user.getUserMobile());
 			pst.setString(3, user.getUserPassword());
 			pst.setString(4, user.getUserMail());
-			int res = pst.executeUpdate();
-			PreparedStatement smt = con.prepareStatement(commit);
-			smt.execute();
+			pst.executeUpdate();
+			pst = con.prepareStatement(commitQuery);
+			pst.execute();
 		
-			} catch (Exception e) {
-			
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				if(pst!=null){
+					try {
+						pst.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}     	
+				}
+				if(con !=null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 
 	}
+	
 
 								//	user login
 	public User login(User user) {
 
-		User loginUser = null;
+		
+		Connection con = null;
+		PreparedStatement pst  = null;
 		try {
 
 			String check = "select user_id,full_name,delivery_address,user_password,user_wallet,user_email,user_mobile,account_status,points from users where user_email= ? and user_password= ? ";
-			Connection con = ConnectionUtil.getDBconnect();
-			PreparedStatement pst = con.prepareStatement(check);
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(check);
 			pst.setString(1, user.getUserMail());
 			pst.setString(2, user.getUserPassword());
 			int i = pst.executeUpdate();
 			ResultSet rs = pst.executeQuery();
-
 
 			if (rs.next()) {
 				user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
@@ -61,22 +83,40 @@ public class UserDaoImpl implements UserDAO {
 				}
 
 			} catch (Exception e) {
-//		e.printStackTrace();
+				e.printStackTrace();
+			}finally {
+				if(pst!=null){
+					try {
+						pst.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}     	
+				}
+				if(con !=null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
 			}
-			return loginUser;
+			return null;
 
 	}
 	
 	
+	
 								//list all users access by admin
 	public List<User> ViewAllUser() {
-		List<User> userList = new ArrayList<User>();
+		
+		List<User> userList = new ArrayList<>();
+		Statement stm =null;
+		ResultSet rs = null;
+		Connection conn = null;
 		try {
 			String viewUsers = "select  user_id,full_name,delivery_address,user_password,user_wallet,user_email,user_mobile,account_status,points from users";
-			Connection conn = ConnectionUtil.getDBconnect();
-			Statement stm = conn.createStatement();
-			ResultSet rs = stm.executeQuery(viewUsers);
-
+			conn = ConnectionUtil.getDBconnect();
+			stm = conn.createStatement();
 			rs = stm.executeQuery(viewUsers);
 			while (rs.next()) {
 				User allUsers = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
@@ -84,10 +124,24 @@ public class UserDaoImpl implements UserDAO {
 				userList.add(allUsers);
 
 			}
-
+			return userList;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(stm!=null){
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}     	
+			}
+			if(conn !=null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 		return userList;
@@ -97,58 +151,79 @@ public class UserDaoImpl implements UserDAO {
 									//user profile update
 	public int update(User currentUser) {
 		String update = null;
+		Connection con = null;
+		PreparedStatement pst = null;
 		try {
-			update = "update users set full_name=?,user_password=?,user_mobile=?,delivery_address=? where user_email='"
-					+ currentUser.getUserMail() + "'";
-			Connection con = ConnectionUtil.getDBconnect();
-			PreparedStatement pst = con.prepareStatement(update);
-			pst.setString(1, currentUser.getUserName());
-			pst.setString(2, currentUser.getUserPassword());
-			pst.setLong(3, currentUser.getUserMobile());
-			pst.setString(4, currentUser.getAddress());
-			int res = pst.executeUpdate();
-			System.out.println(res);
-			res = pst.executeUpdate("commit");
-
-			if (res > 0) {
-			} else {
-			}
-
-			return res;
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+				update = "update users set full_name=?,user_password=?,user_mobile=?,delivery_address=? where user_email='"
+						+ currentUser.getUserMail() + "'";
+				con = ConnectionUtil.getDBconnect();
+				pst = con.prepareStatement(update);
+				pst.setString(1, currentUser.getUserName());
+				pst.setString(2, currentUser.getUserPassword());
+				pst.setLong(3, currentUser.getUserMobile());
+				pst.setString(4, currentUser.getAddress());
+				int res = pst.executeUpdate();
+				pst.executeUpdate(commitQuery);
+				if (res > 0) {
+					return res;
+				} 
+				
+			} catch (Exception e) {
 			e.printStackTrace();
-		}
+			}finally {
+				if(pst!=null){
+					try {
+						pst.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}     	
+				}
+				if(con !=null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 
 		return 0;
 	}
 	
+	
 								//get user details by userId
 	public User getUserById(int userId) {
-		String getuserId = "select * from users where user_id=?";
+		
+		
 		Connection con = null;
-		PreparedStatement pstatement = null;
+		PreparedStatement pst = null;
 		User userModule = null;
-
-		con = ConnectionUtil.getDBconnect();
+		String getuserId = "select * from users where user_id=?";
 		try {
-			pstatement = con.prepareStatement(getuserId);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(getuserId);
+			pst.setInt(1, userModule.getUserId());
+			ResultSet rs = pst.executeQuery(getuserId);
+		} catch (SQLException  | NullPointerException e) {
+			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		try {
-			pstatement.setInt(1, userModule.getUserId());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-
-		}
-		try {
-			ResultSet rs = pstatement.executeQuery(getuserId);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-
-		}
+		
 
 		return userModule;
 
@@ -159,7 +234,6 @@ public class UserDaoImpl implements UserDAO {
 
 		Connection con = null;
 		PreparedStatement pst = null;
-		int deleteStatus = 0;
 		int result = 0;
 		try {
 			con = ConnectionUtil.getDBconnect();
@@ -167,126 +241,261 @@ public class UserDaoImpl implements UserDAO {
 			pst = con.prepareStatement(delete);
 			pst.setInt(1, userId);
 			result = pst.executeUpdate();
+			if(result > 0) {
+				return true;
+			} 
+				return false;
 
 		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		if (result > 0) {
-			return true;
-		} else
-			return false;
-
+		
+		return false;
 	}
 
-//														ADD MONEY TO WALLET
+
+	
+												//ADD MONEY TO WALLET
 
 	public int addMoneyInWallet(double walletAmount, User currentUser) {
 
-		String walletQuery = "update users set user_wallet =" + walletAmount + " where user_email ='"
-				+ currentUser.getUserMail() + "'";
+		
 		int result = 0;
 		User user = new User();
-		Connection con = ConnectionUtil.getDBconnect();
+		PreparedStatement pst =null;
+		Connection con = null;
 		try {
-			PreparedStatement ps = con.prepareStatement(walletQuery);
-			result = ps.executeUpdate();
-			ps.executeUpdate("commit");
-			if (result > 0) {
-				UserDaoImpl userDao = new UserDaoImpl();
-				currentUser.setWallet(walletAmount);
-				user.setWallet(walletAmount);
+				String walletQuery = "update users set user_wallet =" + walletAmount + " where user_email ='"
+										+ currentUser.getUserMail() + "'";
+				con=ConnectionUtil.getDBconnect();
+				pst = con.prepareStatement(walletQuery);
+				result = pst.executeUpdate();
+				pst.executeUpdate(commitQuery);
+				if (result > 0) {
+					UserDaoImpl userDao = new UserDaoImpl();
+					currentUser.setWallet(walletAmount);
+					user.setWallet(walletAmount);
+					result=1;
 			}
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-		}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				if(pst!=null){
+					try {
+						pst.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}     	
+				}
+				if(con !=null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 
 		return result;
 	}
+	
+	
 
 							// points update when purchase done
+	@SuppressWarnings("resource")
 	public void updateUserPoints(Order order) {
+		
+		Connection con = null;
+		PreparedStatement pst =null;
 		try {
 			String pointsQuery = "update users set points='" + order.getUser().getPoints() + "' where user_id = '"
 					+ order.getUser().getUserId() + "'";
-			Connection con = ConnectionUtil.getDBconnect();
-			PreparedStatement ps = con.prepareStatement(pointsQuery);
-			ps.executeUpdate();
-			ps = con.prepareStatement("commit");
-			ps.executeUpdate();
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(pointsQuery);
+			pst.executeUpdate();
+			pst = con.prepareStatement(commitQuery);
+			pst.executeUpdate();
 		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
+		
 
 	}
+	
 
 						//	update walletmoney	
 	public void updateWalletMoney(Order order) {
 		
-		String query = "update users set user_wallet='" + order.getUser().getWallet() + "' where user_id = '"
-				+ order.getUser().getUserId() + "'";
-		Connection con = ConnectionUtil.getDBconnect();
+		
+		Connection con = null;
+		PreparedStatement pst = null;
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			int result = ps.executeUpdate();
-			ps.executeUpdate("commit");
+			String query = "update users set user_wallet='" + order.getUser().getWallet() + "' where user_id = '"
+					+ order.getUser().getUserId() + "'";
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(query);
+			pst.executeUpdate();
+			pst.executeUpdate(commitQuery);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
+		
+		
 
 	}
 
 
 	public int updatePassword(String confirmPassword, int userId) {
+		
+		Connection con = null;
+		PreparedStatement pst = null;
 		try {
 			String updatePassword = "update users set user_password='" + confirmPassword + "' where user_id='" + userId
 					+ "'";
-			Connection con = ConnectionUtil.getDBconnect();
-			PreparedStatement ps = con.prepareStatement(updatePassword);
-			int result = ps.executeUpdate();
-			con.prepareStatement("commit");
-			ps.executeUpdate();
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(updatePassword);
+			int result = pst.executeUpdate();
+			con.prepareStatement(commitQuery);
+			pst.executeUpdate();
 			if (result > 0) {
 				return 1;
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 		return 0;
 	}
+	
+	
 
 	public boolean updatePointsConverted(User CurrentUser) {
-		// TODO Auto-generated method stub
 
 		boolean flag = false;
-		String query = "update users set points=0 where User_email='" + CurrentUser.getUserMail() + "'";
-		Connection con = ConnectionUtil.getDBconnect();
+		PreparedStatement pst = null;
+		Connection con = null;
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			int result = ps.executeUpdate();
+			String query = "update users set points=0 where User_email='" + CurrentUser.getUserMail() + "'";
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(query);
+			int result = pst.executeUpdate();
 			CurrentUser.setPoints(0);
-			ps.executeUpdate("commit");
+			pst.executeUpdate(commitQuery);
 			if (result > 0) {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return flag;
 
 	}
 	
 	public void updateUserPoints(int points,User currentUser) {
+		
+		Connection con = null;
+		PreparedStatement pst = null;
 		try {
-			
 			String pointsQuery = "update users set points='" + points + "' where user_id = '"+ currentUser.getUserId()+ "'";
-			Connection con = ConnectionUtil.getDBconnect();
-			PreparedStatement ps = con.prepareStatement(pointsQuery);
-			ps.executeUpdate();
-			ps = con.prepareStatement("commit");
-			ps.executeUpdate();
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(pointsQuery);
+			pst.executeUpdate();
+			pst = con.prepareStatement(commitQuery);
+			pst.executeUpdate();
 		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}
@@ -294,26 +503,50 @@ public class UserDaoImpl implements UserDAO {
 						//	update walletmoney	
 	public void updateWalletMoney(double wallet,User currentUser) {
 		
-		String query = "update users set user_wallet='" + wallet + "' where user_id = '"+ currentUser.getUserId() + "'";
-		Connection con = ConnectionUtil.getDBconnect();
+		
+		PreparedStatement pst = null;
+		Connection con = null;
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			int result = ps.executeUpdate();
-			ps.executeUpdate("commit");
+			String query = "update users set user_wallet='" + wallet + "' where user_id = '"+ currentUser.getUserId() + "'";
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(query);
+			pst.executeUpdate();
+			pst.executeUpdate(commitQuery);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}
 
+	
+	
 	public boolean checkMail(String mail) {
+		
 		boolean flag = true;
-		String query = "select * from users where user_email= '"+mail+"'";
-		Connection con = ConnectionUtil.getDBconnect();
+		Connection con = null;
+		PreparedStatement pst = null;
+		
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ResultSet result = ps.executeQuery();
+			String query = "select * from users where user_email= '"+mail+"'";
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(query);
+			ResultSet result = pst.executeQuery();
 		
 			if(result.next())
 			{
@@ -321,12 +554,29 @@ public class UserDaoImpl implements UserDAO {
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		
 		return flag;
 	}
 
+	
+	
 }

@@ -49,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
 			//System.out.println("notallow");
 			session.setAttribute("notallow", "@medhub.com domain not allowed !");
 			try {
-				res.sendRedirect("Registration.jsp");
+				res.sendRedirect("registration.jsp");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -241,6 +241,7 @@ public class ProductDaoImpl implements ProductDAO {
 	
 	
 
+								//find product by product Id
 	public Product findProductByProductId(int id) {
 		
 		Connection con =null;
@@ -283,6 +284,8 @@ public class ProductDaoImpl implements ProductDAO {
 		return product;
 	}
 
+	
+									//update product quantity after a purchase
 	public void updateProductQuantity(Product currentProduct, int qty) throws SQLException {
 		
 		PreparedStatement pst=null;
@@ -317,6 +320,8 @@ public class ProductDaoImpl implements ProductDAO {
 
 	}
 
+	
+									// search product by user 
 	public List<Product> searchProduct(String ProductName) {
 		
 		List<Product> findedProducts = new ArrayList<Product>();

@@ -18,5 +18,5 @@ public interface UserDAO {
 	public void updateUserPoints(Order order);
 	public void updateWalletMoney(Order order);
 	public int updatePassword(String confirmPassword, int userId);
-	public boolean updatePointsConverted(User CurrentUser);
+	public boolean updatePointsConverted(User CurrentUser) throws SQLException;
 }
