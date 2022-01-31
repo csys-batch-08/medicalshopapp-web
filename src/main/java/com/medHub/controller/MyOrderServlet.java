@@ -29,11 +29,6 @@ public class MyOrderServlet extends HttpServlet{
 		OrderItemsDaoImpl myOrder= new OrderItemsDaoImpl();
 		User currentUser = (User)session.getAttribute("user");
 		List<OrderItems> myOrderList = myOrder.ViewMyOrders(currentUser);
-		
-		
-		 
-		
-		
 		req.setAttribute("myOrders", myOrderList);
 		RequestDispatcher rd = req.getRequestDispatcher("myOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0");
 		rd.forward(req, resp);

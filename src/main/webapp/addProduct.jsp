@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 <!DOCTYPE html>
 <html lang="en">
@@ -130,6 +130,13 @@ border: none;
 input[type="file"]{
 outline:none;
 }
+
+#errorMsg{
+position: relative;
+left:95px;
+color: red;
+font-weight: 600;
+}
 </style>
 </head>
 <body>
@@ -149,14 +156,15 @@ outline:none;
 	</div>
 	<div id="addProductForm">
 	
-		<% if(session.getAttribute("productExists") != null)
-           {%>
-		<p id="errorMsg"><%=session.getAttribute("productExists") %></p>
-
-		<%} session.removeAttribute("productExists"); %>
+		
+        <c:if test="${productExists!=null}">
+		<p id="errorMsg">${productExists}</p>
+		</c:if>  
+		<c:remove var="productExists"  scope="session"/> 
+		
 		<form action="AddProductController">
 		
-			<input class="inputBox" list="category" name="category" id="browser"
+			<input class="inputBox" list="category" onkeyup="hideErrorMsg()" name="category" id="browser"
 				placeholder="Category">
 			<datalist id="category">
 				<option value="medicine">
@@ -168,36 +176,36 @@ outline:none;
 			<br>
 			<br>
 		
-			<input class="inputBox" type="text" required name="productName"
+			<input class="inputBox" type="text" onkeyup="hideErrorMsg()" required name="productName"
 				placeholder="Product Name" ><br>
 			<br>
 			
  
-			<input class="inputBox" type="number"  required min="1" name="price" placeholder="Price"><br>
+			<input class="inputBox" type="number"  onkeyup="hideErrorMsg()" required min="1" name="price" placeholder="Price"><br>
 			<br>
 			
  
-			<input class="inputBox" type="number" required min="1" name="quantity"
+			<input class="inputBox" type="number" onkeyup="hideErrorMsg()" required min="1" name="quantity"
 				placeholder="Quantity"><br>
 			<br>
  
 			<label>Add Image</label>
-			<input class="inputBox" type="file" required name="imageFile"
+			<input class="inputBox" type="file" onkeyup="hideErrorMsg()" required name="imageFile"
 				placeholder="Image Url"><br>
 			<br>
  
-			<input class="inputBox" type="number" required min="1"  name="points"
+			<input class="inputBox" type="number" onkeyup="hideErrorMsg()" required min="1"  name="points"
 				placeholder="Points"><br>
 			<br>
  
-			<input class="inputBox" type="number" required min="1" name="offer"
+			<input class="inputBox" type="number" onkeyup="hideErrorMsg()" required min="0" name="offer"
 				placeholder="Offer%"><br>
 			<br>
 			<br>
 
-			<textarea class="inputBox"
+			<textarea class="inputBox" 
 				style="max-height: 70px; min-height: 20px; width: 400px; max-width: 200px; min-width: 300px;"
-				required name="description" placeholder="Product Description"></textarea>
+				required name="description" onkeyup="hideErrorMsg()" placeholder="Product Description"></textarea>
 			<br>
 			<button type="submit">Add</button>
 		</form>
@@ -206,5 +214,8 @@ outline:none;
 </body>
 <script>
 	
+function hideErrorMsg() {
+    document.getElementById("errorMsg").style.visibility="hidden";
+}
 </script>
 </html>

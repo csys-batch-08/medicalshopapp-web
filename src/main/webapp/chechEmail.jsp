@@ -19,7 +19,7 @@ try
 {  
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-PreparedStatement ps=con.prepareStatement("select * from users where user_email=? ");  
+PreparedStatement ps=con.prepareStatement("select user_email from users where user_email=? ");  
 ps.setString(1,email);  
 ResultSet rs=ps.executeQuery();  
 if(rs.next())

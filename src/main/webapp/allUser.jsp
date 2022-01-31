@@ -100,14 +100,14 @@ table {
 		
 		
 		<div id="allusers">
-			<table class="table table-striped">
+			<table class="table table-striped" aria-describedby="buy Products">
 				<thead class="table table-dark">
 					<tr>
-						<th >USER ID</th>
-						<th>FULL NAME</th>
-						<th>ADDRESS</th>
-						<th>EMAIL</th>
-						<th>MOBILE</th>
+						<th id="userId">USER ID</th>
+						<th id="funnName">FULL NAME</th>
+						<th id="address">ADDRESS</th>
+						<th id="email">EMAIL</th>
+						<th id="mobile">MOBILE</th>
 						
 					</tr>
 				</thead>

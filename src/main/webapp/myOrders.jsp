@@ -267,10 +267,6 @@ visibility: hidden;
 			<c:forEach items="${myOrders}" var="myAllOrders" >
 			
 		
-			<%-- <% boolean flag;
-		flag = orderDao.checkStatus(myAllOrders.getOrderModel().getOrderId());
-		boolean cancel = orderItem.cancelDate(myAllOrders.getOrderdate(),myAllOrders.getOrderModel().getOrderId());
-		 %> --%>
 			
 			<div id="product">
 				<div id="img">
@@ -332,10 +328,7 @@ visibility: hidden;
 		<br>
 		<br>
 		</c:forEach>
-		
-	
-<!-- 		<h2 id="copyrights">© 2021 MedHub.com. All rights reserved.</h2>
- -->
+
 	</div>
 
 	</div>

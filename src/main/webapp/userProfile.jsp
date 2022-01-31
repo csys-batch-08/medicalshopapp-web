@@ -4,11 +4,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 
  <link rel = "icon" type = "" href = "Assets/medhublogo.png">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<meta name="theme-color" content="#ba8f88" >
 <title>User Profile</title>
 
 <style>
@@ -251,6 +253,9 @@ z-index: 1;
 label{
 font-weight: 600;
 }
+
+#space{
+width:700px;
 </style>
 </head>
 <body>
@@ -283,30 +288,27 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 		</nav>
 	</div>
 	
-	<% 
-	if(InsuffiendMoney!=null)
-	{ %>
-		<div class="InsuffiendMoney">
-		<h3><%=InsuffiendMoney %></h3>
+	<c:if test="${InsuffientMoney!=null}">
+		<div class="InsuffiendMoney" >
+		<h3>${InsuffientMoney}</h3>
 		</div>
-		
-	<%} 		session.removeAttribute("InsuffientMoney");%>
-	<% 
-	if(AddressNotFound!=null)
-	{ %>
+	</c:if>	
+	<c:remove var="InsuffientMoney"  scope="session"/>
+	
+	<c:if test="${AddressNotFound!=null}">
 		<div class="addressNull">
-		<h3><%=AddressNotFound %></h3>
+		<h3>${AddressNotFound}</h3>
 		</div>
+	</c:if>	
+	<c:remove var="AddressNotFound"  scope="session"/>
 		
-	<%}		 session.removeAttribute("AddressNotFound");%>
-	<% 
-	if(cartOrderMOney!=null)
-	{ %>
+	<c:if test="${notEnoughAmt!=null}">
 		<div class="cartOrder">
-		<h3><%=cartOrderMOney %></h3>
+		<h3>${notEnoughAmt}</h3>
 		</div>
-		
-	<%}  session.removeAttribute("notEnoughAmt"); %>
+	</c:if>	
+	<c:remove var="notEnoughAmt"  scope="session"/>
+	
 	
        <% if(NegativePoints!=null)
      {%>
@@ -324,11 +326,12 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 	<!-- User Profile -->
 	<div id="userProfile">
 	<form action="ProfileUpdate" method="get">
-			<table>
+			<table  aria-describedby="UserProfile">
+			<th></th>
 			 <tr>
 				<td><label>Name :</label>
 				<td><input id="updatedName" name="updatedName" pattern="[A-Za-z ]{3,}" title="name should be minimum 3 letters and maximum 30 letters" required min="3" max="10" value="${currentUser.getUserName()}"><br></td>
-				<td rowspan="2" colspan="2" width="700px">
+				<td id="space" rowspan="2" colspan="2">
 				</td>
 		    </tr>
 		
@@ -342,7 +345,7 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 			<tr>
 				<td><label>Mobile No :</label></td>
 				<td><input id="UpdatedMobNum" name="UpdatedMobNum"  pattern="[6-9][0-9]{9}" title="MObile Number Must Have 10 Digits" required  value="${currentUser.getUserMobile()}"></td>
-	    		<td rowspan="2" colspan="2" width="700px"></td>
+	    		<td rowspan="2" colspan="2"></td>
 			</tr>	
 	
 			<tr>
@@ -359,7 +362,7 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 		
 		
 		<div id="walletMoneyUpdateForm">
-	<form action="walletUpdate">
+	<form action="walletUpdate" method="get">
 		<label> Wallet : </label>
 		<input type="number" name="UpdateWallet" "UpdateWallet" min="200" max="5000" title="" value="${currentUser.getWallet()}" >
 		<button>Add Money</button>
@@ -367,7 +370,7 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 	</div>
 	
 	<div id="pointMoney">
-	<form action="ConvertMoney">
+	<form action="ConvertMoney" method="get">
 	<label> points : </label>
 	<input type="number" name="pointsMoney" "UpdateWallet" min="500" max="5000" value="${currentUser.getPoints()}" title="You need to reach 500 points to convert" readonly>
 		<button>Convert To Cash</button>

@@ -151,14 +151,14 @@ text-align: center;
 		 <div id="allusers">
 		   <c:if test="${empty sessionScope.invalidDate}"> 
 		 
-			<table class="table table-striped" >
+			<table class="table table-striped" aria-describedby="Sales report">
 				<thead class="table table-dark">
 					<tr>
-						<th>Order Date</th>
-						<th>Product Name</th>
-						<th>Quantity</th>
-						<th>Unit Price</th>
-						<th>Total Price</th>
+						<th id="Order Date">Order Date</th>
+						<th id="Product Name">Product Name</th>
+						<th id="Quantity">Quantity</th>
+						<th id="Unit Price">Unit Price</th>
+						<th id="Total Price">Total Price</th>
 						
 					</tr>
 				</thead>
@@ -179,7 +179,7 @@ text-align: center;
 				
 					<tr>
 					<th colspan="4" id="totalPrice">Total Price</th>
-					<th>${ totalAmt}</th>
+					<th id="totalAmt">${totalAmt}</th>
 					</tr>
 				</tbody>
 			</table>

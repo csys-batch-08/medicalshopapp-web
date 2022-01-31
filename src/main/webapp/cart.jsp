@@ -142,18 +142,17 @@ img {
 }
 
 #product {
-	position: relative;
-	top: 30px;
-	left: 50px;
+	
 }
 
 #product {
 	position: relative;
 	background-color: rgba(158, 202, 207, 0.5);
-	height: 190px;
+	height: 220px;
 	border-radius: 5px;
 	width: 1200px;
 	top:150px;
+	left: 50px;
 }
 
 #product img {
@@ -249,18 +248,46 @@ color: red;
 
 #lessStock{
 position: absolute;
-top:150px;
+top:0px;
 left:510px;
 color: red;
 }
 
+#lessStockMsg{
+visibility: hidden;
+position: absolute;
+top:150px;
+left:250px;
+}
+
+.lessStockMsgDiv button{
+position: absolute;
+top:490px;
+left:280px;
+width: 179px;
+height: 40px;
+background-color: rgb(209,20,25);
+outline: none;
+border: none;
+color: white;
+font-size: 18px;
+border-radius: 2px;
+box-shadow: 0 0 3px black;
+}
+
+#popUpBtn{
+visibility: hidden;
+}
+
+.lessStockMsgDiv button:hover{
+box-shadow: 2px 2px 15px 1px black;
+}
 </style>
 </head>
 
-<body>
+<body id="body">
 
 
-	
 	<div id="container">
 
 		<div class="nav">
@@ -282,16 +309,25 @@ color: red;
 				</div>		
 			</nav>
 		
-		<!-- slideshow -->
-
-	<%-- 	<h2 id="userName">welcome <%=currentUser.getName()%></h2> --%>
 		</div>
 	
 		
 		
 			<c:forEach items="${cartList}" var="cartList" >
-		
 			<div id="product">
+			
+			<%-- <c:if test="${outOfStock!=null}">
+			<span id="errorMsg">${outOfStock}</span>
+			</c:if>
+			<c:remove var="outOfStock"  scope="session"/> --%>
+			
+			<%-- <c:if test="${lessStock!=null }">
+			<span id="lessStock">${lessStock}</span>
+			</c:if>
+			<c:remove var="lessStock" scope="session"/> --%>
+			
+			
+			
 				<div id="img">
 					<img src="Assets/${cartList.getProduct().getProductImg()}" alt="horlicks">
 					<h3>${cartList.getProduct().getProductName()}</h3>
@@ -332,25 +368,34 @@ color: red;
 		<br>
 		</c:forEach>
 		
-<%    String errorMessage= (String)session.getAttribute("outOfStock"); 
-	  String lessStockMsg= (String)session.getAttribute("lessStock"); 
-      if(errorMessage!=null)
-      { %>
-			<h3 id="errorMsg" ><%=errorMessage%></h3>
-			<%} session.removeAttribute("outOfStock"); %>		
-			
-	 <% if(lessStockMsg!=null)
-      { %>
-			<h3 id="lessStock" ><%=lessStockMsg%></h3>
-			 <% session.removeAttribute("lessStock"); %>
-			<%} %>
-			 		
-		
-	</div>
+	 </div>
 
 	</div>
+	
+	
+	<div class="lessStockMsgDiv">
+	<img src="Assets/lessStock1.png" id="lessStockMsg"  alt="lessStockImg">
+	 <button onclick ="hidePopUp()" id="popUpBtn">CLOSE</button>
+	</div>
+	<c:if test="${lessStock!=null}">
+	<script>  
+	document.getElementById("lessStockMsg").style.visibility = "visible";
+	document.getElementById("popUpBtn").style.visibility = "visible";
+	body.style.overflow = "hidden";
+	</script>
+	</c:if>
+	<c:remove var="lessStock"  scope="session"/> 
+	
 	<div id="footer"></div>
 
+<script>
+function hidePopUp() {
+	
+	document.getElementById("lessStockMsg").style.visibility = "hidden";
+	document.getElementById("popUpBtn").style.visibility = "hidden";
+	body.style.overflow = "auto";
+}
+ </script>
 
 </body>
 

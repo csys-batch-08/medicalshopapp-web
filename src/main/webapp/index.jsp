@@ -287,7 +287,7 @@ font-weight: 600;
 
 <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 	<div id="container">
-        </div> 
+      
 
 		<!-- Navigation Bar -->
 		<div class="nav">
@@ -324,29 +324,24 @@ font-weight: 600;
 				<h1 class="loginHere">Login Here</h1>
 				<label class="label" for="fullName">Email*</label><br> 
 				<input type="email"
-					name="loginMail" required placeholder="Enter Email"  pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"  onmouseleave="hideMsg()"><br>
+					name="loginMail" required placeholder="Enter Email"  pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"  onkeyup="hideMsg()" autofocus><br>
 				<br>
 				<br> <label class="label" for="password">Password *</label><br> 
 				<input type="password" name="loginPassword" placeholder="Password"
 					value="" required 
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
-					title="Minimum eight and Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character" onmouseover="hideMsg()"><br>
+					title="sMinimum 8 and maximum 15 characters Allowed, at least one uppercase letter, one lowercase letter, one number and one special character" onmouseover="hideMsg()"><br>
 				<br>
 				<button id="loginbtn">Login</button>
 				<br>
 				<br>
 				<br> <a href="registration.jsp" id="register">Not Registered Yet ?</a>
-				
-				<% String error=(String)session.getAttribute("error");
-            if(error!=null) {%>
-				<p><%=session.getAttribute("error") %></p>
-
-				<%} session.setAttribute("error",null); %>
 			</form>
 		</div>
 
 
-		<div class="footer"></div>
+		<div class="footer">
+		</div>
 
 	</div>
 

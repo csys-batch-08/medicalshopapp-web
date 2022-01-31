@@ -118,13 +118,11 @@ public class CartOrderServlet extends HttpServlet {
 					RequestDispatcher rd = req.getRequestDispatcher("showUserProfile");
 					try {
 						rd.forward(req, res);
-					} catch (ServletException e) {
+					} catch (ServletException |IOException e) {
 						e.printStackTrace();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					
 				}
-			}
+			}}
 		}else {
 			try {
 				throw new CartNotEnoughQtyException();
@@ -142,7 +140,15 @@ public class CartOrderServlet extends HttpServlet {
 			}catch(OutOfStockException e)
 			{
 				session.setAttribute("outOfStock",e.getMessage());
-				res.sendRedirect("showCartServlet");
+				RequestDispatcher rd = req.getRequestDispatcher("ProductOutStock.jsp");
+				try {
+					rd.forward(req, res);
+				} catch (ServletException se) {
+					se.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+
 			}
 
 		}

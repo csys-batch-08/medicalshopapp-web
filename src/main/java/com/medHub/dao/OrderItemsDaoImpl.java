@@ -152,7 +152,7 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 
 	public List<OrderItems> salesReport(String fromDate, String toDate) {
 				
-				List<OrderItems> salesReport = new ArrayList<OrderItems>();
+				List<OrderItems> salesReport = new ArrayList<>();
 				OrderItems orderItem;
 				LocalDate startDate = LocalDate.parse(fromDate);
 				LocalDate endDate = LocalDate.parse(toDate);

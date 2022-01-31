@@ -76,8 +76,8 @@ public class UserDaoImpl implements UserDAO {
 			ResultSet rs = pst.executeQuery();
 
 			if (rs.next()) {
-				user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
-						rs.getString(6), rs.getLong(7), rs.getString(8), rs.getInt(9));
+				user = new User(rs.getInt("user_id"), rs.getString("full_name"), rs.getString("delivery_address"), rs.getString("user_password"), rs.getDouble("user_wallet"),
+						rs.getString("user_email"), rs.getLong("user_mobile"), rs.getString("account_status"), rs.getInt("points"));
 
 				return user;
 				}

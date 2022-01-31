@@ -19,7 +19,7 @@ try
 {  
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-PreparedStatement ps=con.prepareStatement("select * from users where user_mobile=? ");  
+PreparedStatement ps=con.prepareStatement("select user_mobile from users where user_mobile=? ");  
 ps.setString(1,mobile);  
 ResultSet rs=ps.executeQuery();  
 if(rs.next())

@@ -12,8 +12,11 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel = "icon" type = "" href = "Assets/medhublogo.png">
-
+<link rel = "icon" type = "" href = "Assets/medhublogo.png">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<meta name="theme-color" content="#ba8f88" >
 
 <title>Userhome</title>
 <style>
@@ -312,7 +315,7 @@ top:200px;
 		<c:if test="${not empty allProducts}">
 
 			<c:forEach items="${allProducts}" var="products" >		
-			<div id="product">
+			<div id="product" class="animate__animated  animate__bounceIn">
 				<div id="img">
 					<img src="Assets/${products.getProductImg()}" alt="${ products.getProductName()}">
 					<h3>${products.getProductName()}</h3>
@@ -335,9 +338,7 @@ top:200px;
 					<button>
 						<a id="buynow" href="BuyProduct.jsp?pid=${products.getProductId() }">Buy Now</a>
 					</button>
-					<%--  <button>
-						<a id="btn1" href="AddToCart.jsp?cartpId=${products.getProductId()%>">Add To Cart</a>
-					</button> --%>
+					
 					
 				</div>
 			</div>

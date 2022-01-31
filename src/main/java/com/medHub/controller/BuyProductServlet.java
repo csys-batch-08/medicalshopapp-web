@@ -64,7 +64,7 @@ public class BuyProductServlet extends HttpServlet {
 						orderItems.setUser(currentUser);
 						order.setPrice(price);
 						order.getUser().setPoints(order.getUser().getPoints() + (currentproduct.getPoints() * qty));
-						order.getUser().setWallet(order.getUser().getWallet() - price);
+						order.getUser().setWallet(Math.round(order.getUser().getWallet() - price));
 						user.updateUserPoints(order);
 						user.updateWalletMoney(order);
 						try {
@@ -101,7 +101,7 @@ public class BuyProductServlet extends HttpServlet {
 						catch(AddressNotFoundException e)
 						{
 							session.setAttribute("AddressNotFound", e.getMessage());
-							res.sendRedirect("userProfile.jsp");
+							res.sendRedirect("showUserProfile");
 						}
 					}
 			} else {
@@ -111,7 +111,7 @@ public class BuyProductServlet extends HttpServlet {
 						catch(InsuffientMoneyException iM) 
 							{
 								session.setAttribute("InsuffientMoney", iM.getMessage());
-								res.sendRedirect("userProfile.jsp");
+								res.sendRedirect("showUserProfile");
 							}
 				
 				

@@ -100,8 +100,9 @@ public class LoginServlet extends HttpServlet {
 			} catch (IOException e) {
 			e.printStackTrace();
 			} catch (UserNotFoundException e) {
-				session.setAttribute("userNotFound", e.getMessage());
-				res.sendRedirect("Index.jsp");
+				session.setAttribute("InvalidUser",e.getMessage());
+				 RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+				 rd.forward(req, res);
 			}
 		
 	}

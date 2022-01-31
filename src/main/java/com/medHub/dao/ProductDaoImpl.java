@@ -18,7 +18,7 @@ public class ProductDaoImpl implements ProductDAO {
 		
 		Connection con = null;
 		PreparedStatement pst=null;
-		List<Product> productList = new ArrayList<Product>();
+		List<Product> productList = new ArrayList<>();
 		
 		try 
 		{
@@ -322,9 +322,9 @@ public class ProductDaoImpl implements ProductDAO {
 
 	
 									// search product by user 
-	public List<Product> searchProduct(String ProductName) {
+	public List<Product> searchProduct(String productName) {
 		
-		List<Product> findedProducts = new ArrayList<Product>();
+		List<Product> findedProducts = new ArrayList<>();
 		Connection con =null;
 		PreparedStatement pst=null;
 		try {
@@ -332,8 +332,8 @@ public class ProductDaoImpl implements ProductDAO {
 					+ "points_per_unit,status,offer from products where product_name like ? OR product_category like ?  ";
 			con = ConnectionUtil.getDBconnect();
 			pst = con.prepareStatement(query);
-			pst.setString(1, ProductName+"%");
-			pst.setString(2, ProductName+"%");
+			pst.setString(1, productName+"%");
+			pst.setString(2, productName+"%");
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				Product product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),

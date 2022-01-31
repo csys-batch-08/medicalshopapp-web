@@ -5,6 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel = "icon" type = "" href = "Assets/medhublogo.png">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <script>
     history.forward();
 </script>
@@ -315,39 +317,39 @@ color: red;
 										
 		<div id="registerScreen">
 			<div id="registerScreenContent">
-				<form action="RegisterController" class="registerform" method="post">
+				<form action="RegisterController" class="registerform" method="get" >
 					<label for="fullName" class="reglab">FullName*</label><br>
-					<br> <input type="text" onkeypress="hideMsg()" name="regfullName" id="fullname"
-						placeholder="Enter fullname" required ><br>
+					<br> <input type="text" onkeyup="hideMsg()"  onkeyup="hideUserExists()"  name="regfullName" id="fullname"
+						placeholder="Enter fullname" required autofocus><br>
 						
 					<br> <label for="mail" class="reglab">Mail Id</label><br>
-					<br> <input type="email" onkeyup="checkMail()" name="regMail"
-						id="regMail" placeholder="Enter Mail Id"  pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"  required ><br>
+					<br> <input type="email" onkeyup="checkMail()"  onkeyup="hideMsg()" onkeyup="hideUserExists()"  name="regMail"
+						id="regMail" placeholder="Enter Mail Id"  pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}" required  ><br>
 						<label id="existsMsg"></label><br>
 					 <label for="phone" class="reglab">Mobile Number*</label><br>
-					<br> <input id="mobile" type="text" onkeyup="mobileNum()" name="regMobile" required
+					<br> <input id="mobile" type="text" onkeyup="mobileNum()" onkeyup="hideMsg()" onkeyup="hideUserExists()"  name="regMobile" required
 						placeholder="Enter Mobile Number" pattern="[6-9][0-9]{9}"
 						title="MObile Number Must Have 10 Digits" required min="3" max="10"><br>
 						<label id="numberExists"></label>
 					<br> <label for="password" class="reglab">Password*</label><br>
-					<br> <input type="password" 
+					<br> <input type="password" onkeyup="hideMsg()" onkeyup="hideUserExists()" 
 						placeholder="Password" name="regPassword" value="" required
 						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
 						title="Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character"><br>
 				<br>
 					<br>
 					<button id="regbtn" type="submit">Register</button><br>
-					<% String notallow=(String)session.getAttribute("notallow");
-            if(notallow!=null) {%>
-            <h4><%=session.getAttribute("notallow") %></h4>
-           
-            <%} session.removeAttribute("notallow"); %>
-            
-            <% String emailError=(String)session.getAttribute("error");
-            if(emailError!=null) {%>
-            <h4 id="userExists"><%=session.getAttribute("error") %></h4>
-           
-            <%} session.removeAttribute("error"); %>
+					<br>
+		
+            <c:if test="${notallow!=null}">	
+            <h4 id="notAllow">${notallow}</h4>
+           	</c:if>
+			<c:remove var="notallow" scope="session"/>
+         
+              <c:if test="${error!=null}">	
+            <h4 id="userExists">${error}</h4>
+           	</c:if>
+			<c:remove var="error" scope="session"/>
             </form>
 			</div>
 			
@@ -373,8 +375,13 @@ function getRegisterForm()
 
 function hideMsg()
 {
-	document.getElementById("userExists").style.visibility="hidden";
+	document.getElementById("notAllow").style.visibility="hidden";
 	
+	}
+
+function hideUserExists()
+{
+	document.getElementById("userExists").style.visibility="hidden";
 	}
 
 </script>

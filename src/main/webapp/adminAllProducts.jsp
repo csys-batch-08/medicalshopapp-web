@@ -175,15 +175,24 @@ bottom: 63px;
 			<div id="btn">
 				<a href="ProdToBeUpdate?productId=${products.getProductId()}"
 					 class="btn btn-warning" >Update</a><br>
-				<br> <a
+				<br> <a 
 					href="deleteProduct?deleteProductId=${products.getProductId() }"
-					class="btn btn-danger" id="deleteBtn" >Delete</a>
+					onclick="check()" class="btn btn-danger" id="deleteBtn" >Delete</a>
 			</div>
 		</div>
 	</form>
 	<br>
 	<br>
 	</c:forEach>
+<script>
+function check(){
+    var result = confirm("Are You Sure To Delete The Product");
 
+    if(result==false){
+        event.preventDefault();
+    }
+}
+
+</script>
 </body>
 </html>

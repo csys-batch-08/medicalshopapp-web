@@ -318,12 +318,7 @@ right:275px;
 </head>
 <body>
 
-<%-- <%
-int pId=Integer.parseInt(request.getParameter("pid"));
-ProductDaoImpl productDao = new ProductDaoImpl();
-Product currentProduct = productDao.findProductByProductId(pId);
-session.setAttribute("currentproduct", currentProduct);
-%> --%>
+
 	<div class="nav">
 
 		<nav class="list" >
@@ -345,11 +340,11 @@ session.setAttribute("currentproduct", currentProduct);
 	</div>
 	
 	
-	<table class="buyProduct">
+	<table class="buyProduct" aria-describedby="buy Products">
 		<tbody>
 
 			<tr>
-			
+			<th id="th"></th>
 				<td> 
 				<div id="pDesc">
 					<p>
@@ -374,6 +369,7 @@ session.setAttribute("currentproduct", currentProduct);
 						<strong>Offer:</strong>
 					</p>
 					</td>
+			
 			
 				<td id="detail">
 					<p name="pCategory">${currentProduct.getProductCategory()}</p>
@@ -418,6 +414,8 @@ session.setAttribute("currentproduct", currentProduct);
 		</tbody>
 	</table>
 <tr>
+
+
 <script>
 
 function calculateamt(){

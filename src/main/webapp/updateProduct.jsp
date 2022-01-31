@@ -172,7 +172,7 @@ transition-duration: 0.2s;
 		</form>
 	</div>
 	</div>
-	</div>
+	
 
 </body>
 </html>

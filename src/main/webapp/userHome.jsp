@@ -11,6 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel = "icon" type = "" href = "Assets/medhublogo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <meta name="theme-color" content="#ba8f88" >
 <link rel="stylesheet" href="Css/UserHome.css">
 <title>User Home</title>
@@ -19,6 +20,7 @@
     history.forward();
 </script>
 <style>
+animate__fadeInRightBig
 *{
   
     margin: 0;
@@ -268,10 +270,7 @@ box-shadow: 0 0 10px black;
 <body>
 
 <%-- <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>--%>
- 
-
-		
-	
+ 	
 	
 	
 	<div class="container-fluid p-0" >
@@ -294,10 +293,15 @@ box-shadow: 0 0 10px black;
 				</div>
 			</nav>
 		</div>
+		
+		
+		
 		 <%-- <%=currentUser.getName()%> --%>
-		<h2 id="userName">welcome <c:out value="${sessionScope.user.userName}" /> </h2>
+		<h2 id="userName" class="animate__animated animate__bounceIn">welcome <c:out value="${sessionScope.user.userName}" /> </h2>
 		</div>
 		<br><br>
+		
+		
 		
 		
 <!-- 					Search Products		
@@ -311,7 +315,7 @@ box-shadow: 0 0 10px black;
 				
 		<c:forEach items="${allProducts}" var="products" >
 		
-			<div id="product">
+			<div id="product" >
 				<div id="img">
 					<img src="Assets/${products.getProductImg()}" alt="horlicks">
 					<h3> ${products.getProductName()} </h3>
