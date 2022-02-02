@@ -137,6 +137,11 @@ left:95px;
 color: red;
 font-weight: 600;
 }
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>
 </head>
 <body>

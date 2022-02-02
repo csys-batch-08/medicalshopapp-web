@@ -105,8 +105,16 @@ color: white;
 
 table 
 {
-	background-color: white;
-	}
+background-color: white;
+}
+
+table th,thead,tr,td{
+padding: 10px;
+}
+
+table tr:hover{
+background-color: grey;
+}
 
 .dateExp{
 position: relative;

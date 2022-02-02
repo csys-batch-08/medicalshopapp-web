@@ -133,7 +133,7 @@ public class OrderDaoImpl implements OrderDAO{
 		ResultSet rs = pst.executeQuery();
 		if(rs.next())
 		{
-			status=rs.getString(1).toLowerCase();
+			status=rs.getString("order_status").toLowerCase();
 			if(!status.equals("cancelled"))
 			{
 				return true;

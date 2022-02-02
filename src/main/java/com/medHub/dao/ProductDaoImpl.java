@@ -30,8 +30,8 @@ public class ProductDaoImpl implements ProductDAO {
 			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
-				Product product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10));
+				Product product = new Product(rs.getInt("product_id"), rs.getString("product_category"), rs.getString("product_name"), rs.getString("description"),
+						rs.getDouble("price"), rs.getInt("available_quantity"), rs.getString("product_img"), rs.getInt("points_per_unit"), rs.getString("status"), rs.getInt("offer"));
 				productList.add(product);
 			}
 			return productList;
@@ -212,8 +212,8 @@ public class ProductDaoImpl implements ProductDAO {
 			pst.setString(1,productName);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
-						rs.getInt(6), rs.getString(7), rs.getInt(8));
+				product = new Product(rs.getInt("product_id"), rs.getString("product_category"), rs.getString("product_name"), rs.getString("description"), rs.getDouble("price"),
+						rs.getInt("available_quantity"), rs.getString("product_img"), rs.getInt("points_per_unit"));
 				return product;
 			}
 		
@@ -257,8 +257,8 @@ public class ProductDaoImpl implements ProductDAO {
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
-						rs.getInt(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10));
+				product = new Product(rs.getInt("product_id"), rs.getString("product_category"), rs.getString("product_name"), rs.getString("description"), rs.getDouble("price"),
+						rs.getInt("available_quantity"), rs.getString("product_img"), rs.getInt("points_per_unit"), rs.getString("status"), rs.getInt("offer"));
 				return product;
 			}
 	
@@ -297,8 +297,7 @@ public class ProductDaoImpl implements ProductDAO {
 			pst.setInt(1, qty);
 			pst.setInt(2, currentProduct.getProductId());
 			pst.executeUpdate();
-			pst = con.prepareStatement("commitQuery");
-			pst.executeUpdate();
+			pst.executeUpdate(commitQuery);
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -336,8 +335,8 @@ public class ProductDaoImpl implements ProductDAO {
 			pst.setString(2, productName+"%");
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				Product product = new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10));
+				Product product = new Product(rs.getInt("product_id"), rs.getString("product_category"), rs.getString("product_name"), rs.getString("description"),
+						rs.getDouble("price"), rs.getInt("available_quantity"), rs.getString("product_img"), rs.getInt("points_per_unit"), rs.getString("status"), rs.getInt("offer"));
 				findedProducts.add(product);
 			}
 			return findedProducts;

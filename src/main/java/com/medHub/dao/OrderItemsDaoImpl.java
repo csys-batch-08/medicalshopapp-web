@@ -80,9 +80,9 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 			while (rs.next())
 
 			{
-				orderItems = new OrderItems(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getDouble(4),
-						rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
-						rs.getDate(11).toLocalDate(), rs.getString(12));
+				orderItems = new OrderItems(rs.getString("product_name"), rs.getInt("points_per_unit"), rs.getInt("quantity"), rs.getDouble("unit_price"),
+						rs.getDouble("total_price"), rs.getInt("order_id"), rs.getString("product_img"), rs.getString("description"), rs.getInt("offer"), rs.getInt("product_id"),
+						rs.getDate("order_date").toLocalDate(), rs.getString("order_status"));
 				myOrderList.add(orderItems);
 			}
 			return myOrderList;
@@ -115,7 +115,7 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 		boolean flag = false;
 		try {
 			
-			String query = "select * from orders where order_id=? and ?+1 >= sysdate";
+			String query = "select order_id from orders where order_id=? and ?+1 >= sysdate";
 			con=ConnectionUtil.getDBconnect();
 			pst = con.prepareStatement(query);
 			pst.setInt(1, orderid);
@@ -174,7 +174,7 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 					while(rs.next())
 
 					{
-					 orderItem = new OrderItems(rs.getDate(1).toLocalDate(),rs.getString(2),rs.getInt(3),rs.getDouble(4),rs.getDouble(5));
+					 orderItem = new OrderItems(rs.getDate("trunc(o.order_date)").toLocalDate(),rs.getString("product_name"),rs.getInt("quantity"),rs.getDouble("price"),rs.getDouble("totalPrice"));
 					 salesReport.add(orderItem);
 					}
 					return salesReport;

@@ -31,7 +31,7 @@ public class AdminDaoImpl implements AdminDAO{
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				adminmodule=new Admin(rs.getString(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getLong(5));
+				adminmodule=new Admin(rs.getString("admin_name"),rs.getInt("age"),rs.getString("admin_password"),rs.getString("admin_email"),rs.getLong("admin_mobile"));
 				return adminmodule;
 			}
 			return adminmodule;

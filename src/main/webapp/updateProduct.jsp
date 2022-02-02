@@ -153,9 +153,9 @@ transition-duration: 0.2s;
 			<br> <label for="name">Product Name</label>
 			<input 	class="inputBox" type="text" required name="productName" placeholder="Product Name" value="${currentProduct.getProductName()}"><br>
 			<br> <label for="price">Price</label> <br>
-			<input class="inputBox" type="text" name="price" placeholder="Price" value="${currentProduct.getUnitPrice()}"><br>
+			<input class="inputBox" type="number" name="price" placeholder="Price" value="${currentProduct.getUnitPrice()}"><br>
 			<br> <label for="Quantity">Quantity</label> <br>
-			<input class="inputBox" type="text" required name="quantity" placeholder="Quantity" value="${currentProduct.getQuantity()}"><br>
+			<input class="inputBox" type="number" required name="quantity" placeholder="Quantity" value="${currentProduct.getQuantity()}"><br>
 			<br> <label for="image">Image Url</label> <br>
 			<input class="inputBox" type="file" required name="imageUrl" placeholder="Image Url" value="${currentProduct.getProductImg()}"><br>
 			<br> <label for="Points">Points</label> <br>

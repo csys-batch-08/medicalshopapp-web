@@ -65,7 +65,7 @@ public class CartDaoImpl {
 		while (rs.next()) 
 		{
 			Product product = proDao.findProductByProductId(rs.getInt(4));
-			Cart cart = new Cart(product, currentUser, rs.getInt(1), rs.getDouble(2), rs.getDouble(3));
+			Cart cart = new Cart(product, currentUser, rs.getInt("qty"), rs.getDouble("unit_price"), rs.getDouble("total_price"));
 			allCartItems.add(cart);
 		}
 		return allCartItems;
@@ -101,7 +101,7 @@ public class CartDaoImpl {
 		pst.setInt(2, cart.getUser().getUserId());
 		ResultSet rs = pst.executeQuery();
 		if (rs.next()) {
-			return rs.getInt(1);
+			return rs.getInt("qty");
 		}
 		}catch(SQLException e)
 		{
@@ -133,7 +133,7 @@ public class CartDaoImpl {
 		pst.setInt(2, cart.getUser().getUserId());
 		ResultSet rs = pst.executeQuery();
 		if (rs.next()) {
-			return rs.getInt(1);
+			return rs.getInt("total_price");
 		}
 		}catch(SQLException e)
 		{

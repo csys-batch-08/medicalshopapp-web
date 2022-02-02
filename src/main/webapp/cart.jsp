@@ -12,6 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel = "icon" type = "" href = "Assets/medhublogo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 <title>Cart</title>
 <style>
@@ -70,16 +71,14 @@ body {
 	/* margin-right: 20px; */
 }
 
-.list li:hover{
-	transition-duration: 0.2s;
-	transform: translateY(-10px);
-}
+
 
 .list li:hover, .list a:hover {
 	color: orange;
 	border-radius: 5px;
 	cursor: pointer;
 }
+
 
 body {
 	/* background: linear-gradient(rgba(26,176,156,0.7),rgba(239,78,28,0.5)) ,url(Images/homepage_img.jpg); */
@@ -258,6 +257,7 @@ visibility: hidden;
 position: absolute;
 top:150px;
 left:250px;
+box-shadow: 0px 0px 100px black;
 }
 
 .lessStockMsgDiv button{
@@ -281,6 +281,16 @@ visibility: hidden;
 
 .lessStockMsgDiv button:hover{
 box-shadow: 2px 2px 15px 1px black;
+cursor: pointer;
+}
+
+#msgDetail{
+visibility: hidden;
+position: absolute;
+top:150px;
+left:250px;
+font-weight: 100;
+margin: 160px;
 }
 </style>
 </head>
@@ -373,9 +383,10 @@ box-shadow: 2px 2px 15px 1px black;
 	</div>
 	
 	
-	<div class="lessStockMsgDiv">
-	<img src="Assets/lessStock1.png" id="lessStockMsg"  alt="lessStockImg">
-	 <button onclick ="hidePopUp()" id="popUpBtn">CLOSE</button>
+	<div class="lessStockMsgDiv" class="animate__animated  animate__zoomInDown animate__delay-0.5s">
+
+	<img src="Assets/lessStock11.png" id="lessStockMsg"  alt="lessStockImg" class="animate__animated  animate__bounceIn">
+	 <button onclick ="hidePopUp()" id="popUpBtn" class="animate__animated  animate__bounceIn animate__delay-0.3s">CLOSE</button>
 	</div>
 	<c:if test="${lessStock!=null}">
 	<script>  
@@ -384,7 +395,7 @@ box-shadow: 2px 2px 15px 1px black;
 	body.style.overflow = "hidden";
 	</script>
 	</c:if>
-	<c:remove var="lessStock"  scope="session"/> 
+	<c:remove var="lessStock"  scope="session"/>
 	
 	<div id="footer"></div>
 
@@ -394,6 +405,8 @@ function hidePopUp() {
 	document.getElementById("lessStockMsg").style.visibility = "hidden";
 	document.getElementById("popUpBtn").style.visibility = "hidden";
 	body.style.overflow = "auto";
+	document.getElementById("body").style.overflowX = "hidden";
+	
 }
  </script>
 

@@ -288,7 +288,7 @@ top:200px;
 
 			<nav class="list">
 				<ul>
-					<li><a href="cart.jsp">Cart</a></li>
+					<li><a href="showCartServlet">Cart</a></li>
 					<li><a href="index.jsp">SignOut</a></li>
 					<li><a href="showUserProfile">MyProfile</a></li>
 					<li><a href="myOrders.jsp?orderId=0">MyOrders</a></li>
@@ -315,7 +315,7 @@ top:200px;
 		<c:if test="${not empty allProducts}">
 
 			<c:forEach items="${allProducts}" var="products" >		
-			<div id="product" class="animate__animated  animate__bounceIn">
+			<div id="product" class="animate__animated  animate__bounceInLeft">
 				<div id="img">
 					<img src="Assets/${products.getProductImg()}" alt="${ products.getProductName()}">
 					<h3>${products.getProductName()}</h3>

@@ -122,7 +122,7 @@ top:300px;
 		</div>
 <!-- 		
  -->		
-		<img class="outOfStockLogo animate__animated  animate__zoomInDown animate__delay-1s" alt="outOfStockLogo" src="Assets/OutOfStockImage1.png">
+		<img class="outOfStockLogo animate__animated  animate__zoomInDown animate__delay-0.5s" alt="outOfStockLogo" src="Assets/OutOfStockImage1.png">
 		<h1 class="msg animate__animated  animate__zoomIn "> Sorry For Inconvenience ! Please Try Again After Sometime</h1>
 
 	</div>	

@@ -57,7 +57,6 @@ animate__fadeInRightBig
    position: absolute;
    top: 0;
    box-shadow: 0 5 black;
-   /* margin-top: 0%; */
    right: 0px;
    width: 1372px;
 }
@@ -86,15 +85,10 @@ animate__fadeInRightBig
    transform: translateY(-10px);
 }
 
-body {
-   /* background: linear-gradient(rgba(26,176,156,0.7),rgba(239,78,28,0.5)) ,url(Images/homepage_img.jpg); */
-   background-repeat: no-repeat;
-   overflow-x: hidden;
-   background-size: cover;
-}
 body{
 background-image: url(Assets/homepage_img.jpg);
-background-repeat: repeat-y;
+overflow-x: hidden;
+background-size: cover;
 }
 
 .logo img {
