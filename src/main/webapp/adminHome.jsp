@@ -17,57 +17,6 @@
     history.forward();
 </script>
 
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-	background-color: white;
-	background-image: url("Assets/Images/homepage_img.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-#navigation ul li {
-	list-style: none;
-	padding: 20px;
-	display: inline-block;
-	margin-right: 0%;
-}
-
-#navigation {
-   background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
-   margin-top: 0%;
-}
-
-#navigation ul li a {
-	text-decoration: none;
-	color: whitesmoke;
-	display: inline;
-		float:right;
-	
-}
-
-#navigation ul li a:hover {
-	color: black;
-}
-
-
-#navigation #logout a {
-	position: relative;
-	right: 10px;
-}
-
-h3 {
-	text-align: center;
-	position: relative;
-	top:100px;
-}
-</style>
 </head>
 
 <body>

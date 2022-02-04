@@ -20,120 +20,6 @@
 </script>
 
 <title>All Products</title>
-<style>
-* {
-	margin-left: 0px;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-	background-image: url(Assets/Images/homepage_img.jpg);
-	background-repeat: repeat-y;
-	background-size: cover;
-	overflow-x:hidden;
-	margin-top: 0px;
-}
-
-
-#navigation ul li {
-	list-style: none;
-	padding: 20px;
-	display: inline-block;
-	padding-right: 80px;
-	/* font-weight: 600;
-	font-size: 20px; */
-}
-
-#navigation {
-	background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
-	width: 100%;
-	margin-top: 0%;
-}
-
-#navigation ul li a {
-	text-decoration: none;
-	color: whitesmoke;
-	display: inline;
-}
-
-#navigation ul li a:hover {
-	color: black;
-}
-
-
-
-#product {
-	position: relative;
-	background-color: rgb(158, 202, 207, 0.5);
-	height: 250px;
-	border-radius: 5px;
-	width: 1200px;
-	left: 70px;
-}
-
-#product img {
-	height: 100px;
-	width: 90px;
-	position: relative;
-	left: 40px;
-	top:50px;
-}
-
-#product h5 {
-	position: relative;
-	left: 20px;
-	top:60px;
-}
-
-#product #details {
-	position: relative;
-	left: 220px;
-	top:-60px;
-	}
-
-#product #btn {
-	position: relative;
-	top: -250px;
-	left: 900px;
-}
-
-#product #btn button {
-	height: 30px;
-	width: 90px;
-	background-color: rgb(145, 230, 18);
-	border: none;
-	border-radius: 5px;
-}
-
-#btn1 {
-	position: relative;
-	left: 120px;
-	top: 30px;
-}
-
-#product #btn button:hover {
-	background-color: white;
-	box-shadow: 0 0 5px black;
-}
-
-#product #img h5 {
-	position: relative;
-	left: 40px;
-}
-
-#details h5{
-	position: relative;
-	top:-40px;
-	left:50px;
-}
-#deleteBtn{
-position: relative;
-left:100px;
-bottom: 63px;
-}
-</style>
 </head>
 <body>
 <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
@@ -161,12 +47,11 @@ bottom: 63px;
 			</c:if>
 			<c:remove var="updateCheck" scope="request"/>
 			
-			
+		<script src="Assets/javascript/popupMessages.js" >
+		</script>	
 		<c:if test="${param.status!=null}">
-		<script src="Assets/javascript/popupMessages.js" status="deleteSucess">
-	
-			</script>
-			</c:if>
+		<script type="text/javascript">showMessage('deleteSucess')</script>
+		</c:if>
 			
 
 	

@@ -1,10 +1,14 @@
 
-var check = document.currentScript.getAttribute('status');
-console.log(check);
+// var check = document.currentScript.getAttribute('status');
+function showMessage(check)
+{
+    console.log(check);
 
 
-    if(check==="loginSucess"){
-      var toastMixin = Swal.mixin({
+
+switch(check) {
+  case "loginSucess":
+   var toastMixin = Swal.mixin({
         toast: true,
         icon: 'success',
         title: 'General Title',
@@ -26,10 +30,10 @@ console.log(check);
         title: 'Login Sucessfull'
         });
     }
+    break;
 
-    }else if(check==="deleteSucess"){
-      
-        var toastMixin = Swal.mixin({
+  case "deleteSucess":
+   var toastMixin = Swal.mixin({
 			toast: true,
 			icon: 'success',
 			title: 'General Title',
@@ -51,9 +55,65 @@ console.log(check);
 			title: 'Successfully Deleted'
 			});
 			}
-        }
+    break;
+  default:
+      alert("Invalid");
     
+}
 
+
+
+    // if(check==="loginSucess"){
+    //   var toastMixin = Swal.mixin({
+    //     toast: true,
+    //     icon: 'success',
+    //     title: 'General Title',
+    //     animation: false,
+    //     position: 'top-right',
+    //     showConfirmButton: false,
+    //     timer: 1500,
+    //     timerProgressBar: true,
+    //     didOpen: (toast) => {
+    //     toast.addEventListener('mouseenter', Swal.stopTimer)
+    //     toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //     }
+    //     });
+    
+    //     deleted();
+    //     function deleted(){
+    //     toastMixin.fire({
+    //     animation: true,
+    //     title: 'Login Sucessfull'
+    //     });
+    // }
+
+    // }else if(check==="deleteSucess"){
+      
+    //     var toastMixin = Swal.mixin({
+	// 		toast: true,
+	// 		icon: 'success',
+	// 		title: 'General Title',
+	// 		animation: false,
+	// 		position: 'top-right',
+	// 		showConfirmButton: false,
+	// 		timer: 1500,
+	// 		timerProgressBar: true,
+	// 		didOpen: (toast) => {
+	// 		toast.addEventListener('mouseenter', Swal.stopTimer)
+	// 		toast.addEventListener('mouseleave', Swal.resumeTimer)
+	// 		}
+	// 		});
+
+	// 		deleted();
+	// 		function deleted(){
+	// 		toastMixin.fire({
+	// 		animation: true,
+	// 		title: 'Successfully Deleted'
+	// 		});
+	// 		}
+    //     }
+    
+    }
      
   
 
