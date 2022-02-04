@@ -48,21 +48,20 @@ public class AddProductServlet extends HttpServlet {
 		try {
 			boolean flag = products.insertProduct(product);
 			if (flag) {			
-				PrintWriter out = res.getWriter();
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('New Product Added SucessFully');");
-				out.println("location='addProduct.jsp';");
-				out.println("</script>");
+				RequestDispatcher rd = req.getRequestDispatcher("addProduct.jsp?status=addedSuccessfully");
+				try {
+					rd.forward(req, res);
+				} catch (ServletException | IOException e1) {
+					e1.printStackTrace();
+				}
+
 			} else {
 				throw new ProductExistsException();
 			}
-		} catch (SQLException  | IOException e) {
+		} catch (SQLException |ProductExistsException e) {
 			e.printStackTrace();
-		} catch (ProductExistsException e) {
 			
-			session.setAttribute("productExists", e.getMessage());
-			System.out.println(e.getMessage());
-			RequestDispatcher rd = req.getRequestDispatcher("addProduct.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("addProduct.jsp?productExists=productExists");
 			try {
 				rd.forward(req, res);
 			} catch (ServletException | IOException e1) {

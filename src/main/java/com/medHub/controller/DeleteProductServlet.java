@@ -38,6 +38,18 @@ public class DeleteProductServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			
+			}else
+			{
+				ProductDaoImpl product1 = new ProductDaoImpl();
+				List<Product> allproduct = product1.viewProduts();
+				req.setAttribute("allProducts", allproduct);
+				RequestDispatcher rd = req.getRequestDispatcher("adminAllProducts.jsp?deleteFailure=deleteFailure");
+				try {
+					rd.forward(req, resp);
+				} catch (ServletException | IOException e) {
+					e.printStackTrace();
+				}
+				
 			}
 		} catch (SQLException e) {
 

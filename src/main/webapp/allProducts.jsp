@@ -10,6 +10,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/medhublogo.png">
+<link rel="stylesheet" href="Assets/css/adminHome.css">
+
 <title>All Products</title>
 
 <style>

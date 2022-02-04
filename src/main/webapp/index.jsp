@@ -15,7 +15,7 @@
     history.forward();
 </script>
 
-<style>
+<!-- <style>
 @import url('https://fonts.googleapis.com/css2?family=Asap+Condensed&display=swap');
 * {
 	margin: 0;
@@ -282,7 +282,7 @@ top: -60px;
 font-weight: 600;
 }
 
-</style>
+</style> -->
 </head>
 
 <body id="body">

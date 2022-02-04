@@ -11,8 +11,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
-<meta name="theme-color" content="#ba8f88" >
-<link rel="stylesheet" href="Assets/css/userhome.css">
+<meta name="theme-color" content="#ba8f88">
+<link rel="stylesheet" href="Assets/css/UserHome.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
@@ -110,19 +110,13 @@
 <script src="Assets/javascript/popupMessages.js"></script>	
 	<c:if test="${param.loginstatus!=null}">
 		
-		<script type="text/javascript">showMessage('loginSucess')</script>
+		<script type="text/javascript"> showMessage('loginSucess')</script>
 		</c:if>
 	
 	<div id="footer">
-			
-	</div>
+</div>
+<script>
 
-<script >
-
-function loginSucess()
-{
-	
-	}
 </script>
 </body>
 
