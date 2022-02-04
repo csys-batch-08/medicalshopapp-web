@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel = "icon" type = "" href = "Assets/medhublogo.png">
-<link rel="stylesheet" href="NavStyle.css">
+<link rel="stylesheet" href="Assets/css/adminHome.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" ></script>
 <title>AdminHome</title>
@@ -27,7 +27,7 @@
 
 body {
 	background-color: white;
-	background-image: url("Assets/homepage_img.jpg");
+	background-image: url("Assets/Images/homepage_img.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 }

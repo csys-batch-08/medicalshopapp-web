@@ -5,7 +5,9 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
- <link rel = "icon" type = "" href = "Assets/medhublogo.png">
+ <link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
+  <link rel="stylesheet" href="Assets/css/updateProduct.css">
+ 
 <script>
     history.forward();
 </script>
@@ -20,7 +22,7 @@
 }
 
 body {
-	background-image: url("Assets/homepage_img.jpg");
+	background-image: url("Assets/Images/homepage_img.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 100vh;

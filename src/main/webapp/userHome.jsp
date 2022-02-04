@@ -10,254 +10,18 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel = "icon" type = "" href = "Assets/medhublogo.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
 <meta name="theme-color" content="#ba8f88" >
-<link rel="stylesheet" href="Css/UserHome.css">
+<link rel="stylesheet" href="Assets/css/userhome.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
 <title>User Home</title>
 
 <script>
     history.forward();
 </script>
-<style>
-animate__fadeInRightBig
-*{
-  
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: Arial, sans-serif;
-    
-}
 
-.list ul li {
-   list-style: none;
-   display: inline-block;
-}
-
-.nav{
-  background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
-  position: fixed;
-  width: 100%;
-  box-shadow:0 0 10px black;
-  z-index: 1;
-}
-
-.list li {
-   float: right;
-   padding: 20px;
-   transition: transform 0.4s;
-}
-
-.list ul {
-   /* background-color: #10847E;*/
-   position: absolute;
-   margin-right: 0%;
-   position: absolute;
-   top: 0;
-   box-shadow: 0 5 black;
-   right: 0px;
-   width: 1372px;
-}
-
-.list ul {
-   padding-right: 0px;
-}
-
-.list ul, .list li, .list a {
-   text-decoration: none;
-   color: white;
-   font-family: monospace;
-   font-size: 25px;
-   font-weight: 500;
-   /* margin-right: 20px; */
-}
-
-.list li:hover, .list a:hover {
-   color: orange;
-   border-radius: 5px;
-   cursor: pointer;
-}
-
-.list li:hover{
-   transition-duration: 0.2s;
-   transform: translateY(-10px);
-}
-
-body{
-background-image: url(Assets/homepage_img.jpg);
-overflow-x: hidden;
-background-size: cover;
-}
-
-.logo img {
-   height: 60px;
-   width: 60px;
-   margin-left: 20px;
-}
-
-/* banner */
-.slide {
-   position: absolute;
-   top: 120px;
-}
-
-.products tr td {
-   padding-left: 220px;
-}
-
-.logo img {
-   box-shadow: none;
-}
-
-#copyrights {
-   text-align: center;
-   color: yellow;	
-}
-
-#allproducts a {
-   text-decoration: none;
-   color: black;
-}
-
-#allproducts a:hover {
-   text-decoration: underline;
-   color: white;
-}
-
-#allproducts {
-   text-align: center;
-}
-
-
-#product {
-   position: relative;
-   top: 30px;
-   left: 50px;
-   background-color: rgba(158, 202, 207, 0.5);
-   height: 190px;
-   border-radius: 5px;
-   width: 1200px;
-   top:150px;
-}
-
-#product:hover{
-box-shadow: 0 0 10px black;
-transition-duration:0.3s;
-}
-
-#product img {
-   height: 100px;
-   width: 90px;
-   position: relative;
-   left: 40px;
-   top:20px;
-}
-
-#product h3 {
-   position: relative;
-   left: 10px;
-}
-
-#product #details {
-   position: relative;
-   left: 250px;
-   top: -90px;
-}
-
-#product #btn {
-   position: relative;
-   top: -250px;
-   left: 900px;
-}
-
-#product #btn button {
-   height: 30px;
-   width: 90px;
-   border: none;
-   border-radius: 5px;
-   background-color: none;
-}
-
-#product #btn button{
-   position: relative;
-   background-color: yellowgreen;
-   bottom:-150px;
-   
-}
-
-#btn1 {
-   position: relative;
-}
-
-#product #btn button:hover {
-   box-shadow: 0 0 5px black;
-   color: green;
-   transition-duration: 0.2s;
-   
-}
-
-#product #img h3 {
-   position: relative;
-   left: 40px;
-   top:20px;
-}
-
-/* #btn #buynow {
-   position: relative;
-
-} */
-
-a {
-   text-decoration: none;
-   color: black;
-}
-
-#userName{
-position: absolute;
-top:90px;
-left: 55px;
-}
-
-.prodSearch{
-position: fixed;
-left:200px;
-z-index: 1;
-top:18px;
-}
-
-#searchBar{
-height: 30px;
-width:250px;
-outline: none;
-border: none;
-border-top-left-radius: 2px;
-border-bottom-left-radius: 2px;
-}
-
-#searchBtn{
-position:absolute;
-height:30px;
-width: 40px;
-border: none;
-border-top-right-radius: 2px;
-border-bottom-right-radius: 2px;
-}
-
-#searchBtn:hover{
-cursor: pointer;
-background-color: rgb(173, 238, 120);
-box-shadow: 0 0 5px black;
-transition-duration:0.2s;
-}
-
-#searchBar:Hover{
-box-shadow: 0 0 10px black;
-}
-
-
-</style>
 
 </head>
 
@@ -282,7 +46,7 @@ box-shadow: 0 0 10px black;
 				
 				<div class="logo">
 					<img
-						src="Assets/medhublogo.png"
+						src="Assets/Images/medhublogo.png"
 						alt="logo">
 				</div>
 			</nav>
@@ -291,7 +55,7 @@ box-shadow: 0 0 10px black;
 		
 		
 		 <%-- <%=currentUser.getName()%> --%>
-		<h2 id="userName" class="animate__animated animate__bounceIn">welcome <c:out value="${sessionScope.user.userName}" /> </h2>
+		<h2 id="userName" class="animate__animated animate__bounceIn">Welcome <c:out value="${sessionScope.user.userName}" /> </h2>
 		</div>
 		<br><br>
 		
@@ -311,7 +75,7 @@ box-shadow: 0 0 10px black;
 		
 			<div id="product" >
 				<div id="img">
-					<img src="Assets/${products.getProductImg()}" alt="horlicks">
+					<img src="Assets/Images/${products.getProductImg()}" alt="horlicks">
 					<h3> ${products.getProductName()} </h3>
 				
 				</div>
@@ -342,15 +106,23 @@ box-shadow: 0 0 10px black;
 		</c:forEach>
 		
 
-	</div>
-
-	</div>
+	
+	
+	<c:if test="${param.loginstatus!=null}">
+		<script src="Assets/javascript/popupMessages.js" status="loginSucess"></script>
+			</c:if>
 	
 	<div id="footer">
 			
 	</div>
 
+<script >
 
+function loginSucess()
+{
+	
+	}
+</script>
 </body>
 
 </html>

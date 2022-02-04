@@ -6,6 +6,8 @@
 <meta charset="ISO-8859-1">
 <title>Out Of Stock</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="Assets/css/ProductOutStock.css">
+
 <style>
 * {
 	margin: 0;
@@ -72,7 +74,7 @@
 
 body {
 	/* background: linear-gradient(rgba(26,176,156,0.7),rgba(239,78,28,0.5)) ,url(Images/homepage_img.jpg); */
-	background-image: url(Assets/OutOfStockBg.png);
+	background-image: url(Assets/Images/OutOfStockBg.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 	
@@ -122,7 +124,7 @@ top:300px;
 		</div>
 <!-- 		
  -->		
-		<img class="outOfStockLogo animate__animated  animate__zoomInDown animate__delay-0.5s" alt="outOfStockLogo" src="Assets/OutOfStockImage1.png">
+		<img class="outOfStockLogo animate__animated  animate__zoomInDown animate__delay-0.5s" alt="outOfStockLogo" src="Assets/Images/OutOfStockImage1.png">
 		<h1 class="msg animate__animated  animate__zoomIn "> Sorry For Inconvenience ! Please Try Again After Sometime</h1>
 
 	</div>	

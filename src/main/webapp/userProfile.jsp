@@ -8,7 +8,8 @@
 <head>
 <meta charset="ISO-8859-1">
 
- <link rel = "icon" type = "" href = "Assets/medhublogo.png">
+ <link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
+ <link rel="stylesheet" href="Assets/css/userProfile.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <meta name="theme-color" content="#ba8f88" >
 <title>User Profile</title>
@@ -68,7 +69,7 @@
    background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
 }
 body {
-	background-image: url(Assets/homepage_img.jpg);
+	background-image: url(Assets/Images/homepage_img.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	overflow-x:hidden; 
@@ -256,6 +257,7 @@ font-weight: 600;
 
 #space{
 width:700px;
+}
 </style>
 </head>
 <body>

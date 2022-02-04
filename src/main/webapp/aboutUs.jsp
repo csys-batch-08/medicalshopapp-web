@@ -9,11 +9,11 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="" href="Assets/medhublogo.png">
+<link rel="icon" type="" href="Assets/Images/medhublogo.png">
 <meta name="theme-color" content="#ba8f88">
-
+<link rel="stylesheet" href="Assets/css/aboutUs.css">
 <title>Userhome</title>
-<style>
+<!-- <style>
 * {
 	margin: 0;
 	padding: 0;
@@ -31,7 +31,6 @@
 		rgb(44, 169, 207) 100%);
 	position: fixed;
 	width: 100%;
-	box-shadow: 0 0 10px black;
 	z-index: 1;
 }
 
@@ -100,9 +99,7 @@ body {
 	padding-left: 220px;
 }
 
-.logo img {
-	box-shadow: none;
-}
+
 
 #copyrights {
 	text-align: center;
@@ -137,7 +134,7 @@ color: white;
 text-align: center;
 
 }
-</style>
+</style> -->
 </head>
 
 <body>

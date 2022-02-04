@@ -1,14 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="ISO-8859-1">
-<link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
-<link rel="stylesheet" href="Assets/css/registerWelcome.css">
+@import url('https://fonts.googleapis.com/css2?family=Asap+Condensed&display=swap');
 
-<title>Registration Successfully</title>
-<style>
 * {
 	margin: 0;
 	padding: 0;
@@ -27,6 +18,9 @@
 
 .list li a{
 	padding: -10px;
+	font-family: 'Asap Condensed', sans-serif;
+	font-weight: 800;
+	letter-spacing: 2px;
 }
 
 
@@ -65,7 +59,7 @@
 }
 
 body {
-	background-image: url("Assets/Images/homepage_img.jpg");
+	background-image: url("Assets/homepage_img.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	overflow-x: hidden;
@@ -177,7 +171,7 @@ body {
 	position: absolute;
 	top: 120px;
 	left: 490px;
-	background-color: rgb(245,178,120);
+	background-color: rgb(255,255,255);
 	border-radius: 5px;
 	visibility: visible;
 }
@@ -195,7 +189,7 @@ body {
 	background: none;
 	outline: none;
 	width: 300px;
-	color: white;
+	color: black;
 	font-size: 18px;
 }
 
@@ -269,64 +263,8 @@ top: -60px;
 font-weight: 600;
 }
 
-h1{
-position: absolute;
-left:410px;
-top:200px;
-font-size: 50px;
+#userExists{
+position: relative;
+top:20px;
+color: red;
 }
-
-a{
-color: black;
-text-decoration: none;
-}
-
-h3{
-position: absolute;
-left:600px;
-top:280px;
-}
-
-a:hover{
-text-decoration: underline;
-}
-</style>
-</head>
-
-<body id="body">
-	<div id="container">
-
-		<!-- Navigation Bar -->
-		<div class="nav">
-
-			<nav class="list">
-				<ul>
-					<li><a href="registration.jsp"  id="register">SignUp</a></li>
-					<li><a href="index.jsp"  id="login">Login</a></li>
-				</ul>
-			</nav>
-			
-			<div class="logo">
-				<img src="Assets/Images/medhublogo.png" alt="logo">
-
-				<div id="companyname">
-					<img
-						src="https://d1hbpr09pwz0sk.cloudfront.net/logo_url/medhub-f6c08b33"
-						alt="logo">
-				</div>
-			</div>
-		</div>
-		
-		<h1 id="regMsg" >Registered Successfully</h1>
-		<h3><a href="index.jsp">Click Here To Login</a></h3>
-
-										<!-- sign/register form -->
-										
-		
-		</div>
-
-		<div class="footer"></div>
-
-	
-</body>
-</html>

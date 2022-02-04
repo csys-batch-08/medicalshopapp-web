@@ -9,9 +9,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel = "icon" type = "" href = "Assets/medhublogo.png">
-
-
+<link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
+ <link rel="stylesheet" href="Assets/css/buyProduct.css">
 
 <title>BuyProduct</title>
 <style>
@@ -85,7 +84,7 @@ background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%
 
 body {
 	/* background: linear-gradient(rgba(26,176,156,0.7),rgba(239,78,28,0.5)) ,url(Images/homepage_img.jpg); */
-	background-image: url(Assets/homepage_img.jpg);
+	background-image: url(Assets/Images/homepage_img.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }

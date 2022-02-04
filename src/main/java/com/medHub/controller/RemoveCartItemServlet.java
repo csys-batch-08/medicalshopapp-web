@@ -28,7 +28,8 @@ public class RemoveCartItemServlet extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
 		HttpSession session = req.getSession();
 		
@@ -49,7 +50,7 @@ public class RemoveCartItemServlet extends HttpServlet{
 			{
 				List<Cart> cartItems = cartdao.viewCart(currentUser);
 				req.setAttribute("cartList", cartItems);
-				RequestDispatcher rd = req.getRequestDispatcher("cart.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("cart.jsp?removestatus=removed");
 				rd.forward(req, res);
 			}
 		} catch (SQLException e) {

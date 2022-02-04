@@ -4,8 +4,9 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link rel = "icon" type = "" href = "Assets/medhublogo.png">
+<link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="Assets/css/registration.css">
 
 <script>
     history.forward();
@@ -73,7 +74,7 @@
 }
 
 body {
-	background-image: url("Assets/homepage_img.jpg");
+	background-image: url("Assets/Images/homepage_img.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	overflow-x: hidden;
@@ -283,6 +284,10 @@ top:20px;
 color: red;
 }
 
+.required{
+color:red;
+}
+
 </style>
 </head>
 
@@ -303,7 +308,7 @@ color: red;
 			</nav>
 			
 			<div class="logo">
-				<img src="Assets/medhublogo.png" alt="logo">
+				<img src="Assets/Images/medhublogo.png" alt="logo">
 
 				<div id="companyname">
 					<img
@@ -318,20 +323,20 @@ color: red;
 		<div id="registerScreen">
 			<div id="registerScreenContent">
 				<form action="RegisterController" class="registerform" method="get" >
-					<label for="fullName" class="reglab">FullName*</label><br>
+					<label for="fullName" class="reglab">Full Name <span- class="required">*</span></label><br>
 					<br> <input type="text" onkeyup="hideMsg()"  onkeyup="hideUserExists()"  name="regfullName" id="fullname"
 						placeholder="Enter fullname" required autofocus><br>
 						
-					<br> <label for="mail" class="reglab">Mail Id</label><br>
+					<br> <label for="mail" class="reglab">Mail Id <span class="required">*</span></label><br>
 					<br> <input type="email" onkeyup="checkMail()"  onkeyup="hideMsg()" onkeyup="hideUserExists()"  name="regMail"
 						id="regMail" placeholder="Enter Mail Id"  pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}" required  ><br>
 						<label id="existsMsg"></label><br>
-					 <label for="phone" class="reglab">Mobile Number*</label><br>
+					 <label for="phone" class="reglab">Mobile Number <span class="required">*</span></label><br>
 					<br> <input id="mobile" type="text" onkeyup="mobileNum()" onkeyup="hideMsg()" onkeyup="hideUserExists()"  name="regMobile" required
 						placeholder="Enter Mobile Number" pattern="[6-9][0-9]{9}"
 						title="MObile Number Must Have 10 Digits" required min="3" max="10"><br>
 						<label id="numberExists"></label>
-					<br> <label for="password" class="reglab">Password*</label><br>
+					<br> <label for="password" class="reglab">Password <span class="required">*</span></label><br>
 					<br> <input type="password" onkeyup="hideMsg()" onkeyup="hideUserExists()" 
 						placeholder="Password" name="regPassword" value="" required
 						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"

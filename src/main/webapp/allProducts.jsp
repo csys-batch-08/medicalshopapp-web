@@ -9,8 +9,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel = "icon" type = "" href = "Assets/medhublogo.png">
-
+<link rel="icon" type="" href="Assets/medhublogo.png">
 <title>All Products</title>
 
 <style>
@@ -22,7 +21,7 @@
 }
 
 body {
-	background-image: url(Images/homepage_img.jpg);
+	background-image: url(Assets/Images/homepage_img.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -35,10 +34,10 @@ body {
 }
 
 #navigation {
-    background: linear-gradient(to right, rgb(4, 47, 58) 0%, rgb(44, 169, 207) 100%);
-    position: fixed;
-    top:0px;
-    
+	background: linear-gradient(to right, rgb(4, 47, 58) 0%,
+		rgb(44, 169, 207) 100%);
+	position: fixed;
+	top: 0px;
 }
 
 #navigation ul li a {
@@ -50,6 +49,7 @@ body {
 #navigation ul li a:hover {
 	color: black;
 }
+
 #navigation #logout a {
 	position: relative;
 	right: 10px;
@@ -133,13 +133,14 @@ a {
 </style>
 </head>
 <body>
-<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 
 	<li><a href="AllUser.jsp">All Users</a></li>
 	<div id="navigation">
 		<ul>
 			<li><a href="AllUser.jsp">All Users</a></li>
-			<li><a href="AdminAllProducts.jsp?deleteProductid=0">All Products</a></li>
+			<li><a href="AdminAllProducts.jsp?deleteProductid=0">All
+					Products</a></li>
 			<li><a href="AddProduct.jsp">Add Products</a></li>
 			<li id="logout"><a href="Index.jsp">Logout</a></li>
 	</div>
@@ -156,7 +157,8 @@ a {
 	<form action="cart">
 		<div id="product">
 			<div id="img">
-				<img src="<%=products.getProductImg()%>" alt="<%=products.getProductName()%>">
+				<img src="<%=products.getProductImg()%>"
+					alt="<%=products.getProductName()%>">
 				<h3><%=products.getProductName()%></h3>
 			</div>
 			<div id="details">

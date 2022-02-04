@@ -11,8 +11,11 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel = "icon" type = "" href = "Assets/medhublogo.png">
+<link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+<link rel="stylesheet" href="Assets/css/cart.css">
 
 <title>Cart</title>
 <style>
@@ -82,7 +85,7 @@ body {
 
 body {
 	/* background: linear-gradient(rgba(26,176,156,0.7),rgba(239,78,28,0.5)) ,url(Images/homepage_img.jpg); */
-	background-image: url(Assets/homepage_img.jpg);
+	background-image: url(Assets/Images/homepage_img.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -322,24 +325,39 @@ margin: 160px;
 		</div>
 	
 		
+			<c:if test="${param.removestatus!=null}">
+		<script>
+		var toastMixin = Swal.mixin({
+			toast: true,
+			icon: 'success',
+			title: 'General Title',
+			animation: false,
+			position: 'top-right',
+			showConfirmButton: false,
+			timer: 2000,
+			timerProgressBar: true,
+			didOpen: (toast) => {
+			toast.addEventListener('mouseenter', Swal.stopTimer)
+			toast.addEventListener('mouseleave', Swal.resumeTimer)
+			}
+			});
+
+			deleted();
+			function deleted(){
+			toastMixin.fire({
+			animation: true,
+			title: 'Item Removed Successfully'
+			});
+			}
+			</script>
+			</c:if>	
+		
 		
 			<c:forEach items="${cartList}" var="cartList" >
 			<div id="product">
 			
-			<%-- <c:if test="${outOfStock!=null}">
-			<span id="errorMsg">${outOfStock}</span>
-			</c:if>
-			<c:remove var="outOfStock"  scope="session"/> --%>
-			
-			<%-- <c:if test="${lessStock!=null }">
-			<span id="lessStock">${lessStock}</span>
-			</c:if>
-			<c:remove var="lessStock" scope="session"/> --%>
-			
-			
-			
-				<div id="img">
-					<img src="Assets/${cartList.getProduct().getProductImg()}" alt="horlicks">
+					<div id="img">
+					<img src="Assets/Images/${cartList.getProduct().getProductImg()}" alt="horlicks">
 					<h3>${cartList.getProduct().getProductName()}</h3>
 				</div>
 				<div id="details">
@@ -365,13 +383,14 @@ margin: 160px;
 						
 				</div>
 				<div id="btn">
-					<button>
+					<button type="submit">
 						<a id="BuyNow" href="cartOrder?CartproductId=${cartList.getProduct().getProductId()}&unitPrice=${cartList.getUnitPrice()}&cartpoints=${cartList.getProduct().getPoints()}&cartQuantity=${cartList.getQty()}&totalPrice=${cartList.getTotalPrice()}">Buy Now</a>
 					</button>
-					<br>
-					<button>
-						<a id="Remove" href="removeCartItem?CartproductId=${cartList.getProduct().getProductId()}">Remove</a>
-					</button>
+					<br> 
+						
+						<%-- <a id="Remove" href="removeCartItem?CartproductId=${cartList.getProduct().getProductId()}">Remove</a> --%>
+					<button  id="Remove" onclick="confirmdelete(${cartList.getProduct().getProductId()})">Remove</button>
+	
 				</div>	
 			</div>
 		<br>
@@ -385,7 +404,7 @@ margin: 160px;
 	
 	<div class="lessStockMsgDiv" class="animate__animated  animate__zoomInDown animate__delay-0.5s">
 
-	<img src="Assets/lessStock11.png" id="lessStockMsg"  alt="lessStockImg" class="animate__animated  animate__bounceIn">
+	<img src="Assets/Images/lessStock11.png" id="lessStockMsg"  alt="lessStockImg" class="animate__animated  animate__bounceIn">
 	 <button onclick ="hidePopUp()" id="popUpBtn" class="animate__animated  animate__bounceIn animate__delay-0.3s">CLOSE</button>
 	</div>
 	<c:if test="${lessStock!=null}">
@@ -400,6 +419,18 @@ margin: 160px;
 	<div id="footer"></div>
 
 <script>
+
+function check(){
+    var result = confirm("Are You Sure To Delete The Product");
+
+    if(result==false){
+        event.preventDefault();
+    }
+}
+
+
+
+
 function hidePopUp() {
 	
 	document.getElementById("lessStockMsg").style.visibility = "hidden";
@@ -407,6 +438,25 @@ function hidePopUp() {
 	body.style.overflow = "auto";
 	document.getElementById("body").style.overflowX = "hidden";
 	
+}
+
+
+
+function confirmdelete(productId) {
+	 Swal.fire({
+		 title: "Are you want to remove this item?",
+		    type: "info",
+		    showCancelButton: true,
+		    confirmButtonText: "Delete It",
+		    confirmButtonColor: "#ff0055",
+		    cancelButtonColor: "#999999",
+		    focusConfirm: false,
+		    focusCancel: true
+		}).then((result) => {
+		  if (result.isConfirmed) {
+		    window.location.replace("removeCartItem?info=&CartproductId=" + productId);
+		  }
+		})
 }
  </script>
 

@@ -9,6 +9,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel = "icon" type = "" href = "Assets/medhublogo.png">
+ <link rel="stylesheet" href="Assets/css/addProduct.css">
+ 
 <script>
     history.forward();
 </script> 
@@ -28,7 +30,7 @@ body {
 	overflow-x: hidden;
 }
 body{
-background-image: url(Assets/homepage_img.jpg);
+background-image: url(Assets/Images/homepage_img.jpg);
 background-size: cover;
 }
 
@@ -154,7 +156,7 @@ input::-webkit-inner-spin-button {
 				<li><a href="adminAllProducts">AllProducts</a></li>
 				<li><a href="addProduct.jsp">Add Products</a></li>
 				<li><a href="salesReports.jsp">Sales Reports</a></li>
-				<li id="logout"><a class="navbar-brand" href="Index.jsp">Logout</a></li>
+				<li id="logout"><a class="navbar-brand" href="index.jsp">Logout</a></li>
 			</ul>	
 		</div>
 		
@@ -190,7 +192,7 @@ input::-webkit-inner-spin-button {
 			<br>
 			
  
-			<input class="inputBox" type="number" onkeyup="hideErrorMsg()" required min="1" name="quantity"
+			<input class="inputBox" type="number" min="1" onkeyup="hideErrorMsg()" required  name="quantity"
 				placeholder="Quantity"><br>
 			<br>
  

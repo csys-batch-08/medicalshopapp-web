@@ -6,8 +6,9 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
- <link rel = "icon" type = "" href = "Assets/medhublogo.png">
+ <link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="Assets/css/salesReports.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" ></script>
 <title>Sales Report</title>
 <script>
@@ -23,7 +24,7 @@
 }
 
 body {
-	background-image: url(Assets/homepage_img.jpg);
+	background-image: url(Assets/Images/homepage_img.jpg);
 	background-size: cover;
 }
 #navigation{

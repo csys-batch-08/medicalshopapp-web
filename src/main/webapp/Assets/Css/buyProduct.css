@@ -1,0 +1,294 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+ 
+.list{
+background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
+   position: fixed;
+   width: 100%;
+   z-index: 1;
+}
+.list ul li {
+	list-style: none;
+	display: inline-block;
+}
+
+.list li {
+	float: right;
+	padding: 20px;
+	transition: transform 0.4s;
+	color: white;
+	
+}
+
+.list ul {
+	/* background-color: #10847E;*/
+	height: 70px;
+	position: absolute;
+	margin-right: 0%;
+	position: absolute;
+	top: 0;
+	box-shadow: 0 5 black;
+	/* margin-top: 0%; */
+	right: 0px;
+	width: 1372px;
+	color: white;
+	padding-right: 0px;
+	
+}
+
+
+.list ul, .list li, .list a {
+	text-decoration: none;
+	color: black;
+	font-family: monospace;
+	font-size: 25px;
+	font-weight: 500;
+	/* margin-right: 20px; */
+	color: white;
+}
+
+.list li:hover, .list a:hover {
+	color: orange;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.list li:hover{
+	transition-duration: 0.2s;
+	transform: translateY(-10px);
+}
+
+body {
+	/* background: linear-gradient(rgba(26,176,156,0.7),rgba(239,78,28,0.5)) ,url(Images/homepage_img.jpg); */
+	background-image: url(Assets/homepage_img.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.logo img {
+	height: 60px;
+	width: 60px;
+	margin-left: 20px;
+}
+
+.buyProduct {
+	position: absolute;
+	top: 150px;
+	left: 170px;
+}
+
+.buyProduct{
+background-color: rgba(158, 202, 207,0.5);
+width: 900px;
+height: 300px;
+border-radius: 5px;
+}
+
+.buyProduct img {
+	position:relative;
+	left:-30px;
+	height: 220px;
+	width: 220px;
+}
+
+#qty {
+	position: relative;
+	left: 20px;
+	top: 74px;
+}
+
+#qty button {
+	position: relative;
+	left: 80px;
+}
+
+#qty input {
+	width: 60px;
+	position: relative;
+}
+
+#qty #qtyBox {
+	position: relative;
+	left:13px;
+}
+
+.buyProduct td p{
+padding-top: 30px;
+position: relative;
+left:-100px;
+}
+
+#addToCart a{
+background-color: green;
+text-decoration: none;
+}
+
+#buyNow a{
+background-color: green;
+color: white;
+text-decoration: none;
+}
+
+#addToCart:hover{
+cursor: pointer;
+}
+
+#buyNow:hover{
+cursor: pointer;
+}
+
+#price{
+position: relative;
+left: -100px;
+outline: none;
+border: none;
+background-color: rgba(158, 202, 207,0.1); 
+color: black;
+}
+
+#pImg{
+position: relative;
+height: 200px;
+width: 170px;
+left:10px;
+}
+
+#pDesc{
+position: relative;
+left: 110px;
+bottom: 15px;
+}
+
+#TotalPriceLabel{
+position: relative;
+top:-150px;
+right: 50px;
+}
+
+#offer{
+position: relative;
+left: -100px;
+top:30px;
+outline: none;
+border:none;
+background-color: rgba(158, 202, 207,0.1); 
+color: black;
+font-size: 15px;
+}
+
+#totalprice{
+position: relative;
+top:-190px;
+left:100px;
+outline: none;
+border: none;
+background-color: rgba(158, 202, 207,0.1); 
+color: black;
+font-weight: 700;
+font-size: 17px;
+}
+
+#totalPriceDiv{
+position: relative;
+top:20px;
+}
+
+#cartForm #addToCart{
+position: relative;
+left:-150px;
+}
+
+#ErrorMsg{
+visibility: hidden;
+color:red;
+}
+
+#cartQuantity{
+visibility: hidden;
+}
+
+#cartTotalPrice{
+visibility: hidden;
+}
+
+#detail{
+position: relative;
+left:50px;
+bottom:15px;
+}
+
+#detail p:nth-child(1) {
+  position: relative;
+  bottom: 29px;
+}
+
+#detail p:nth-child(2) {
+  position: relative;
+  bottom: 29px;
+}
+
+#detail p:nth-child(3) {
+  position: relative;
+  bottom: 29px;
+}
+
+#detail p:nth-child(4) {
+  position: relative;
+  bottom: -50px;
+}
+
+.payNow button{
+height: 28px;
+width: 80px;
+background-color: yellowgreen;
+outline: none;
+border: none;
+border-radius: 5px;
+}
+
+.payNow{
+position: relative;
+right: 22px;
+}
+
+.addToCart button{
+height: 28px;
+width: 80px;
+position: relative;
+background-color:rgb(43, 180, 235);
+outline: none;
+border: none;
+border-radius: 5px;
+}
+
+.addToCart{
+position: relative;
+bottom: 47px;
+left:100px;
+}
+
+.payNow button:hover{
+box-shadow: 0 0 5px black;
+transition-duration:0.2s;
+cursor: pointer;
+}
+
+.addToCart button:hover{
+box-shadow: 0 0 5px black;
+transition-duration:0.2s;
+}
+
+#rs{
+position: relative;
+right: 240px;
+}
+
+#percentage{
+position: relative;
+top:30px;
+right:275px;
+}

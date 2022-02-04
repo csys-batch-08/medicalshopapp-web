@@ -2,6 +2,7 @@ package com.medhub.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.medhub.dao.*;
+import com.medhub.model.Product;
 
 @WebServlet("/deleteProduct")
 public class DeleteProductServlet extends HttpServlet {
@@ -26,8 +28,16 @@ public class DeleteProductServlet extends HttpServlet {
 		try {
 			int result = product.deleteProduct(deletePId);
 			if (result > 0) {
-				RequestDispatcher rd = req.getRequestDispatcher("adminAllProducts");
-				rd.forward(req, resp);
+				ProductDaoImpl product1 = new ProductDaoImpl();
+				List<Product> allproduct = product1.viewProduts();
+				req.setAttribute("allProducts", allproduct);
+				RequestDispatcher rd = req.getRequestDispatcher("adminAllProducts.jsp?status=deleted");
+				try {
+					rd.forward(req, resp);
+				} catch (ServletException | IOException e) {
+					e.printStackTrace();
+				}
+			
 			}
 		} catch (SQLException e) {
 

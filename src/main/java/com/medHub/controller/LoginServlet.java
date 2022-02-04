@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 				List<Product> allproduct = product.viewProduts();
 				Product searchProducts = new Product(); 
 				req.setAttribute("allProducts", allproduct);
-				RequestDispatcher rd = req.getRequestDispatcher("userHome.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("userHome.jsp?loginstatus=sucess");
 				rd.forward(req, res);
 			}
 			else

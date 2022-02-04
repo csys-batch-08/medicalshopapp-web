@@ -11,12 +11,13 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel = "icon" type = "" href = "Assets/medhublogo.png">
+<link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
+ <link rel="stylesheet" href="Assets/css/myOrders.css">
 
 <title>My Orders</title>
 <style>
 
-* {
+/* * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -36,14 +37,12 @@
 }
 
 .list ul {
-	/* background-color: #10847E;*/
 	height: 70px;
 	position: absolute;
 	margin-right: 0%;
 	position: absolute;
 	top: 0;
 	box-shadow: 0 5 black;
-	/* margin-top: 0%; */
 	right: 0px;
 	width: 1372px;
 }
@@ -77,11 +76,9 @@
 
 }
 body {
-	/* background: linear-gradient(rgba(26,176,156,0.7),rgba(239,78,28,0.5)) ,url(Images/homepage_img.jpg); */
-	background-image: url(Assets/homepage_img.jpg);
+	background-image: url(Assets/Images/homepage_img.jpg);
 	background-size: cover;
 	overflow-x:hidden; 
-	background-repeat: repeat-y;
 	
 }
 
@@ -91,12 +88,10 @@ body {
 	margin-left: 20px;
 }
 
-/* banner */
 .slide {
 	position: absolute;
 	top: 120px;
 }
-/* progress */
 .products {
 	margin-top: 330px;
 	border-spacing: 0 200px;
@@ -232,7 +227,7 @@ left: 55px;
 
 #productId{
 visibility: hidden;
-}
+} */
 
 </style>
 </head>
@@ -270,7 +265,7 @@ visibility: hidden;
 			
 			<div id="product">
 				<div id="img">
-					<img src="Assets/${myAllOrders.getProduct().getProductImg()}" alt="horlicks">
+					<img src="Assets/Images/${myAllOrders.getProduct().getProductImg()}" alt="horlicks">
 					<h3>${myAllOrders.getProduct().getProductName() }</h3>
 				</div>
 				<div id="details">
