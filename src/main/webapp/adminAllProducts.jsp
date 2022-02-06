@@ -152,11 +152,11 @@ border-radius: 5px;
 
 	<div id="navigation" class="container-fluid">
 		<ul>
-			<li><a href="allUsers">All Users</a></li>
-			<li><a href="adminAllProducts">All Products</a></li>
-			<li><a href="addProduct.jsp">Add Products</a></li>
-			<li><a href="salesReports.jsp">Sales Reports</a></li>
-			<li id="logout"><a href="index.jsp">Logout</a></li>
+			<li><a href="allUsers"><label>All Users</label></a></li>
+			<li><a href="adminAllProducts"><labelAll Products></label></a></li>
+			<li><a href="addProduct.jsp"><label>Add Products</label></a></li>
+			<li><a href="salesReports.jsp"><label>Sales Reports</label></a></li>
+			<li id="logout"><a href="index.jsp"><label>Logout</label></a></li>
 	</div>
 	</ul>
 	</div>

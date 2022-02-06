@@ -24,11 +24,11 @@
 	<div id="container">
 		<div id="navigation">
 			<ul>
-				<li><a href="allUsers">All Users</a></li>
-				<li><a href="adminAllProducts">AllProducts</a></li>
-				<li><a href="addProduct.jsp">Add Products</a></li>
-				<li><a href="salesReports.jsp">Sales Reports</a></li>
-				<li id="logout"><a class="navbar-brand" href="index.jsp">Logout</a></li>
+				<li><a href="allUsers"><label>All Users</label></a></li>
+				<li><a href="adminAllProducts"><label>AllProducts</label></a></li>
+				<li><a href="addProduct.jsp"><label>Add Products</label></a></li>
+				<li><a href="salesReports.jsp"><label>Sales Reports</label></a></li>
+				<li id="logout"><a class="navbar-brand" href="index.jsp"><label>Logout</label></a></li>
 			</ul>	
 		</div>
 		
@@ -38,7 +38,7 @@
 		
 		<form action="AddProductController">
 		
-			<input class="inputBox" list="category" onkeyup="hideErrorMsg()" name="category" id="browser"
+			<input class="inputBox" id="category" list="category" onkeyup="hideErrorMsg()" name="category" id="browser"
 				placeholder="Category" autofocus>
 			<datalist id="category">
 				<option value="medicine">
@@ -50,7 +50,7 @@
 			<br>
 			<br>
 		
-			<input class="inputBox" type="text" onkeyup="hideErrorMsg()" required name="productName"
+			<input class="inputBox"  id="productName" type="text" onkeyup="hideErrorMsg()" required name="productName"
 				placeholder="Product Name" ><br>
 			<br>
 			
@@ -64,20 +64,20 @@
 			<br>
  
 			<label>Add Image</label>
-			<input class="inputBox" type="file" onkeyup="hideErrorMsg()" required name="imageFile"
+			<input class="inputBox"  id="imageFile" type="file" onkeyup="hideErrorMsg()" required name="imageFile"
 				placeholder="Image Url"><br>
 			<br>
  
-			<input class="inputBox" type="number" onkeyup="hideErrorMsg()" required min="1"  name="points"
+			<input class="inputBox" id="points" type="number" onkeyup="hideErrorMsg()" required min="1"  name="points"
 				placeholder="Points"><br>
 			<br>
  
-			<input class="inputBox" type="number" onkeyup="hideErrorMsg()" required min="0" name="offer"
+			<input class="inputBox" id="offer" type="number" onkeyup="hideErrorMsg()" required min="0" name="offer"
 				placeholder="Offer%"><br>
 			<br>
 			<br>
 
-			<textarea class="inputBox" 
+			<textarea class="inputBox" id="Description"
 				style="max-height: 70px; min-height: 20px; width: 400px; max-width: 200px; min-width: 300px;"
 				required name="description" onkeyup="hideErrorMsg()" placeholder="Product Description"></textarea>
 			<br>

@@ -25,15 +25,16 @@ public class ConvertPointsMoneyServlet extends HttpServlet{
 
 	private static final long serialVersionUID = -508535237820559918L;
 
-	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException,NumberFormatException{
+	public void doGet(HttpServletRequest req,HttpServletResponse res){
 		
+		try {
 		HttpSession session = req.getSession();
 		User currentUser = (User) session.getAttribute("user");
 		int points=Integer.parseInt(req.getParameter("pointsMoney"));
 		try {
 		if(points>0) {
-		double Converted = Math.ceil((points * 10)/100);
-		double wallet=currentUser.getWallet()+Converted;
+		double converted = Math.ceil((points * 10)/100);
+		double wallet=currentUser.getWallet()+converted;
 		UserDaoImpl userDao = new UserDaoImpl();
 		userDao.addMoneyInWallet(wallet, currentUser);
 		userDao.updateUserPoints(null);
@@ -61,5 +62,8 @@ public class ConvertPointsMoneyServlet extends HttpServlet{
 		{
 		e.printStackTrace();
 		}
+		}catch (NumberFormatException e) {
+				e.printStackTrace();
+		}	
 	}
 }
