@@ -29,12 +29,12 @@
 
 			<nav class="list">
 				<ul>
-					<li><a href="index.jsp">SignOut</a></li>
-					<li><a href="showCartServlet">Cart</a></li>
-					<li><a href="showUserProfile">MyProfile</a></li>
-					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
-					<li><a href="aboutUs.jsp">About-Us</a></li>
-					<li><a href="userHomeServlet">Home</a></li>
+						<li><a href="index.jsp"><label>SignOut</label></a></li>
+						<li><a href="showCartServlet"><label>Cart</label></a></li>
+						<li><a href="showUserProfile"><label>MyProfile</label></a></li>
+						<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0"><label>MyOrders</label></a></li>
+						<li><a href="aboutUs.jsp"><label>About-Us</label></a></li>
+						<li><a href="userHomeServlet"><label>Home</label></a></li>
 					
 				</ul>
 				<div class="logo">

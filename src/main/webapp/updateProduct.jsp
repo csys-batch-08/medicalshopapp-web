@@ -57,8 +57,9 @@
 			<input class="inputBox" type="text" required name="offer" placeholder="Offer%" value="${currentProduct.getOffer()}"><br>
 			<br> <label for="">Description</label><br>
 			<br>
-			<input class="inputBox" style="max-height: 100px; min-height: 20px; width: 400px; max-width: 200px; min-width: 300px;"
-				required name="description" placeholder="Product Description" value="${currentProduct.getDescription()}"></input>
+			<textarea class="inputBox" style="max-height: 100px; min-height: 100px; width: 400px; max-width: 200px; min-width: 300px;position: relative;left: -10px"
+			required name="description" placeholder="Product Description" value="${currentProduct.getDescription()}"></textarea>
+				
 			<br>
 			<button name="currentProdId" value="${currentProduct.getProductId()}">Update</button>
 		</form>

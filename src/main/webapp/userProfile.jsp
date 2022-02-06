@@ -29,12 +29,12 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 
 		<nav class="list" class="container-fluid p-0">
 			<ul>
-					<li><a href="index.jsp">SignOut</a></li>
-					<li><a href="showCartServlet">Cart</a></li>
-					<li><a href="showUserProfile">MyProfile</a></li>
-					<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0">MyOrders</a></li>
-					<li><a href="aboutUs.jsp">About-Us</a></li>
-					<li><a href="userHomeServlet">Home</a></li>
+				<li><a href="index.jsp"><label class="nav">SignOut</label></a></li>
+				<li><a href="showCartServlet"><label class="nav">Cart</label></a></li>
+				<li><a href="showUserProfile"><label class="nav">MyProfile</label></a></li>
+				<li><a href="myOrdersServlet?orderId=0&totalPrice=0&quantity=0&points=0&productId=0"><label class="nav">MyOrders</label></a></li>
+				<li><a href="aboutUs.jsp"><label class="nav">About-Us</label></a></li>
+				<li><a href="userHomeServlet"><label class="nav">Home</label></a></li>	
 			</ul>
 			<div class="logo">
 				<img

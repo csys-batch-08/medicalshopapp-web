@@ -547,7 +547,7 @@ public class UserDaoImpl implements UserDAO {
 	
 	public boolean checkMail(String mail) {
 		
-		boolean flag = true;
+		boolean flag = false;
 		Connection con = null;
 		PreparedStatement pst = null;
 		
@@ -560,7 +560,7 @@ public class UserDaoImpl implements UserDAO {
 		
 			if(result.next())
 			{
-				flag=false;
+				flag=true;
 				
 			}
 		} catch (SQLException e) {
