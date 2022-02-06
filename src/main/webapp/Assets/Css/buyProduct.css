@@ -145,7 +145,7 @@ position: relative;
 left: -100px;
 outline: none;
 border: none;
-background-color: rgba(158, 202, 207,0.1); 
+background-color: rgb(206,228,231); 
 color: black;
 }
 
@@ -174,7 +174,7 @@ left: -100px;
 top:30px;
 outline: none;
 border:none;
-background-color: rgba(158, 202, 207,0.1); 
+background-color: rgb(206,228,231); 
 color: black;
 font-size: 15px;
 }

@@ -26,8 +26,9 @@
 				<li><a href="addProduct.jsp">Add Products</a></li>
 				<li><a href="salesReports.jsp">Sales Reports</a></li>
 				<li id="logout"><a href="index.jsp">Logout</a></li>
+			</ul>	
 		</div>
-		</ul>
+		
 	</div>
 	<div>
 		

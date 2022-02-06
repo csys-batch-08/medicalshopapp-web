@@ -59,8 +59,8 @@
 
 			<tr>
 			<th id="th"></th>
-				<td> 
-				<div id="pDesc">
+			<div id="pDesc">
+					<td> 
 					<p>
 						<strong>Product category:</strong>
 					</p>
@@ -84,7 +84,7 @@
 					</p>
 					</td>
 			
-			
+			</div>
 				<td id="detail">
 					<p name="pCategory">${currentProduct.getProductCategory()}</p>
 					<p name="pName">${currentProduct.getProductName()}</p>
@@ -126,8 +126,9 @@
 			</tr>
 			</div>
 		</tbody>
+		<tr>
 	</table>
-<tr>
+
 
 
 

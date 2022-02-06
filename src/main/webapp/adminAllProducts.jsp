@@ -151,14 +151,17 @@ border-radius: 5px;
 	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 
 	<div id="navigation" class="container-fluid">
-		<ul>
+	
+	<div>	
+			<ul>
 			<li><a href="allUsers"><label>All Users</label></a></li>
-			<li><a href="adminAllProducts"><labelAll Products></label></a></li>
+			<li><a href="adminAllProducts"><label>All Products</label></a></li>
 			<li><a href="addProduct.jsp"><label>Add Products</label></a></li>
 			<li><a href="salesReports.jsp"><label>Sales Reports</label></a></li>
 			<li id="logout"><a href="index.jsp"><label>Logout</label></a></li>
+			</ul>
 	</div>
-	</ul>
+	
 	</div>
 
 	
