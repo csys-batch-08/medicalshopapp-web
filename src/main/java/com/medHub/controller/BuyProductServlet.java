@@ -29,7 +29,7 @@ public class BuyProductServlet extends HttpServlet {
 	private static final long serialVersionUID = -8995920063945379654L;
 	
 	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException,NumberFormatException {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession();
 		UserDaoImpl user = new UserDaoImpl();
 		ProductDaoImpl productDao = new ProductDaoImpl();
@@ -91,17 +91,16 @@ public class BuyProductServlet extends HttpServlet {
 						orderItems.setTotalPrice(price);
 						orderItemsDaoImpl.insertOrders(orderItems);
 						
-						/*
-						 * PrintWriter out = res.getWriter();
-						 * out.println("<script type=\"text/javascript\">");
-						 * out.println("alert('Ordered Placed Sucessfully');");
-						 * out.println("location= 'myOrdersServlet'"); out.println("</script>");
-						 */
+					
 						OrderItemsDaoImpl myOrder= new OrderItemsDaoImpl();
 						List<OrderItems> myOrderList = myOrder.ViewMyOrders(currentUser);
 						req.setAttribute("myOrders", myOrderList);
 						RequestDispatcher rd = req.getRequestDispatcher("myOrders.jsp?orderStatus=success");
-						rd.forward(req, res);
+						try {
+							rd.forward(req, res);
+						} catch (ServletException | IOException e) {
+							e.printStackTrace();
+						}
 						
 					}else {
 						try {

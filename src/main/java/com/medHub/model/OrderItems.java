@@ -87,11 +87,13 @@ public class OrderItems extends Order implements Serializable{
 		this.unitPrice=unitPrice;
 		this.totalPrice=totalPrice;
 		}
-
+	
+	@Override
 	public User getUser() {
 		return user;
 	}
-
+	
+	@Override
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -109,11 +111,13 @@ public class OrderItems extends Order implements Serializable{
 		return "order id " + getOrderId() + "\nuser " + user + "\nproduct " + product + "\nquantity " + quantity
 				+ "\nunitPrice " + unitPrice + "\ntotalPrice " + totalPrice + "\n";
 	}
-
+	
+	@Override
 	public Product getProduct() {
 		return product;
 	}
 
+	@Override
 	public void setProduct(Product product) {
 		this.product = product;
 	}

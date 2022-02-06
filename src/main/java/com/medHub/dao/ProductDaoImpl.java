@@ -113,7 +113,7 @@ public class ProductDaoImpl implements ProductDAO {
 		int result=0;
 
 		try {
-			String updateQwery = "update products set product_category=?,product_name=?,price=?,available_Quantity=?,product_img=?,points_per_unit=?,offer=?,description=? where product_id=?";
+			String updateQwery = "update products set product_category=?,product_name=?,price=?,available_Quantity=?,product_img=?,points_per_unit=?,offer=?,description=?,status=? where product_id=?";
 			con=ConnectionUtil.getDBconnect();
 			pst = con.prepareStatement(updateQwery);
 			pst.setString(1, product.getProductCategory());
@@ -124,7 +124,8 @@ public class ProductDaoImpl implements ProductDAO {
 			pst.setInt(6, product.getPoints());
 			pst.setInt(7, product.getOffer());
 			pst.setString(8, product.getDescription());
-			pst.setInt(9, product.getProductId());
+			pst.setString(9,"available");
+			pst.setInt(10, product.getProductId());
 			result = pst.executeUpdate();
 			pst.executeUpdate(commitQuery);
 			
@@ -360,5 +361,50 @@ public class ProductDaoImpl implements ProductDAO {
 		
 		return findedProducts;
 	}
+	
+	
+		public List<Product> adminViewProduts() {
+		
+		Connection con = null;
+		PreparedStatement pst=null;
+		List<Product> productList = new ArrayList<>();
+		
+		try 
+		{
+			String viewQuery = "select product_id,product_category,product_name,description,price,available_quantity,"
+					 + " product_img,points_per_unit,status,offer from products";
+			con=ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(viewQuery);
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Product product = new Product(rs.getInt("product_id"), rs.getString("product_category"), rs.getString("product_name"), rs.getString("description"),
+						rs.getDouble("price"), rs.getInt("available_quantity"), rs.getString("product_img"), rs.getInt("points_per_unit"), rs.getString("status"), rs.getInt("offer"));
+				productList.add(product);
+			}
+			return productList;
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(pst!=null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}     	
+			}
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return productList;
+}
+	
 
 }

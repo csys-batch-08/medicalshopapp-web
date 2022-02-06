@@ -164,7 +164,7 @@ public class Product implements Serializable
 		this.productId=productId;
 		}
 	
-	public Product(String category,String productname,double price,int quantity,String imageurl,int points,int offer,String description)
+	public Product(String category,String productname,double price,int quantity,String imageurl,int points,int offer)
 	{
 		super();
 		this.productCategory=category;
@@ -174,12 +174,10 @@ public class Product implements Serializable
 		this.productImg=imageurl;
 		this.points=points;
 		this.offer=offer;
-		this.description=description;
 		}
 	
 
 	public Product() {
-		// TODO Auto-generated constructor stub
 		super();
 	}
 
@@ -189,10 +187,12 @@ public class Product implements Serializable
 				+ productCategory + "\nproductName=" + productName + "\nunitPrice=" + unitPrice + "\nquantity="
 				+ quantity +"\n";
 	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(productCategory, productImg, productName, quantity, unitPrice);
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

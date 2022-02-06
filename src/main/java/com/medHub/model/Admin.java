@@ -68,14 +68,12 @@ public class Admin implements Serializable{
 	}
 	public Admin() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public Admin(int adminId, String adminName, String gender, int age, long adminmobile, String adminMail,
+	public Admin(int adminId, String adminName,int age, long adminmobile, String adminMail,
 			String adminPassword) {
 		super();
 		this.adminId = adminId;
 		this.adminName = adminName;
-		
 		this.age = age;
 		this.adminmobile = adminmobile;
 		this.adminMail = adminMail;
@@ -89,8 +87,8 @@ public class Admin implements Serializable{
 		this.adminMail = string3;
 		this.adminPassword = string2;
 	}
+	
 	public Admin(String email, String password) {
-		// TODO Auto-generated constructor stub
 		this.adminMail=email;
 		this.adminPassword=password;
 	}

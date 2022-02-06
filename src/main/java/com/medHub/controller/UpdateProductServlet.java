@@ -45,19 +45,17 @@ public class UpdateProductServlet extends HttpServlet{
 			if(result>0)
 			{
 				ProductDaoImpl product1 = new ProductDaoImpl();
-				List<Product> allproduct = product1.viewProduts();
+				List<Product> allproduct = product1.adminViewProduts();
 				req.setAttribute("allProducts", allproduct);
 				req.setAttribute("updateCheck", "updated");
 				RequestDispatcher rd = req.getRequestDispatcher("adminAllProducts.jsp");
 				try {
 					rd.forward(req, res);
 				} catch (ServletException | IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

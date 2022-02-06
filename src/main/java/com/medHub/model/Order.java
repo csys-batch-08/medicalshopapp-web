@@ -104,7 +104,7 @@ public class Order implements Serializable{
 		this.orderStatus = orderStatus;
 	}
 	public Order() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	

@@ -42,7 +42,8 @@ public class AddProductServlet extends HttpServlet {
 		}
 		String description = req.getParameter("description");
 		String imageurl = req.getParameter("imageFile");
-		Product product = new Product(category, productname, price, quantity, imageurl, points, offer, description);
+		Product product = new Product(category, productname, price, quantity, imageurl, points, offer);
+		product.setDescription(description);
 		ProductDaoImpl products = new ProductDaoImpl();
 
 		try {
@@ -57,6 +58,7 @@ public class AddProductServlet extends HttpServlet {
 
 			} else {
 				throw new ProductExistsException();
+				
 			}
 		} catch (SQLException |ProductExistsException e) {
 			req.setAttribute("productExists", e.getMessage());

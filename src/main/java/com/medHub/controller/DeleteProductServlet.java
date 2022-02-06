@@ -29,7 +29,7 @@ public class DeleteProductServlet extends HttpServlet {
 			int result = product.deleteProduct(deletePId);
 			if (result > 0) {
 				ProductDaoImpl product1 = new ProductDaoImpl();
-				List<Product> allproduct = product1.viewProduts();
+				List<Product> allproduct = product1.adminViewProduts();
 				req.setAttribute("allProducts", allproduct);
 				RequestDispatcher rd = req.getRequestDispatcher("adminAllProducts.jsp?status=deleted");
 				try {

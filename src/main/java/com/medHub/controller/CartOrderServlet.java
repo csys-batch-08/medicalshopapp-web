@@ -3,7 +3,6 @@ package com.medhub.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import com.exceptions.AddressNotFoundException;
 import com.exceptions.CartNotEnoughQtyException;
 import com.exceptions.InsuffientMoneyException;
@@ -46,14 +44,21 @@ public class CartOrderServlet extends HttpServlet {
 		OrderDaoImpl orderDao = new OrderDaoImpl();
 		OrderItemsDaoImpl orderItemsDaoImpl = new OrderItemsDaoImpl();
 
+		int cartProductId = 0;
+		int cartQuantity = 0;
+		double unitPrice =0;
+		double totalPrice = 0;
 		User currentUser = (User) session.getAttribute("user");
+		try {
+		 cartProductId = Integer.parseInt(req.getParameter("CartproductId"));
+		 cartQuantity = Integer.parseInt(req.getParameter("cartQuantity"));
+		 unitPrice = Double.parseDouble(req.getParameter("unitPrice"));
+		 totalPrice = Double.parseDouble(req.getParameter("totalPrice"));
+		}catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
 
-		int CartProductId = Integer.parseInt(req.getParameter("CartproductId"));
-		int cartQuantity = Integer.parseInt(req.getParameter("cartQuantity"));
-		double unitPrice = Double.parseDouble(req.getParameter("unitPrice"));
-		double totalPrice = Double.parseDouble(req.getParameter("totalPrice"));
-
-		Product currentProduct = productDao.findProductByProductId(CartProductId);
+		Product currentProduct = productDao.findProductByProductId(cartProductId);
 		cart.setProduct(currentProduct);
 		cart.setUser(currentUser);
 		
@@ -94,6 +99,7 @@ public class CartOrderServlet extends HttpServlet {
 				orderItems.setUnitPrice(unitPrice);
 				orderItems.setTotalPrice(totalPrice);
 				int result=	orderItemsDaoImpl.insertOrders(orderItems);
+				try {
 				if(result>0)
 				{
 					PrintWriter out = res.getWriter();
@@ -102,9 +108,9 @@ public class CartOrderServlet extends HttpServlet {
 					out.println("location='showCartServlet'");
 					out.println("</script>");
 				}
-				try {
+				
 					cartdao.removecartItems(cart);
-				} catch (SQLException e) {
+				} catch (SQLException | IOException e) {
 					e.printStackTrace();
 				}
 			}
@@ -129,7 +135,11 @@ public class CartOrderServlet extends HttpServlet {
 				}catch(CartNotEnoughQtyException e)
 				{
 					session.setAttribute("lessStock",e.getMessage());
+					try {
 					res.sendRedirect("showCartServlet");
+					}catch (IOException io) {
+						io.printStackTrace();
+					}
 				}
 
 		} 
@@ -159,7 +169,11 @@ public class CartOrderServlet extends HttpServlet {
 				catch(AddressNotFoundException ad)
 				{
 					session.setAttribute("AddressNotFoundFromCart", ad.getMessage());
+					try {
 					res.sendRedirect("userProfile.jsp");
+					}catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			
 		}

@@ -192,10 +192,11 @@ border-radius: 5px;
 		<br>
 	</c:forEach> --%>
 	
-	<table aria-describedby="Sales report" id="table_id" aria-describedby="Sales report" style="width: 100%" >
+	<table aria-describedby="Sales report" id="table_id" aria-describedby="Sales report" style="width: 100%" class="table table-striped">
 	<thead>
 	<th id="Product Id">S No</th>
 	<th id="Product Id">Product Id</th>
+	<th id="Productname">Product Name</th>
 	<th id="Description">Description</th>
 	<th id="price">price</th>
 	<th id="Offer">Offer</th>
@@ -213,6 +214,7 @@ border-radius: 5px;
 	<tr>
 	<td>${loop.count}</td>
 	<td>${products.getProductId()}</td>
+	<td>${products.getProductName()}</td>
 	<td>${products.getDescription()}</td>
 	<td>${products.getUnitPrice()}rs</td>
 	<td>${products.getOffer()}%</td>

@@ -55,7 +55,6 @@
 			 <input class="inputBox" type="text" required name="points" placeholder="Points" value="${currentProduct.getPoints()}"><br>
 			<br> <label for="Offer">Offer</label> <br>
 			<input class="inputBox" type="text" required name="offer" placeholder="Offer%" value="${currentProduct.getOffer()}"><br>
-			<br>
 			<br> <label for="">Description</label><br>
 			<br>
 			<input class="inputBox" style="max-height: 100px; min-height: 20px; width: 400px; max-width: 200px; min-width: 300px;"

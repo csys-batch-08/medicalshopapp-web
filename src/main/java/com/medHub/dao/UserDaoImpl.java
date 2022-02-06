@@ -237,9 +237,10 @@ public class UserDaoImpl implements UserDAO {
 		int result = 0;
 		try {
 			con = ConnectionUtil.getDBconnect();
-			String delete = "update users set account_status ='inactive' where user_id=?";
+			String delete = "update users set account_status =? where user_id=?";
 			pst = con.prepareStatement(delete);
-			pst.setInt(1, userId);
+			pst.setString(1, "inactive");
+			pst.setInt(2, userId);
 			result = pst.executeUpdate();
 			if(result > 0) {
 				return true;
@@ -274,16 +275,16 @@ public class UserDaoImpl implements UserDAO {
 
 	public int addMoneyInWallet(double walletAmount, User currentUser) {
 
-		
 		int result = 0;
 		User user = new User();
 		PreparedStatement pst =null;
 		Connection con = null;
 		try {
-				String walletQuery = "update users set user_wallet =" + walletAmount + " where user_email ='"
-										+ currentUser.getUserMail() + "'";
+				String walletQuery = "update users set user_wallet = ? where user_email =?";
 				con=ConnectionUtil.getDBconnect();
 				pst = con.prepareStatement(walletQuery);
+				pst.setDouble(1, walletAmount);
+				pst.setString(2, currentUser.getUserMail());
 				result = pst.executeUpdate();
 				pst.executeUpdate(commitQuery);
 				if (result > 0) {
@@ -318,16 +319,17 @@ public class UserDaoImpl implements UserDAO {
 	
 
 							// points update when purchase done
-	@SuppressWarnings("resource")
+	
 	public void updateUserPoints(Order order) {
 		
 		Connection con = null;
 		PreparedStatement pst =null;
 		try {
-			String pointsQuery = "update users set points='" + order.getUser().getPoints() + "' where user_id = '"
-					+ order.getUser().getUserId() + "'";
+			String pointsQuery = "update users set points= ? where user_id = ?";
 			con = ConnectionUtil.getDBconnect();
 			pst = con.prepareStatement(pointsQuery);
+			pst.setInt(1, order.getUser().getPoints());
+			pst.setInt(2, order.getUser().getUserId());
 			pst.executeUpdate();
 			pst = con.prepareStatement(commitQuery);
 			pst.executeUpdate();
@@ -361,10 +363,11 @@ public class UserDaoImpl implements UserDAO {
 		Connection con = null;
 		PreparedStatement pst = null;
 		try {
-			String query = "update users set user_wallet='" + order.getUser().getWallet() + "' where user_id = '"
-					+ order.getUser().getUserId() + "'";
+			String query = "update users set user_wallet=? where user_id = ?";
 			con = ConnectionUtil.getDBconnect();
 			pst = con.prepareStatement(query);
+			pst.setDouble(1, order.getUser().getWallet());
+			pst.setInt(2, order.getUser().getUserId());
 			pst.executeUpdate();
 			pst.executeUpdate(commitQuery);
 		} catch (SQLException e) {
@@ -396,10 +399,11 @@ public class UserDaoImpl implements UserDAO {
 		Connection con = null;
 		PreparedStatement pst = null;
 		try {
-			String updatePassword = "update users set user_password='" + confirmPassword + "' where user_id='" + userId
-					+ "'";
+			String updatePassword = "update users set user_password=? where user_id=?";
 			con = ConnectionUtil.getDBconnect();
 			pst = con.prepareStatement(updatePassword);
+			pst.setString(1, confirmPassword);
+			pst.setInt(2, userId);
 			int result = pst.executeUpdate();
 			con.prepareStatement(commitQuery);
 			pst.executeUpdate();
@@ -436,9 +440,10 @@ public class UserDaoImpl implements UserDAO {
 		PreparedStatement pst = null;
 		Connection con = null;
 		try {
-			String query = "update users set points=0 where User_email='" + CurrentUser.getUserMail() + "'";
+			String query = "update users set points=0 where User_email=?";
 			con = ConnectionUtil.getDBconnect();
 			pst = con.prepareStatement(query);
+			pst.setString(1, CurrentUser.getUserMail());
 			int result = pst.executeUpdate();
 			CurrentUser.setPoints(0);
 			pst.executeUpdate(commitQuery);
@@ -472,9 +477,11 @@ public class UserDaoImpl implements UserDAO {
 		Connection con = null;
 		PreparedStatement pst = null;
 		try {
-			String pointsQuery = "update users set points='" + points + "' where user_id = '"+ currentUser.getUserId()+ "'";
+			String pointsQuery = "update users set points=? where user_id = ?";
 			con = ConnectionUtil.getDBconnect();
 			pst = con.prepareStatement(pointsQuery);
+			pst.setInt(1, points);
+			pst.setInt(2, currentUser.getUserId());
 			pst.executeUpdate();
 			pst = con.prepareStatement(commitQuery);
 			pst.executeUpdate();
@@ -507,9 +514,11 @@ public class UserDaoImpl implements UserDAO {
 		PreparedStatement pst = null;
 		Connection con = null;
 		try {
-			String query = "update users set user_wallet='" + wallet + "' where user_id = '"+ currentUser.getUserId() + "'";
+			String query = "update users set user_wallet=? where user_id =?";
 			con = ConnectionUtil.getDBconnect();
 			pst = con.prepareStatement(query);
+			pst.setDouble(1, wallet);
+			pst.setInt(2, currentUser.getUserId());
 			pst.executeUpdate();
 			pst.executeUpdate(commitQuery);
 		} catch (SQLException e) {
@@ -543,9 +552,10 @@ public class UserDaoImpl implements UserDAO {
 		PreparedStatement pst = null;
 		
 		try {
-			String query = "select * from users where user_email= '"+mail+"'";
+			String query = "select * from users where user_email= ? ";
 			con = ConnectionUtil.getDBconnect();
 			pst = con.prepareStatement(query);
+			pst.setString(1, mail);
 			ResultSet result = pst.executeQuery();
 		
 			if(result.next())
@@ -575,6 +585,35 @@ public class UserDaoImpl implements UserDAO {
 		
 		
 		return flag;
+	}
+	
+	public boolean checkMobileNum(Long mobileNumber)
+	{
+		boolean flag=false;
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs =null;
+		 
+		 
+		try {
+			String query="select user_mobile from users where user_mobile=?";
+			con = ConnectionUtil.getDBconnect();
+			pst = con.prepareStatement(query);
+			pst.setLong(1, mobileNumber);
+			rs = pst.executeQuery();
+			
+			if(rs.next())
+			{
+				
+				flag=true;
+			} 
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return flag;
+		
 	}
 
 	

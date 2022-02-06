@@ -17,11 +17,9 @@ public class Cart implements Serializable{
 		return  product + "unitPrice " + unitPrice + "totalPrice "
 				+ totalPrice + "qty= " + qty;
 	}
-//	 "user= " + user +
 
 	public Cart() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public double getTotalPrice() {
