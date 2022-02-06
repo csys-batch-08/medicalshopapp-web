@@ -36,11 +36,6 @@
 	<div id="addProductForm">
 	
 		
-        <c:if test="${productExists!=null}">
-		<p id="errorMsg">${productExists}</p>
-		</c:if>  
-		<c:remove var="productExists"  scope="session"/> 
-		
 		<form action="AddProductController">
 		
 			<input class="inputBox" list="category" onkeyup="hideErrorMsg()" name="category" id="browser"
@@ -91,14 +86,16 @@
 	</div>
 	
 	<script src="Assets/javascript/popupMessages.js"></script>
-	<c:choose>
-	<c:when test="${param.status!=null}">
+	
+	<c:if test="${param.status!=null}">
 	<script type="text/javascript">showMessage('productAdded')</script>
-	</c:when>
-	<c:when test="${param.productExists!=null}">	
-	<script type="text/javascript">showMessage('productExist')</script>
-	</c:when>
-	</c:choose>
+	</c:if>
+	
+	<c:set var="productExists" scope="request" value="${productExists}"></c:set>
+	<c:if test="${productExists!=null}">
+	<script type="text/javascript"> showMessage('${productExists}')</script>
+	<c:remove var="productExists"  scope="request" />
+	</c:if>
 	
 </body>
 <script>

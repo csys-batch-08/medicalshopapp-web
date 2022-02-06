@@ -13,6 +13,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
  <link rel="stylesheet" href="Assets/css/myOrders.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
 <title>My Orders</title>
 
@@ -41,6 +43,15 @@
 				</div>		
 			</nav>
 		</div>
+		
+		<script src="Assets/javascript/popupMessages.js"></script>	
+	<c:choose>
+	<c:when test="${param.orderStatus!=null}">
+	<script type="text/javascript"> showMessage('orderSucess')</script>
+	</c:when>
+	</c:choose>
+	
+	<div id="footer"></div>
 						
 	
 		<jsp:useBean id="orderItem" class="com.medhub.dao.OrderItemsDaoImpl"/>
@@ -112,8 +123,7 @@
 
 	</div>
 
-	</div>
-	<div id="footer"></div>
+	
 
 
 </body>

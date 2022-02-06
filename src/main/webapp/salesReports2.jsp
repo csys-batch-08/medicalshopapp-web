@@ -26,6 +26,8 @@
 	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <title>Sales Report</title>
 
+
+
 </head>
 <body>
 	<%-- <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
@@ -56,7 +58,7 @@
 		<div id="allusers">
 			<c:if test="${empty sessionScope.invalidDate}">
 
-				<table class="table table-striped" aria-describedby="Sales report" id="table_id">
+				<table class="table table-striped table table-hover" aria-describedby="Sales report" id="table_id">
 					<thead >
 						<tr>
 							<th id="Order Date">Order Date</th>

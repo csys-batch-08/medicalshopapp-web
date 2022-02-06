@@ -59,9 +59,8 @@ public class AddProductServlet extends HttpServlet {
 				throw new ProductExistsException();
 			}
 		} catch (SQLException |ProductExistsException e) {
-			e.printStackTrace();
-			
-			RequestDispatcher rd = req.getRequestDispatcher("addProduct.jsp?productExists=productExists");
+			req.setAttribute("productExists", e.getMessage());
+			RequestDispatcher rd = req.getRequestDispatcher("addProduct.jsp");
 			try {
 				rd.forward(req, res);
 			} catch (ServletException | IOException e1) {

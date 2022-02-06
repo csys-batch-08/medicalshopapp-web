@@ -44,12 +44,12 @@ String AddressNotFoundFromCart = (String)session.getAttribute("AddressNotFoundFr
 		</nav>
 	</div>
 	
-	<c:if test="${InsuffientMoney!=null}">
+<%-- 	<c:if test="${InsuffientMoney!=null}">
 		<div class="InsuffiendMoney" >
 		<h3>${InsuffientMoney}</h3>
 		</div>
 	</c:if>	
-	<c:remove var="InsuffientMoney"  scope="session"/>
+	<c:remove var="InsuffientMoney"  scope="session"/> --%>
 	
 	<c:if test="${AddressNotFound!=null}">
 		<div class="addressNull">

@@ -1,14 +1,11 @@
 
-// var check = document.currentScript.getAttribute('status');
 function showMessage(check)
 {
-    
-
-
-
-switch(check) {
+var status = check;
+switch(status) {
 	
   case "loginSucess":
+	console.log("admin login");
    var toastMixin = Swal.mixin({
         toast: true,
         icon: 'success',
@@ -27,7 +24,7 @@ switch(check) {
        
         toastMixin.fire({
         animation: true,
-        title: 'Login Sucessfull'
+        title: 'Login Successfull'
         });
     
     break;
@@ -40,7 +37,7 @@ switch(check) {
 			animation: false,
 			position: 'top-right',
 			showConfirmButton: false,
-			timer: 1500,
+			timer: 3000,
 			timerProgressBar: true,
 			didOpen: (toast) => {
 			toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -53,6 +50,7 @@ switch(check) {
 			animation: true,
 			title: 'Successfully Deleted'
 			});
+			
 			
     break;
 
@@ -112,72 +110,48 @@ switch(check) {
 			});
 	break;
 	
-	case "productExist":
+	case "This Product Already Exists":
 	
 		Swal.fire({
 			  icon: 'error',
-			  title: 'This Product Already Exists',
+			  title:status,
 			  showConfirmButton: false,
 			  timer: 2000})
 	
+			
+		break;
+		
+	case "orderSucess":
+		Swal.fire({
+			  icon: 'success',
+			  title: 'Order Placed Successfully',
+			  showConfirmButton: false,
+			  timer: 2000})
+	break;	
+	
+	case "Not enough Money In Wallet":
+		Swal.fire({
+			  icon: 'error',
+			  title: status+',Go To profile and Recharge Wallet',
+			  showConfirmButton: true,
+			  timer: false})
+	break;
+	
+	case "Delivery Address Not Found,Please update your Address":
+		Swal.fire({
+			  icon: 'error',
+			  title: status,
+			  showConfirmButton: true,
+			  timer: false})
 	break;
   default:
       alert("Invalid");
-    
 	}
 	
 }
 
 
-    // if(check==="loginSucess"){
-    //   var toastMixin = Swal.mixin({
-    //     toast: true,
-    //     icon: 'success',
-    //     title: 'General Title',
-    //     animation: false,
-    //     position: 'top-right',
-    //     showConfirmButton: false,
-    //     timer: 1500,
-    //     timerProgressBar: true,
-    //     didOpen: (toast) => {
-    //     toast.addEventListener('mouseenter', Swal.stopTimer)
-    //     toast.addEventListener('mouseleave', Swal.resumeTimer)
-    //     }
-    //     });
-    
-    //     deleted();
-    //     function deleted(){
-    //     toastMixin.fire({
-    //     animation: true,
-    //     title: 'Login Sucessfull'
-    //     });
-    // }
-
-    // }else if(check==="deleteSucess"){
-      
-    //     var toastMixin = Swal.mixin({
-	// 		toast: true,
-	// 		icon: 'success',
-	// 		title: 'General Title',
-	// 		animation: false,
-	// 		position: 'top-right',
-	// 		showConfirmButton: false,
-	// 		timer: 1500,
-	// 		timerProgressBar: true,
-	// 		didOpen: (toast) => {
-	// 		toast.addEventListener('mouseenter', Swal.stopTimer)
-	// 		toast.addEventListener('mouseleave', Swal.resumeTimer)
-	// 		}
-	// 		});
-
-	// 		deleted();
-	// 		function deleted(){
-	// 		toastMixin.fire({
-	// 		animation: true,
-	// 		title: 'Successfully Deleted'
-	// 		});
-	// 		}
-    //     }
+   
     
     
      

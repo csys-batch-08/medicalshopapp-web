@@ -3,6 +3,9 @@ package com.medhub.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +35,7 @@ public class BuyProductServlet extends HttpServlet {
 		ProductDaoImpl productDao = new ProductDaoImpl();
 		OrderItems orderItems = new OrderItems();
 		User currentUser = (User) session.getAttribute("user");
-		Product currentproduct = (Product) session.getAttribute("currentproduct");
+		Product currentProduct = (Product) session.getAttribute("currentproduct");
 		double price = 0;
 		int qty = 0;
 		try {
@@ -54,8 +57,8 @@ public class BuyProductServlet extends HttpServlet {
 						
 					order.getProduct().setQuantity((order.getProduct().getQuantity() - qty));
 					try {
-							int updateQty = currentproduct.getQuantity() - qty;
-							productDao.updateProductQuantity(currentproduct, updateQty);
+							int updateQty = currentProduct.getQuantity() - qty;
+							productDao.updateProductQuantity(currentProduct, updateQty);
 						} catch (SQLException e) 
 							{
 								e.printStackTrace();
@@ -63,7 +66,7 @@ public class BuyProductServlet extends HttpServlet {
 						order.setUser(currentUser);
 						orderItems.setUser(currentUser);
 						order.setPrice(price);
-						order.getUser().setPoints(order.getUser().getPoints() + (currentproduct.getPoints() * qty));
+						order.getUser().setPoints(order.getUser().getPoints() + (currentProduct.getPoints() * qty));
 						order.getUser().setWallet(Math.round(order.getUser().getWallet() - price));
 						user.updateUserPoints(order);
 						user.updateWalletMoney(order);
@@ -80,28 +83,39 @@ public class BuyProductServlet extends HttpServlet {
 						}
 						order.setOrderId(orderId);
 						orderItems.setOrderModel(order);
-						orderItems.setProduct(currentproduct);
+						orderItems.setProduct(currentProduct);
 						orderItems.setOrderId(orderId);
-						orderItems.getProduct().setProductId(currentproduct.getProductId());
+						orderItems.getProduct().setProductId(currentProduct.getProductId());
 						orderItems.setQuantity(qty);
-						orderItems.setUnitPrice(currentproduct.getUnitPrice());
+						orderItems.setUnitPrice(currentProduct.getUnitPrice());
 						orderItems.setTotalPrice(price);
 						orderItemsDaoImpl.insertOrders(orderItems);
 						
-						PrintWriter out = res.getWriter();
-						out.println("<script type=\"text/javascript\">");
-						out.println("alert('Ordered Placed Sucessfully');");
-						out.println("location= 'myOrdersServlet'");
-						out.println("</script>");
+						/*
+						 * PrintWriter out = res.getWriter();
+						 * out.println("<script type=\"text/javascript\">");
+						 * out.println("alert('Ordered Placed Sucessfully');");
+						 * out.println("location= 'myOrdersServlet'"); out.println("</script>");
+						 */
+						OrderItemsDaoImpl myOrder= new OrderItemsDaoImpl();
+						List<OrderItems> myOrderList = myOrder.ViewMyOrders(currentUser);
+						req.setAttribute("myOrders", myOrderList);
+						RequestDispatcher rd = req.getRequestDispatcher("myOrders.jsp?orderStatus=success");
+						rd.forward(req, res);
 						
 					}else {
 						try {
 						throw new AddressNotFoundException();
 						}
 						catch(AddressNotFoundException e)
-						{
-							session.setAttribute("AddressNotFound", e.getMessage());
-							res.sendRedirect("showUserProfile");
+						{	session.setAttribute("currentProduct", currentProduct);
+							req.setAttribute("AddressNotFound", e.getMessage());
+							RequestDispatcher rd = req.getRequestDispatcher("buyProduct.jsp");
+							try {
+							rd.forward(req, res);
+							}catch(ServletException | IOException si){
+								si.printStackTrace();
+							}
 						}
 					}
 			} else {
@@ -110,8 +124,14 @@ public class BuyProductServlet extends HttpServlet {
 							}
 						catch(InsuffientMoneyException iM) 
 							{
-								session.setAttribute("InsuffientMoney", iM.getMessage());
-								res.sendRedirect("showUserProfile");
+							session.setAttribute("currentProduct", currentProduct);
+							req.setAttribute("InsuffientMoney", iM.getMessage());
+							RequestDispatcher rd = req.getRequestDispatcher("buyProduct.jsp");
+							try {
+							rd.forward(req, res);
+							}catch (ServletException | IOException si) {
+								si.printStackTrace();
+							}
 							}
 				
 				

@@ -331,7 +331,7 @@ font-weight: 600;
 				<input type="password" name="loginPassword" placeholder="Password"
 					value="" required 
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
-					title="sMinimum 8 and maximum 15 characters Allowed, at least one uppercase letter, one lowercase letter, one number and one special character" onmouseover="hideMsg()"><br>
+					title="Minimum 8 and maximum 15 characters Allowed, at least one uppercase letter, one lowercase letter, one number and one special character" onmouseover="hideMsg()"><br>
 				<br>
 				<button type="submit" id="loginbtn">Login</button>
 				<br>

@@ -12,7 +12,7 @@ import com.medhub.util.ConnectionUtil;
 
 public class ProductDaoImpl implements ProductDAO {
 	
-	String commitQuery= "commit";
+	final String commitQuery= "commit";
 										//Show All Products
 	public List<Product> viewProduts() {
 		
@@ -127,9 +127,6 @@ public class ProductDaoImpl implements ProductDAO {
 			pst.setInt(9, product.getProductId());
 			result = pst.executeUpdate();
 			pst.executeUpdate(commitQuery);
-			con.close();
-			pst.close();
-
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

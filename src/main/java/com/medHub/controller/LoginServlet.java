@@ -55,7 +55,6 @@ public class LoginServlet extends HttpServlet {
 				req.setAttribute("currentUser", currentuser);
 				ProductDaoImpl product= new ProductDaoImpl();
 				List<Product> allproduct = product.viewProduts();
-				Product searchProducts = new Product(); 
 				req.setAttribute("allProducts", allproduct);
 				RequestDispatcher rd = req.getRequestDispatcher("userHome.jsp?loginstatus=sucess");
 				rd.forward(req, res);
@@ -82,7 +81,8 @@ public class LoginServlet extends HttpServlet {
 				Admin adminModule= admindao.login(admin);
 				if(adminModule!=null)
 				{
-					res.sendRedirect("adminHome.jsp");
+					RequestDispatcher rd = req.getRequestDispatcher("adminHome.jsp?loginstatus=success");
+					rd.forward(req, res);
 
 				}
 				else

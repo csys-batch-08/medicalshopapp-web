@@ -60,11 +60,17 @@
 						title="MObile Number Must Have 10 Digits" required min="3" max="10"><br>
 						<label id="numberExists"></label>
 					<br> <label for="password" class="reglab">Password <span class="required">*</span></label><br>
-					<br> <input type="password" onkeyup="hideMsg()" onkeyup="hideUserExists()" 
+					<br> <input type="password" id="Password" onkeyup="hideMsg()" onkeyup="hideUserExists()" 
 						placeholder="Password" name="regPassword" value="" required
 						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
 						title="Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character"><br>
-				<br>
+					<br>
+						<br> <label for="Confirm password" class="reglab">Confirm Password <span class="required">*</span></label><br>
+						<input type="password" id="comfirmPassword"  onkeyup="passwordCheck()" 
+						placeholder="Password" name="regPassword" value="" required
+						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
+						title="Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character" ><br>
+						<span id="passwordCheck" style="visibility: hidden">Confirm password Not Matches</span>
 					<br>
 					<button id="regbtn" type="submit">Register</button><br>
 					<br>
@@ -87,7 +93,7 @@
 
 	</div>
 
-	<script>
+<script>
 function getLoginForm()
 {
     document.getElementById("loginform").style.visibility="visible";
@@ -111,6 +117,7 @@ function hideUserExists()
 {
 	document.getElementById("userExists").style.visibility="hidden";
 	}
+
 
 </script>
 <script>

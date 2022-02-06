@@ -25,6 +25,7 @@ public class AllProductServlet extends HttpServlet{
 		ProductDaoImpl product = new ProductDaoImpl();
 		List<Product> allproduct = product.viewProduts();
 		req.setAttribute("allProducts", allproduct);
+		System.out.println(allproduct.get(0).getStatus());
 		RequestDispatcher rd = req.getRequestDispatcher("adminAllProducts.jsp?deleteProductId=0");
 		 try {
 			 rd.forward(req, resp);

@@ -126,7 +126,7 @@ public class Product implements Serializable
 	
 	public Product(String productname, String productcategory, String description, double unitPrice,
 			int quantity,int productId) {
-		// TODO Auto-generated constructor stub
+		super();
 		this.productName = productname;
 		this.description=description;
 		this.unitPrice = unitPrice;
@@ -137,7 +137,7 @@ public class Product implements Serializable
 
 	public Product(int productId, String productCategory, String productName, String description, double unitPrice, int availableQuantity,
 			String productImg,int points,String status,int offer) {
-		// TODO Auto-generated constructor stub
+		super();
 		this.productId=productId;
 		this.productCategory=productCategory;
 		this.productName=productName;
@@ -152,6 +152,7 @@ public class Product implements Serializable
 	
 	public Product(String category,String productname,double price,int quantity,String imageurl,int points,int offer,String description,int productId)
 	{
+		super();
 		this.productCategory=category;
 		this.productName=productname;
 		this.unitPrice=price;
@@ -165,6 +166,7 @@ public class Product implements Serializable
 	
 	public Product(String category,String productname,double price,int quantity,String imageurl,int points,int offer,String description)
 	{
+		super();
 		this.productCategory=category;
 		this.productName=productname;
 		this.unitPrice=price;

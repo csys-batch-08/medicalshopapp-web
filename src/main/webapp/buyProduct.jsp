@@ -10,8 +10,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
- <link rel="stylesheet" href="Assets/css/buyProduct.css">
-
+<link rel="stylesheet" href="Assets/css/buyProduct.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 <title>BuyProduct</title>
 
 </head>
@@ -38,6 +39,20 @@
 		</nav>
 	</div>
 	
+	
+	<script src="Assets/javascript/popupMessages.js"></script>	
+	
+	<c:set var="InsufficientMoney" scope="request" value="${InsuffientMoney}"></c:set>
+	<c:if test="${InsufficientMoney!=null}">
+	<script type="text/javascript"> showMessage('${InsufficientMoney}')</script>
+	<c:remove var="InsufficientMoney"  scope="request" />
+	</c:if>
+	
+	<c:set var="AddressNotFound" scope="request" value="${AddressNotFound}"></c:set>
+	<c:if test="${AddressNotFound!=null}">
+	<script type="text/javascript"> showMessage('${AddressNotFound}')</script>
+	<c:remove var="AddressNotFound"  scope="request" />
+	</c:if>
 	
 	<table class="buyProduct" aria-describedby="buy Products">
 		<tbody>
@@ -93,7 +108,7 @@
 						</div>
 						<p name="message" id="message"></p>
 						<div class="payNow">
-						<button type="submit" >Paynow</button>
+						<button type="submit" >Buy Now</button>
 						</div>
 						</form>
 						
@@ -115,11 +130,12 @@
 <tr>
 
 
+
+
 <script>
 
 function calculateamt(){
-var price=document.getElementById("price");
-	
+	var price=document.getElementById("price");
 	var amount=price.value;
 	console.log("unitprice"+amount);
 	var qty=document.getElementById("quantity");

@@ -6,7 +6,7 @@
 }
 
 body {
-	background-image: url(Assets/homepage_img.jpg);
+	
 	background-repeat: repeat-y;
 	background-size: cover;
 	overflow-x:hidden;
@@ -79,7 +79,6 @@ body {
 #product #btn button {
 	height: 30px;
 	width: 90px;
-	background-color: rgb(145, 230, 18);
 	border: none;
 	border-radius: 5px;
 }

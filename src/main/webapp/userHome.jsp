@@ -109,9 +109,8 @@
 	
 <script src="Assets/javascript/popupMessages.js"></script>	
 	<c:if test="${param.loginstatus!=null}">
-		
-		<script type="text/javascript"> showMessage('loginSucess')</script>
-		</c:if>
+	<script type="text/javascript"> showMessage('loginSucess')</script>
+	</c:if>
 	
 	<div id="footer">
 </div>
