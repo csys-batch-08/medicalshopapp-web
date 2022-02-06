@@ -192,7 +192,7 @@ public class UserDaoImpl implements UserDAO {
 	
 	
 								//get user details by userId
-	public User getUserById(int userId) {
+	public User getUserById(int userId) throws NullPointerException{
 		
 		
 		Connection con = null;
