@@ -188,24 +188,6 @@ public class Product implements Serializable
 				+ quantity +"\n";
 	}
 	
-	@Override
-	public int hashCode() {
-		return Objects.hash(productCategory, productImg, productName, quantity, unitPrice);
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		return Objects.equals(productCategory, other.productCategory) && Objects.equals(productImg, other.productImg)
-				 && Objects.equals(productName, other.productName)
-				&& quantity == other.quantity && unitPrice == other.unitPrice;
-	}
 	
 	public String getProductName() {
 		return productName;

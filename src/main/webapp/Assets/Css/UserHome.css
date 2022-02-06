@@ -29,7 +29,6 @@
 
 .list ul {
   /* background-color: #10847E;*/
-  position: absolute;
   margin-right: 0%;
   position: absolute;
   top: 0;
@@ -113,7 +112,7 @@ overflow-x: hidden;
 
 #product {
   position: relative;
-  top: 30px;
+ /* top: 30px; */
   left: 50px;
   background-color: rgba(158, 202, 207, 0.5);
   height: 190px;

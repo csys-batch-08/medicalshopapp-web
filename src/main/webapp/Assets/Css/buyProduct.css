@@ -29,7 +29,6 @@ background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%
 	height: 70px;
 	position: absolute;
 	margin-right: 0%;
-	position: absolute;
 	top: 0;
 	box-shadow: 0 5 black;
 	/* margin-top: 0%; */
@@ -43,8 +42,8 @@ background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%
 
 .list ul, .list li, .list a {
 	text-decoration: none;
-	color: black;
-	font-family: monospace;
+/* 	color: black;
+ */	font-family: monospace;
 	font-size: 25px;
 	font-weight: 500;
 	/* margin-right: 20px; */
