@@ -50,16 +50,15 @@
 			<br>
 			<br>
 		
-			<input class="inputBox"  id="productName" type="text" onkeyup="hideErrorMsg()" required name="productName"
-				placeholder="Product Name" ><br>
+			<input class="inputBox"  id="productName" type="text" onkeyup="hideErrorMsg()" required name="productName"><br>
 			<br>
 			
  
-			<input class="inputBox" type="number"  onkeyup="hideErrorMsg()" required min="1" name="price" placeholder="Price"><br>
+			<input class="inputBox" id="price" type="number"  onkeyup="hideErrorMsg()" required min="1" name="price" placeholder="Price"><br>
 			<br>
 			
  
-			<input class="inputBox" type="number" min="1" onkeyup="hideErrorMsg()" required  name="quantity"
+			<input class="inputBox" id="quantity" type="number" min="1" onkeyup="hideErrorMsg()" required  name="quantity"
 				placeholder="Quantity"><br>
 			<br>
  

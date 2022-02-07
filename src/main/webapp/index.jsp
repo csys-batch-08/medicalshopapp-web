@@ -56,11 +56,11 @@
 				<h1 class="loginHere">Login Here</h1>
 				<label class="label" for="fullName">Email*</label><br> 
 				<input type="email"
-					name="loginMail" required placeholder="Enter Email"  pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"  onkeyup="hideMsg()" autofocus><br>
+					name="loginMail" id="mail" required placeholder="Enter Email"  pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"  onkeyup="hideMsg()" autofocus><br>
 				<br>
 				
 				<br> <label class="label" for="password">Password *</label><br> 
-				<input type="password" name="loginPassword" placeholder="Password"
+				<input type="password" name="loginPassword" id="password" placeholder="Password"
 					value="" required 
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
 					title="Minimum 8 and maximum 15 characters Allowed, at least one uppercase letter, one lowercase letter, one number and one special character" onmouseover="hideMsg()"><br>
