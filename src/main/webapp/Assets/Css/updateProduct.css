@@ -18,7 +18,7 @@ body {
 	top: 150px;
 	left: 500px;
 	background-color: rgb(240, 231, 231);
-	height:700px;
+	height: 700px;
 	width: 360px;
 	border-radius: 5px;
 }
@@ -68,7 +68,8 @@ body {
 }
 
 #navigation {
-	background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
+	background: linear-gradient(to right, rgb(200, 47, 58) 0%,
+		rgb(44, 169, 207) 100%);
 	width: 100%;
 	margin-top: 0%;
 }
@@ -88,20 +89,21 @@ body {
 	border: none;
 	padding: 15px;
 }
-#updateBtn{
-position: relative;
-top: 70px;
-left:150px;
+
+#updateBtn {
+	position: relative;
+	top: 70px;
+	left: 150px;
 }
 
-#addProductForm label{
-position: relative;
-left:20px;
+#addProductForm label {
+	position: relative;
+	left: 20px;
 }
 
-#addProductForm:hover{
-background: rgb(240, 231, 231);
-border: none;
-box-shadow: 0 0 5px black;
-transition-duration: 0.2s;
+#addProductForm:hover {
+	background: rgb(240, 231, 231);
+	border: none;
+	box-shadow: 0 0 5px black;
+	transition-duration: 0.2s;
 }

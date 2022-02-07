@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Asap+Condensed&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Asap+Condensed&display=swap')
+	;
 
 * {
 	margin: 0;
@@ -6,7 +8,6 @@
 	box-sizing: border-box;
 	font-family: Arial, Helvetica, sans-serif;
 }
-
 
 .list li {
 	list-style: none;
@@ -16,13 +17,12 @@
 	transition: transform 0.4s;
 }
 
-.list li a{
+.list li a {
 	padding: -10px;
 	font-family: 'Asap Condensed', sans-serif;
 	font-weight: 800;
 	letter-spacing: 2px;
 }
-
 
 .list ul {
 	/* background-color: #10847E;*/
@@ -31,7 +31,7 @@
 	position: absolute;
 	top: 0;
 	background-color: rgba(255, 255, 255, 0.603);
-	box-shadow: 0  0 5px black;
+	box-shadow: 0 0 5px black;
 	right: 0px;
 	width: 1372px;
 }
@@ -54,7 +54,6 @@
 	border-radius: 5px;
 	cursor: pointer;
 	transform: translateY(-10px);
-	
 }
 
 body {
@@ -75,7 +74,7 @@ body {
 	position: absolute;
 	top: 200px;
 	left: 490px;
-	background-color:rgb(245,178,120);
+	background-color: rgb(245, 178, 120);
 	height: 400px;
 	width: 400px;
 	border-radius: 5px;
@@ -165,7 +164,7 @@ body {
 	position: absolute;
 	top: 120px;
 	left: 490px;
-	background-color: rgb(255,255,255);
+	background-color: rgb(255, 255, 255);
 	border-radius: 5px;
 	visibility: visible;
 }
@@ -240,33 +239,34 @@ body {
 #companyname img {
 	width: 120px;
 }
-#errorMsg{
-position: relative;
-left: 60px;
-color:red;
-top:20px;
+
+#errorMsg {
+	position: relative;
+	left: 60px;
+	color: red;
+	top: 20px;
 }
 
-.loginHere{
-position: relative;
-left:45px;
-top: -60px;
+.loginHere {
+	position: relative;
+	left: 45px;
+	top: -60px;
 }
 
-.label{
-font-weight: 600;
+.label {
+	font-weight: 600;
 }
 
-#userExists{
-position: relative;
-top:20px;
-color: red;
+#userExists {
+	position: relative;
+	top: 20px;
+	color: red;
 }
 
-.required{
-color: red;
+.required {
+	color: red;
 }
 
-#passwordCheck{
+#passwordCheck {
 	visibility: hidden;
 }

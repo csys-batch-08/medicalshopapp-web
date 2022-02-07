@@ -58,8 +58,9 @@
 		<div id="allusers">
 			<c:if test="${empty sessionScope.invalidDate}">
 
-				<table class="table table-striped table table-hover" aria-describedby="Sales report" id="table_id">
-					<thead >
+				<table class="table table-striped table table-hover"
+					aria-describedby="Sales report" id="table_id">
+					<thead>
 						<tr>
 							<th id="Order Date">Order Date</th>
 							<th id="Product Name">Product Name</th>
@@ -106,10 +107,9 @@
 
 </body>
 <script>
-$(document).ready(function() {
-	$('#table_id').DataTable();
-});
-
+	$(document).ready(function() {
+		$('#table_id').DataTable();
+	});
 
 	today();
 	function today() {
@@ -124,7 +124,5 @@ $(document).ready(function() {
 		document.getElementById("maxDate").setAttribute("max", date);
 		document.getElementById("startDate").setAttribute("max", date);
 	}
-
-	
 </script>
 </html>

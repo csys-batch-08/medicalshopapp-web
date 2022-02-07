@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.chainsys</groupId>
 	<artifactId>medicalshopapp-web</artifactId>
@@ -32,24 +34,24 @@
 
 		<!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
 		<dependency>
-    		<groupId>javax.el</groupId>
-   		 	<artifactId>javax.el-api</artifactId>
-    		<version>3.0.0</version>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>3.0.0</version>
 		</dependency>
-  
-  <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
-				<dependency>
-				    <groupId>javax.servlet</groupId>
-				    <artifactId>jstl</artifactId>
-				    <version>1.2</version>
-				</dependency>
-				  <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
-				<dependency>
-				    <groupId>org.apache.taglibs</groupId>
-				    <artifactId>taglibs-standard-impl</artifactId>
-				    <version>1.2.5</version>
-				    <scope>runtime</scope>
-				</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
+		<dependency>
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-impl</artifactId>
+			<version>1.2.5</version>
+			<scope>runtime</scope>
+		</dependency>
 
 	</dependencies>
 	<build>
@@ -60,7 +62,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.3.2</version>
 				<configuration>
-					<!--<webappDirectory>/sample/servlet/container/deploy/directory</webappDirectory>-->
+					<!--<webappDirectory>/sample/servlet/container/deploy/directory</webappDirectory> -->
 				</configuration>
 			</plugin>
 			<plugin>

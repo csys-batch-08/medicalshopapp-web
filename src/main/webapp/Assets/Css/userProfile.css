@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 	font-family: Arial, Helvetica, sans-serif;
 }
+
 .list ul li {
 	list-style: none;
 	display: inline-block;
@@ -13,7 +14,6 @@
 	float: right;
 	padding: 20px;
 	transition: transform 0.4s;
-	
 }
 
 .list ul {
@@ -45,18 +45,20 @@
 	color: orange;
 	border-radius: 5px;
 	cursor: pointer;
-	transform:translatey(-10px);
+	transform: translatey(-10px);
 }
-.list{
-   background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
+
+.list {
+	background: linear-gradient(to right, rgb(200, 47, 58) 0%,
+		rgb(44, 169, 207) 100%);
 }
+
 body {
 	background-image: url(Assets/homepage_img.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-	overflow-x:hidden; 
-	background-color: rgb(233, 225,199);
-	
+	overflow-x: hidden;
+	background-color: rgb(233, 225, 199);
 }
 
 .logo img {
@@ -64,183 +66,190 @@ body {
 	width: 60px;
 	margin-left: 20px;
 }
-#userProfile{
-position: absolute;
-left:90px;
-background-color: rgb(107,119,146,0.5);
-top:90px;
 
+#userProfile {
+	position: absolute;
+	left: 90px;
+	background-color: rgb(107, 119, 146, 0.5);
+	top: 90px;
 }
 
-#userProfile td,tr{
-padding: 20px;
+#userProfile td, tr {
+	padding: 20px;
 }
 
-#userProfile input{
-margin-top: 42.5px;
+#userProfile input {
+	margin-top: 42.5px;
 }
 
-#userProfile label{
-margin-top: 50px;
+#userProfile label {
+	margin-top: 50px;
 }
 
-#userProfile input{
-height: 30px;
-width: 250px;
+#userProfile input {
+	height: 30px;
+	width: 250px;
 }
 
-#walletMoneyUpdateForm{
-position: absolute;
-left: 600px;
-bottom: 464px;
+#walletMoneyUpdateForm {
+	position: absolute;
+	left: 700px;
+	bottom: 464px;
 }
 
-#walletMoneyUpdateForm button{
-position: relative;
-left:30px;
-height: 30px;
-border: none;
-outline: none;
-border-radius: 2px;
-background-color: yellowgreen;
-box-shadow: 0 0 2px black;
-width: 110px;
+#walletMoneyUpdateForm input{
+	height: 30px;
+    width: 250px;
 }
 
-#walletMoneyUpdateForm button:hover{
-box-shadow: 0 0 5px black;
-transition-duration:0.2s;
-color:white;
+#walletMoneyUpdateForm button {
+	position: relative;
+	left: 30px;
+	height: 30px;
+	border: none;
+	outline: none;
+	border-radius: 2px;
+	background-color: yellowgreen;
+	box-shadow: 0 0 2px black;
+	width: 110px;
+}
+
+#walletMoneyUpdateForm button:hover {
+	box-shadow: 0 0 5px black;
+	transition-duration: 0.2s;
+	color: white;
 }
 
 textarea {
-  resize: none;
-  outline: none;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 0 5px black;
-  
-  }
-
-#pointMoney{
-position: relative;
-top:190px;
-left:600px;
+	resize: none;
+	outline: none;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 0 5px black;
 }
 
-#pointMoney button{
-position: relative;
-left:30px;
-height: 30px;
-border: none;
-outline: none;
-border-radius: 2px;
-background-color: yellowgreen;
-box-shadow: 0 0 2px black;
-padding: 5px;
+#pointMoney {
+	position: relative;
+	top: 190px;
+	left: 700px;
 }
 
-#pointMoney button:hover{
-box-shadow: 0 0 5px black;
-transition-duration:0.2s;
-color:white;
-
+#pointMoney input{
+	height: 30px;
+    width: 250px;
 }
 
-#saveChangesBtn{
-background-color: yellowgreen;
-position: relative;
-left:160px;
-width: 100px;
-height: 30px;
-outline: none;
-border: none;
-border-radius: 3px;
+#pointMoney button {
+	position: relative;
+	left: 30px;
+	height: 30px;
+	border: none;
+	outline: none;
+	border-radius: 2px;
+	background-color: yellowgreen;
+	box-shadow: 0 0 2px black;
+	padding: 5px;
 }
 
-#saveChangesBtn:hover{
-box-shadow: 0 0 5px black;
-transition-duration:0.2s;
-color:white;
+#pointMoney button:hover {
+	box-shadow: 0 0 5px black;
+	transition-duration: 0.2s;
+	color: white;
 }
 
-#updatedName{
-position: relative;
-bottom:20px;
+#saveChangesBtn {
+	background-color: yellowgreen;
+	position: relative;
+	left: 160px;
+	width: 100px;
+	height: 30px;
+	outline: none;
+	border: none;
+	border-radius: 3px;
 }
 
-#updatedPassword{
-position: relative;
-bottom:20px;
+#saveChangesBtn:hover {
+	box-shadow: 0 0 5px black;
+	transition-duration: 0.2s;
+	color: white;
 }
 
-#UpdatedMobNum{
-position: relative;
-bottom:20px;
+#updatedName {
+	position: relative;
+	bottom: 20px;
 }
 
-input{
-outline: none;
-border: none;
-box-shadow: 0 0 5px black;
-border-radius: 2px;
+#updatedPassword {
+	position: relative;
+	bottom: 20px;
 }
 
-#userProfile{
-color:white;
+#UpdatedMobNum {
+	position: relative;
+	bottom: 20px;
 }
 
-input:hover{
-box-shadow: 5px 5px 5px black;
-transition-duration:0.2s;
+input {
+	outline: none;
+	border: none;
+	box-shadow: 0 0 5px black;
+	border-radius: 2px;
+}
+
+#userProfile {
+	color: white;
+}
+
+input:hover {
+	box-shadow: 5px 5px 5px black;
+	transition-duration: 0.2s;
 }
 
 textarea:hover {
-box-shadow: 5px 5px 5px black;
-transition-duration:0.2s;	
+	box-shadow: 5px 5px 5px black;
+	transition-duration: 0.2s;
 }
 
-.InsuffiendMoney{
-position: absolute;
-left:780px;
-top:170px;
-color:red;
-z-index: 1;
+.InsuffiendMoney {
+	position: absolute;
+	left: 780px;
+	top: 170px;
+	color: red;
+	z-index: 1;
 }
 
-.addressNull{
-position: relative;
-top:430px;
-left:100px;
-color: red;
-z-index: 2;
+.addressNull {
+	position: relative;
+	top: 430px;
+	left: 100px;
+	color: red;
+	z-index: 2;
 }
 
-.cartOrder{
-position: absolute;
-left:780px;
-top:170px;
-color:red;
-z-index: 1;
+.cartOrder {
+	position: absolute;
+	left: 760px;
+	top: 170px;
+	color: red;
+	z-index: 1;
 }
 
-#pointsMsg{
-position: absolute;
-left:760px;
-top:280px;
-color: red;
-z-index: 1;
-
+#pointsMsg {
+	position: absolute;
+	left: 760px;
+	top: 280px;
+	color: red;
+	z-index: 1;
 }
 
-label{
-font-weight: 600;
+label {
+	font-weight: 600;
 }
 
-#space{
-width:700px;
+#space {
+	width: 700px;
 }
 
-.nav{
-font-weight: 400;
+.nav {
+	font-weight: 400;
 }

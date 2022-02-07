@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medhub.model.*" %>
+<%@page import="com.medhub.model.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +14,10 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="icon" type="" href="Assets/medhublogo.png">
 <link rel="stylesheet" href="Assets/css/adminAllProducts.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet'
+	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
@@ -35,13 +37,12 @@
 }
 
 body {
-	background-color:rgb(241,224,187);
+	background-color: rgb(241, 224, 187);
 	background-repeat: repeat-y;
 	background-size: cover;
-	overflow-x:hidden;
+	overflow-x: hidden;
 	margin-top: 0px;
 }
-
 
 #navigation ul li {
 	list-style: none;
@@ -53,7 +54,8 @@ body {
 }
 
 #navigation {
-	background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
+	background: linear-gradient(to right, rgb(200, 47, 58) 0%,
+		rgb(44, 169, 207) 100%);
 	width: 100%;
 	margin-top: 0%;
 }
@@ -67,8 +69,6 @@ body {
 #navigation ul li a:hover {
 	color: black;
 }
-
-
 
 #product {
 	position: relative;
@@ -84,20 +84,20 @@ body {
 	width: 90px;
 	position: relative;
 	left: 40px;
-	top:50px;
+	top: 50px;
 }
 
 #product h5 {
 	position: relative;
 	left: 20px;
-	top:60px;
+	top: 60px;
 }
 
 #product #details {
 	position: relative;
 	left: 220px;
-	top:-60px;
-	}
+	top: -60px;
+}
 
 #product #btn {
 	position: relative;
@@ -121,7 +121,6 @@ body {
 
 #product #btn button:hover {
 	box-shadow: 0 0 5px black;
-	
 }
 
 #product #img h5 {
@@ -129,42 +128,44 @@ body {
 	left: 40px;
 }
 
-#details h5{
+#details h5 {
 	position: relative;
-	top:-40px;
-	left:50px;
-}
-#deleteButton{
-color: white;
-background-color: red;
-outline: none;
-border: none;
-height: 40px;
-width: 80px;
-border-radius: 5px;
+	top: -40px;
+	left: 50px;
 }
 
+#deleteButton {
+	color: white;
+	background-color: red;
+	outline: none;
+	border: none;
+	height: 40px;
+	width: 80px;
+	border-radius: 5px;
+}
 </style>
 <title>All Products</title>
 </head>
 <body>
-	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+	<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	%>
 
 	<div id="navigation" class="container-fluid">
-	
-	<div>	
+
+		<div>
 			<ul>
-			<li><a href="allUsers"><label>All Users</label></a></li>
-			<li><a href="adminAllProducts"><label>All Products</label></a></li>
-			<li><a href="addProduct.jsp"><label>Add Products</label></a></li>
-			<li><a href="salesReports.jsp"><label>Sales Reports</label></a></li>
-			<li id="logout"><a href="index.jsp"><label>Logout</label></a></li>
+				<li><a href="allUsers"><label>All Users</label></a></li>
+				<li><a href="adminAllProducts"><label>All Products</label></a></li>
+				<li><a href="addProduct.jsp"><label>Add Products</label></a></li>
+				<li><a href="salesReports.jsp"><label>Sales Reports</label></a></li>
+				<li id="logout"><a href="index.jsp"><label>Logout</label></a></li>
 			</ul>
-	</div>
-	
+		</div>
+
 	</div>
 
-	
+
 	<%-- <c:forEach items="${allProducts}" var="products">
 		<div id="product">
 			<div id="img">
@@ -194,64 +195,70 @@ border-radius: 5px;
 		<br>
 		<br>
 	</c:forEach> --%>
-	
-	<table aria-describedby="Sales report" id="table_id" aria-describedby="Sales report" style="width: 100%" class="table table-striped">
-	<thead>
-	<th id="Product Id">S No</th>
-	<th id="Product Id">Product Id</th>
-	<th id="Productname">Product Name</th>
-	<th id="Description">Description</th>
-	<th id="price">price</th>
-	<th id="Offer">Offer</th>
-	<th id="Points">Points</th>
-	<th id="Available">Available</th>
-	<th id="Status">Status</th>
-	<th id="delete">Delete</th>
-	<th id="update">Update</th>
-	
-	
-	</thead>
-	
-	<tbody>
-	<c:forEach begin="0" items="${allProducts}" var="products" varStatus="loop">
-	<tr>
-	<td>${loop.count}</td>
-	<td>${products.getProductId()}</td>
-	<td>${products.getProductName()}</td>
-	<td>${products.getDescription()}</td>
-	<td>${products.getUnitPrice()}rs</td>
-	<td>${products.getOffer()}%</td>
-	<td>${products.getPoints()}</td>
-	<td>${products.getQuantity()}</td>
-	<td>${products.getStatus()}</td>
-	<td><c:if test="${products.getStatus()=='available'}">
-	<button id="deleteButton" onclick="confirmdelete(${products.getProductId()})">Delete</button></c:if>
-	</td>
-	<td><a href="ProdToBeUpdate?productId=${products.getProductId()}" class="btn btn-warning">Update</a></td>
-	
-	</tr>
-	</c:forEach>
-	</tbody>
+
+	<table aria-describedby="Sales report" id="table_id"
+		aria-describedby="Sales report" style="width: 100%"
+		class="table table-striped">
+		<thead>
+			<th id="Product Id">S No</th>
+			<th id="Product Id">Product Id</th>
+			<th id="Productname">Product Name</th>
+			<th id="Description">Description</th>
+			<th id="price">price</th>
+			<th id="Offer">Offer</th>
+			<th id="Points">Points</th>
+			<th id="Available">Available</th>
+			<th id="Status">Status</th>
+			<th id="delete">Delete</th>
+			<th id="update">Update</th>
+
+
+		</thead>
+
+		<tbody>
+			<c:forEach begin="0" items="${allProducts}" var="products"
+				varStatus="loop">
+				<tr>
+					<td>${loop.count}</td>
+					<td>${products.getProductId()}</td>
+					<td>${products.getProductName()}</td>
+					<td>${products.getDescription()}</td>
+					<td>${products.getUnitPrice()}rs</td>
+					<td>${products.getOffer()}%</td>
+					<td>${products.getPoints()}</td>
+					<td>${products.getQuantity()}</td>
+					<td>${products.getStatus()}</td>
+					<td><c:if test="${products.getStatus()=='available'}">
+							<button id="deleteButton"
+								onclick="confirmdelete(${products.getProductId()})">Delete</button>
+						</c:if></td>
+					<td><a
+						href="ProdToBeUpdate?productId=${products.getProductId()}"
+						class="btn btn-warning">Update</a></td>
+
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
-	
+
 
 	<script src="Assets/javascript/popupMessages.js"></script>
 	<c:choose>
-	<c:when test="${param.status!=null}">
-		<script type="text/javascript">  showMessage('deleteSucess')</script>
-	</c:when>
-	
-	<c:when test="${param.deleteFailure!=null}">
-		<script type="text/javascript"> showMessage('deleteFailure')</script>
-	</c:when>
-	
-	<c:when test="${updateCheck!=null}">
-	<script type="text/javascript">showMessage('productUpdated')</script>
-	<c:remove var="updateCheck" scope="request" />
-	</c:when>
+		<c:when test="${param.status!=null}">
+			<script type="text/javascript">  showMessage('deleteSucess')</script>
+		</c:when>
+
+		<c:when test="${param.deleteFailure!=null}">
+			<script type="text/javascript"> showMessage('deleteFailure')</script>
+		</c:when>
+
+		<c:when test="${updateCheck!=null}">
+			<script type="text/javascript">showMessage('productUpdated')</script>
+			<c:remove var="updateCheck" scope="request" />
+		</c:when>
 	</c:choose>
 
-<script>
+	<script>
 	$(document).ready(function() {
 		$('#table_id').DataTable();
 	});

@@ -9,9 +9,10 @@ body {
 	background-image: url(Assets/homepage_img.jpg);
 	background-size: cover;
 }
-#navigation{
-   background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
 
+#navigation {
+	background: linear-gradient(to right, rgb(200, 47, 58) 0%,
+		rgb(44, 169, 207) 100%);
 }
 
 #navigation ul li {
@@ -57,31 +58,31 @@ body {
 	top: 100px;
 }
 
-.searchDate{
-position: absolute;
-left:420px;
-top:100px;
+.searchDate {
+	position: absolute;
+	left: 420px;
+	top: 100px;
 }
 
-.max{
-position: relative;
-left: 60px;
+.max {
+	position: relative;
+	left: 60px;
 }
 
-.searchDate button{
-position: relative;
-left:80px;
-outline: none;
-border: none;
-box-shadow: 0 0 5px black;
-border-radius: 2px;
-padding: 0px 10px;
-background-color: yellowgreen;
-height: 27px;
+.searchDate button {
+	position: relative;
+	left: 80px;
+	outline: none;
+	border: none;
+	box-shadow: 0 0 5px black;
+	border-radius: 2px;
+	padding: 0px 10px;
+	background-color: yellowgreen;
+	height: 27px;
 }
 
-.searchDate button:hover{
-box-shadow: 2px 2px 5px black;
-transition-duration:0.2s;
-color:white;
+.searchDate button:hover {
+	box-shadow: 2px 2px 5px black;
+	transition-duration: 0.2s;
+	color: white;
 }

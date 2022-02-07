@@ -140,12 +140,12 @@ body {
 }
 
 #price {
-    position: relative;
-    left: -100px;
-    outline: none;
-    border: none;
-    color: black;
-    background: transparent;
+	position: relative;
+	left: -100px;
+	outline: none;
+	border: none;
+	color: black;
+	background: transparent;
 }
 
 #pImg {
@@ -173,8 +173,9 @@ body {
 	top: 30px;
 	outline: none;
 	border: none;
-/* 	background-color: rgb(206, 228, 231);
- */	color: black;
+	/* 	background-color: rgb(206, 228, 231);
+ */
+	color: black;
 	font-size: 15px;
 	background: transparent;
 }

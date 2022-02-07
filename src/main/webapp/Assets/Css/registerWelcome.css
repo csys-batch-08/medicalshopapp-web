@@ -5,7 +5,6 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .list li {
 	list-style: none;
 	display: inline-block;
@@ -14,10 +13,9 @@
 	transition: transform 0.4s;
 }
 
-.list li a{
+.list li a {
 	padding: -10px;
 }
-
 
 .list ul {
 	/* background-color: #10847E;*/
@@ -26,7 +24,7 @@
 	position: absolute;
 	top: 0;
 	background-color: rgba(255, 255, 255, 0.603);
-	box-shadow: 0  0 5px black;
+	box-shadow: 0 0 5px black;
 	right: 0px;
 	width: 1372px;
 }
@@ -49,7 +47,6 @@
 	border-radius: 5px;
 	cursor: pointer;
 	transform: translateY(-10px);
-	
 }
 
 body {
@@ -70,7 +67,7 @@ body {
 	position: absolute;
 	top: 200px;
 	left: 490px;
-	background-color:rgb(245,178,120);
+	background-color: rgb(245, 178, 120);
 	height: 400px;
 	width: 400px;
 	border-radius: 5px;
@@ -160,7 +157,7 @@ body {
 	position: absolute;
 	top: 120px;
 	left: 490px;
-	background-color: rgb(245,178,120);
+	background-color: rgb(245, 178, 120);
 	border-radius: 5px;
 	visibility: visible;
 }
@@ -235,41 +232,42 @@ body {
 #companyname img {
 	width: 120px;
 }
-#errorMsg{
-position: relative;
-left: 60px;
-color:red;
-top:20px;
+
+#errorMsg {
+	position: relative;
+	left: 60px;
+	color: red;
+	top: 20px;
 }
 
-.loginHere{
-position: relative;
-left:45px;
-top: -60px;
+.loginHere {
+	position: relative;
+	left: 45px;
+	top: -60px;
 }
 
-.label{
-font-weight: 600;
+.label {
+	font-weight: 600;
 }
 
-h1{
-position: absolute;
-left:410px;
-top:200px;
-font-size: 50px;
+h1 {
+	position: absolute;
+	left: 410px;
+	top: 200px;
+	font-size: 50px;
 }
 
-a{
-color: black;
-text-decoration: none;
+a {
+	color: black;
+	text-decoration: none;
 }
 
-h3{
-position: absolute;
-left:600px;
-top:280px;
+h3 {
+	position: absolute;
+	left: 600px;
+	top: 280px;
 }
 
-a:hover{
-text-decoration: underline;
+a:hover {
+	text-decoration: underline;
 }

@@ -20,22 +20,21 @@ body {
 }
 
 #navigation {
-   background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
-   margin-top: 0%;
+	background: linear-gradient(to right, rgb(200, 47, 58) 0%,
+		rgb(44, 169, 207) 100%);
+	margin-top: 0%;
 }
 
 #navigation ul li a {
 	text-decoration: none;
 	color: whitesmoke;
 	display: inline;
-		float:right;
-	
+	float: right;
 }
 
 #navigation ul li a:hover {
 	color: black;
 }
-
 
 #navigation #logout a {
 	position: relative;
@@ -45,12 +44,12 @@ body {
 h3 {
 	text-align: center;
 	position: relative;
-	top:100px;
+	top: 100px;
 }
 
-#adminName{
-position: absolute;
-right: 150px;
-top:20px;
-color: white;
+#adminName {
+	position: absolute;
+	right: 150px;
+	top: 20px;
+	color: white;
 }

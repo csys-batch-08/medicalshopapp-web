@@ -10,11 +10,12 @@
 	display: inline-block;
 }
 
-.nav{
-   background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
-   position: fixed;
-   width: 100%;
-   z-index: 1;
+.nav {
+	background: linear-gradient(to right, rgb(200, 47, 58) 0%,
+		rgb(44, 169, 207) 100%);
+	position: fixed;
+	width: 100%;
+	z-index: 1;
 }
 
 .list li {
@@ -44,13 +45,11 @@
 	font-weight: 500;
 }
 
-
-
-.list li:hover{
+.list li:hover {
 	transition-duration: 0.2s;
 	transform: translateY(-10px);
 	color: orange;
-	}
+}
 
 body {
 	/* background: linear-gradient(rgba(26,176,156,0.7),rgba(239,78,28,0.5)) ,url(Images/homepage_img.jpg); */
@@ -127,7 +126,7 @@ img {
 	height: 190px;
 	border-radius: 5px;
 	width: 1200px;
-	top:150px;
+	top: 150px;
 }
 
 #product img {
@@ -135,7 +134,7 @@ img {
 	width: 90px;
 	position: relative;
 	left: 40px;
-	top:20px;
+	top: 20px;
 }
 
 #product h3 {
@@ -155,9 +154,9 @@ img {
 	left: 900px;
 }
 
-#product:hover{
-box-shadow: 0 0 10px black;
-transition-duration:0.3s;
+#product:hover {
+	box-shadow: 0 0 10px black;
+	transition-duration: 0.3s;
 }
 
 #product #btn button {
@@ -168,11 +167,10 @@ transition-duration:0.3s;
 	background-color: none;
 }
 
-#product #btn button{
+#product #btn button {
 	position: relative;
 	background-color: yellowgreen;
-	bottom:-150px;
-	
+	bottom: -150px;
 }
 
 #btn1 {
@@ -183,13 +181,12 @@ transition-duration:0.3s;
 	box-shadow: 0 0 5px black;
 	color: green;
 	transition-duration: 0.2s;
-	
 }
 
 #product #img h3 {
 	position: relative;
 	left: 40px;
-	top:20px;
+	top: 20px;
 }
 
 #btn #buynow {
@@ -201,51 +198,51 @@ a {
 	color: black;
 }
 
-#userName{
-position: absolute;
-top:90px;
-left: 55px;
+#userName {
+	position: absolute;
+	top: 90px;
+	left: 55px;
 }
 
-.prodSearch{
-position: fixed;
-left:200px;
-z-index: 1;
-top:18px;
+.prodSearch {
+	position: fixed;
+	left: 200px;
+	z-index: 1;
+	top: 18px;
 }
 
-#searchBar{
-height: 30px;
-width:250px;
-border: none;
-outline:none;
-border-top-left-radius: 2px;
-border-bottom-left-radius: 2px;
+#searchBar {
+	height: 30px;
+	width: 250px;
+	border: none;
+	outline: none;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
 }
 
-#searchBtn{
-position:absolute;
-height:30px;
-width: 40px;
-border: none;
-border-top-right-radius: 2px;
-border-bottom-right-radius: 2px;
-outline: none;
+#searchBtn {
+	position: absolute;
+	height: 30px;
+	width: 40px;
+	border: none;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+	outline: none;
 }
 
-#searchBtn:hover{
-cursor: pointer;
-background-color:yellowgreen;
-box-shadow: 0 0 5px black;
-transition-duration:0.2s;
+#searchBtn:hover {
+	cursor: pointer;
+	background-color: yellowgreen;
+	box-shadow: 0 0 5px black;
+	transition-duration: 0.2s;
 }
 
-#searchBar:Hover{
-box-shadow: 0 0 10px black;
+#searchBar:Hover {
+	box-shadow: 0 0 10px black;
 }
 
-#noProd{
-position: relative;
-text-align: center;
-top:200px;
+#noProd {
+	position: relative;
+	text-align: center;
+	top: 200px;
 }

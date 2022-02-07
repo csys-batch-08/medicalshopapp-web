@@ -6,13 +6,11 @@
 }
 
 body {
-	
 	background-repeat: repeat-y;
 	background-size: cover;
-	overflow-x:hidden;
+	overflow-x: hidden;
 	margin-top: 0px;
 }
-
 
 #navigation ul li {
 	list-style: none;
@@ -24,7 +22,8 @@ body {
 }
 
 #navigation {
-	background: linear-gradient(to right, rgb(200, 47, 58) 0%,rgb(44, 169, 207) 100%);
+	background: linear-gradient(to right, rgb(200, 47, 58) 0%,
+		rgb(44, 169, 207) 100%);
 	width: 100%;
 	margin-top: 0%;
 }
@@ -38,8 +37,6 @@ body {
 #navigation ul li a:hover {
 	color: black;
 }
-
-
 
 #product {
 	position: relative;
@@ -55,20 +52,20 @@ body {
 	width: 90px;
 	position: relative;
 	left: 40px;
-	top:50px;
+	top: 50px;
 }
 
 #product h5 {
 	position: relative;
 	left: 20px;
-	top:60px;
+	top: 60px;
 }
 
 #product #details {
 	position: relative;
 	left: 220px;
-	top:-60px;
-	}
+	top: -60px;
+}
 
 #product #btn {
 	position: relative;
@@ -99,13 +96,14 @@ body {
 	left: 40px;
 }
 
-#details h5{
+#details h5 {
 	position: relative;
-	top:-40px;
-	left:50px;
+	top: -40px;
+	left: 50px;
 }
-#deleteBtn{
-position: relative;
-left:100px;
-bottom: 63px;
+
+#deleteBtn {
+	position: relative;
+	left: 100px;
+	bottom: 63px;
 }

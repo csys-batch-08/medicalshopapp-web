@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
+<link rel="icon" type="" href="Assets/Images/medhublogo.png">
 <link rel="stylesheet" href="Assets/css/registerWelcome.css">
 
 <title>Registration Successfully</title>
@@ -19,11 +19,11 @@
 
 			<nav class="list">
 				<ul>
-					<li><a href="registration.jsp"  id="register">SignUp</a></li>
-					<li><a href="index.jsp"  id="login">Login</a></li>
+					<li><a href="registration.jsp" id="register">SignUp</a></li>
+					<li><a href="index.jsp" id="login">Login</a></li>
 				</ul>
 			</nav>
-			
+
 			<div class="logo">
 				<img src="Assets/Images/medhublogo.png" alt="logo">
 
@@ -34,17 +34,19 @@
 				</div>
 			</div>
 		</div>
-		
-		<h1 id="regMsg" >Registered Successfully</h1>
-		<h3><a href="index.jsp">Click Here To Login</a></h3>
 
-										<!-- sign/register form -->
-										
-		
-		</div>
+		<h1 id="regMsg">Registered Successfully</h1>
+		<h3>
+			<a href="index.jsp">Click Here To Login</a>
+		</h3>
 
-		<div class="footer"></div>
+		<!-- sign/register form -->
 
-	
+
+	</div>
+
+	<div class="footer"></div>
+
+
 </body>
 </html>
