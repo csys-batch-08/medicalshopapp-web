@@ -23,39 +23,25 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 								//	currentUser,buyProducts,buyProductQuantity, totalPrice
 	public int insertOrders(OrderItems oi){
 		Connection con = null;
-		PreparedStatement pst=null;
+		PreparedStatement pstmt=null;
 		int res = 0;
 		try {
 			String orderQuery = "insert into order_items(user_id,order_id,product_id,quantity,unit_price,total_price) values(?,?,?,?,?,?)";
 			con=ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(orderQuery);
-			pst.setInt(1, oi.getUser().getUserId());
-			pst.setInt(2, oi.getOrderId());
-			pst.setInt(3, oi.getProduct().getProductId());
-			pst.setInt(4, oi.getQuantity());
-			pst.setDouble(5, oi.getUnitPrice());
-			pst.setDouble(6, oi.getTotalPrice());
-			res = pst.executeUpdate();
-			pst.executeUpdate("commit");
+			pstmt = con.prepareStatement(orderQuery);
+			pstmt.setInt(1, oi.getUser().getUserId());
+			pstmt.setInt(2, oi.getOrderId());
+			pstmt.setInt(3, oi.getProduct().getProductId());
+			pstmt.setInt(4, oi.getQuantity());
+			pstmt.setDouble(5, oi.getUnitPrice());
+			pstmt.setDouble(6, oi.getTotalPrice());
+			res = pstmt.executeUpdate();
+			pstmt.executeUpdate("commit");
 
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			if(pst!=null) {
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-				}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				}
-				
+			ConnectionUtil.close(pstmt,con);
 		}
 		return res;
 
@@ -65,7 +51,8 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 		
 		List<OrderItems> myOrderList = new ArrayList<OrderItems>();
 		Connection con = null;
-		PreparedStatement pst = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		OrderItems orderItems;
 		try {
 			
@@ -73,9 +60,9 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 					+ "from order_items oi \r\n" + "inner join orders o on oi.order_id=o.order_id\r\n"
 					+ "inner join products p on oi.product_id=p.product_id where oi.user_id = ? order by oi.order_id desc";
 			con=ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(qwery);
-			pst.setInt(1, currentUser.getUserId());
-			ResultSet rs = pst.executeQuery();
+			pstmt = con.prepareStatement(qwery);
+			pstmt.setInt(1, currentUser.getUserId());
+			rs = pstmt.executeQuery();
 
 			while (rs.next())
 
@@ -89,21 +76,7 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
-				if(pst!=null) {
-					try {
-						pst.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}     	
-					}
-				if(con !=null) {
-					try {
-						con.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-					}
-					
+				ConnectionUtil.close(pstmt,con,rs);
 			}
 			return myOrderList;
 	
@@ -111,16 +84,17 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 
 	public boolean cancelDate(LocalDate date, int orderid) {
 		Connection con = null;
-		PreparedStatement pst=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs =null;
 		boolean flag = false;
 		try {
 			
 			String query = "select order_id from orders where order_id=? and ?+1 >= sysdate";
 			con=ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(query);
-			pst.setInt(1, orderid);
-			pst.setDate(2, java.sql.Date.valueOf(date));
-			ResultSet rs = pst.executeQuery();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, orderid);
+			pstmt.setDate(2, java.sql.Date.valueOf(date));
+			rs = pstmt.executeQuery();
 
 			if (rs.next())
 
@@ -131,20 +105,7 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			if(pst!=null){
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-			}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			ConnectionUtil.close(pstmt,con,rs);
 		}
 		return flag;
 
@@ -158,18 +119,18 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 				LocalDate endDate = LocalDate.parse(toDate);
 				Connection con = null;
 				boolean flag = false;
-				PreparedStatement pst=null;
+				PreparedStatement pstmt=null;
 				ResultSet rs = null;
 				try {
 					String query = "select trunc(o.order_date),p.product_name,sum(oi.quantity) as quantity,oi.unit_price as price, (sum(oi.quantity)*oi.unit_price) as totalPrice from order_items oi "
 							+ "join orders o on o.order_id = oi.order_id join products p on p.product_id = oi.product_id where trunc(o.order_date) between ? and ? group by(trunc(o.order_date),"
 							+ "p.product_name,oi.unit_price,o.order_status) having o.order_status=?";
 					 con=ConnectionUtil.getDBconnect();
-					 pst = con.prepareStatement(query);
-					 pst.setDate(1, java.sql.Date.valueOf(startDate));
-					 pst.setDate(2, java.sql.Date.valueOf(endDate));
-					 pst.setString(3, "order placed");
-					 rs = pst.executeQuery();
+					 pstmt = con.prepareStatement(query);
+					 pstmt.setDate(1, java.sql.Date.valueOf(startDate));
+					 pstmt.setDate(2, java.sql.Date.valueOf(endDate));
+					 pstmt.setString(3, "order placed");
+					 rs = pstmt.executeQuery();
 					
 					while(rs.next())
 
@@ -181,20 +142,7 @@ public class OrderItemsDaoImpl implements OrderItemDAO {
 					} catch (SQLException e) {
 					e.printStackTrace();
 					}finally {
-						if(pst!=null){
-							try {
-								pst.close();
-							} catch (SQLException e) {
-								e.printStackTrace();
-							}     	
-						}
-						if(con !=null) {
-							try {
-								con.close();
-							} catch (SQLException e) {
-								e.printStackTrace();
-							}
-						}
+						ConnectionUtil.close(pstmt,con,rs);
 					}
 				return salesReport;
 					

@@ -251,7 +251,7 @@ border-radius: 5px;
 	</c:when>
 	</c:choose>
 
-	<script>
+<script>
 	$(document).ready(function() {
 		$('#table_id').DataTable();
 	});
@@ -284,24 +284,6 @@ function confirmdelete(productId) {
 	  })
 	
 }
-
-	
-  
- /*   Swal.fire({
-		 title: "Are you sure about \n deleting this Package?",
-		    type: "info",
-		    showCancelButton: true,
-		    confirmButtonText: "Delete It",
-		    confirmButtonColor: "#ff0055",
-		    cancelButtonColor: "#999999",
-		    focusConfirm: false,
-		    focusCancel: true
-		}).then((result) => {
-		  if (result.isConfirmed) {
-		    window.location.replace("deleteProduct?info=&deleteProductId=" + productId);
-		  }
-		}) */
-
 
 </script>
 </body>

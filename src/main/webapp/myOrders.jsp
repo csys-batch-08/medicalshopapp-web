@@ -62,7 +62,7 @@
 			<div id="product">
 				<div id="img">
 					<img src="Assets/Images/${myAllOrders.getProduct().getProductImg()}" alt="horlicks">
-					<h3>${myAllOrders.getProduct().getProductName() }</h3>
+					<h3>${myAllOrders.getProduct().getProductName()}</h3>
 				</div>
 				<div id="details">
 				
@@ -129,7 +129,7 @@
 
 <script>
 function check(){
-    var result = confirm("if you want to cancel 10% cancellation charge will be detected on your total price");
+    var result = confirm("10% cancellation charge will be detected on your total price.If you want to cancel?");
 
     if(result==false){
         event.preventDefault();

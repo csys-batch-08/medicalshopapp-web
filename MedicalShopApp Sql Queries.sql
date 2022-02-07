@@ -53,12 +53,12 @@ CONSTRAINT pk_product primary key (product_id)
 commit;
 desc products;
 create sequence product_id_seq increment by 1 start with 8659;
-select * from products;
-delete from products where product_id =8801;
+select * from products; 
+delete from products where product_id =8893;
 alter table products modify product_id  default product_id_seq.nextval;
 alter table products modify product_name unique;
-update products set available_Quantity=200 where product_id = 9678;
-update products set status ='unavailable' where product_id =2300;
+update products set available_Quantity=200 where product_id = 9700;
+update products set status ='available' where product_id =2322;
 alter table products modify product_id number generated always as identity start with 5000;
 delete from products where product_id =8779;
 Alter table products modify (product_id number DEFAULT product_id_seq.nextval);

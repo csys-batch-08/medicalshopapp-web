@@ -39,7 +39,7 @@
 		</div>
 		
 		
-		<h3>Welcome Admin</h3>
+		<h3 id="adminName">Hi ${admin.getAdminName()}</h3>
 	</div>
 	
 	<script src="Assets/javascript/popupMessages.js"></script>	

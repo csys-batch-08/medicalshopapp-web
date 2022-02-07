@@ -81,6 +81,7 @@ public class LoginServlet extends HttpServlet {
 				Admin adminModule= admindao.login(admin);
 				if(adminModule!=null)
 				{
+					req.setAttribute("admin", adminModule);
 					RequestDispatcher rd = req.getRequestDispatcher("adminHome.jsp?loginstatus=success");
 					rd.forward(req, res);
 

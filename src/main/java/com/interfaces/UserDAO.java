@@ -8,11 +8,10 @@ import com.medhub.model.User;
 
 public interface UserDAO {
 
-	public void insert(User user) throws SQLException;
+	public boolean insert(User user) throws SQLException;
 	public User login(User user);
-	public List<User> ViewAllUser();
+	public List<User> viewAllUser();
 	public int update (User currentUser);
-	public User getUserById(int userId);
 	public boolean deleteUser(int userId);
 	public int addMoneyInWallet(double walletAmount,User currentUser);
 	public void updateUserPoints(Order order);

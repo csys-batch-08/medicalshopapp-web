@@ -14,7 +14,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 <title>BuyProduct</title>
-
 </head>
 <body>
 
@@ -60,7 +59,7 @@
 			<tr>
 			<th id="th"></th>
 			<div id="pDesc">
-					<td> 
+					<td class="plabel"> 
 					<p>
 						<strong>Product category:</strong>
 					</p>

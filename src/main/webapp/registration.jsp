@@ -7,7 +7,11 @@
 <link rel = "icon" type = "" href = "Assets/Images/medhublogo.png">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="Assets/css/registration.css">
-
+<style type="text/css">
+#passwordCheck{
+visibility: visible;
+}
+</style>
 <script>
     history.forward();
 </script>
@@ -45,7 +49,7 @@
 										
 		<div id="registerScreen">
 			<div id="registerScreenContent">
-				<form action="RegisterController" class="registerform" method="Get" >
+				<form action="registerController" class="registerform" method="post" >
 					<label for="fullName" class="reglab">Full Name <span- class="required">*</span></label><br>
 					<br> <input type="text" onkeyup="hideMsg()"  onkeyup="hideUserExists()"  name="regfullName" id="fullname"
 						placeholder="Enter fullname" required autofocus><br>
@@ -66,11 +70,11 @@
 						title="Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character"><br>
 					<br>
 						<br> <label for="Confirm password" class="reglab">Confirm Password <span class="required">*</span></label><br>
-						<input type="password" id="comfirmPassword"  onkeyup="passwordCheck()" 
+						<input type="password" id="comfirmPassword"  onkeyup="validatePassword()"   
 						placeholder="Password" name="regPassword" value="" required
 						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%?&]{8,15}$"
 						title="Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character" ><br>
-						<span id="passwordCheck" style="visibility: hidden">Confirm password Not Matches</span>
+						<p id="passwordCheck" ></p>
 					<br>
 					<button id="regbtn" type="submit">Register</button><br>
 					<br>
@@ -80,7 +84,7 @@
            	</c:if>
 			<c:remove var="notallow" scope="session"/>
          
-              <c:if test="${error!=null}">	
+             <c:if test="${error!=null}">	
             <h4 id="userExists">${error}</h4>
            	</c:if>
 			<c:remove var="error" scope="session"/>
@@ -94,7 +98,7 @@
 	</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="Assets/javascript/registration.js"></script>
-<script>
+<!-- <script>
 function getLoginForm()
 {
     document.getElementById("loginform").style.visibility="visible";
@@ -119,6 +123,6 @@ function hideUserExists()
 	document.getElementById("userExists").style.visibility="hidden";
 	}
 
-</script>
+</script> -->
 </body>
 </html>

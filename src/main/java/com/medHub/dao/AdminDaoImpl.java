@@ -20,15 +20,15 @@ public class AdminDaoImpl implements AdminDAO{
 		Admin adminmodule=null;
 		String check="select admin_name,age,admin_password,admin_email,admin_mobile from admin a where admin_email=? and admin_password=?";
 		Connection con = null;
-		PreparedStatement ps=null;
-	
+		PreparedStatement pstmt=null;
+		ResultSet rs = null;
 			
 		try {
 			con=ConnectionUtil.getDBconnect();
-			ps = con.prepareStatement(check);
-			ps.setString(1, admin.getAdminMail());
-			ps.setString(2, admin.getAdminPassword());
-			ResultSet rs = ps.executeQuery();
+			pstmt = con.prepareStatement(check);
+			pstmt.setString(1, admin.getAdminMail());
+			pstmt.setString(2, admin.getAdminPassword());
+			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				adminmodule=new Admin(rs.getString("admin_name"),rs.getInt("age"),rs.getString("admin_password"),rs.getString("admin_email"),rs.getLong("admin_mobile"));
@@ -40,12 +40,7 @@ public class AdminDaoImpl implements AdminDAO{
 			}
 				finally
 				{
-					if(ps!=null) {
-						ps.close();     	
-						}
-					if(con !=null) {
-						con.close();
-						}
+					ConnectionUtil.close(pstmt,con,rs);
 					
 				}
 			return adminmodule;

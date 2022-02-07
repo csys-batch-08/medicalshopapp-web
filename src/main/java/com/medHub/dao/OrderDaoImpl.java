@@ -18,16 +18,16 @@ public class OrderDaoImpl implements OrderDAO{
 	public  boolean  orders(Order order,User currentUser) throws SQLException {
 		
 		Connection con = null;
-		PreparedStatement pst=null;
+		PreparedStatement pstmt=null;
 		try {
 			String orderQuery="insert into orders (user_id,price) values(?,?)";
 			con=ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(orderQuery);
-			pst.setInt(1,currentUser.getUserId() );
-			pst.setDouble(2, order.getPrice());
-			pst.executeUpdate();
-			pst.executeUpdate("commit");
-			int result = pst.executeUpdate();
+			pstmt = con.prepareStatement(orderQuery);
+			pstmt.setInt(1,currentUser.getUserId() );
+			pstmt.setDouble(2, order.getPrice());
+			pstmt.executeUpdate();
+			pstmt.executeUpdate("commit");
+			int result = pstmt.executeUpdate();
 			if(result>0)
 			{
 				return true;
@@ -35,13 +35,7 @@ public class OrderDaoImpl implements OrderDAO{
 			} catch (SQLException e) {
 			  e.getMessage();
 			}finally {
-				if(pst!=null) {
-					pst.close();     	
-					}
-				if(con !=null) {
-					con.close();
-					}
-					
+				ConnectionUtil.close(pstmt,con);
 			}
 			return false;
 	}
@@ -53,13 +47,15 @@ public class OrderDaoImpl implements OrderDAO{
 		
 		Connection con = null;
 		Order order= null;
-		int orderId=0;
+		ResultSet rs =null;
 		Statement stmt =null;
+		int orderId=0;
+		
 		try {
 			String qwery="select max(order_id) from orders";
 			con=ConnectionUtil.getDBconnect();
-			 stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(qwery);
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(qwery);
 			
 			if(rs.next())
 			{
@@ -69,12 +65,7 @@ public class OrderDaoImpl implements OrderDAO{
 		} catch (SQLException e) {
 			e.getMessage();
 		}finally {
-			if(stmt!=null) {
-				stmt.close();     	
-				}
-			if(con !=null) {
-				con.close();
-				}
+			ConnectionUtil.closeStatement(stmt,con,rs);
 				
 		}
 		return orderId;
@@ -88,15 +79,15 @@ public class OrderDaoImpl implements OrderDAO{
 		
 		boolean flag=false;
 		Connection con = null;
-		PreparedStatement pst=null;
+		PreparedStatement pstmt=null;
 		try {
 		String qwery="update orders set order_status= ? where order_id =?";
 		con = ConnectionUtil.getDBconnect();
-		pst=con.prepareStatement(qwery);
-		pst.setString(1, "cancelled");
-		pst.setInt(2, orderId);
-		int res=pst.executeUpdate();
-		pst.executeUpdate("commit");
+		pstmt=con.prepareStatement(qwery);
+		pstmt.setString(1, "cancelled");
+		pstmt.setInt(2, orderId);
+		int res=pstmt.executeUpdate();
+		pstmt.executeUpdate("commit");
 
 		if(res>0)
 		{
@@ -107,13 +98,7 @@ public class OrderDaoImpl implements OrderDAO{
 		{
 			e.printStackTrace();
 		}finally {
-			if(pst!=null) {
-				pst.close();     	
-				}
-			if(con !=null) {
-				con.close();
-				}
-				
+			ConnectionUtil.close(pstmt,con);
 		}
 		return flag;
 		
@@ -124,13 +109,14 @@ public class OrderDaoImpl implements OrderDAO{
 	{	
 		String status;
 		Connection con =null;
-		PreparedStatement pst=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs =null;
 		try {
 		String qwery="select order_status from orders where order_id= ?";
 		con = ConnectionUtil.getDBconnect();
-		pst=con.prepareStatement(qwery);
-		pst.setInt(1, orderId);
-		ResultSet rs = pst.executeQuery();
+		pstmt=con.prepareStatement(qwery);
+		pstmt.setInt(1, orderId);
+		rs = pstmt.executeQuery();
 		if(rs.next())
 		{
 			status=rs.getString("order_status").toLowerCase();
@@ -144,12 +130,7 @@ public class OrderDaoImpl implements OrderDAO{
 		{
 			e.printStackTrace();
 		}finally {
-			if(pst!=null) {
-				pst.close();     	
-				}
-			if(con !=null) {
-				con.close();
-				}
+			ConnectionUtil.close(pstmt,con);
 		}
 		return false;
 	}

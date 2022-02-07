@@ -58,7 +58,7 @@
 			<br> <label for="">Description</label><br>
 			<br>
 			<textarea class="inputBox" style="max-height: 100px; min-height: 100px; width: 400px; max-width: 200px; min-width: 300px;position: relative;left: -10px"
-			required name="description" placeholder="Product Description" value="${currentProduct.getDescription()}"></textarea>
+			required name="description" placeholder="Product Description" value="${currentProduct.getDescription()}">${currentProduct.getDescription()}</textarea>
 				
 			<br>
 			<button name="currentProdId" value="${currentProduct.getProductId()}">Update</button>

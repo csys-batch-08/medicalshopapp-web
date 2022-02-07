@@ -12,6 +12,7 @@
 
 <script>
     history.forward();
+    
 </script>
 </head>
 
@@ -57,6 +58,7 @@
 				<input type="email"
 					name="loginMail" required placeholder="Enter Email"  pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"  onkeyup="hideMsg()" autofocus><br>
 				<br>
+				
 				<br> <label class="label" for="password">Password *</label><br> 
 				<input type="password" name="loginPassword" placeholder="Password"
 					value="" required 

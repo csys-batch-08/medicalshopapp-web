@@ -12,22 +12,22 @@ import com.medhub.util.ConnectionUtil;
 
 public class ProductDaoImpl implements ProductDAO {
 	
-	final String commitQuery= "commit";
+	  String commitQuery = "commit";
 										//Show All Products
 	public List<Product> viewProduts() {
 		
 		Connection con = null;
-		PreparedStatement pst=null;
+		PreparedStatement pstmt=null;
 		List<Product> productList = new ArrayList<>();
-		
+		ResultSet rs =null;
 		try 
 		{
 			String viewQuery = "select product_id,product_category,product_name,description,price,available_quantity,"
 					 + " product_img,points_per_unit,status,offer from products where status= ? ";
 			con=ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(viewQuery);
-			pst.setString(1, "available");
-			ResultSet rs = pst.executeQuery();
+			pstmt = con.prepareStatement(viewQuery);
+			pstmt.setString(1, "available");
+			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				Product product = new Product(rs.getInt("product_id"), rs.getString("product_category"), rs.getString("product_name"), rs.getString("description"),
@@ -39,20 +39,7 @@ public class ProductDaoImpl implements ProductDAO {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			if(pst!=null){
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-			}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			ConnectionUtil.close(pstmt,con,rs);
 		}
 
 		return productList;
@@ -63,20 +50,20 @@ public class ProductDaoImpl implements ProductDAO {
 	public Boolean insertProduct(Product productModel) throws SQLException {
 		boolean flag = false;
 		Connection con = null;ConnectionUtil.getDBconnect();
-		PreparedStatement pst =null;
+		PreparedStatement pstmt =null;
 		try {
 			String query = "insert into products (product_category,product_name,description,price,available_quantity,product_img,points_per_unit,offer) values (?,?,?,?,?,?,?,?)";
 			con = ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(query);
-			pst.setString(1, productModel.getProductCategory());
-			pst.setString(2, productModel.getProductName());
-			pst.setString(3, productModel.getDescription());
-			pst.setDouble(4, productModel.getUnitPrice());
-			pst.setInt(5, productModel.getQuantity());
-			pst.setString(6, productModel.getProductImg());
-			pst.setInt(7, productModel.getPoints());
-			pst.setInt(8, productModel.getOffer());
-			int result = pst.executeUpdate();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, productModel.getProductCategory());
+			pstmt.setString(2, productModel.getProductName());
+			pstmt.setString(3, productModel.getDescription());
+			pstmt.setDouble(4, productModel.getUnitPrice());
+			pstmt.setInt(5, productModel.getQuantity());
+			pstmt.setString(6, productModel.getProductImg());
+			pstmt.setInt(7, productModel.getPoints());
+			pstmt.setInt(8, productModel.getOffer());
+			int result = pstmt.executeUpdate();
 
 			if (result > 0) {
 				flag = true;
@@ -87,20 +74,7 @@ public class ProductDaoImpl implements ProductDAO {
 
 			e.printStackTrace();
 		}finally {
-			if(pst!=null){
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-			}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			ConnectionUtil.close(pstmt,con);
 		}
 		return false;
 	}
@@ -109,43 +83,30 @@ public class ProductDaoImpl implements ProductDAO {
 												//Update Products By ADmin
 	public int updateProducts(Product product) throws SQLException {
 		Connection con = null;
-		PreparedStatement pst = null;
+		PreparedStatement pstmt = null;
 		int result=0;
 
 		try {
 			String updateQwery = "update products set product_category=?,product_name=?,price=?,available_Quantity=?,product_img=?,points_per_unit=?,offer=?,description=?,status=? where product_id=?";
 			con=ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(updateQwery);
-			pst.setString(1, product.getProductCategory());
-			pst.setString(2, product.getProductName());
-			pst.setDouble(3, product.getUnitPrice());
-			pst.setDouble(4, product.getQuantity());
-			pst.setString(5, product.getProductImg());
-			pst.setInt(6, product.getPoints());
-			pst.setInt(7, product.getOffer());
-			pst.setString(8, product.getDescription());
-			pst.setString(9,"available");
-			pst.setInt(10, product.getProductId());
-			result = pst.executeUpdate();
-			pst.executeUpdate(commitQuery);
+			pstmt = con.prepareStatement(updateQwery);
+			pstmt.setString(1, product.getProductCategory());
+			pstmt.setString(2, product.getProductName());
+			pstmt.setDouble(3, product.getUnitPrice());
+			pstmt.setDouble(4, product.getQuantity());
+			pstmt.setString(5, product.getProductImg());
+			pstmt.setInt(6, product.getPoints());
+			pstmt.setInt(7, product.getOffer());
+			pstmt.setString(8, product.getDescription());
+			pstmt.setString(9,"available");
+			pstmt.setInt(10, product.getProductId());
+			result = pstmt.executeUpdate();
+			pstmt.executeUpdate(commitQuery);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			if(pst!=null){
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-			}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			ConnectionUtil.close(pstmt,con);
 		}
 		return result;
 	}
@@ -155,16 +116,16 @@ public class ProductDaoImpl implements ProductDAO {
 		
 		int res=0;
 		Connection con=null;
-		PreparedStatement pst=null;
+		PreparedStatement pstmt=null;
 		
 		try {
 		String qwery = "update products set status= ? where product_id=?";
 		con = ConnectionUtil.getDBconnect();
-		pst = con.prepareStatement(qwery);
-		pst.setString(1, "unavailable");
-		pst.setInt(2, productId);
-		res = pst.executeUpdate();
-		pst.executeUpdate(commitQuery);
+		pstmt = con.prepareStatement(qwery);
+		pstmt.setString(1, "unavailable");
+		pstmt.setInt(2, productId);
+		res = pstmt.executeUpdate();
+		pstmt.executeUpdate(commitQuery);
 		if (res > 0) {
 			return res;
 		}
@@ -172,20 +133,7 @@ public class ProductDaoImpl implements ProductDAO {
 		{
 			e.printStackTrace();
 		}finally {
-			if(pst!=null){
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-			}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			ConnectionUtil.close(pstmt,con);
 		}
 	
 		return res;
@@ -198,17 +146,17 @@ public class ProductDaoImpl implements ProductDAO {
 	public Product findProductByName(String productName) {
 		
 		Connection con=null;
-		PreparedStatement pst=null;
-		
+		PreparedStatement pstmt=null;
 		Product product = null;
+		ResultSet rs =null;
 		try 
 		{
 			String query = "select product_id,product_category,product_name,description,price,available_quantity,"
 					 + "product_img,points_per_unit from products where product_name= ? ";
 			con = ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(query);
-			pst.setString(1,productName);
-			ResultSet rs = pst.executeQuery();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,productName);
+			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				product = new Product(rs.getInt("product_id"), rs.getString("product_category"), rs.getString("product_name"), rs.getString("description"), rs.getDouble("price"),
 						rs.getInt("available_quantity"), rs.getString("product_img"), rs.getInt("points_per_unit"));
@@ -218,20 +166,7 @@ public class ProductDaoImpl implements ProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			if(pst!=null){
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-			}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			ConnectionUtil.close(pstmt,con,rs);
 		}
 
 		return product;
@@ -243,17 +178,16 @@ public class ProductDaoImpl implements ProductDAO {
 	public Product findProductByProductId(int id) {
 		
 		Connection con =null;
-		PreparedStatement pst=null;
-		
+		PreparedStatement pstmt=null;
 		Product product = null;
 		try 
 		{
 			String query = "select product_id,product_category,product_name,description,price,available_quantity,"
 					 + "product_img,points_per_unit,status,offer from products where product_id= ?";
 			con = ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(query);
-			pst.setInt(1, id);
-			ResultSet rs = pst.executeQuery();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
 				product = new Product(rs.getInt("product_id"), rs.getString("product_category"), rs.getString("product_name"), rs.getString("description"), rs.getDouble("price"),
 						rs.getInt("available_quantity"), rs.getString("product_img"), rs.getInt("points_per_unit"), rs.getString("status"), rs.getInt("offer"));
@@ -263,20 +197,7 @@ public class ProductDaoImpl implements ProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			if(pst!=null){
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-			}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			ConnectionUtil.close(pstmt,con);
 		}
 
 		return product;
@@ -286,33 +207,20 @@ public class ProductDaoImpl implements ProductDAO {
 									//update product quantity after a purchase
 	public void updateProductQuantity(Product currentProduct, int qty) throws SQLException {
 		
-		PreparedStatement pst=null;
+		PreparedStatement pstmt=null;
 		Connection con = null;
 		try {
 			String updateQtyQuery = "update products set available_quantity = ? where product_id = ?";
 			con=ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(updateQtyQuery);
-			pst.setInt(1, qty);
-			pst.setInt(2, currentProduct.getProductId());
-			pst.executeUpdate();
-			pst.executeUpdate(commitQuery);
+			pstmt = con.prepareStatement(updateQtyQuery);
+			pstmt.setInt(1, qty);
+			pstmt.setInt(2, currentProduct.getProductId());
+			pstmt.executeUpdate();
+			pstmt.executeUpdate(commitQuery);
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			if(pst!=null){
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-			}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			ConnectionUtil.close(pstmt,con);
 		}
 
 	}
@@ -323,15 +231,15 @@ public class ProductDaoImpl implements ProductDAO {
 		
 		List<Product> findedProducts = new ArrayList<>();
 		Connection con =null;
-		PreparedStatement pst=null;
+		PreparedStatement pstmt=null;
 		try {
 			String query = "select product_id,product_category,product_name,description,price,available_quantity,product_img,"
 					+ "points_per_unit,status,offer from products where product_name like ? OR product_category like ?  ";
 			con = ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(query);
-			pst.setString(1, productName+"%");
-			pst.setString(2, productName+"%");
-			ResultSet rs = pst.executeQuery();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, productName+"%");
+			pstmt.setString(2, productName+"%");
+			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Product product = new Product(rs.getInt("product_id"), rs.getString("product_category"), rs.getString("product_name"), rs.getString("description"),
 						rs.getDouble("price"), rs.getInt("available_quantity"), rs.getString("product_img"), rs.getInt("points_per_unit"), rs.getString("status"), rs.getInt("offer"));
@@ -342,20 +250,7 @@ public class ProductDaoImpl implements ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			if(pst!=null){
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-			}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			ConnectionUtil.close(pstmt,con);
 		}
 		
 		
@@ -366,7 +261,7 @@ public class ProductDaoImpl implements ProductDAO {
 		public List<Product> adminViewProduts() {
 		
 		Connection con = null;
-		PreparedStatement pst=null;
+		PreparedStatement pstmt=null;
 		List<Product> productList = new ArrayList<>();
 		
 		try 
@@ -374,8 +269,8 @@ public class ProductDaoImpl implements ProductDAO {
 			String viewQuery = "select product_id,product_category,product_name,description,price,available_quantity,"
 					 + " product_img,points_per_unit,status,offer from products";
 			con=ConnectionUtil.getDBconnect();
-			pst = con.prepareStatement(viewQuery);
-			ResultSet rs = pst.executeQuery();
+			pstmt = con.prepareStatement(viewQuery);
+			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				Product product = new Product(rs.getInt("product_id"), rs.getString("product_category"), rs.getString("product_name"), rs.getString("description"),
@@ -387,20 +282,7 @@ public class ProductDaoImpl implements ProductDAO {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			if(pst!=null){
-				try {
-					pst.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}     	
-			}
-			if(con !=null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			ConnectionUtil.close(pstmt,con);
 		}
 
 		return productList;

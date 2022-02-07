@@ -22,7 +22,7 @@ public class AllUserServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		
 		 UserDaoImpl userdao = new UserDaoImpl();
-		 List<User> userList=userdao.ViewAllUser();
+		 List<User> userList=userdao.viewAllUser();
 		 req.setAttribute("userList",userList);
 		 RequestDispatcher rd = req.getRequestDispatcher("allUser.jsp");
 		 try {
