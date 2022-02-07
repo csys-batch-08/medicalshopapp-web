@@ -88,22 +88,22 @@
 					<p name="pCategory">${currentProduct.getProductCategory()}</p>
 					<p name="pName">${currentProduct.getProductName()}</p>
 					<p name="pDescription">${currentProduct.getDescription()}</p>
-					<input name="pUnitPrice" id="price" value="${currentProduct.getUnitPrice()}" disabled>
+					<input name="pUnitPrice" id="price" value="${currentProduct.getUnitPrice()}" aria-label="price" disabled>
 					<label id="rs">Rs</label>
 					<p name="pQuantity">${currentProduct.getQuantity()}</p>
 					<p name="pgetPoints">${currentProduct.getPoints()}</p>
-					<input name="pOffer" id="offer" value="${currentProduct.getOffer()}" disabled>
+					<input name="pOffer" id="offer" value="${currentProduct.getOffer()}" aria-label="pOffer" disabled>
 					<span id="percentage">%</span></td>
 				<td>
 					<div id="qty">
 						<div id="qtyBox">	
 						<form action="prod1" onsubmit="return chechQuantity()">
-							<label for="">Quantity</label> 
-							<input type="number" id="quantity" title="Please Check The Available Quantity" name="quantity" min="1"  max="${currentProduct.getQuantity()}" onkeyup="calculateamt()" onclick="calculateamt()" >
+							<label for="Quantity">Quantity</label> 
+							<input type="number" id="quantity" title="Please Check The Available Quantity" name="quantity" min="1"  max="${currentProduct.getQuantity()}" onkeyup="calculateamt()" onclick="calculateamt()" placeholder="QTY" aria-label="quantity" >
 						</div>
 						<h3 id="TotalPriceLabel">Total price : Rs </h3>
 						<div id="totalPriceDiv">
-						<input name="totalPrice" id="totalprice">
+						<input name="totalPrice" id="totalprice" aria-label="quantity">
 						</div>
 						<p name="message" id="message"></p>
 						<div class="payNow">
@@ -113,7 +113,7 @@
 						
 						
 						<form action = "cartserv" id="cartForm" onsubmit="return chechQuantity()">
-						<input name="cartQuanity" type = "text" id = "cartQuantity" required>
+						<input name="cartQuanity" type = "text" id = "cartQuantity" aria-label="quantity" required>
 						<input name="cartTotalPrice" type = "text" id = "cartTotalPrice" >
 						<div class="addToCart">
 						<button type="submit" id="addToCart" >Add To Cart</button>

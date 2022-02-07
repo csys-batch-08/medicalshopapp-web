@@ -39,7 +39,7 @@
 		<form action="AddProductController">
 		
 			<input class="inputBox" id="category" list="category" onkeyup="hideErrorMsg()" name="category" id="browser"
-				placeholder="Category" autofocus>
+				placeholder="Category" aria-label="category" autofocus>
 			<datalist id="category">
 				<option value="medicine">
 				<option value="sanitizer">
@@ -50,35 +50,36 @@
 			<br>
 			<br>
 		
-			<input class="inputBox"  id="productName" type="text" onkeyup="hideErrorMsg()" required name="productName"><br>
+			<input class="inputBox"  id="productName" type="text" onkeyup="hideErrorMsg()" required name="productName"
+				 placeholder="Product Name" aria-label="productName" ><br>
 			<br>
 			
  
-			<input class="inputBox" id="price" type="number"  onkeyup="hideErrorMsg()" required min="1" name="price" placeholder="Price"><br>
+			<input class="inputBox" id="price" type="number"  onkeyup="hideErrorMsg()" required min="1" name="price" placeholder="Price" aria-label="category"><br>
 			<br>
 			
  
 			<input class="inputBox" id="quantity" type="number" min="1" onkeyup="hideErrorMsg()" required  name="quantity"
-				placeholder="Quantity"><br>
+				placeholder="Quantity" aria-label="quantity"><br>
 			<br>
  
 			<label>Add Image</label>
 			<input class="inputBox"  id="imageFile" type="file" onkeyup="hideErrorMsg()" required name="imageFile"
-				placeholder="Image Url"><br>
+				placeholder="Image File" aria-label="imageFile"><br>
 			<br>
  
 			<input class="inputBox" id="points" type="number" onkeyup="hideErrorMsg()" required min="1"  name="points"
-				placeholder="Points"><br>
+				placeholder="Points" aria-label="points"><br>
 			<br>
  
 			<input class="inputBox" id="offer" type="number" onkeyup="hideErrorMsg()" required min="0" name="offer"
-				placeholder="Offer%"><br>
+				placeholder="Offer%" aria-label="offer"><br>
 			<br>
 			<br>
 
 			<textarea class="inputBox" id="Description"
 				style="max-height: 70px; min-height: 20px; width: 400px; max-width: 200px; min-width: 300px;"
-				required name="description" onkeyup="hideErrorMsg()" placeholder="Product Description"></textarea>
+				required name="description" onkeyup="hideErrorMsg()" placeholder="Product Description" aria-label="Description"></textarea>
 			<br>
 			<button type="submit">Add</button>
 		</form>
