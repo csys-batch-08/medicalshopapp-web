@@ -55,7 +55,7 @@
 					type="email" name="loginMail" id="mail" required
 					placeholder="Enter Email" autofocus 
 					pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"
-					onkeyup="hideMsg()" ><br> <br> <br>
+					onkeyup="hideMsg()" aria-label="mail"><br> <br> <br>
 				<label class="label" for="password">Password *</label><br> <input
 					type="password" name="loginPassword" id="password"
 					placeholder="Password" value="" required

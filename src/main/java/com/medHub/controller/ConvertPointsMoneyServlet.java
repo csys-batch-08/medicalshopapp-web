@@ -33,7 +33,7 @@ public class ConvertPointsMoneyServlet extends HttpServlet{
 		int points=Integer.parseInt(req.getParameter("pointsMoney"));
 		try {
 		if(points>0) {
-		double converted = Math.ceil((points * 10)/100);
+		double converted = Math.ceil((double)(points * 10)/100);
 		double wallet=currentUser.getWallet()+converted;
 		UserDaoImpl userDao = new UserDaoImpl();
 		userDao.addMoneyInWallet(wallet, currentUser);

@@ -51,7 +51,7 @@
 					<label for="fullName" class="reglab">Full Name <span>
 							class="required">*</span></label><br> <br> <input type="text"
 						onkeyup="hideMsg()" onkeyup="hideUserExists()" name="regfullName"
-						id="fullname" placeholder="Enter fullname" required autofocus><br>
+						id="fullname" placeholder="Enter fullname" aria-label="fullname" required autofocus><br>
 
 					<br> <label for="mail" class="reglab">Mail Id <span
 						class="required">*</span></label><br> <br> <input type="email"

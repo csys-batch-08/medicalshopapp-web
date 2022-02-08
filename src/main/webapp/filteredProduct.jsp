@@ -13,8 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/Images/medhublogo.png">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <meta name="theme-color" content="#ba8f88">
 <link rel="stylesheet" href="Assets/css/filteredProduct.css">
 
@@ -49,7 +48,7 @@
 
 		<form action="" class="prodSearch">
 			<input id="searchBar" type="text" name="ProductName" required
-				placeholder="Search By Products & categories">
+				placeholder="Search By Products & categories"  aria-label="searchBar">
 			<button id="searchBtn">&#128269;</button>
 		</form>
 
@@ -87,7 +86,7 @@
 
 		<c:if test="${empty allProducts}">
 
-			<h1 id="noProd">NO Products Matches !</h1>
+			<h1 id="noProd" class="animate__animated animate__shakeX">NO Products Matches !</h1>
 		</c:if>
 
 	</div>

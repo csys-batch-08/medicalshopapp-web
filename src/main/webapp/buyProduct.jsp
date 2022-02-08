@@ -128,8 +128,8 @@
 						<form action="cartserv" id="cartForm"
 							onsubmit="return chechQuantity()">
 							<input name="cartQuanity" type="text" id="cartQuantity"
-								aria-label="quantity" required> <input
-								name="cartTotalPrice" type="text" id="cartTotalPrice">
+								aria-label="cartQuantity" required> <input
+								name="cartTotalPrice" type="text" id="cartTotalPrice" aria-label="cartTotalPrice">
 							<div class="addToCart">
 								<button type="submit" id="addToCart">Add To Cart</button>
 							</div>
