@@ -21,7 +21,6 @@
 	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 	<div id="container">
 
-
 		<div class="nav">
 
 			<nav class="list">
