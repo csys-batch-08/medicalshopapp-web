@@ -18,7 +18,6 @@
 <body>
 
 	<div class="nav">
-
 		<nav class="list" class="container-fluid p-0">
 			<ul>
 				<li><a href="index.jsp"><label class="nav">SignOut</label></a></li>
@@ -37,12 +36,6 @@
 			</div>
 		</nav>
 	</div>
-
-	<%-- 	<c:if test="${InsuffientMoney!=null}">
-		<div class="InsuffiendMoney" >
-		<h3>${InsuffientMoney}</h3>
-		</div>
-	</c:if>	
 	<c:remove var="InsuffientMoney"  scope="session"/> --%>
 
 	<c:if test="${AddressNotFound!=null}">
@@ -60,7 +53,6 @@
 	<c:remove var="notEnoughAmt" scope="session" />
 
 
-	<!-- User Profile -->
 	<div id="userProfile">
 		<form action="ProfileUpdate" method="get">
 			<table aria-describedby="UserProfile">

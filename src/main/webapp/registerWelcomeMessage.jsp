@@ -14,7 +14,6 @@
 <body id="body">
 	<div id="container">
 
-		<!-- Navigation Bar -->
 		<div class="nav">
 
 			<nav class="list">
@@ -39,10 +38,6 @@
 		<h3>
 			<a href="index.jsp">Click Here To Login</a>
 		</h3>
-
-		<!-- sign/register form -->
-
-
 	</div>
 
 	<div class="footer"></div>

@@ -1,7 +1,6 @@
 package com.medhub.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.exceptions.ProductExistsException;
 import com.medhub.dao.ProductDaoImpl;
@@ -24,7 +22,6 @@ public class AddProductServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
-		HttpSession session = req.getSession();
 		String category = req.getParameter("category");
 		String productname = req.getParameter("productName");
 		double price=0;
@@ -52,8 +49,8 @@ public class AddProductServlet extends HttpServlet {
 				RequestDispatcher rd = req.getRequestDispatcher("addProduct.jsp?status=addedSuccessfully");
 				try {
 					rd.forward(req, res);
-				} catch (ServletException | IOException e1) {
-					e1.printStackTrace();
+				} catch (ServletException | IOException el) {
+					System.out.println(el.getMessage());
 				}
 
 			} else {

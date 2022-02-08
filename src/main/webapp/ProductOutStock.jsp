@@ -33,8 +33,6 @@
 				</div>
 			</nav>
 		</div>
-		<!-- 		
- -->
 		<img
 			class="outOfStockLogo animate__animated  animate__zoomInDown animate__delay-0.5s"
 			alt="outOfStockLogo" src="Assets/Images/OutOfStockImage1.png">

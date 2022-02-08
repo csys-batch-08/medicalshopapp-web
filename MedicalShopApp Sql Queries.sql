@@ -17,7 +17,7 @@ commit;
 alter table users modify user_password unique;
 insert into users (full_name,gender,user_mail,user_password) values ('KUMARASAMY R','MALE','KUMARASAMY@GMAIL.COM','Kumar@123');
 alter table users add user_mobile int not null unique;
-delete from users where user_id=108;
+delete from users where user_id=257;
 alter table users drop column role;
 commit;
 describe users;

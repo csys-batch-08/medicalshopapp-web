@@ -64,11 +64,6 @@
 	<br>
 	<br>
 
-
-
-
-	<!-- 					Search Products		
--->
 	<form action="filterProductservlet" class="prodSearch" method="get">
 		<input id="searchBar" type="text" name="ProductName"
 			required="required" placeholder="Search By Products & categories">

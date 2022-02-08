@@ -24,7 +24,6 @@
 	<div id="container">
 
 
-		<!-- Navigation Bar -->
 		<div class="nav">
 
 			<nav class="list">
@@ -45,7 +44,6 @@
 			</div>
 		</div>
 
-		<!-- sign/register form -->
 
 		<div id="registerScreen">
 			<div id="registerScreenContent">
@@ -104,34 +102,7 @@
 		<div class="footer"></div>
 
 	</div>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="Assets/javascript/registration.js"></script>
-	<!-- <script>
-function getLoginForm()
-{
-    document.getElementById("loginform").style.visibility="visible";
-    document.getElementById("registerScreen").style.visibility="hidden";
-    
-}
-function getRegisterForm()
-{
-    document.getElementById("registerScreen").style.visibility="visible";
-    document.getElementById("loginform").style.visibility="hidden";
-    // document.getElementById("loginform").style.visibility="hidden";
-}
-
-function hideMsg()
-{
-	document.getElementById("notAllow").style.visibility="hidden";
-	
-	}
-
-function hideUserExists()
-{
-	document.getElementById("userExists").style.visibility="hidden";
-	}
-
-</script> -->
 </body>
 </html>

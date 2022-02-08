@@ -22,7 +22,6 @@
 	<div id="container">
 
 
-		<!-- Navigation Bar -->
 		<div class="nav">
 
 			<nav class="list">
@@ -42,9 +41,7 @@
 				</div>
 			</div>
 		</div>
-
-
-		<!-- login Form default hidden -->
+		
 		<div class="loginscreen" id="loginform">
 			<c:if test="${InvalidUser!=null}">
 				<h3 id="errorMsg">${InvalidUser}</h3>
