@@ -43,7 +43,6 @@ public class CartOrderServlet extends HttpServlet {
 		Order order = new Order();
 		OrderDaoImpl orderDao = new OrderDaoImpl();
 		OrderItemsDaoImpl orderItemsDaoImpl = new OrderItemsDaoImpl();
-
 		int cartProductId = 0;
 		int cartQuantity = 0;
 		double unitPrice =0;

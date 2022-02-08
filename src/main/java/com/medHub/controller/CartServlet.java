@@ -26,6 +26,7 @@ public class CartServlet extends HttpServlet{
 	@Override
 	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
 	
+		try {
 		HttpSession session = req.getSession();
 		double totalprice=Double.parseDouble(req.getParameter("cartTotalPrice"));
 		int quantity = Integer.parseInt(req.getParameter("cartQuanity"));
@@ -37,29 +38,23 @@ public class CartServlet extends HttpServlet{
 		cart.setProduct(currentproduct);
 		cart.setQty(quantity);
 		cart.setTotalPrice(totalprice);
-		int prodquant;
-		try {
-			prodquant = cartDao.productexist(cart);
-			if(prodquant < 0) {
+		int prodquant = cartDao.productexist(cart);
+		if(prodquant < 0) {
 			cartDao.insertProduct(cart);
-			}else {
-				int oldprice = cartDao.productexist1(cart);
-				cart.setQty(quantity + prodquant);
-				cart.setTotalPrice(oldprice + totalprice);
-				cartDao.updatequantity(cart);
+		}else {
+			int oldprice = cartDao.productexist1(cart);
+			cart.setQty(quantity + prodquant);
+			cart.setTotalPrice(oldprice + totalprice);
+			cartDao.updatequantity(cart);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
 		List<Cart> cartItems = null;
-		try {
-			cartItems = cartDao.viewCart(currentUser);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		cartItems = cartDao.viewCart(currentUser);		
 		req.setAttribute("cartList", cartItems);
 		RequestDispatcher rd = req.getRequestDispatcher("cart.jsp");
 		rd.forward(req, res);
+		}catch (NumberFormatException |SQLException e) {
+			
+		}
 	}
 }

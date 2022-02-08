@@ -116,11 +116,9 @@ switch(status) {
 		Swal.fire({
 			  icon: 'error',
 			  title:status,
-			  showConfirmButton: false,
-			  timer: 2000})
+			  showConfirmButton: true})
 	
-			
-		break;
+	break;
 		
 	case "orderSucess":
 		Swal.fire({

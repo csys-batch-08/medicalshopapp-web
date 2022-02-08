@@ -47,24 +47,18 @@ public class AddProductServlet extends HttpServlet {
 			boolean flag = products.insertProduct(product);
 			if (flag) {			
 				RequestDispatcher rd = req.getRequestDispatcher("addProduct.jsp?status=addedSuccessfully");
-				try {
-					rd.forward(req, res);
-				} catch (ServletException | IOException el) {
-					System.out.println(el.getMessage());
-				}
-
-			} else {
+				rd.forward(req, res);
+				} else {
 				throw new ProductExistsException();
-				
-			}
-		} catch (SQLException |ProductExistsException e) {
+				}
+		} catch (ProductExistsException | ServletException e) {
 			req.setAttribute("productExists", e.getMessage());
 			RequestDispatcher rd = req.getRequestDispatcher("addProduct.jsp");
 			try {
 				rd.forward(req, res);
-			} catch (ServletException | IOException e1) {
+			}catch (ServletException | IOException e1) {
 				e1.printStackTrace();
-			}
+				}
 		}
 	}
 

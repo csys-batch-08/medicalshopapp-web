@@ -37,10 +37,6 @@ public class CheckEmailServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		
-	
-
-		
 	}
 	
 

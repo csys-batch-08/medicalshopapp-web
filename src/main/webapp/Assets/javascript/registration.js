@@ -37,6 +37,7 @@ function mobileNum() {
 	);
 }
 
+
 function getLoginForm() {
 	document.getElementById("loginform").style.visibility = "visible";
 	document.getElementById("registerScreen").style.visibility = "hidden";

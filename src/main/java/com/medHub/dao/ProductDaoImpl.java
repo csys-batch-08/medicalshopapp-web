@@ -47,7 +47,7 @@ public class ProductDaoImpl implements ProductDAO {
 	
 
 									// Insert Product By Admin
-	public Boolean insertProduct(Product productModel) throws SQLException {
+	public Boolean insertProduct(Product productModel){
 		boolean flag = false;
 		Connection con = null;ConnectionUtil.getDBconnect();
 		PreparedStatement pstmt =null;
