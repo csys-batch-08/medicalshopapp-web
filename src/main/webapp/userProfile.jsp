@@ -56,7 +56,7 @@
 	<div id="userProfile">
 		<form action="ProfileUpdate" method="get">
 			<table aria-describedby="UserProfile">
-			
+			<th></th>
 				<tr>
 					<td><label>Name :</label>
 					<td><input id="updatedName" name="updatedName"
