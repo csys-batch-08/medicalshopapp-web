@@ -3,17 +3,17 @@ package com.exceptions;
 public class AddressNotFoundException extends Exception{
 	
 	
-	static final String message="Delivery Address Not Found,Please update your Address";
+	static final String MESSAGE="Delivery Address Not Found,Please update your Address";
 	
 	@Override
 	public String getMessage()
 	{
-		return message;
+		return MESSAGE;
 	}
 
 	@Override
 	public String toString() {
-		return message;
+		return MESSAGE;
 	}
 	
 }

@@ -36,7 +36,7 @@
 			</div>
 		</nav>
 	</div>
-	<c:remove var="InsuffientMoney"  scope="session"/> --%>
+	<c:remove var="InsuffientMoney"  scope="session"/>
 
 	<c:if test="${AddressNotFound!=null}">
 		<div class="addressNull">

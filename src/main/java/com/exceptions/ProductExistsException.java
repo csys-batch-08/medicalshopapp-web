@@ -2,18 +2,18 @@ package com.exceptions;
 
 public class ProductExistsException extends Exception{
 	
-	static final String message="This Product Already Exists";
+	static final String MESSAGE="This Product Already Exists";
 	
 	@Override
 	public String getMessage()
 	{
 		
-		return message;
+		return MESSAGE;
 	}
 
 	@Override
 	public String toString() {
-		return message;
+		return MESSAGE;
 	}
 	
 

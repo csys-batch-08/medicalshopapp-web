@@ -26,11 +26,9 @@
 	/* margin-top: 0%; */
 	right: 0px;
 	width: 1372px;
-}
-
-.list ul {
 	padding-right: 0px;
 }
+
 
 .list ul, .list li, .list a {
 	text-decoration: none;
@@ -72,14 +70,11 @@ body {
 	left: 90px;
 	background-color: rgb(107, 119, 146, 0.5);
 	top: 90px;
+	color: white;
 }
 
 #userProfile td, tr {
 	padding: 20px;
-}
-
-#userProfile input {
-	margin-top: 42.5px;
 }
 
 #userProfile label {
@@ -87,6 +82,7 @@ body {
 }
 
 #userProfile input {
+	margin-top: 42.5px;
 	height: 30px;
 	width: 250px;
 }
@@ -194,10 +190,6 @@ input {
 	border: none;
 	box-shadow: 0 0 5px black;
 	border-radius: 2px;
-}
-
-#userProfile {
-	color: white;
 }
 
 input:hover {

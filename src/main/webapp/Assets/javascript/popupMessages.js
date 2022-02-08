@@ -1,12 +1,13 @@
 
 function showMessage(check)
 {
+	var toastMixin;
 var status = check;
 switch(status) {
 	
   case "loginSucess":
 	console.log("admin login");
-   var toastMixin = Swal.mixin({
+    toastMixin = Swal.mixin({
         toast: true,
         icon: 'success',
         title: 'General Title',
@@ -30,7 +31,7 @@ switch(status) {
     break;
 
   case "deleteSucess":
-   var toastMixin = Swal.mixin({
+    toastMixin = Swal.mixin({
 			toast: true,
 			icon: 'success',
 			title: 'General Title',
@@ -55,7 +56,7 @@ switch(status) {
     break;
 
 	case "deleteFailure":
-   var toastMixin = Swal.mixin({
+    toastMixin = Swal.mixin({
 			toast: true,
 			icon: 'success',
 			title: 'General Title',
@@ -88,7 +89,7 @@ switch(status) {
 	
 	case "productAdded":
 	
-	   var toastMixin = Swal.mixin({
+	    toastMixin = Swal.mixin({
 			toast: true,
 			icon: 'success',
 			title: 'General Title',

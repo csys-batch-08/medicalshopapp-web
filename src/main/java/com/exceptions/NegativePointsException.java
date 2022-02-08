@@ -2,17 +2,17 @@ package com.exceptions;
 
 public class NegativePointsException extends Exception{
 
-	static final String message="Points in negative, You Can't Convert";
+	static final String MESSAGE="Points in negative, You Can't Convert";
 	
 	@Override
 	public String getMessage()
 	{
 		
-		return message;
+		return MESSAGE;
 	}
 
 	@Override
 	public String toString() {
-		return message;
+		return MESSAGE;
 	}
 }
