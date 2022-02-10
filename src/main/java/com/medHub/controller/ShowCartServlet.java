@@ -27,15 +27,11 @@ public class ShowCartServlet extends HttpServlet{
 		User currentUser = (User)session.getAttribute("user");
 		CartDaoImpl cartDao = new CartDaoImpl();
 		List<Cart> cartItems = null;
-		try {
-			cartItems = cartDao.viewCart(currentUser);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		cartItems = cartDao.viewCart(currentUser);
 		req.setAttribute("cartList", cartItems);
 		RequestDispatcher rd = req.getRequestDispatcher("cart.jsp");
 		rd.forward(req, resp);
-		}catch (ServletException | IOException e) {
+		}catch (ServletException | IOException | SQLException e) {
 			e.getMessage();
 		}
 	}

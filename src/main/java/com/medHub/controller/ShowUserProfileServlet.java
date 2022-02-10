@@ -22,11 +22,15 @@ public class ShowUserProfileServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		try {
 		HttpSession session = req.getSession();
 		User currentUser = (User)session.getAttribute("user");
 		req.setAttribute("currentUser", currentUser);
 		RequestDispatcher rd = req.getRequestDispatcher("userProfile.jsp");
 		rd.forward(req, resp);
+		}catch (ServletException | IOException e) {
+			e.getMessage();
+		}
 		
 	}
 

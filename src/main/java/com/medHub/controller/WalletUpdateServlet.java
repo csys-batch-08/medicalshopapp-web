@@ -35,7 +35,7 @@ public class WalletUpdateServlet extends HttpServlet{
 			RequestDispatcher rd = req.getRequestDispatcher("userProfile.jsp");
 			rd.forward(req, res);
 		}
-		}catch (NumberFormatException e) {
+		}catch (NumberFormatException | ServletException | IOException e) {
 			e.getMessage();
 		}
 		
