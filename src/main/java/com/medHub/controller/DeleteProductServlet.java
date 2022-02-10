@@ -21,37 +21,25 @@ public class DeleteProductServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-
+		try {
 		int deletePId = Integer.parseInt(req.getParameter("deleteProductId"));
 		ProductDaoImpl product = new ProductDaoImpl();
-
-		try {
 			int result = product.deleteProduct(deletePId);
 			if (result > 0) {
 				ProductDaoImpl product1 = new ProductDaoImpl();
 				List<Product> allproduct = product1.adminViewProduts();
 				req.setAttribute("allProducts", allproduct);
 				RequestDispatcher rd = req.getRequestDispatcher("adminAllProducts.jsp?status=deleted");
-				try {
 					rd.forward(req, resp);
-				} catch (ServletException | IOException e) {
-					e.printStackTrace();
-				}
-			
-			}else
-			{
+			}
+			else{
 				ProductDaoImpl product1 = new ProductDaoImpl();
 				List<Product> allproduct = product1.viewProduts();
 				req.setAttribute("allProducts", allproduct);
 				RequestDispatcher rd = req.getRequestDispatcher("adminAllProducts.jsp?deleteFailure=deleteFailure");
-				try {
-					rd.forward(req, resp);
-				} catch (ServletException | IOException e) {
-					e.printStackTrace();
-				}
-				
+				rd.forward(req, resp);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ServletException e) {
 
 			e.printStackTrace();
 		}

@@ -9,10 +9,8 @@
 <link rel="icon" type="" href="Assets/Images/medhublogo.png">
 <link rel="stylesheet" href="Assets/css/index.css">
 <title>Home</title>
-
 <script>
     history.forward();
-    
 </script>
 </head>
 

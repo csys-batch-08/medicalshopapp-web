@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.medhub.dao.*;
 import com.medhub.model.*;
 
+import oracle.jdbc.driver.json.tree.JsonpObjectImpl;
+
 
 @WebServlet("/adminAllProducts")
 public class AllProductServlet extends HttpServlet{
@@ -25,6 +27,7 @@ public class AllProductServlet extends HttpServlet{
 		ProductDaoImpl product = new ProductDaoImpl();
 		List<Product> allproduct = product.adminViewProduts();
 		req.setAttribute("allProducts", allproduct);
+		
 		RequestDispatcher rd = req.getRequestDispatcher("adminAllProducts.jsp?deleteProductId=0");
 		 try {
 			 rd.forward(req, resp);
