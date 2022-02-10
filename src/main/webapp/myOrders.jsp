@@ -61,7 +61,7 @@
 		<c:forEach items="${myOrders}" var="myAllOrders">
 
 
-
+	
 			<div id="product">
 				<div id="img">
 					<img
@@ -119,6 +119,7 @@
 		</c:forEach>
 
 	</div>
+	
 
 
 
