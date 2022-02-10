@@ -22,20 +22,22 @@ public class ShowCartServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		try {
 		HttpSession session = req.getSession();
 		User currentUser = (User)session.getAttribute("user");
-		 OrderItemsDaoImpl myOrder= new OrderItemsDaoImpl();
 		CartDaoImpl cartDao = new CartDaoImpl();
 		List<Cart> cartItems = null;
 		try {
 			cartItems = cartDao.viewCart(currentUser);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		req.setAttribute("cartList", cartItems);
 		RequestDispatcher rd = req.getRequestDispatcher("cart.jsp");
 		rd.forward(req, resp);
+		}catch (ServletException | IOException e) {
+			e.getMessage();
+		}
 	}
 
 }

@@ -21,6 +21,7 @@ public class WalletUpdateServlet extends HttpServlet{
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		
+		try {
 		HttpSession session = req.getSession();
 		session.setAttribute("InsuffientMoney",null);
 		User currentUser = (User) session.getAttribute("user");
@@ -33,6 +34,9 @@ public class WalletUpdateServlet extends HttpServlet{
 			req.setAttribute("currentUser", currentUser);
 			RequestDispatcher rd = req.getRequestDispatcher("userProfile.jsp");
 			rd.forward(req, res);
+		}
+		}catch (NumberFormatException e) {
+			e.getMessage();
 		}
 		
 	}

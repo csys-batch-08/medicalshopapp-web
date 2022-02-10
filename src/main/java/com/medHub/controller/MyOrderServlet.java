@@ -25,6 +25,7 @@ public class MyOrderServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		try {
 		HttpSession session = req.getSession();
 		OrderItemsDaoImpl myOrder= new OrderItemsDaoImpl();
 		User currentUser = (User)session.getAttribute("user");
@@ -32,6 +33,9 @@ public class MyOrderServlet extends HttpServlet{
 		req.setAttribute("myOrders", myOrderList);
 		RequestDispatcher rd = req.getRequestDispatcher("myOrders.jsp?orderId=0&totalPrice=0&quantity=0&points=0&productId=0");
 		rd.forward(req, resp);
+		}catch (ServletException | IOException  e) {
+			e.getMessage();
+		}
 	}
 
 }

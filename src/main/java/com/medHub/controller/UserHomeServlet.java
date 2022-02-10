@@ -15,21 +15,21 @@ import com.medhub.model.Product;
 
 @WebServlet("/userHomeServlet")
 public class UserHomeServlet extends HttpServlet{
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		try {
 		ProductDaoImpl product= new ProductDaoImpl();
 		List<Product> allproduct = product.viewProduts();
-		Product searchProducts = new Product(); 
 		req.setAttribute("allProducts", allproduct);
 		RequestDispatcher rd = req.getRequestDispatcher("userHome.jsp");
 		rd.forward(req, resp);
+		}catch (IOException | ServletException e) {
+			e.getMessage();
+		}
 	}
 
 }

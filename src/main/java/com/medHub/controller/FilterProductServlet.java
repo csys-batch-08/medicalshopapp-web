@@ -21,13 +21,16 @@ public class FilterProductServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String Pname = req.getParameter("ProductName").toLowerCase();
+		try {
+		String pname = req.getParameter("ProductName").toLowerCase();
 		ProductDaoImpl product= new ProductDaoImpl();
-		 Product searchProducts = new Product(); 
-		List<Product> allproduct = product.searchProduct(Pname);
+		List<Product> allproduct = product.searchProduct(pname);
 		req.setAttribute("allProducts", allproduct);
 		RequestDispatcher rd = req.getRequestDispatcher("filteredProduct.jsp");
 		rd.forward(req, resp);
+		}catch (ServletException | IOException e) {
+			e.getMessage();
+		}
 	}
 
 }

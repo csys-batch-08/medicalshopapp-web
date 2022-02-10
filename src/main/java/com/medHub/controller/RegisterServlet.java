@@ -23,10 +23,16 @@ public class RegisterServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException {
 		
+		
 		HttpSession session = req.getSession(); 
 		String fullName= req.getParameter("regfullName").toLowerCase();
 		String mail=req.getParameter("regMail").toLowerCase();
-		long mobile=Long.parseLong(req.getParameter("regMobile"));
+		long mobile = 0;
+		try {
+		mobile=Long.parseLong(req.getParameter("regMobile"));
+		}catch (NumberFormatException n) {
+			n.getMessage();
+		}
 		String password=req.getParameter("regPassword");
 		User user = null;
 		UserDaoImpl userdao = new UserDaoImpl();
@@ -50,21 +56,21 @@ public class RegisterServlet extends HttpServlet {
 			UserDaoImpl userDao = new UserDaoImpl();
 			
 				if(userDao.insert(user)){
-						System.out.println("inserted");
+					try {
 						res.sendRedirect("registerWelcomeMessage.jsp");
+					}catch (IOException e) {
+						e.getMessage();
+					}
 				}
 			
 			
 			}
 		
 			}else {
-				
-				System.out.println("alredayd arwefr");
 				try {
 				throw new UserExistsException();
 				}catch (UserExistsException e) {
 					e.printStackTrace();
-					System.out.println("user excepion");
 					session.setAttribute("error", e.getMessage());
 						RequestDispatcher rd = req.getRequestDispatcher("registration.jsp");
 						try {
@@ -81,11 +87,4 @@ public class RegisterServlet extends HttpServlet {
 	}
 }
 
-/*
- * else { try { throw new UserExistsException(); }catch(UserExistsException e) {
- * session.setAttribute("error", e.getMessage()); RequestDispatcher rd =
- * req.getRequestDispatcher("registration.jsp"); try { rd.forward(req, res); }
- * catch (ServletException | IOException e1) { e1.printStackTrace(); } }
- * 
- * }
- */
+

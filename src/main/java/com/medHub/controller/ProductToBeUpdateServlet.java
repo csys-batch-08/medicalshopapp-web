@@ -24,13 +24,16 @@ public class ProductToBeUpdateServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		
+		try {
 		int productId = Integer.parseInt(req.getParameter("productId"));
 		ProductDaoImpl productDao = new ProductDaoImpl();
 		Product currentProduct = productDao.findProductByProductId(productId);
 		req.setAttribute("currentProduct", currentProduct);
 		RequestDispatcher rd = req.getRequestDispatcher("updateProduct.jsp");
 		 rd.forward(req, resp);
+		}catch (ServletException | IOException  | NumberFormatException e) {
+			e.getMessage();
+		}
 		
 	}
 

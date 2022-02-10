@@ -22,6 +22,7 @@ public class ShowBuyproductServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		try {
 		HttpSession session = req.getSession();
 		int pId=Integer.parseInt(req.getParameter("pid"));
 		ProductDaoImpl productDao = new ProductDaoImpl();
@@ -31,6 +32,9 @@ public class ShowBuyproductServlet extends HttpServlet{
 		session.setAttribute("currentproduct", currentProduct);
 		RequestDispatcher rd = req.getRequestDispatcher("buyProduct.jsp");
 		rd.forward(req, resp);
+		}catch (NumberFormatException | ServletException | IOException e){
+			e.getMessage();
+		}
 		
 		
 	}
