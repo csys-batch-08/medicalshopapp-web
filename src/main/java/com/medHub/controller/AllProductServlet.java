@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.medhub.dao.*;
 import com.medhub.model.*;
 
-import oracle.jdbc.driver.json.tree.JsonpObjectImpl;
-
-
 @WebServlet("/adminAllProducts")
 public class AllProductServlet extends HttpServlet{
 	
