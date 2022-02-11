@@ -1,7 +1,3 @@
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.util.*"%>
-<%@page import="java.util.*"%>
-<%@page import="com.exceptions.*"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -11,8 +7,8 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
-<link rel="stylesheet" href="Assets/css/salesReports2.css">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
+<link rel="stylesheet" href="assets/css/salesReports2.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">

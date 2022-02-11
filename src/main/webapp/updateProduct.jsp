@@ -5,8 +5,8 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
-<link rel="stylesheet" href="Assets/css/updateProduct.css">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
+<link rel="stylesheet" href="assets/css/updateProduct.css">
 
 <script>
 	history.forward();
@@ -15,9 +15,7 @@
 <title>Update Product</title>
 </head>
 <body>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	%>
+	
 
 	<div id="container">
 		<div id="navigation">

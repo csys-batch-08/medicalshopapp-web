@@ -6,6 +6,7 @@
 }
 
 body {
+	background-color: rgb(241, 224, 187);
 	background-repeat: repeat-y;
 	background-size: cover;
 	overflow-x: hidden;
@@ -74,10 +75,11 @@ body {
 }
 
 #product #btn button {
-	height: 30px;
-	width: 90px;
+	height: 40px;
+	width: 80px;
 	border: none;
 	border-radius: 5px;
+	background-color: red;
 }
 
 #btn1 {
@@ -87,7 +89,6 @@ body {
 }
 
 #product #btn button:hover {
-	background-color: white;
 	box-shadow: 0 0 5px black;
 }
 
@@ -102,8 +103,12 @@ body {
 	left: 50px;
 }
 
-#deleteBtn {
-	position: relative;
-	left: 100px;
-	bottom: 63px;
+#deleteButton {
+	color: white;
+	background-color: red;
+	outline: none;
+	border: none;
+	height: 40px;
+	width: 80px;
+	border-radius: 5px;
 }

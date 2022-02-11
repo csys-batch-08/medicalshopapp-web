@@ -4,9 +4,9 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="Assets/css/registration.css">
+<link rel="stylesheet" href="assets/css/registration.css">
 <style type="text/css">
 #passwordCheck {
 	visibility: visible;
@@ -19,7 +19,6 @@
 </head>
 
 <body id="body">
-	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 
 	<div id="container">
 
@@ -34,7 +33,7 @@
 			</nav>
 
 			<div class="logo">
-				<img src="Assets/Images/medhublogo.png" alt="logo">
+				<img src="assets/images/medhublogo.png" alt="logo">
 
 				<div id="companyname">
 					<img
@@ -103,6 +102,6 @@
 
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="Assets/javascript/registration.js"></script>
+	<script src="assets/javascript/registration.js"></script>
 </body>
 </html>

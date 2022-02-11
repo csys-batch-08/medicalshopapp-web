@@ -6,8 +6,8 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
-<link rel="stylesheet" href="Assets/css/index.css">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
+<link rel="stylesheet" href="assets/css/index.css">
 <title>Home</title>
 <script>
     history.forward();
@@ -16,7 +16,7 @@
 
 <body id="body">
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+	
 	<div id="container">
 
 		<div class="nav">
@@ -29,7 +29,7 @@
 				</ul>
 			</nav>
 			<div class="logo">
-				<img src="Assets/Images/medhublogo.png" alt="logo">
+				<img src="assets/images/medhublogo.png" alt="logo">
 
 				<div id="companyname">
 					<img

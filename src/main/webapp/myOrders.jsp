@@ -1,4 +1,3 @@
-<%@page import="javax.swing.plaf.metal.MetalBorders.Flush3DBorder"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -11,8 +10,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
-<link rel="stylesheet" href="Assets/css/myOrders.css">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
+<link rel="stylesheet" href="assets/css/myOrders.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet'
@@ -46,7 +45,7 @@
 			</nav>
 		</div>
 
-		<script src="Assets/javascript/popupMessages.js"></script>
+		<script src="assets/javascript/popupMessages.js"></script>
 		<c:choose>
 			<c:when test="${param.orderStatus!=null}">
 				<script type="text/javascript"> showMessage('orderSucess')</script>
@@ -65,7 +64,7 @@
 			<div id="product">
 				<div id="img">
 					<img
-						src="Assets/Images/${myAllOrders.getProduct().getProductImg()}"
+						src="assets/images/${myAllOrders.getProduct().getProductImg()}"
 						alt="horlicks">
 					<h3>${myAllOrders.getProduct().getProductName()}</h3>
 				</div>
@@ -125,7 +124,7 @@
 
 
 </body>
-<script src="Assets/javascript/myOrders.js"></script>
+<script src="assets/javascript/myOrders.js"></script>
 
 
 </html>

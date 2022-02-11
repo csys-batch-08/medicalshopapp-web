@@ -1,5 +1,4 @@
-<%@page import="javax.swing.plaf.metal.MetalBorders.Flush3DBorder"%>
-<%@page import="java.util.List"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -10,9 +9,9 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
 <meta name="theme-color" content="#ba8f88">
-<link rel="stylesheet" href="Assets/css/UserHome.css">
+<link rel="stylesheet" href="assets/css/userHome.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet'
@@ -48,7 +47,7 @@
 				</ul>
 
 				<div class="logo">
-					<img src="Assets/Images/medhublogo.png" alt="logo">
+					<img src="assets/images/medhublogo.png" alt="logo">
 				</div>
 			</nav>
 		</div>
@@ -76,7 +75,7 @@
 
 		<div id="product">
 			<div id="img">
-				<img src="Assets/Images/${products.getProductImg()}" alt="horlicks">
+				<img src="assets/images/${products.getProductImg()}" alt="horlicks">
 				<h3>${products.getProductName()}</h3>
 
 			</div>
@@ -101,7 +100,7 @@
 
 
 
-	<script src="Assets/javascript/popupMessages.js"></script>
+	<script src="assets/javascript/popupMessages.js"></script>
 	<c:if test="${param.loginstatus!=null}">
 		<script type="text/javascript"> showMessage('loginSucess')</script>
 	</c:if>

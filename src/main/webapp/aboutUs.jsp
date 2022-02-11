@@ -1,5 +1,3 @@
-<%@page import="javax.swing.plaf.metal.MetalBorders.Flush3DBorder"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,12 +7,11 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
 <meta name="theme-color" content="#ba8f88">
-<link rel="stylesheet" href="Assets/css/aboutUs.css">
+<link rel="stylesheet" href="assets/css/aboutUs.css">
 <title>About Us</title>
 </head>
-
 <body>
 
 
@@ -37,7 +34,7 @@
 						<li><a href="userHomeServlet"><label>Home</label></a></li>
 					</ul>
 					<div class="logo">
-						<img src="Assets/Images/medhublogo.png" alt="logo">
+						<img src="assets/images/medhublogo.png" alt="logo">
 					</div>
 				</nav>
 			</div>

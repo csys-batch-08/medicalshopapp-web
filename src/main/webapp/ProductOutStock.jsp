@@ -7,7 +7,7 @@
 <title>Out Of Stock</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="stylesheet" href="Assets/css/ProductOutStock.css">
+<link rel="stylesheet" href="assets/css/ProductOutStock.css">
 
 </head>
 <body>
@@ -35,7 +35,7 @@
 		</div>
 		<img
 			class="outOfStockLogo animate__animated  animate__zoomInDown animate__delay-0.5s"
-			alt="outOfStockLogo" src="Assets/Images/OutOfStockImage1.png">
+			alt="outOfStockLogo" src="assets/images/OutOfStockImage1.png">
 		<h1 class="msg animate__animated  animate__zoomIn ">Sorry For
 			Inconvenience ! Please Try Again After Sometime</h1>
 

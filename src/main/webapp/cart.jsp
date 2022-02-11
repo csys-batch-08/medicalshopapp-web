@@ -1,5 +1,4 @@
-<%@page import="javax.swing.plaf.metal.MetalBorders.Flush3DBorder"%>
-<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -11,14 +10,14 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <script
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet'
 	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-<link rel="stylesheet" href="Assets/css/cart.css">
+<link rel="stylesheet" href="assets/css/cart.css">
 
 <title>Cart</title>
 </head>
@@ -83,7 +82,7 @@
 			<div id="product">
 
 				<div id="img">
-					<img src="Assets/Images/${cartList.getProduct().getProductImg()}"
+					<img src="assets/images/${cartList.getProduct().getProductImg()}"
 						alt="horlicks">
 					<h3>${cartList.getProduct().getProductName()}</h3>
 				</div>
@@ -125,7 +124,7 @@
 	<div class="lessStockMsgDiv"
 		class="animate__animated  animate__zoomInDown animate__delay-0.5s">
 
-		<img src="Assets/Images/lessStock11.png" id="lessStockMsg"
+		<img src="assets/images/lessStock11.png" id="lessStockMsg"
 			alt="lessStockImg" class="animate__animated  animate__bounceIn">
 		<button onclick="hidePopUp()" id="popUpBtn"
 			class="animate__animated  animate__bounceIn animate__delay-0.3s">CLOSE</button>

@@ -1,4 +1,3 @@
-<%@page import="java.sql.ResultSet"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -6,11 +5,11 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="Assets/css/salesReports.css">
+<link rel="stylesheet" href="assets/css/salesReports.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>Sales Report</title>
@@ -21,7 +20,6 @@
 
 </head>
 <body>
-	<%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 
 	<div id="container">
 		<div id="navigation">

@@ -8,8 +8,8 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
-<link rel="stylesheet" href="Assets/css/userProfile.css">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
+<link rel="stylesheet" href="assets/css/userProfile.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <meta name="theme-color" content="#ba8f88">

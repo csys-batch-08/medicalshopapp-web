@@ -4,8 +4,8 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
-<link rel="stylesheet" href="Assets/css/registerWelcome.css">
+<link rel="icon" type="" href="assets/images/medhublogo.png">
+<link rel="stylesheet" href="assets/css/registerWelcome.css">
 
 <title>Registration Successfully</title>
 
@@ -24,7 +24,7 @@
 			</nav>
 
 			<div class="logo">
-				<img src="Assets/Images/medhublogo.png" alt="logo">
+				<img src="assets/images/medhublogo.png" alt="logo">
 
 				<div id="companyname">
 					<img

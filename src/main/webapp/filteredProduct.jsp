@@ -1,21 +1,20 @@
-<%@page import="javax.swing.plaf.metal.MetalBorders.Flush3DBorder"%>
-<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<!DOCTYPE html>
+<!DOCTYPE html>o
 <html lang="en">
 
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="" href="Assets/Images/medhublogo.png">
+<link rel="icon" type="" href="assets//medhublogo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <meta name="theme-color" content="#ba8f88">
-<link rel="stylesheet" href="Assets/css/filteredProduct.css">
+<link rel="stylesheet" href="assets/css/filteredProduct.css">
 
 <title>Userhome</title>
 </head>
@@ -23,7 +22,6 @@
 <body>
 
 
-	<%session.setAttribute("userNotFound", null);%>
 
 	<div id="container">
 		<div class="container-fluid p-0">
@@ -40,7 +38,7 @@
 					</ul>
 
 					<div class="logo">
-						<img src="Assets/Images/medhublogo.png" alt="logo">
+						<img src="assets//medhublogo.png" alt="logo">
 					</div>
 				</nav>
 			</div>
@@ -59,7 +57,7 @@
 			<c:forEach items="${allProducts}" var="products">
 				<div id="product" class="animate__animated  animate__bounceInLeft">
 					<div id="img">
-						<img src="Assets/Images/${products.getProductImg()}"
+						<img src="assets/${products.getProductImg()}"
 							alt="${ products.getProductName()}">
 						<h3>${products.getProductName()}</h3>
 					</div>

@@ -1,35 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="java.util.List"%>
 <%@page import="com.medhub.model.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="assets/css/adminAllProduct.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="icon" type="" href="Assets/medhublogo.png">
 <link rel="stylesheet" href="Assets/css/adminAllProducts.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
-<link rel='stylesheet'
-	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+<link rel="stylesheet" type="text/css"	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
     history.forward();
 </script>
 <style type="text/css">
-* {
+/* * {
 	margin-left: 0px;
 	padding: 0;
 	box-sizing: border-box;
@@ -50,7 +41,7 @@ body {
 	display: inline-block;
 	padding-right: 80px;
 	/* font-weight: 600;
-	font-size: 20px; */
+	font-size: 20px; 
 }
 
 #navigation {
@@ -142,14 +133,12 @@ body {
 	height: 40px;
 	width: 80px;
 	border-radius: 5px;
-}
+} */
 </style>
 <title>All Products</title>
 </head>
 <body>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	%>
+	
 
 	<div id="navigation" class="container-fluid">
 
@@ -169,7 +158,7 @@ body {
 	<%-- <c:forEach items="${allProducts}" var="products">
 		<div id="product">
 			<div id="img">
-				<img src="Assets/Images/${products.getProductImg()}"
+				<img src="Assets/images/${products.getProductImg()}"
 					alt="${products.getProductName()}">
 				<h5>${products.getProductName()}</h5>
 			</div>
@@ -242,7 +231,7 @@ body {
 	</table>
 
 
-	<script src="Assets/javascript/popupMessages.js"></script>
+	<script src="assets/javascript/popupMessages.js"></script>
 	<c:choose>
 		<c:when test="${param.status!=null}">
 			<script type="text/javascript">  showMessage('deleteSucess')</script>
