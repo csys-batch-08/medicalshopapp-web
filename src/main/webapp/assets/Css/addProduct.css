@@ -10,7 +10,7 @@ body {
 }
 
 body {
-	background-image: url(assets/homepage_img.jpg);
+	background-image: url(../images/homepage_img.jpg);
 	background-size: cover;
 }
 

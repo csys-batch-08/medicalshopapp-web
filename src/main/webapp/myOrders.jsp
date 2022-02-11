@@ -118,13 +118,6 @@
 		</c:forEach>
 
 	</div>
-	
-
-
-
-
 </body>
 <script src="assets/javascript/myOrders.js"></script>
-
-
 </html>

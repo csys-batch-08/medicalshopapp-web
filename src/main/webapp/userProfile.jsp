@@ -118,10 +118,7 @@
 						<button>Convert To Cash</button>
 					</form>
 				</div>
-
-
-			
-	</div>
+		</div>
 
 
 </body>

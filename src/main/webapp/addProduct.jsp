@@ -83,7 +83,7 @@
 	</div>
 
 	<script src="assets/javascript/popupMessages.js"></script>
-
+	<script src="assets/javascript/addProduct.js"></script>
 	<c:if test="${param.status!=null}">
 		<script type="text/javascript">showMessage('productAdded')</script>
 	</c:if>
@@ -95,10 +95,5 @@
 	</c:if>
 
 </body>
-<script>
-	
-function hideErrorMsg() {
-    document.getElementById("errorMsg").style.visibility="hidden";
-}
-</script>
+
 </html>

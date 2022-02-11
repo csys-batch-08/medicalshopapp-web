@@ -144,11 +144,11 @@ body {
 
 		<div>
 			<ul>
-				<li><a href="allUsers"><label>All Users</label></a></li>
-				<li><a href="adminAllProducts"><label>All Products</label></a></li>
-				<li><a href="addProduct.jsp"><label>Add Products</label></a></li>
-				<li><a href="salesReports.jsp"><label>Sales Reports</label></a></li>
-				<li id="logout"><a href="index.jsp"><label>Logout</label></a></li>
+				<li><a href="allUsers">All Users</a></li>
+				<li><a href="adminAllProducts">All Products</a></li>
+				<li><a href="addProduct.jsp">Add Products</a></li>
+				<li><a href="salesReports.jsp">Sales Reports</a></li>
+				<li id="logout"><a href="index.jsp">Logout</a></li>
 			</ul>
 		</div>
 
@@ -232,6 +232,7 @@ body {
 
 
 	<script src="assets/javascript/popupMessages.js"></script>
+	<script src="assets/javascript/adminAllProducts.js"></script>
 	<c:choose>
 		<c:when test="${param.status!=null}">
 			<script type="text/javascript">  showMessage('deleteSucess')</script>
@@ -246,41 +247,5 @@ body {
 			<c:remove var="updateCheck" scope="request" />
 		</c:when>
 	</c:choose>
-
-	<script>
-	$(document).ready(function() {
-		$('#table_id').DataTable();
-	});
-	
-	
-function check(){
-    var result = confirm("Are You Sure To Delete The Product");
-
-    if(result==false){
-        event.preventDefault();
-    }
-}
-
-
-function confirmdelete(productId) {
-	Swal.fire({
-	    title: "Are you sure about deleting this Product?",
-	    type: "info",
-	    showCancelButton: true,
-	    confirmButtonText: "Delete It",
-	    confirmButtonColor: "#ff0055",
-	    cancelButtonColor: "#999999",
-	    reverseButtons: true,
-	    focusConfirm: false,
-	    focusCancel: true
-	  }).then((result) => {
-		  if (result.isConfirmed) {
-			    window.location.replace("deleteProduct?info=&deleteProductId=" + productId);
-			  }
-	  })
-	
-}
-
-</script>
 </body>
 </html>
