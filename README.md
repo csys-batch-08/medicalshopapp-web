@@ -48,10 +48,3 @@
 * View Sales Report
 * Filter Products
 
-
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 9852ccdd5f0141af7ec948404aba4e003fb1a229
